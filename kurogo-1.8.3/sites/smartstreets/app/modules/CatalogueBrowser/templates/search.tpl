@@ -19,16 +19,8 @@
 				</th>
 			</tr>
 			<tr>
-				<th>Content Type: </th>
-				<th><input type="text" name = "content_type"/></th>
-			</tr>
-			<tr>
-				<th>Maintainer:</th>
-				<th><input type="text" name = "maintainer"></input></th>
-			</tr>
-			<tr>
 				<th>ID :</th>
-				<th><input type="text" name = "id"></input></th>
+				<th><input type="text" name = "id" ></input></th>
 			</tr>
 			<tr>
 				<th>Description:</th>
@@ -40,15 +32,37 @@
 			</tr>
 			<tr>
 				<th>Tags:</th>
-				<th><input type="text" name = "tags"></input></th>
+				<th><input type="text" name = "tags" placeholder="ie: transport, traffic, etc."></input></th>
+			</tr>
+			<tr>
+				<th>Content Type: </th>
+				<th><input type="text" name = "content_type"/></th>
+			</tr>
+			<tr>
+				<th>Maintainer:</th>
+				<th><input type="text" name = "maintainer"></input></th>
+			</tr>
+			<tr>
+				<th>Owner:</th>
+				<th><input type="text" name = "owner"></input></th>
+			</tr>
+			<tr>
+				<th>Organization:</th>
+				<th><input type="text" name = "organization"></input></th>
+			</tr>
+			<tr>
+				<th>License:</th>
+				<th><input type="text" name = "license"></input></th>
 			</tr>
 			<tr>
 				<th>Sort Results:</th>
 				<th>
 					<select name="sort">
 						<option value="">Sort By:</option>
-						<option value="lastupdate">Date</option>
-						<option value="name">Name</option>
+						<option value="lastupdate.d">Most Recently Updated</option>
+						<option value="lastupdate.a">Least Recently Updated</option>
+						<option value="name_sort.a">Ascending Name</option>
+						<option value="name_sort.d">Descending Name</option>
 					</select>
 				</th>
 			</tr>

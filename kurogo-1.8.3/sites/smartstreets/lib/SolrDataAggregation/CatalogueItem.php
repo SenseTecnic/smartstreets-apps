@@ -37,11 +37,10 @@ class CatalogueItem
           "tags" => array("array"),
           "visibility" => array("string"),
           "supportssearch" => array("string"),
-          "containsdataType" => array("array"),
+          "containscontenttype" => array("array"),
           "organization" => array("string"),
           "owner" => array("string")
           //"href" => array("string")
-          //"testCopyField" => array("string")
           );
   
   // Factory method to create from config file
@@ -102,10 +101,6 @@ class CatalogueItem
     }
     $this->dataMap[$key] = $value;
   }
-
-
-
-
 
 }
 

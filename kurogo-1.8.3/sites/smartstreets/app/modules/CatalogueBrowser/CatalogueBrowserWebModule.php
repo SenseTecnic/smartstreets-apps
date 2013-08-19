@@ -137,6 +137,8 @@ class CatalogueBrowserWebModule extends WebModule
                  	$maintainer = "";
                  	$isSearchable = 0;
                  	$isCatalogue = 0;
+                    $lastupdate ="";
+                    $tags ="";
                  
 
                  	$url="";
@@ -187,6 +189,15 @@ class CatalogueBrowserWebModule extends WebModule
                                 if ($val =="application/vnd.tsbiot.catalogue+json")
                                     $isCatalogue=1;
                                 break;
+                            case $this->getModuleVar('Last_Updated', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
+                                if ($val !="")
+                                    $lastupdate=$val;
+                                break;
+                            case $this->getModuleVar('Tags', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
+                                if ($val !="")
+                                    $tags=$val;
+                                break;
+
                         }
 
                         ChromePhp::log('metaItem: '.json_encode($metaItem));
@@ -212,15 +223,21 @@ class CatalogueBrowserWebModule extends WebModule
                  		$resourceURL = $href;
                  	}
 
+                    $tag_array = "";
+                    if ($tags!=null)
+                        $tag_array = explode(',', $tags);                    
+
                  	// create navlist item
                  	$itemData = array (
+                        'lastupdate'=>$lastupdate,
                  		'label'=> $name,
                  		'boldLabels'=> true,
                  		'title'=> $title,
                  		'subtitle' => $description,
                  		'url' => $url,
                  		'resourceURL' => $resourceURL,
-                 		'itemSearchURL'=> $itemSearchURL
+                 		'itemSearchURL'=> $itemSearchURL,
+                        'badge'=>$tag_array
                  	);
              
                  	$itemList[]= $itemData;
@@ -292,11 +309,15 @@ class CatalogueBrowserWebModule extends WebModule
                         $name = isset($item["name"]) ? $item["name"] : "No Name";
                         $title = isset($item["title"]) ? $item["title"] : "No Title";
                         $maintainer = isset($item["maintainer"]) ? $item["maintainer"] : null;
-                        //$isSearchable = isset($item["hasDescription"]) ? $item["hasDescription"] : null;
+                        $lastupdate = isset($item["lastupdate"]) ? $item["lastupdate"] : null;
+                        // $isSearchable = isset($item["hasDescription"]) ? $item["hasDescription"] : null;
                         $isCatalogue = isset($item["isCatalogue"]) ? $item["isCatalogue"] : null;
                         // $url=isset($item["hasDescription"]) ? $item["hasDescription"] : null;
                         $parentURL=isset($item["parentUrl"]) ? $item["parentUrl"] : null;
                         $datahub=isset($item["datahub"]) ? $item["datahub"] : null;
+                        $tags= isset($item["tags"]) ? $item["tags"] : null;
+
+                        $tagArray = explode(',', $tags);
                         // $itemSearchURL=isset($item["hasDescription"]) ? $item["hasDescription"] : null;
 
 
@@ -324,15 +345,20 @@ class CatalogueBrowserWebModule extends WebModule
                             
                         }
 
+                        // foreach ($tagArray as $tag)
+                        //     ChromePhp::log ("tags: ".$tag);
+
                         // create navlist item
                         $itemData = array (
+                            'lastupdate'=>$lastupdate,
                             'label'=> $name,
                             'boldLabels'=> true,
                             'title'=> $title,
                             'subtitle' => $description,
                             'url' => $url,
                             'resourceURL' => $resourceURL,
-                            'itemSearchURL'=> $itemSearchURL
+                            'itemSearchURL'=> $itemSearchURL,
+                            'badge'=>$tagArray
                         );
                  
                         $resultList[]= $itemData;

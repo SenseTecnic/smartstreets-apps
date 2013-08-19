@@ -2607,329 +2607,342 @@ currentDir : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/si
 /* 174 */ .nav .badge {
 /* 175 */ 	/* Badge shown within a navigation list, e.g., unread count for messages */
 /* 176 */ 	color: #fff;
-/* 177 */ 	background-color: #c00;
-/* 178 */ }
-/* 179 */ 
-/* 180 */ .tabstrip a  {
-/* 181 */ 	/* Text color for horizontal tabstrips (segmented control - used in stats and rarely elsewhere) */
-/* 182 */ 	color: #333;
-/* 183 */ }
-/* 184 */ 
+/* 177 */ 	background-color: #E87A0C;
+/* 178 */ 	margin-top:3px;
+/* 179 */ }
+/* 180 */ 
+/* 181 */ .tabstrip a  {
+/* 182 */ 	/* Text color for horizontal tabstrips (segmented control - used in stats and rarely elsewhere) */
+/* 183 */ 	color: #333;
+/* 184 */ }
 /* 185 */ 
 /* 186 */ 
 /* 187 */ 
-/* 188 */ /* Sitewide footer */
-/* 189 */ 
-/* 190 */ #footer {
-/* 191 */ 	font-size: 70.6%;
-/* 192 */ 	line-height: 1.167em;
-/* 193 */ }
-/* 194 */ 
-/* 195 */ #footer .copyright {
-/* 196 */ 	text-decoration: none;
-/* 197 */ }
-/* 198 */ 
-/* 199 */ #footerlinks {
-/* 200 */ 	/* Divider between footer links */
+/* 188 */ 
+/* 189 */ /* Sitewide footer */
+/* 190 */ 
+/* 191 */ #footer {
+/* 192 */ 	font-size: 70.6%;
+/* 193 */ 	line-height: 1.167em;
+/* 194 */ }
+/* 195 */ 
+/* 196 */ #footer .copyright {
+/* 197 */ 	text-decoration: none;
+/* 198 */ }
+/* 199 */ 
+/* 200 */ #footerlinks {
 
 /* common.css */
 
-/* 201 */ 	color: #fff;
-/* 202 */ }
-/* 203 */ 
-/* 204 */ #footer, #footerlinks a, #footerlinks a:visited, a.copyright, a.copyright:visited {
-/* 205 */ 	/* Color of actual text and text links in sitewide footers */
-/* 206 */ 	color: #333;
-/* 207 */ }
-/* 208 */ 
-/* 209 */ /* Device Detection Information - only shown when debugging */
-/* 210 */ 
-/* 211 */ .footertable {
-/* 212 */   border: none;
-/* 213 */   width: auto;
-/* 214 */ }
-/* 215 */ .footertable th,
-/* 216 */ .footertable td {
-/* 217 */   line-height: 1.2em;
-/* 218 */   padding: 0;
-/* 219 */   margin: 0;
-/* 220 */   text-align: left;
-/* 221 */   word-break: break-word;
-/* 222 */ }
-/* 223 */ .footertable th {
-/* 224 */   font-weight: bold;
-/* 225 */   text-align: right;
-/* 226 */   padding-right: .25em;
-/* 227 */   white-space: nowrap;
-/* 228 */   width: 70px;
-/* 229 */ }
-/* 230 */ 
+/* 201 */ 	/* Divider between footer links */
+/* 202 */ 	color: #fff;
+/* 203 */ }
+/* 204 */ 
+/* 205 */ #footer, #footerlinks a, #footerlinks a:visited, a.copyright, a.copyright:visited {
+/* 206 */ 	/* Color of actual text and text links in sitewide footers */
+/* 207 */ 	color: #333;
+/* 208 */ }
+/* 209 */ 
+/* 210 */ /* Device Detection Information - only shown when debugging */
+/* 211 */ 
+/* 212 */ .footertable {
+/* 213 */   border: none;
+/* 214 */   width: auto;
+/* 215 */ }
+/* 216 */ .footertable th,
+/* 217 */ .footertable td {
+/* 218 */   line-height: 1.2em;
+/* 219 */   padding: 0;
+/* 220 */   margin: 0;
+/* 221 */   text-align: left;
+/* 222 */   word-break: break-word;
+/* 223 */ }
+/* 224 */ .footertable th {
+/* 225 */   font-weight: bold;
+/* 226 */   text-align: right;
+/* 227 */   padding-right: .25em;
+/* 228 */   white-space: nowrap;
+/* 229 */   width: 70px;
+/* 230 */ }
 /* 231 */ 
-/* 232 */ /* Next/previous navigation (e.g., going from day to day in events calendar) and paging navigation (for content or lists spread across multiple pages) */
-/* 233 */ 
-/* 234 */ .sidenav, .sidenav2, .paging {
-/* 235 */ 	font-size: 93%;
-/* 236 */ 	color: #fff;
-/* 237 */ }
-/* 238 */ 
-/* 239 */ .sidenav a, .sidenav a:visited, .sidenav2 a, .sidenav2 a:visited, .sidenavlabel, .paging a, .paging a:visited {
-/* 240 */ 	color: #333;
-/* 241 */ }
-/* 242 */ 
-/* 243 */ /* Accesibility - hide accessibility options visually but put them at the top of the DOM to help screen readers */
-/* 244 */ #kgo_accessibility_links {
-/* 245 */   position: absolute;
-/* 246 */   left: 0;
-/* 247 */   top: -500px;
-/* 248 */ }
-/* 249 */ 
-/* 250 */ /* Tabs - for compliant and tablet */
+/* 232 */ 
+/* 233 */ /* Next/previous navigation (e.g., going from day to day in events calendar) and paging navigation (for content or lists spread across multiple pages) */
+/* 234 */ 
+/* 235 */ .sidenav, .sidenav2, .paging {
+/* 236 */ 	font-size: 93%;
+/* 237 */ 	color: #fff;
+/* 238 */ }
+/* 239 */ 
+/* 240 */ .sidenav a, .sidenav a:visited, .sidenav2 a, .sidenav2 a:visited, .sidenavlabel, .paging a, .paging a:visited {
+/* 241 */ 	color: #333;
+/* 242 */ }
+/* 243 */ 
+/* 244 */ /* Accesibility - hide accessibility options visually but put them at the top of the DOM to help screen readers */
+/* 245 */ #kgo_accessibility_links {
+/* 246 */   position: absolute;
+/* 247 */   left: 0;
+/* 248 */   top: -500px;
+/* 249 */ }
+/* 250 */ 
 
 /* common.css */
 
-/* 251 */ 
-/* 252 */ #tabs li {
-/* 253 */ 	border: 1px solid #c0c0c0;
-/* 254 */ 	background-color: #f2f2f2;
-/* 255 */ }
-/* 256 */ 
-/* 257 */ #tabs li.active {
-/* 258 */ 	border-bottom: 1px solid #fff;	/* Should match #tabbodies background-color */
-/* 259 */ 	background-color: #fff;
-/* 260 */ }
-/* 261 */ 
-/* 262 */ #tabs li a, .tabstrip a {
-/* 263 */ 	/* Text label of unselected tab */
-/* 264 */ 	color: #666;
-/* 265 */ }
-/* 266 */ 
-/* 267 */ #tabs li.active a {
-/* 268 */ 	/* Text label of currently selected tab */
-/* 269 */ 	color: #000;
-/* 270 */ }
-/* 271 */ 
-/* 272 */ #tabs li.greyedout {
-/* 273 */ 	/* Text label of disabled tab */
-/* 274 */ 	color: #666;
-/* 275 */ }
-/* 276 */ 
-/* 277 */ #tabbodies {
-/* 278 */ 	background-color: #fff;
-/* 279 */ 	border-color: #c0c0c0;
-/* 280 */ }
-/* 281 */ 
-/* 282 */ .tabbody .nested, .tabbody ul.nav {
-/* 283 */ 	/* Navigation list inside a tab body needs a bit of background color to contrast from tab body background */
-/* 284 */ 	background-color: #f2f2f2;
-/* 285 */ }
-/* 286 */ 
+/* 251 */ /* Tabs - for compliant and tablet */
+/* 252 */ 
+/* 253 */ #tabs li {
+/* 254 */ 	border: 1px solid #c0c0c0;
+/* 255 */ 	background-color: #f2f2f2;
+/* 256 */ }
+/* 257 */ 
+/* 258 */ #tabs li.active {
+/* 259 */ 	border-bottom: 1px solid #fff;	/* Should match #tabbodies background-color */
+/* 260 */ 	background-color: #fff;
+/* 261 */ }
+/* 262 */ 
+/* 263 */ #tabs li a, .tabstrip a {
+/* 264 */ 	/* Text label of unselected tab */
+/* 265 */ 	color: #666;
+/* 266 */ }
+/* 267 */ 
+/* 268 */ #tabs li.active a {
+/* 269 */ 	/* Text label of currently selected tab */
+/* 270 */ 	color: #000;
+/* 271 */ }
+/* 272 */ 
+/* 273 */ #tabs li.greyedout {
+/* 274 */ 	/* Text label of disabled tab */
+/* 275 */ 	color: #666;
+/* 276 */ }
+/* 277 */ 
+/* 278 */ #tabbodies {
+/* 279 */ 	background-color: #fff;
+/* 280 */ 	border-color: #c0c0c0;
+/* 281 */ }
+/* 282 */ 
+/* 283 */ .tabbody .nested, .tabbody ul.nav {
+/* 284 */ 	/* Navigation list inside a tab body needs a bit of background color to contrast from tab body background */
+/* 285 */ 	background-color: #f2f2f2;
+/* 286 */ }
 /* 287 */ 
 /* 288 */ 
 /* 289 */ 
-/* 290 */ /* Form elements */
-/* 291 */ 
-/* 292 */ .forminput {
-/* 293 */   /* Should match the border color of image /common/images/compliant/search_button.png */
-/* 294 */ 	border-color: #666;
-/* 295 */ }
-/* 296 */ 
-/* 297 */ .inputcombo .forminput {
-/* 298 */   /* Border color should match the border color of image /common/images/compliant/search_button.png */
-/* 299 */ 	border: 1px 0 1px 1px solid  #666;
-/* 300 */ 	-webkit-border-radius: 8px;	
+/* 290 */ 
+/* 291 */ /* Form elements */
+/* 292 */ 
+/* 293 */ .forminput {
+/* 294 */   /* Should match the border color of image /common/images/compliant/search_button.png */
+/* 295 */ 	border-color: #666;
+/* 296 */ }
+/* 297 */ 
+/* 298 */ .inputcombo .forminput {
+/* 299 */   /* Border color should match the border color of image /common/images/compliant/search_button.png */
+/* 300 */ 	border: 1px 0 1px 1px solid  #666;
 
 /* common.css */
 
-/* 301 */ 	border-radius: 8px;	
-/* 302 */ }
-/* 303 */ 
-/* 304 */ .emphasized  .forminput {
-/* 305 */   /* Border color should match the border color of image /common/images/compliant/search_button.png */
-/* 306 */   /* Border weight should be 2px greater than border weight of .inputcombo .forminput */
-/* 307 */ 	border: 3px solid #666;	
-/* 308 */ 	/* Corner radius should be 2px greater than corner radius of .inputcombo .forminput */
-/* 309 */ 	-webkit-border-radius: 10px;	
-/* 310 */ 	border-radius: 10px;	
-/* 311 */ }
-/* 312 */ 
-/* 313 */ .submitbutton {
-/* 314 */ 	/* Form submit buttons that have text labels on Basic and Touch. */
-/* 315 */ 	background-color: #666;
-/* 316 */ 	color: #fff;
-/* 317 */ 	font-size: 93.75%;
-/* 318 */ }
-/* 319 */ 
+/* 301 */ 	-webkit-border-radius: 8px;	
+/* 302 */ 	border-radius: 8px;	
+/* 303 */ }
+/* 304 */ 
+/* 305 */ .emphasized  .forminput {
+/* 306 */   /* Border color should match the border color of image /common/images/compliant/search_button.png */
+/* 307 */   /* Border weight should be 2px greater than border weight of .inputcombo .forminput */
+/* 308 */ 	border: 3px solid #666;	
+/* 309 */ 	/* Corner radius should be 2px greater than corner radius of .inputcombo .forminput */
+/* 310 */ 	-webkit-border-radius: 10px;	
+/* 311 */ 	border-radius: 10px;	
+/* 312 */ }
+/* 313 */ 
+/* 314 */ .submitbutton {
+/* 315 */ 	/* Form submit buttons that have text labels on Basic and Touch. */
+/* 316 */ 	background-color: #666;
+/* 317 */ 	color: #fff;
+/* 318 */ 	font-size: 93.75%;
+/* 319 */ }
 /* 320 */ 
 /* 321 */ 
-/* 322 */ /* Headlines and bylines */
-/* 323 */ 
-/* 324 */ h1.slugline, h2.itemtitle {
-/* 325 */ 	/* Special headline style used in news, videos, and other modules with story-type content detail */
-/* 326 */ 	font-family: Georgia, serif;
-/* 327 */     font-size: 129.4%;
-/* 328 */ 	line-height: 1.25em;
-/* 329 */ 	font-weight: normal;
-/* 330 */     color: #111e32;
-/* 331 */ 	margin: 0 0 0.75em 0;
-/* 332 */ }
-/* 333 */ 
-/* 334 */ .byline {
-/* 335 */     min-height:40px;
-/* 336 */     font-size: 64.7%;
-/* 337 */     line-height: 1.25em;
-/* 338 */ 	padding-bottom: 0.33em;
-/* 339 */ 	margin-bottom: 1.33em;
-/* 340 */     border-bottom: 1px dotted #c0c0c0;
-/* 341 */ }
-/* 342 */ 
+/* 322 */ 
+/* 323 */ /* Headlines and bylines */
+/* 324 */ 
+/* 325 */ h1.slugline, h2.itemtitle {
+/* 326 */ 	/* Special headline style used in news, videos, and other modules with story-type content detail */
+/* 327 */ 	font-family: Georgia, serif;
+/* 328 */     font-size: 129.4%;
+/* 329 */ 	line-height: 1.25em;
+/* 330 */ 	font-weight: normal;
+/* 331 */     color: #111e32;
+/* 332 */ 	margin: 0 0 0.75em 0;
+/* 333 */ }
+/* 334 */ 
+/* 335 */ .byline {
+/* 336 */     min-height:40px;
+/* 337 */     font-size: 64.7%;
+/* 338 */     line-height: 1.25em;
+/* 339 */ 	padding-bottom: 0.33em;
+/* 340 */ 	margin-bottom: 1.33em;
+/* 341 */     border-bottom: 1px dotted #c0c0c0;
+/* 342 */ }
 /* 343 */ 
-/* 344 */ /* Freeform content module - basic styles to format unstyled raw HTML */
-/* 345 */ 
-/* 346 */ .staticContentBody {
-/* 347 */ 	background-color: #fff;
-/* 348 */ 	color: #333;
-/* 349 */ }
-/* 350 */ 
+/* 344 */ 
+/* 345 */ /* Freeform content module - basic styles to format unstyled raw HTML */
+/* 346 */ 
+/* 347 */ .staticContentBody {
+/* 348 */ 	background-color: #fff;
+/* 349 */ 	color: #333;
+/* 350 */ }
 
 /* common.css */
 
-/* 351 */ .staticContentBody h1 {
-/* 352 */ 	color: #111e32;
-/* 353 */ }
-/* 354 */ 
-/* 355 */ .staticContentBody h2 {
-/* 356 */ 	color: #000;
-/* 357 */ }
-/* 358 */ 
-/* 359 */ .staticContentBody h3 {
-/* 360 */ 	color: #000;
-/* 361 */ }
-/* 362 */ 
-/* 363 */ .staticContentBody h4 {
-/* 364 */ 	color: #000;
-/* 365 */ }
-/* 366 */ 
+/* 351 */ 
+/* 352 */ .staticContentBody h1 {
+/* 353 */ 	color: #111e32;
+/* 354 */ }
+/* 355 */ 
+/* 356 */ .staticContentBody h2 {
+/* 357 */ 	color: #000;
+/* 358 */ }
+/* 359 */ 
+/* 360 */ .staticContentBody h3 {
+/* 361 */ 	color: #000;
+/* 362 */ }
+/* 363 */ 
+/* 364 */ .staticContentBody h4 {
+/* 365 */ 	color: #000;
+/* 366 */ }
 /* 367 */ 
 /* 368 */ 
-/* 369 */ /* Data charts - compliant, tablet */
-/* 370 */ 
-/* 371 */ .rowbar {
-/* 372 */ 	background: #333 url("/device/compliant-unknown-unknown/common/images/rowbar.png") repeat-x;
-/* 373 */ }
-/* 374 */ .colbar {
-/* 375 */ 	background: #333 url("/device/compliant-unknown-unknown/common/images/colbar.png") repeat-y;
-/* 376 */ }
-/* 377 */ .average {
-/* 378 */ 	border-color: #c00;
-/* 379 */ }
-/* 380 */ 
-/* 381 */ /* other text types */
-/* 382 */ .required {
-/* 383 */ 	font-weight: bold;
-/* 384 */ 	color: #c00;
-/* 385 */ }
-/* 386 */ 
-/* 387 */ /* Video Players (videoPlayer.tpl) */
-/* 388 */ 
-/* 389 */ /* 
-/* 390 *|  * iframe/object/embed styling from 
-/* 391 *|  * http://webdesignerwall.com/tutorials/css-elastic-videos
-/* 392 *|  */
-/* 393 */ .kgo-videoplayer {
-/* 394 */   width: 100%;
-/* 395 */ 	max-width: 800px;
-/* 396 */ 	margin: 1em 0;
-/* 397 */ }
-/* 398 */ .kgo-videoplayer-container {
-/* 399 */ 	position: relative;
-/* 400 */ 	padding-bottom: 56.25%; /* 9/16 for 16:9 videos */
+/* 369 */ 
+/* 370 */ /* Data charts - compliant, tablet */
+/* 371 */ 
+/* 372 */ .rowbar {
+/* 373 */ 	background: #333 url("/device/compliant-unknown-unknown/common/images/rowbar.png") repeat-x;
+/* 374 */ }
+/* 375 */ .colbar {
+/* 376 */ 	background: #333 url("/device/compliant-unknown-unknown/common/images/colbar.png") repeat-y;
+/* 377 */ }
+/* 378 */ .average {
+/* 379 */ 	border-color: #c00;
+/* 380 */ }
+/* 381 */ 
+/* 382 */ /* other text types */
+/* 383 */ .required {
+/* 384 */ 	font-weight: bold;
+/* 385 */ 	color: #c00;
+/* 386 */ }
+/* 387 */ 
+/* 388 */ /* Video Players (videoPlayer.tpl) */
+/* 389 */ 
+/* 390 */ /* 
+/* 391 *|  * iframe/object/embed styling from 
+/* 392 *|  * http://webdesignerwall.com/tutorials/css-elastic-videos
+/* 393 *|  */
+/* 394 */ .kgo-videoplayer {
+/* 395 */   width: 100%;
+/* 396 */ 	max-width: 800px;
+/* 397 */ 	margin: 1em 0;
+/* 398 */ }
+/* 399 */ .kgo-videoplayer-container {
+/* 400 */ 	position: relative;
 
 /* common.css */
 
-/* 401 */ 	padding-top: 30px;
-/* 402 */ 	height: 0;
-/* 403 */ 	overflow: hidden;
-/* 404 */ }
-/* 405 */ 
-/* 406 */ .kgo-videoplayer-container iframe,  
-/* 407 */ .kgo-videoplayer-container object,  
-/* 408 */ .kgo-videoplayer-container embed {
-/* 409 */ 	position: absolute;
-/* 410 */ 	top: 0;
-/* 411 */ 	left: 0;
-/* 412 */ 	width: 100%;
-/* 413 */ 	height: 100%;
-/* 414 */ }
-/* 415 */ 
-/* 416 */ /* link styling */
-/* 417 */ .kgo-videoplayer a.kgo-videoplayer-link, 
-/* 418 */ .kgo-videoplayer a.kgo-videoplayer-link:visited {
-/* 419 */   position: relative;
-/* 420 */   display: block;
-/* 421 */   text-decoration: none;
-/* 422 */ }
-/* 423 */ .kgo-videoplayer .kgo-videoplayer-link img {
-/* 424 */   height: auto;
-/* 425 */   width: auto;
-/* 426 */   width: 100%;
-/* 427 */   max-height: 100%;
-/* 428 */ }
-/* 429 */ .kgo-videoplayer .kgo-videoplayer-link .playButton {
-/* 430 */   background: transparent url("/device/compliant-unknown-unknown/common/images/playvideo-button-bg.png") repeat 0% 0%;
-/* 431 */   border-bottom-left-radius: 5px 5px;
+/* 401 */ 	padding-bottom: 56.25%; /* 9/16 for 16:9 videos */
+/* 402 */ 	padding-top: 30px;
+/* 403 */ 	height: 0;
+/* 404 */ 	overflow: hidden;
+/* 405 */ }
+/* 406 */ 
+/* 407 */ .kgo-videoplayer-container iframe,  
+/* 408 */ .kgo-videoplayer-container object,  
+/* 409 */ .kgo-videoplayer-container embed {
+/* 410 */ 	position: absolute;
+/* 411 */ 	top: 0;
+/* 412 */ 	left: 0;
+/* 413 */ 	width: 100%;
+/* 414 */ 	height: 100%;
+/* 415 */ }
+/* 416 */ 
+/* 417 */ /* link styling */
+/* 418 */ .kgo-videoplayer a.kgo-videoplayer-link, 
+/* 419 */ .kgo-videoplayer a.kgo-videoplayer-link:visited {
+/* 420 */   position: relative;
+/* 421 */   display: block;
+/* 422 */   text-decoration: none;
+/* 423 */ }
+/* 424 */ .kgo-videoplayer .kgo-videoplayer-link img {
+/* 425 */   height: auto;
+/* 426 */   width: auto;
+/* 427 */   width: 100%;
+/* 428 */   max-height: 100%;
+/* 429 */ }
+/* 430 */ .kgo-videoplayer .kgo-videoplayer-link .playButton {
+/* 431 */   background: transparent url("/device/compliant-unknown-unknown/common/images/playvideo-button-bg.png") repeat 0% 0%;
 /* 432 */   border-bottom-left-radius: 5px 5px;
-/* 433 */   border-bottom-right-radius: 5px 5px;
+/* 433 */   border-bottom-left-radius: 5px 5px;
 /* 434 */   border-bottom-right-radius: 5px 5px;
-/* 435 */   border-top-left-radius: 5px 5px;
+/* 435 */   border-bottom-right-radius: 5px 5px;
 /* 436 */   border-top-left-radius: 5px 5px;
-/* 437 */   border-top-right-radius: 5px 5px;
+/* 437 */   border-top-left-radius: 5px 5px;
 /* 438 */   border-top-right-radius: 5px 5px;
-/* 439 */   color: white;
-/* 440 */   display: inline-block;
-/* 441 */   font-size: 30px;
-/* 442 */   text-decoration: none;
-/* 443 */   text-align: center;
-/* 444 */   line-height: 60px;
-/* 445 */   height: 60px;
-/* 446 */   width: 100px;
-/* 447 */   position: absolute;
-/* 448 */   top: 50%;
-/* 449 */   left: 50%;
-/* 450 */   margin: -30px 0px 0px -50px;
+/* 439 */   border-top-right-radius: 5px 5px;
+/* 440 */   color: white;
+/* 441 */   display: inline-block;
+/* 442 */   font-size: 30px;
+/* 443 */   text-decoration: none;
+/* 444 */   text-align: center;
+/* 445 */   line-height: 60px;
+/* 446 */   height: 60px;
+/* 447 */   width: 100px;
+/* 448 */   position: absolute;
+/* 449 */   top: 50%;
+/* 450 */   left: 50%;
 
 /* common.css */
 
-/* 451 */   z-index: 100;
-/* 452 */ }
-/* 453 */ .kgo-videoplayer .kgo-videoplayer-link .playButton div {
-/* 454 */   background: transparent url("/device/compliant-unknown-unknown/common/images/playvideo.png") no-repeat 50% 50%;
-/* 455 */   height: 60px;
-/* 456 */ }
-/* 457 */ 
+/* 451 */   margin: -30px 0px 0px -50px;
+/* 452 */   z-index: 100;
+/* 453 */ }
+/* 454 */ .kgo-videoplayer .kgo-videoplayer-link .playButton div {
+/* 455 */   background: transparent url("/device/compliant-unknown-unknown/common/images/playvideo.png") no-repeat 50% 50%;
+/* 456 */   height: 60px;
+/* 457 */ }
 /* 458 */ 
-/* 459 */ /*Details View Dialog and links to resources*/
-/* 460 */ #item-details{
-/* 461 */ 	font-size: 12px ;
-/* 462 */ }
-/* 463 */ 
-/* 464 */ .ui-dialog-title {
-/* 465 */     font-size:14px !important;
-/* 466 */ }
-/* 467 */ 
-/* 468 */ .ui-dialog-titlebar {
-/* 469 */   	background-color: #fc7f00 !important;
-/* 470 */   	background-image: none !important;
-/* 471 */   	color: white !important;
-/* 472 */ }
-/* 473 */ 
-/* 474 */ .details_link{
-/* 475 */ 	cursor: pointer;
-/* 476 */ }
-/* 477 */ 
-/* 478 */ .resource_link{
-/* 479 */ }
-/* 480 */ 
+/* 459 */ 
+/* 460 */ /*Details View Dialog and links to resources*/
+/* 461 */ #item-details{
+/* 462 */ 	font-size: 12px ;
+/* 463 */ }
+/* 464 */ 
+/* 465 */ .ui-dialog-title {
+/* 466 */     font-size:14px !important;
+/* 467 */ }
+/* 468 */ 
+/* 469 */ .ui-dialog-titlebar {
+/* 470 */   	background-color: #fc7f00 !important;
+/* 471 */   	background-image: none !important;
+/* 472 */   	color: white !important;
+/* 473 */ }
+/* 474 */ 
+/* 475 */ .details_link{
+/* 476 */ 	cursor: pointer;
+/* 477 */ }
+/* 478 */ 
+/* 479 */ .resource_link{
+/* 480 */ }
 /* 481 */ 
+/* 482 */ /* Last Update Label in List Item */
+/* 483 */ .lastUpdateLabel{
+/* 484 */ 	font-size: 10px;
+/* 485 */ 	text-align: right;
+/* 486 */ 	color:#FAF6F2;
+/* 487 */ 	background-color: #150B33;
+/* 488 */ 	border-radius:5px;
+/* 489 */ 	/*padding-left:3px;*/
+/* 490 */ 	padding-right:5px;
+/* 491 */ 	top:-5px;
+/* 492 */ 	width: 100%;
+/* 493 */ 	position: relative;
+/* 494 */ }
 /* Minify_CSS_UriRewriter::$debugText
 
 docRoot    : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www
@@ -4887,7 +4900,7 @@ currentDir : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/si
 /* 16 *| 	right: 5%;
 /* 17 *| 	margin: 10px;
 /* 18 *| 	height: 20px;*/
-/* 19 */ 	height:20px;
+/* 19 */ 	height:23px;
 /* 20 */ 	font-family:arial;
 /* 21 */ 	/*width: 30%;*/
 /* 22 */ }

@@ -1,9 +1,15 @@
+<div class="lastUpdateLabel">
+ {if isset($item['lastupdate'])}
+      Last Updated: {$item['lastupdate']}
+  {/if}
+</div>
+
 {capture name="listItemLabel" assign="listItemLabel"}
   {if isset($item['label'])}
     {if $boldLabels}
       <strong>
     {/if}
-      {$item['label']}{if $labelColon|default:true}: {/if}
+      <strong>Name: </strong> {$item['label']}{if $labelColon|default:false}: {/if}
     {if $boldLabels}
       </strong>
     {/if}
@@ -21,19 +27,27 @@
         {if $item['imgHeight']} height="{$item['imgHeight']}"{/if} />
     {/if}
     {$listItemLabel}
+
     {if $titleTruncate}
       {$item['title']|truncate:$titleTruncate}
     {else}
       {$item['title']}
     {/if}
     {if $item['subtitle']}
-      {if $subTitleNewline|default:true}<div{else}&nbsp;<span{/if} class="smallprint">
+      <br><strong>Description: </strong> {if $subTitleNewline|default:true}<div{else}&nbsp;<span{/if} class="smallprint">
         {$item['subtitle']}
       {if $subTitleNewline|default:true}</div>{else}</span>{/if}
     {/if}
-    {if $item['badge']}
+<!--     {if $item['badge']}
       <span class="badge">{$item['badge']}</span>
     {/if}
+ -->
+ {if $item['badge']}
+ <br><br><strong>Tags: </strong>
+    {foreach $item['badge'] as $tag}
+      <span class="badge">{$tag}</span>
+    {/foreach}
+ {/if}
   {if $item['url']}
     </a>
   {else}

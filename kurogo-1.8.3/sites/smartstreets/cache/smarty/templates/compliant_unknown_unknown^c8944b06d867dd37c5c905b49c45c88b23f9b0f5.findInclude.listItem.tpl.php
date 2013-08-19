@@ -1,30 +1,37 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2013-08-09 14:30:42
+<?php /* Smarty version Smarty-3.0.7, created on 2013-08-19 19:35:33
          compiled from "findInclude:modules/CatalogueBrowser/templates/listItem.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:180537734452053552630959-50015991%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10703275555212abc57dd005-99540102%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'c8944b06d867dd37c5c905b49c45c88b23f9b0f5' => 
     array (
       0 => 'findInclude:modules/CatalogueBrowser/templates/listItem.tpl',
-      1 => 1376073021,
+      1 => 1376955331,
       2 => 'findInclude',
     ),
   ),
-  'nocache_hash' => '180537734452053552630959-50015991',
+  'nocache_hash' => '10703275555212abc57dd005-99540102',
   'function' => 
   array (
   ),
   'has_nocache_code' => false,
 )); /*/%%SmartyHeaderCode%%*/?>
 <?php if (!is_callable('smarty_modifier_truncate')) include '/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/smarty/plugins/modifier.truncate.php';
-?><?php ob_start(); ?>
+?><div class="lastUpdateLabel">
+ <?php if (isset($_smarty_tpl->getVariable('item',null,true,false)->value['lastupdate'])){?>
+      Last Updated: <?php echo $_smarty_tpl->getVariable('item')->value['lastupdate'];?>
+
+  <?php }?>
+</div>
+
+<?php ob_start(); ?>
   <?php if (isset($_smarty_tpl->getVariable('item',null,true,false)->value['label'])){?>
     <?php if ($_smarty_tpl->getVariable('boldLabels')->value){?>
       <strong>
     <?php }?>
-      <?php echo $_smarty_tpl->getVariable('item')->value['label'];?>
-<?php if ((($tmp = @$_smarty_tpl->getVariable('labelColon')->value)===null||$tmp==='' ? true : $tmp)){?>: <?php }?>
+      <strong>Name: </strong> <?php echo $_smarty_tpl->getVariable('item')->value['label'];?>
+<?php if ((($tmp = @$_smarty_tpl->getVariable('labelColon')->value)===null||$tmp==='' ? false : $tmp)){?>: <?php }?>
     <?php if ($_smarty_tpl->getVariable('boldLabels')->value){?>
       </strong>
     <?php }?>
@@ -52,6 +59,7 @@ $_smarty_tpl->decodeProperties(array (
     <?php }?>
     <?php echo $_smarty_tpl->getVariable('listItemLabel')->value;?>
 
+
     <?php if ($_smarty_tpl->getVariable('titleTruncate')->value){?>
       <?php echo smarty_modifier_truncate($_smarty_tpl->getVariable('item')->value['title'],$_smarty_tpl->getVariable('titleTruncate')->value);?>
 
@@ -60,15 +68,27 @@ $_smarty_tpl->decodeProperties(array (
 
     <?php }?>
     <?php if ($_smarty_tpl->getVariable('item')->value['subtitle']){?>
-      <?php if ((($tmp = @$_smarty_tpl->getVariable('subTitleNewline')->value)===null||$tmp==='' ? true : $tmp)){?><div<?php }else{ ?>&nbsp;<span<?php }?> class="smallprint">
+      <br><strong>Description: </strong> <?php if ((($tmp = @$_smarty_tpl->getVariable('subTitleNewline')->value)===null||$tmp==='' ? true : $tmp)){?><div<?php }else{ ?>&nbsp;<span<?php }?> class="smallprint">
         <?php echo $_smarty_tpl->getVariable('item')->value['subtitle'];?>
 
       <?php if ((($tmp = @$_smarty_tpl->getVariable('subTitleNewline')->value)===null||$tmp==='' ? true : $tmp)){?></div><?php }else{ ?></span><?php }?>
     <?php }?>
-    <?php if ($_smarty_tpl->getVariable('item')->value['badge']){?>
+<!--     <?php if ($_smarty_tpl->getVariable('item')->value['badge']){?>
       <span class="badge"><?php echo $_smarty_tpl->getVariable('item')->value['badge'];?>
 </span>
     <?php }?>
+ -->
+ <?php if ($_smarty_tpl->getVariable('item')->value['badge']){?>
+ <br><br><strong>Tags: </strong>
+    <?php  $_smarty_tpl->tpl_vars['tag'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->getVariable('item')->value['badge']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+if ($_smarty_tpl->_count($_from) > 0){
+    foreach ($_from as $_smarty_tpl->tpl_vars['tag']->key => $_smarty_tpl->tpl_vars['tag']->value){
+?>
+      <span class="badge"><?php echo $_smarty_tpl->tpl_vars['tag']->value;?>
+</span>
+    <?php }} ?>
+ <?php }?>
   <?php if ($_smarty_tpl->getVariable('item')->value['url']){?>
     </a>
   <?php }else{ ?>

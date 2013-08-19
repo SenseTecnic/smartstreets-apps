@@ -8,6 +8,6 @@
 {include file="findInclude:modules/CatalogueBrowser/templates/navlist.tpl" navlistItems=$itemList secondary=true accessKey=false} 
 {include file="findInclude:common/templates/footer.tpl"}
 
-<div id="dialog-modal" title="Details">
+<div id="dialog-modal" title="Item Details">
   <div id = "item-details"></div>
 </div>

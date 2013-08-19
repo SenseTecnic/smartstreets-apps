@@ -3,9 +3,7 @@
 class SearchQuery {
 
   protected $keywordMap = array();
-  protected $categories = array();
   protected $filters = array();
-  protected $geoFilters = array();
   protected $returnFields = array();
   protected $rows;
   protected $startIndex;
@@ -82,8 +80,7 @@ class SearchQuery {
       $keywords[] = "*:*";
     }
 
-    // Do a OR search of label keywords, for most anticipated cases this shouldn't matter
-    // Since we will do a general search on the catchall solr schema label
+    // Do a OR search of label keywords
     $searchParams["q"] = implode(" OR ", $keywords);
 
     if ($this->returnFields != null) {
@@ -100,22 +97,10 @@ class SearchQuery {
       $searchParams["start"] = $this->startIndex;
     }
 
-    // Add category filters. This is done separately since it is an OR of categories
-    if (!empty($this->categories)) {
-      $categoryParams = implode(" OR ", $this->categories);
-      if ($categoryParams != "") {
-        $searchParams["fq"] = "category:(". $categoryParams. ")";
-      }
-    }
 
     // Add filters
     $fq = array();
     foreach ($this->filters as $filter) {
-      $fq[] = $filter->getQueryString();
-    }
-
-    // Add geo filters separately (For some reason query is incorrect if placed before
-    foreach ($this->geoFilters as $filter) {
       $fq[] = $filter->getQueryString();
     }
 

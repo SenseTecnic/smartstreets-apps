@@ -112,23 +112,15 @@ class CatalogueItemManager {
       $lower = strtolower($attr["rel"]);
       foreach($schema_keys as $key)
       {
-        if ($lower=="hasmaintainer"){
-          print "has maintainer!";
-        }
         if(strpos($lower,$key) !== false) 
         {
-
-          if ($lower=="hasmaintainer"){
-            print "match maintainer!";
-          }
-
           if ($key=="hasdescription"&&$attr["val"]!=null){
             $description=$attr["val"];
           }
           if ($key=="hasid"&&$attr["val"]!=null){
             $itemId=$attr["val"];
           }
-          if ($key=="lastupdate"&&$attr["val"]){ // convert date to solr format
+          if ($key=="lastupdate"&&$attr["val"]!=null){ // convert date to solr format
             $attr["val"]=$this->convertToSolrDateTimeFormat($attr["val"]);
           }
           //set the value of key as $attr[val]
@@ -137,12 +129,12 @@ class CatalogueItemManager {
         }
       }
     }
-    if ($newCatalogueItem->getDatamapValue("hasId")==null){
+    if ($newCatalogueItem->getDatamapValue("hasid")==null){
       //create id
       $id=$datahub.$description.$itemId;
       $id = sha1($id);
     }else{
-      $id = $newCatalogueItem->getDatamapValue("hasId");
+      $id = $newCatalogueItem->getDatamapValue("hasid");
     }
     
     //set other metadata

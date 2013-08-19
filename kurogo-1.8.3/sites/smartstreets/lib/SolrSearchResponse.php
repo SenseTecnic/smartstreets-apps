@@ -8,14 +8,19 @@ includePackage ('SolrDataAggregation');
 class SolrSearchResponse
 { 
  
-    public static function getKeywordSearchResponse ($controller, $params, $sortField){
+    public static function getKeywordSearchResponse ($controller, $params, $sort){
 
         $searchQuery = SearchQueryFactory::createKeywordSearchQuery($params);
 
         
-        if ($sortField != null){
-            $searchSort = new SearchSort($sortField, true);
+        if ($sort != null){
+            $str_split = explode('.', $sort);
+            $sortField = $str_split[0];
+            $isAscending= ($str_split[1]=='a') ? true:false; 
+           
+            $searchSort = new SearchSort($sortField, $isAscending);
             $searchQuery->addSort($searchSort);
+            $searchQuery->setMaxItems(10000000);//temporary to display all results until scroll to load more is implemented.
         }
 
         $searchQuery->addReturnField("title");

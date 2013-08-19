@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2013-08-19 03:03:40
+<?php /* Smarty version Smarty-3.0.7, created on 2013-08-19 17:22:12
          compiled from "/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/sites/smartstreets/app/modules/CatalogueBrowser/templates/search.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15241107655211c34cdf4304-43798629%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:23400211552128c84d57b70-14545754%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '0db128f6e207e41fbfbb92e11eca6c2bedf7111b' => 
     array (
       0 => '/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/sites/smartstreets/app/modules/CatalogueBrowser/templates/search.tpl',
-      1 => 1376895812,
+      1 => 1376947322,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15241107655211c34cdf4304-43798629',
+  'nocache_hash' => '23400211552128c84d57b70-14545754',
   'function' => 
   array (
   ),
@@ -41,16 +41,8 @@ $_smarty_tpl->decodeProperties(array (
 				</th>
 			</tr>
 			<tr>
-				<th>Content Type: </th>
-				<th><input type="text" name = "content_type"/></th>
-			</tr>
-			<tr>
-				<th>Maintainer:</th>
-				<th><input type="text" name = "maintainer"></input></th>
-			</tr>
-			<tr>
 				<th>ID :</th>
-				<th><input type="text" name = "id"></input></th>
+				<th><input type="text" name = "id" ></input></th>
 			</tr>
 			<tr>
 				<th>Description:</th>
@@ -62,15 +54,37 @@ $_smarty_tpl->decodeProperties(array (
 			</tr>
 			<tr>
 				<th>Tags:</th>
-				<th><input type="text" name = "tags"></input></th>
+				<th><input type="text" name = "tags" placeholder="ie: transport, traffic, etc."></input></th>
+			</tr>
+			<tr>
+				<th>Content Type: </th>
+				<th><input type="text" name = "content_type"/></th>
+			</tr>
+			<tr>
+				<th>Maintainer:</th>
+				<th><input type="text" name = "maintainer"></input></th>
+			</tr>
+			<tr>
+				<th>Owner:</th>
+				<th><input type="text" name = "owner"></input></th>
+			</tr>
+			<tr>
+				<th>Organization:</th>
+				<th><input type="text" name = "organization"></input></th>
+			</tr>
+			<tr>
+				<th>License:</th>
+				<th><input type="text" name = "license"></input></th>
 			</tr>
 			<tr>
 				<th>Sort Results:</th>
 				<th>
 					<select name="sort">
 						<option value="">Sort By:</option>
-						<option value="lastupdate">Date</option>
-						<option value="name">Name</option>
+						<option value="lastupdate.d">Most Recently Updated</option>
+						<option value="lastupdate.a">Least Recently Updated</option>
+						<option value="name_sort.a">Ascending Name</option>
+						<option value="name_sort.d">Descending Name</option>
 					</select>
 				</th>
 			</tr>

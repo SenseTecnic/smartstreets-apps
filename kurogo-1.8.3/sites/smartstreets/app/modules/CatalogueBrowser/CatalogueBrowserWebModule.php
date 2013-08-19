@@ -262,6 +262,9 @@ class CatalogueBrowserWebModule extends WebModule
                 $params['name'] = $this->getArg('name');
                 $params['tags'] = $this->getArg('tags');
                 $params['maintainer'] = $this->getArg('maintainer');
+                $params['owner'] = $this->getArg('owner');
+                $params['organization'] = $this->getArg('organization');
+                $params['license'] = $this->getArg('license');
                 $sort = $this->getArg('sort');
 
                 //CREATE SOLR SEARCH QUERIES

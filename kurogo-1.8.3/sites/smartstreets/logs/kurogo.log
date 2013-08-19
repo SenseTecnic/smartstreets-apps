@@ -52066,3 +52066,342 @@
     [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
 )
 
+[Mon 08 19 18:08:28 2013]	kurogo:Warning	_404@113	/device/compliant-unknown-unknown/modules/info/images/phone_images.png	URL /device/compliant-unknown-unknown/modules/info/images/phone_images.png not found
+[Mon 08 19 18:13:27 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:16:07 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=name_sort.a&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+    [rows] => 10000000
+    [sort] => name_sort asc
+)
+
+[Mon 08 19 18:23:31 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:24:50 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:25:43 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:26:12 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:27:17 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:27:18 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 1 "{div}" unknown tag "div"
+[Mon 08 19 18:27:55 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:30:27 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:32:27 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:56:26 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:58:16 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 18:59:00 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:01:36 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:01:36 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 43 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:01:55 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:01:55 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 43 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:02:26 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:02:26 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 43 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:02:53 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:02:53 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 43 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:03:52 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:03:53 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 42 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:04:12 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:04:13 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 42 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:04:51 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:04:51 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 42 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:05:20 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:05:20 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 42 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:05:34 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:05:35 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 42 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:05:39 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:05:39 2013]	exception:Alert	Smarty_Internal_TemplateCompilerBase->trigger_template_error@431	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	A SmartyCompilerException has occured: Syntax Error in template "findInclude:modules/CatalogueBrowser/templates/listItem.tpl"  on line 42 "&lt;span class=&quot;badge&quot;&gt;{$tag]}&lt;/span&gt;"  - Unexpected "]", expected one of: "}" , " "
+[Mon 08 19 19:05:59 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:06:23 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:07:39 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:09:07 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:11:09 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:11:22 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:11:57 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:13:17 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:13:48 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:16:54 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:17:10 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:18:07 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:18:19 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:18:45 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:18:46 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:19:18 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:19:45 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:21:04 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:21:06 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:21:22 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:22:57 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:23:10 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:23:27 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:23:50 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:24:22 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:24:35 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:24:44 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:25:17 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:25:31 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:26:00 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:26:09 2013]	data:Alert	SearchQuery->getQueryParams@128	/CatalogueBrowser/searchResults?datahub=http%3A%2F%2Fsmartstreets.sensetecnic.com&catalogue=%2Fcat%2Fdata&id=&description=&name=&tags=transport%2C+traffic%2C+new-tag&content_type=&maintainer=&owner=&organization=&license=&sort=&hub_selected=Smartstreets	Search params: Array
+(
+    [q] => datahub:Smartstreets OR tags:transport,\ traffic,\ new\-tag
+    [fl] => title,id,hasid,hasdescription,tags,lastupdate,isCatalogue,href,parentUrl,datahub,name,iscontenttype,maintainer
+)
+
+[Mon 08 19 19:32:25 2013]	kurogo:Warning	_404@113	/device/compliant-unknown-unknown/modules/info/images/phone_images.png	URL /device/compliant-unknown-unknown/modules/info/images/phone_images.png not found

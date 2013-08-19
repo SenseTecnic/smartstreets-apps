@@ -174,15 +174,14 @@ dt, .label, .legend, .legend h2, .legend h3, .searchlegend {
 .nav .badge {
 	/* Badge shown within a navigation list, e.g., unread count for messages */
 	color: #fff;
-	background-color: #c00;
+	background-color: #E87A0C;
+	margin-top:3px;
 }
 
 .tabstrip a  {
 	/* Text color for horizontal tabstrips (segmented control - used in stats and rarely elsewhere) */
 	color: @@@primary_text_color@@@;
 }
-
-
 
 
 /* Sitewide footer */
@@ -478,3 +477,16 @@ h1.slugline, h2.itemtitle {
 .resource_link{
 }
 
+/* Last Update Label in List Item */
+.lastUpdateLabel{
+	font-size: 10px;
+	text-align: right;
+	color:#FAF6F2;
+	background-color: #150B33;
+	border-radius:5px;
+	/*padding-left:3px;*/
+	padding-right:5px;
+	top:-5px;
+	width: 100%;
+	position: relative;
+}

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.7, created on 2013-08-07 19:07:24
+<?php /* Smarty version Smarty-3.0.7, created on 2013-08-19 18:54:24
          compiled from "/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/sites/smartstreets/app/modules/CatalogueBrowser/templates/viewCatalogue.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7717992195202d32c196716-95914111%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10098173065212a220023058-39144399%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'fd7ad2c74cbf5813996c0936e32fc84969d04e40' => 
     array (
       0 => '/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/sites/smartstreets/app/modules/CatalogueBrowser/templates/viewCatalogue.tpl',
-      1 => 1375916825,
+      1 => 1376952850,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7717992195202d32c196716-95914111',
+  'nocache_hash' => '10098173065212a220023058-39144399',
   'function' => 
   array (
   ),
@@ -35,6 +35,6 @@ $_template->assign('navlistItems',$_smarty_tpl->getVariable('itemList')->value);
 <?php $_template = new Smarty_Internal_Template("findInclude:common/templates/footer.tpl", $_smarty_tpl->smarty, $_smarty_tpl, $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null);
  echo $_template->getRenderedTemplate();?><?php unset($_template);?>
 
-<div id="dialog-modal" title="Details">
+<div id="dialog-modal" title="Item Details">
   <div id = "item-details"></div>
 </div>

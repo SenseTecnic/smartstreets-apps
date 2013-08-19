@@ -1,0 +1,29 @@
+{
+    "strings":{
+        "titleKey":"ABOUT_ADMIN_STRINGS_TITLE",
+        "descriptionKey":"ABOUT_ADMIN_STRINGS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+         "SITE_ABOUT_HTML":{"labelKey":"ABOUT_ADMIN_STRINGS_SITE_ABOUT_TITLE","type":"paragraph","config":"module","section":"strings","descriptionKey":"ABOUT_ADMIN_STRINGS_SITE_ABOUT_DESCRIPTION"},
+         "ABOUT_HTML":{"labelKey":"ABOUT_ADMIN_STRINGS_ABOUT_TITLE","type":"paragraph","config":"module","section":"strings","descriptionKey":"ABOUT_ADMIN_STRINGS_ABOUT_DESCRIPTION"}
+       }
+    },
+    "index": {
+        "titleKey":"ABOUT_ADMIN_INDEX_TITLE",
+        "config":"page-index",
+        "descriptionKey":"ABOUT_ADMIN_INDEX_DESCRIPTION",
+        "sectiontype":"section",
+        "fields":{
+            "section":{"labelKey":"ABOUT_ADMIN_INDEX_SECTION_TITLE","descriptionKey":"ABOUT_ADMIN_INDEX_SECTION_DESCRIPTION","type":"label"},
+            "title":{"labelKey":"ABOUT_ADMIN_INDEX_TITLE_TITLE","descriptionKey":"ABOUT_ADMIN_INDEX_TITLE_DESCRIPTION","type":"text"},
+            "subtitle":{"labelKey":"ABOUT_ADMIN_INDEX_SUBTITLE_TITLE","descriptionKey":"ABOUT_ADMIN_INDEX_SUBTITLE_DESCRIPTION","type":"text","omitBlankValue":true},
+            "url":{"labelKey":"ABOUT_ADMIN_INDEX_URL_TITLE","descriptionKey":"ABOUT_ADMIN_INDEX_URL_DESCRIPTION","type":"text"},
+            "class":{"labelKey":"ABOUT_ADMIN_INDEX_TYPE_TITLE","descriptionKey":"ABOUT_ADMIN_INDEX_TYPE_DESCRIPTION","type":"select","optionsMethod":["WebModule","getListItemClasses"],"optionsFirst":"Normal","omitBlankValue":true}
+        },
+        "sectiontitlefield":"title",
+        "sectionindex":"string",
+        "sectionaddnew":true,
+        "sectiondelete":true,
+        "sectionreorder":true
+    }
+}

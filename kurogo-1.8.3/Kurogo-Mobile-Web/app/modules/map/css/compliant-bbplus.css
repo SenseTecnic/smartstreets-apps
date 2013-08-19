@@ -1,0 +1,8 @@
+.actionbutton a {
+	background: transparent;
+}
+
+.actionbutton a:active, .actionbutton a.pressedaction {
+	background: transparent;
+}
+

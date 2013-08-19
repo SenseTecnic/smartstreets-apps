@@ -1,0 +1,6 @@
+<strong>Module hello not found</strong><br><br><strong>Fatal error</strong>:  Uncaught exception 'KurogoModuleNotFound' with message 'Module hello not found' in /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Module.php:130
+Stack trace:
+#0 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/WebModule.php(576): factory(string, string)
+#1 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www/index.php(321): factory(string, string, array)
+#2 {main}
+  thrown in <strong>/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Module.php</strong> on line <strong>130</strong>

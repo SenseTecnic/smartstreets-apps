@@ -1,0 +1,54 @@
+/* Adding url prefix '/device/tablet-computer-unknown/' */
+
+/* Minify_CSS_UriRewriter::$debugText
+
+docRoot    : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www
+currentDir : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/app/modules/emergency/css
+
+*/
+
+/* pane-common.css */
+
+/* 1  */ .emergency-module-link-wrapper {
+/* 2  */   position: relative;
+/* 3  */   width: 100%;
+/* 4  */   height: 100%;
+/* 5  */ }
+/* 6  */ 
+/* 7  */ a.emergency-module-link,
+/* 8  */ a.emergency-module-link:visited,
+/* 9  */ a.emergency-module-link:active {
+/* 10 */   display: block;
+/* 11 */   position: absolute;
+/* 12 */   width: 100%;
+/* 13 */   height: 100%;
+/* 14 */   margin: 0;
+/* 15 */   padding: 0;
+/* 16 */   text-decoration: none;
+/* 17 */   color: #333;
+/* 18 */ }
+/* 19 */ 
+/* 20 */ .emergency-notice-wrapper {
+/* 21 */   margin: 12px;
+/* 22 */   padding: 0;
+/* 23 */ }
+/* 24 */ .emergency-notice {
+/* 25 */   margin: .4em 0;
+/* 26 */   font-size: 82.35%;
+/* 27 */   line-height: 1.36em;
+/* 28 */ }
+/* 29 */ .emergency-notice .title {
+/* 30 */   font-size: 114.29%;
+/* 31 */   padding: 0 0 .25em 0;
+/* 32 */ }
+/* 33 */ .emergency-notice .pubdate {
+/* 34 */   font-size: 90%;
+/* 35 */ }
+/* 36 */ .emergency-featured {
+/* 37 */   font-size: 100%;
+/* 38 */ }
+/* 39 */ 
+
+/* id::themeConfigModTimeChecker */
+
+/* 1 */ 

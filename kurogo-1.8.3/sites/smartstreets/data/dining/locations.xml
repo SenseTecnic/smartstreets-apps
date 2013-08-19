@@ -1,0 +1,33 @@
+<?xml version= "1.0"?>
+<locations>
+  <location>
+    <name>Franklin Dining Hall</name>
+    <description>Franklin Dining Hall is the main campus dining hall for first year students. It opened in 1956 and has underwent a major renovation in 1993, adding additional kitchen prep areas, restrooms and student lounge areas.</description>
+    <summary>The main campus dining hall for first year students</summary>
+    <maploc>Franklin Dining Hall</maploc>
+    <events>
+      <base_url>DATA_DIR"/dining/Franklin_Dining_Hall.ics"</base_url>
+      <kurogo_path>1</kurogo_path>
+    </events>
+  </location>
+  <location>
+    <name>Worcester Dining Hall</name>
+    <description>Worcester Dining Hall is one of the most popular dining halls on North Campus. It features several smaller private dining halls that can be reserved for university club activities.</description>
+    <summary>The North Campus Dining Hall</summary>
+    <maploc>Worcester Dining Hall</maploc>
+    <events>
+      <base_url>DATA_DIR"/dining/Worcester_Dining_Hall.ics"</base_url>
+      <kurogo_path>1</kurogo_path>
+    </events>
+  </location>
+  <location>
+    <name>Hampshire Dining Hall</name>
+    <description>Hampshire Dining Hall is the main dining hall for South Campus. It is the traditional location for the President's invited Sunday Brunch and, as such, features an exclusive mezzanine dining area.</description>
+    <summary>The South Campus Dining Hall</summary>
+    <events>
+      <base_url>DATA_DIR"/dining/Hampshire_Dining_Hall.ics"</base_url>
+      <kurogo_path>1</kurogo_path>
+    </events>
+  </location>
+
+</locations>

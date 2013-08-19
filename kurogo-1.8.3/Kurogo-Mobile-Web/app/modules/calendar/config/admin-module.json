@@ -1,0 +1,54 @@
+{
+    "options": {
+        "titleKey":"CALENDAR_ADMIN_OPTIONS_TITLE",
+        "descriptionKey":"CALENDAR_ADMIN_OPTIONS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "UserCalendar":{"key":"RETRIEVER_CLASS","labelKey":"CALENDAR_ADMIN_OPTIONS_USERCALENDARS_TITLE","type":"select","config":"module","section":"user_calendars","optionsMethod":["Calendar","getUserCalendarListRetrievers"],"descriptionKey":"CALENDAR_ADMIN_OPTIONS_CALENDARS_DESCRIPTION"},
+            "Resources":{"key":"RETRIEVER_CLASS","labelKey":"CALENDAR_ADMIN_OPTIONS_RESOURCESCALENDARS_TITLE","type":"select","config":"module","section":"resources","optionsMethod":["Calendar","getResourceListRetrievers"],"descriptionKey":"CALENDAR_ADMIN_OPTIONS_RESOURCESCALENDARS_DESCRIPTION"},
+            "SHOW_CATEGORIES":{"labelKey":"CALENDAR_ADMIN_OPTIONS_SHOW_CATEGORIES_TITLE", "descriptionKey":"CALENDAR_ADMIN_OPTIONS_SHOW_CATEGORIES_DESCRIPTION","config":"module","section":"categories","type":"checkbox","default":1},
+            "SHOW_POPULAR_CATEGORIES":{"labelKey":"CALENDAR_ADMIN_OPTIONS_SHOW_POPULAR_CATEGORIES_TITLE", "descriptionKey":"CALENDAR_ADMIN_OPTIONS_SHOW_POPULAR_CATEGORIES_DESCRIPTION","config":"module","section":"categories","type":"text","default":"10","omitBlankValue":true},
+            "SHOW_MAX_EVENTS":{"labelKey":"CALENDAR_ADMIN_OPTIONS_SHOW_MAX_EVENTS_TITLE", "descriptionKey":"CALENDAR_ADMIN_OPTIONS_SHOW_MAX_EVENTS_DESCRIPTION","config":"module","section":"categories","type":"text","default":"20","omitBlankValue":true}
+       }
+    },
+    "index": {
+        "titleKey":"CALENDAR_ADMIN_INDEX_TITLE",
+        "config":"page-index",
+        "descriptionKey":"CALENDAR_ADMIN_INDEX_DESCRIPTION",
+        "sectiontype":"section",
+        "fields":{
+            "section":{"labelKey":"CALENDAR_ADMIN_INDEX_SECTION_TITLE","type":"label","descriptionKey":"CALENDAR_ADMIN_INDEX_SECTION_DESCRIPTION"},
+            "title":{"labelKey":"CALENDAR_ADMIN_INDEX_TITLE_TITLE","descriptionKey":"CALENDAR_ADMIN_INDEX_TITLE_DESCRIPTION","type":"text"},
+            "subtitle":{"labelKey":"CALENDAR_ADMIN_INDEX_SUBTITLE_TITLE","descriptionKey":"CALENDAR_ADMIN_INDEX_SUBTITLE_DESCRIPTION","type":"text","omitBlankValue":true},
+            "url":{"labelKey":"CALENDAR_ADMIN_INDEX_URL_TITLE","descriptionKey":"CALENDAR_ADMIN_INDEX_URL_DESCRIPTION","type":"text"},
+            "class":{"labelKey":"CALENDAR_ADMIN_INDEX_TYPE_TITLE","descriptionKey":"CALENDAR_ADMIN_INDEX_TYPE_DESCRIPTION","type":"select","optionsMethod":["WebModule","getListItemClasses"],"optionsFirst":"Normal","omitBlankValue":true}
+        },
+        "sectiontitlefield":"title",
+        "sectionindex":"string",
+        "sectionaddnew":true,
+        "sectiondelete":true,
+        "sectionreorder":true
+    },
+    "feeds": {
+        "titleKey":"CALENDAR_ADMIN_FEEDS_TITLE",
+        "descriptionKey":"CALENDAR_ADMIN_FEEDS_DESCRIPTION",
+        "config":"feeds",
+        "sectiontype":"section",
+        "fieldgroups":{
+            "advanced":{"labelKey":"ADMIN_ADVANCED_OPTIONS", "collapsed": true, "descriptionKey":"CALENDAR_ADMIN_FEEDS_ADVANCED_DESCRIPTION"}
+        },
+        "fields":{
+            "section":{"labelKey":"CALENDAR_ADMIN_FEEDS_SECTION_TITLE", "descriptionKey":"CALENDAR_ADMIN_FEEDS_SECTION_DESCRIPTION", "type":"label"},
+            "TITLE":{"labelKey":"CALENDAR_ADMIN_FEEDS_TITLE_TITLE", "descriptionKey":"CALENDAR_ADMIN_FEEDS_TITLE_DESCRIPTION", "type":"text"},
+            "BASE_URL":{"labelKey":"CALENDAR_ADMIN_FEEDS_BASEURL_TITLE","descriptionKey":"CALENDAR_ADMIN_FEEDS_BASEURL_DESCRIPTION","type":"text"},
+            "CACHE_LIFETIME":{"labelKey":"CALENDAR_ADMIN_FEEDS_CACHE_TITLE","descriptionKey":"CALENDAR_ADMIN_FEEDS_CACHE_DESCRIPTION","type":"select","optionsMethod":["Kurogo","getLifetimeOptions"],"fieldgroup":"advanced"},
+            "PARSER_CLASS":{"labelKey":"CALENDAR_ADMIN_FEEDS_PARSERCLASS_TITLE","descriptionKey":"CALENDAR_ADMIN_FEEDS_PARSERCLASS_DESCRIPTION","type":"text","placeholder":"ICSDataParser","omitBlankValue":true,"fieldgroup":"advanced"},
+            "EVENT_CLASS":{"labelKey":"CALENDAR_ADMIN_FEEDS_EVENTCLASS_TITLE","descriptionKey":"CALENDAR_ADMIN_FEEDS_EVENTCLASS_DESCRIPTION","type":"text","placeholder":"ICalEvent","omitBlankValue":true,"fieldgroup":"advanced"}
+        },
+        "sectionindex":"string",
+        "sectionsmethod":"loadFeedData",
+        "sectionaddnew":true,
+        "sectiondelete":true
+    }
+    
+}

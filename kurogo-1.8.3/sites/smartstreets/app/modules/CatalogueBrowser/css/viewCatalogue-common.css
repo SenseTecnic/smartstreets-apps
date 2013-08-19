@@ -1,0 +1,27 @@
+/*VIEW CATALOGUE COMMON*/
+
+#item-details{
+	font-size: 12px ;
+}
+
+.ui-dialog-title {
+    font-size:14px !important;
+}
+
+.ui-dialog-titlebar {
+  	background-color: #fc7f00 !important;
+  	background-image: none !important;
+  	color: white !important;
+}
+
+.details_link{
+	cursor: pointer;
+}
+
+.resource_link{
+}
+
+
+
+
+

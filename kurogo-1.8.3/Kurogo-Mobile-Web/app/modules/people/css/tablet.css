@@ -1,0 +1,16 @@
+.header {
+    overflow: hidden;
+}
+
+.header .photo {
+    float: left;
+    margin-right: 12px;
+}
+
+.header h2 {
+    margin-bottom: 0.125em;
+}
+
+#bookmarkContainer {
+    margin: 0 0 0 0;
+}

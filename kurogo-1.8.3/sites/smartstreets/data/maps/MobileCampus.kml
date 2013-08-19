@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>MobileCampus.kml</name>
+	<open>1</open>
+	<StyleMap id="msn_dining0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-circle">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-circle0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_dining">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_dining">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle0">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle1">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_dining0">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_dining0">
+		<IconStyle>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_red-circle1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_red-circle0">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_dining1">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_dining00">
+		<IconStyle>
+			<scale>0.590909</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_dining">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_red-circle1">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle2">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_dining1">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle2">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle3">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle4">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_dining2">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_dining3">
+		<IconStyle>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_red-circle3">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-circle3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-circle4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_dining1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-circle5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>0.590909</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin0">
+		<IconStyle>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_dining2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_red-circle6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_red-circle4">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle5">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_dining4">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle5">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle6">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_red-circle6">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle9</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_red-circle7">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle7">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_red-circle8">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_red-circle8">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_red-circle9">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin0">
+		<IconStyle>
+			<scale>0.590909</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_red-circle9">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle11">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_red-circle10">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle10">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle11">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_red-circle12">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_dining3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_dining2">
+		<IconStyle>
+			<scale>0.827273</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_red-circle12">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_red-circle6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_red-circle6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_red-circle11">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_dining3">
+		<IconStyle>
+			<scale>0.590909</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/dining.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+	</Style>
+	<Style id="sn_red-circle12">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_dining4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_dining2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_dining1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>MobileCampus</name>
+		<open>1</open>
+		<Folder>
+			<name>Dining Halls</name>
+			<open>1</open>
+			<Placemark>
+				<name>Franklin Dining Hall</name>
+				<description>Franklin Dining Hall is the main campus dining hall for first year students. It opened in 1956 and has underwent a major renovation in 1993, adding additional kitchen prep areas, restrooms and student lounge areas.</description>
+				<LookAt>
+					<longitude>-72.52182369131562</longitude>
+					<latitude>42.38921199174325</latitude>
+					<altitude>0</altitude>
+					<heading>0.0005284497297107837</heading>
+					<tilt>0</tilt>
+					<range>370.492909273566</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_dining4</styleUrl>
+				<Point>
+					<coordinates>-72.5225343343122,42.38927175727126,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Worcester Dining Hall</name>
+				<description>Worcester Dining Hall is one of the most popular dining halls on North Campus. It features several smaller private dining halls that can be reserved for university club activities.</description>
+				<LookAt>
+					<longitude>-72.52435400488496</longitude>
+					<latitude>42.39373437717127</latitude>
+					<altitude>0</altitude>
+					<heading>-5.702126352791894e-05</heading>
+					<tilt>0</tilt>
+					<range>260.9892755003573</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_dining3</styleUrl>
+				<Point>
+					<coordinates>-72.52427338460592,42.39350551910299,82.21042097946494</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Hampshire Dining Hall</name>
+				<description>Hampshire Dining Hall is the main dining hall for South Campus. It is the traditional location for the President&apos;s invited Sunday Brunch and, as such, features an exclusive mezzanine dining area.</description>
+				<LookAt>
+					<longitude>-72.53063942900891</longitude>
+					<latitude>42.38392108598434</latitude>
+					<altitude>0</altitude>
+					<heading>-8.739077896911727e-06</heading>
+					<tilt>1.062923643180954</tilt>
+					<range>194.1582512977805</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_dining</styleUrl>
+				<Point>
+					<coordinates>-72.5305126260231,42.38378439537351,67.70468781588919</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Student Union</name>
+				<description>The Student Union is the hub of the undergraduate campus. Featuring a large cafe, gaming room and theatre for film screenings, it&apos;s also home to the student-run Black Box Theatre, frequently used for small performances of all varieties. It is open 24 hours a day to students and faculty.</description>
+				<LookAt>
+					<longitude>-72.52794136596124</longitude>
+					<latitude>42.39070815797733</latitude>
+					<altitude>0</altitude>
+					<heading>-4.607314861082784e-05</heading>
+					<tilt>6.991014745849446</tilt>
+					<range>145.3718516923183</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_dining1</styleUrl>
+				<Point>
+					<coordinates>-72.52794136596124,42.39070815797733,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Church</name>
+			<open>1</open>
+			<Placemark>
+				<name>Old Chapel</name>
+				<description>The Old Chapel hosts religious services every Sunday and is a popular choice for alumni weddings. It hosts an open-to-the-community midnight vigil on New Year&apos;s Eve most years and also hosts visiting seminary faculty and staff.</description>
+				<Camera>
+					<longitude>-72.52795124855044</longitude>
+					<latitude>42.38763206654752</latitude>
+					<altitude>98.46684741406111</altitude>
+					<heading>-4.605872099195007</heading>
+					<tilt>70.56254641904764</tilt>
+					<roll>-0.9980340031866209</roll>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</Camera>
+				<styleUrl>#msn_red-circle11</styleUrl>
+				<Point>
+					<coordinates>-72.52799111285132,42.38893151918044,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Academic Buildings</name>
+			<open>1</open>
+			<Placemark>
+				<name>Lederle Graduate Research Center</name>
+				<description>This building is one of three primary science research facilities in North Campus. It is dominated by the Lederle Telescope, gifted to the University in 2008. Lederle is the home of several science departments including Astrophysics and Physics.</description>
+				<LookAt>
+					<longitude>-72.52774912898866</longitude>
+					<latitude>42.3938799696394</latitude>
+					<altitude>0</altitude>
+					<heading>-0.3846130715784234</heading>
+					<tilt>0.2695030746783661</tilt>
+					<range>609.9250609426148</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle0</styleUrl>
+				<Point>
+					<coordinates>-72.52774912898866,42.3938799696394,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Thompson Hall</name>
+				<description>Thompson Hall is home to the Economics and Sociology departments. The Chari Sullivan Lecture Hall within its walls was recently upgraded with a versatile state of the art presentation system including multiple large-scale projectors and surround sound system.</description>
+				<LookAt>
+					<longitude>-72.52999587674483</longitude>
+					<latitude>42.3901427269379</latitude>
+					<altitude>0</altitude>
+					<heading>-6.389456410363611e-05</heading>
+					<tilt>0.1006712998990804</tilt>
+					<range>614.0196995353472</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle3</styleUrl>
+				<Point>
+					<coordinates>-72.52999587674483,42.3901427269379,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Bartlett Hall</name>
+				<description>The home of the English Department, Bartlett Hall is one of the oldest structures on campus and its famous archways are often held up as a sterling example of early 20th century art deco ornamentations.</description>
+				<LookAt>
+					<longitude>-72.52873085271197</longitude>
+					<latitude>42.38806337032565</latitude>
+					<altitude>0</altitude>
+					<heading>-0.009943100784314698</heading>
+					<tilt>0</tilt>
+					<range>620.9968565174677</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle1</styleUrl>
+				<Point>
+					<coordinates>-72.52873085271197,42.38806337032565,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Fine Arts Center</name>
+				<description>The Fine Arts Center is a multi-disciplinary arts facility designed for both studio work and gallery display. The main Reimann Gallery features automated walls and lighting that can be programmed for different configurations and its large vaulted roof makes it an ideal venue for large-scale installations.</description>
+				<LookAt>
+					<longitude>-72.52167299953008</longitude>
+					<latitude>42.39025999606532</latitude>
+					<altitude>0</altitude>
+					<heading>3.16778475441744e-10</heading>
+					<tilt>0</tilt>
+					<range>2822.846433456987</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle12</styleUrl>
+				<Point>
+					<coordinates>-72.52167299953008,42.39025999606532,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Machmer Hall</name>
+				<description>This is the home of the Anthropology Department.</description>
+				<LookAt>
+					<longitude>-72.52882700087152</longitude>
+					<latitude>42.39058057561447</latitude>
+					<altitude>0</altitude>
+					<heading>4.227507884708109e-08</heading>
+					<tilt>0</tilt>
+					<range>616.5184703194293</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle8</styleUrl>
+				<Point>
+					<coordinates>-72.52882700087152,42.39058057561447,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Herter Hall</name>
+				<description>Herter Hall is the home of the Linguistics Department, History Department and Asian Studies Department. It&apos;s central &quot;micro-courtyard&quot; features a faculty-maintained meditation garden that is open to the public during normal visitor hours.</description>
+				<LookAt>
+					<longitude>-72.52727600043194</longitude>
+					<latitude>42.38750200035791</latitude>
+					<altitude>0</altitude>
+					<heading>-2.912179477441625e-10</heading>
+					<tilt>0</tilt>
+					<range>611.8782164810808</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle10</styleUrl>
+				<Point>
+					<coordinates>-72.52727600043195,42.38750200035791,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Isenberg Building</name>
+				<description>The Isenberg Building is the temporary home of the European History department  while construction begins on Herter Hall&apos;s new wing. It also houses the Media Studies and Marketing departments and has facilities for the generation of on-campus printed materials.</description>
+				<LookAt>
+					<longitude>-72.52487299918903</longitude>
+					<latitude>42.38675200018984</latitude>
+					<altitude>0</altitude>
+					<heading>5.466737386499494e-10</heading>
+					<tilt>0</tilt>
+					<range>616.4353414506857</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle5</styleUrl>
+				<Point>
+					<coordinates>-72.52487299918904,42.38675200018984,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Computer Science Building</name>
+				<description>The home to the Computer Science Department, the Emerging Technologies Consortium and The Tech Ventures Society, this building recently added three computer labs in the newly completed East Corridor. It is also the home of the Mazzuchelli Supercomputing Array.</description>
+				<LookAt>
+					<longitude>-72.53129700101709</longitude>
+					<latitude>42.39510499978593</latitude>
+					<altitude>0</altitude>
+					<heading>-6.858071031905707e-10</heading>
+					<tilt>0</tilt>
+					<range>605.2007292322207</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle4</styleUrl>
+				<Point>
+					<coordinates>-72.53129700101709,42.39510499978594,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Thayer Laboratory</name>
+				<description>Thayer Laboratory houses the Biological Sciences departments and is the associated with the Notaro Cancer Research Lab.</description>
+				<LookAt>
+					<longitude>-72.5301420035665</longitude>
+					<latitude>42.39361899925981</latitude>
+					<altitude>0</altitude>
+					<heading>-2.404594755826863e-09</heading>
+					<tilt>0</tilt>
+					<range>604.976486626826</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle6</styleUrl>
+				<Point>
+					<coordinates>-72.53014200356648,42.39361899925981,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Whitmore Building</name>
+				<description>The Whitmore Building is an administrative building and is the headquarters for all campus operations and building maintenance staff.</description>
+				<LookAt>
+					<longitude>-72.52493599399082</longitude>
+					<latitude>42.3922919944857</latitude>
+					<altitude>0</altitude>
+					<heading>4.051379421306842e-09</heading>
+					<tilt>0</tilt>
+					<range>1006.277348416331</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle2</styleUrl>
+				<Point>
+					<coordinates>-72.52493599399081,42.3922919944857,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Sports Facilities</name>
+			<open>1</open>
+			<Placemark>
+				<name>Warren McGuirk Alumni Stadium</name>
+				<description>The home of Universitas sports events, the WarRoom as it&apos;s affectionately known is also home to the traditional Thanksgiving Day football match between Universitas and Patronus.</description>
+				<LookAt>
+					<longitude>-72.53647599956464</longitude>
+					<latitude>42.37728799767223</latitude>
+					<altitude>0</altitude>
+					<heading>2.934061693650094e-10</heading>
+					<tilt>0</tilt>
+					<range>583.6118601187395</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle9</styleUrl>
+				<Point>
+					<coordinates>-72.53647599956464,42.37728799767223,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Mullins Center</name>
+				<description>Dominated by three floors of hard court as well as dedicated squash/racquetball facilities and 8 large multi-function rooms, Mullins has recently added an entire wing for cardiovascular and weight training as well as a newly-renovated olympic-sized pool. It is open 24 hours a day.</description>
+				<LookAt>
+					<longitude>-72.53342999634377</longitude>
+					<latitude>42.38937999803615</latitude>
+					<altitude>0</altitude>
+					<heading>2.464867857317936e-09</heading>
+					<tilt>0</tilt>
+					<range>2814.081342838047</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle7</styleUrl>
+				<Point>
+					<coordinates>-72.53342999634377,42.38937999803615,0</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Studio Art Building</name>
+				<description>The Studio Art Building is often used for guest artist gallery space as well as faculty exhibition space. Built primarily with funds provided by an anonymous donor, the main gallery’s unique acoustic properties make it of particular interest for artists who specialize in multimedia installation work.</description>
+				<LookAt>
+					<longitude>-72.52265001049757</longitude>
+					<latitude>42.38751233913562</latitude>
+					<altitude>0</altitude>
+					<heading>0.0005723338908506625</heading>
+					<tilt>0</tilt>
+					<range>263.2161746367124</range>
+					<altitudeMode>relativeToGround</altitudeMode>
+					<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+				</LookAt>
+				<styleUrl>#msn_red-circle</styleUrl>
+				<Point>
+					<altitudeMode>clampToGround</altitudeMode>
+					<gx:altitudeMode>clampToSeaFloor</gx:altitudeMode>
+					<coordinates>-72.52265001049757,42.38751233913563,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>

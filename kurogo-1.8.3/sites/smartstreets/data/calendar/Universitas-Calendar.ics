@@ -1,0 +1,940 @@
+BEGIN:VCALENDAR
+METHOD:PUBLISH
+VERSION:2.0
+X-WR-CALNAME:Universitas
+PRODID:-//Apple Inc.//Mac OS X 10.8.2//EN
+X-APPLE-CALENDAR-COLOR:#F57802
+X-WR-TIMEZONE:America/New_York
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+DTSTART:20070311T020000
+TZNAME:EDT
+TZOFFSETTO:-0400
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+DTSTART:20071104T020000
+TZNAME:EST
+TZOFFSETTO:-0500
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120904T230000
+UID:183D8469-5659-41E5-ADE6-F89856DB3FAB
+DTSTAMP:20121018T024856Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Fine Arts Center
+DESCRIPTION:$35.00\n\nHosted by The Metamorphosen Chamber Orchestra\n\nT
+ he acclaimed chamber orchestra performs a triptych of works originating 
+ in South America. Starting with String Quartet No.1 by Hector Villa-Lobo
+ s\, then moving to a world debut by Gustavo Matamoros and finally ending
+  with another world premiere work by Juan Jose Castro.
+URL;VALUE=URI:http://modolabs.com/demo/metamorphosen-southern-hemispheres
+SEQUENCE:0
+SUMMARY:Metamorphosen Chamber Orchestra: Music of the Southern Hemispher
+ es
+LAST-MODIFIED:20121018T024851Z
+DTSTART;TZID=America/New_York:20120904T200000
+RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TU;WKST=SU
+BEGIN:VALARM
+X-WR-ALARMUID:3D08E94F-B0A9-49E1-93CC-BCBEC8A85CF5
+UID:3D08E94F-B0A9-49E1-93CC-BCBEC8A85CF5
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120905T130000
+UID:AF1617F5-0606-4D02-896B-AA3878B26F5E
+DTSTAMP:20121031T144526Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Thompson Hall
+DESCRIPTION:Free for Students\n\nHosted by the Young Entrepreneurs Club\
+ n\nUsing the case method\, technologist and self-proclaimed “digital mav
+ erick” Dr. Kurz Vyle invites guest lecturers to guide participants in ex
+ ploring how mobile technologies can disrupt and revolutionize higher edu
+ cation.\n
+URL;VALUE=URI:http://modolabs.com/demo/education-on-the-move
+SEQUENCE:0
+SUMMARY:Education on the Move: A Case Study of Mobile's Impact on Educat
+ ion
+LAST-MODIFIED:20121018T024916Z
+DTSTART;TZID=America/New_York:20120905T110000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:FA7E0B07-6A98-4D12-A994-75710A470249
+ACTION:EMAIL
+TRIGGER:-PT15M
+UID:FA7E0B07-6A98-4D12-A994-75710A470249
+ATTENDEE:mailto:onemonk@gmail.com
+SUMMARY:
+ACKNOWLEDGED:20121031T144526Z
+DESCRIPTION:
+END:VALARM
+BEGIN:VALARM
+ACTION:NONE
+UID:DF55E5E7-475C-46ED-9D79-8ABAEC42EB86
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+X-WR-ALARMUID:DF55E5E7-475C-46ED-9D79-8ABAEC42EB86
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120914T233000
+UID:9902D4BC-E80A-4ED6-BB4D-7238BE0D80BD
+DTSTAMP:20121018T025616Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Memorial Hall
+DESCRIPTION:$35\n\nPresented by The Universitas Digital Orchestra\n\nThe
+  Universitas Digital Orchestra takes on James Murphy’s acclaimed band. F
+ an favorite tracks recombined\, re-examined and re-conceptualized. And y
+ ou can dance to it. Except for New York I Love You But You’re Bringing M
+ e Down.
+URL;VALUE=URI:http://modolabs.com/demo/lcd-soundsystem
+SEQUENCE:0
+SUMMARY:LCD Soundsystem Remixed
+LAST-MODIFIED:20121018T025615Z
+DTSTART;TZID=America/New_York:20120914T210000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:72F731F9-D65F-4A94-8A88-1D1C450FD9E0
+UID:72F731F9-D65F-4A94-8A88-1D1C450FD9E0
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120905T220000
+UID:74D8FADB-A40C-4C1F-81DF-2B3B492D42AC
+DTSTAMP:20121018T024907Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Student Union
+DESCRIPTION:Free for Students\n\nHosted by The Green Movement and The Un
+ iversitas Student Council\n\nCome by and bring any clothes you’re not us
+ ing. Like those jean shorts. And that sparkly headband. What were you th
+ inking? All donations are welcome.
+URL;VALUE=URI:http://modolabs.com/demo/clothes-drive
+SEQUENCE:0
+SUMMARY:Clothes Drive
+LAST-MODIFIED:20121018T024902Z
+DTSTART;TZID=America/New_York:20120905T090000
+RRULE:FREQ=WEEKLY
+BEGIN:VALARM
+X-WR-ALARMUID:F5280D8B-71B8-46CC-B959-5494782426D9
+UID:F5280D8B-71B8-46CC-B959-5494782426D9
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120907T200000
+UID:2174F5FC-A9CA-4583-888B-89C47428D4D8
+DTSTAMP:20121018T025054Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Warren McGuirk Alumni Stadium
+DESCRIPTION:Free for Students\n\nHosted by The Universitas Athletic Depa
+ rtment
+URL;VALUE=URI:http://modolabs.com/demo/football-universitas-patronus
+SEQUENCE:0
+SUMMARY:Football: Universitas vs. Patronus
+LAST-MODIFIED:20121018T025054Z
+DTSTART;TZID=America/New_York:20120907T160000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:F766E052-4602-4357-B7DC-DE781C093665
+UID:F766E052-4602-4357-B7DC-DE781C093665
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120908T220000
+UID:246C59BC-B1EA-499D-A16C-7749ABA796F5
+DTSTAMP:20121018T025124Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Student Union
+DESCRIPTION:$10\n\nPresented by The Universitas Film Crew\n\nLloyd Suh’s
+  stirring new feature about a huge multi-ethnic family torn apart by the
+  demise of the family patriarch runs for three nights\, followed by ques
+ tion and answer sessions with the producer\, director and cast.
+URL;VALUE=URI:http://modolabs.com/demo/children-vonderly
+SEQUENCE:0
+SUMMARY:Film Screening: Children of Vonderly
+LAST-MODIFIED:20121018T025119Z
+DTSTART;TZID=America/New_York:20120908T200000
+RRULE:FREQ=WEEKLY
+BEGIN:VALARM
+X-WR-ALARMUID:CCB5DEB8-5922-4C40-851E-7E4A29E36F4E
+UID:CCB5DEB8-5922-4C40-851E-7E4A29E36F4E
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120902T110000
+UID:CC8C22D0-EB1A-4A0A-AFFE-8AE4D6FDD864
+DTSTAMP:20121018T024806Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Old Chapel
+DESCRIPTION:Free and open to all\n\nUniversitas Community members regula
+ rly present as guest speakers during morning services. Readings and musi
+ cal performances offered by students and faculty on an ongoing basis.
+URL;VALUE=URI:http://modolabs.com/demo/morning-services
+SEQUENCE:0
+SUMMARY:Morning Services
+LAST-MODIFIED:20121018T024801Z
+DTSTART;TZID=America/New_York:20120902T080000
+RRULE:FREQ=WEEKLY
+BEGIN:VALARM
+X-WR-ALARMUID:CDE25EC1-5E04-493A-953E-EC94B6518FC2
+UID:CDE25EC1-5E04-493A-953E-EC94B6518FC2
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;VALUE=DATE:20121004
+UID:5C66D2B4-163E-49FE-AD2E-1CAC4EF20D05
+DTSTAMP:20121018T025227Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+DESCRIPTION:Free for Students\, $20 for non-university attendees\n\nHost
+ ed by The Universitas Art Department\n\nA retrospective of the ground-br
+ eaking monotype techniques pioneered by printmaker and artist Michael Ma
+ zur between 1975 and 1996.
+URL;VALUE=URI:http://modolabs.com/demo/michael-mazur
+SEQUENCE:0
+SUMMARY:The Subtractive Monotype: Michael Mazur in Black and White
+LAST-MODIFIED:20121018T025226Z
+DTSTART;VALUE=DATE:20120909
+RRULE:FREQ=MONTHLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:EAF2FBF1-F2FA-429D-80B5-63731230334A
+UID:EAF2FBF1-F2FA-429D-80B5-63731230334A
+TRIGGER:-PT15H
+X-APPLE-DEFAULT-ALARM:TRUE
+ATTACH;VALUE=URI:Basso
+ACTION:AUDIO
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120906T160000
+UID:5692F4F6-CBC7-4BE7-B22D-1A1D0A46AF36
+DTSTAMP:20121018T025040Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Bartlett Hall
+DESCRIPTION:Free for StudentsHosted by The Unversitas English Department
+ Was Shakespeare the greatest collaborative entity ever devised? Question
+ s of authorship and the contextual line between writer and perfomer are 
+ examined in the context of new evidence.\n
+URL;VALUE=URI:http://modolabs.com/demo/will-shakespeare
+SEQUENCE:0
+SUMMARY:William Shakespeare: Collaborative Genius
+LAST-MODIFIED:20121018T025039Z
+DTSTART;TZID=America/New_York:20120906T140000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:51CC5C9C-AAC2-4C1A-B19A-0701913AFC16
+UID:51CC5C9C-AAC2-4C1A-B19A-0701913AFC16
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120909T210000
+UID:74E61FAD-387E-467F-8C7B-E4EC12187A54
+DTSTAMP:20121018T025106Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Fine Arts Center
+DESCRIPTION:$15\n\nPresented by Universitas Theatre Works\n\nAladdin Ull
+ ah’s Pulitzer-nominated play comes to the Universitas Arena Stage for a 
+ four week run. From Bangladesh to the struggling storefront of a New Yor
+ k butcher’s shop\, the play takes a clear-eyed look at the American Drea
+ m and at its cost.
+URL;VALUE=URI:http://modolabs.com/demo/halal-brothers
+SEQUENCE:0
+SUMMARY:The Halal Brothers
+LAST-MODIFIED:20121018T025105Z
+DTSTART;TZID=America/New_York:20120907T190000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:AB0843CC-4C42-499B-8B9F-BD50A5396385
+UID:AB0843CC-4C42-499B-8B9F-BD50A5396385
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120910T180000
+UID:F49D6DB9-9120-4DC6-B3B0-7D0002D3CB0B
+DTSTAMP:20121018T025410Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Mullins Center
+DESCRIPTION:Free for Students
+URL;VALUE=URI:http://modolabs.com/demo/basketball-universitas-patronus
+SEQUENCE:0
+SUMMARY:Basketball: Universitas vs. Patronus
+LAST-MODIFIED:20121018T025409Z
+DTSTART;TZID=America/New_York:20120910T150000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:D0B85561-B298-4521-962F-C134CF45BFED
+UID:D0B85561-B298-4521-962F-C134CF45BFED
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120903T120000
+UID:EBE5DB91-A46D-4DBF-9505-783FBC86288C
+DTSTAMP:20121018T024826Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Thompson Hall
+DESCRIPTION:Free for Students\n\nHosted by The Universitas Business Scho
+ ol and the Student Economists Group\n\nWith the job market for emerging 
+ graduates looking ever more grim\, and belts tightening across all strat
+ a of society\, Professor Marek Chang Sapochnik takes a wide view on how 
+ cycles of recession can\, with the right responses\, signal a revival in
+  creativity and innovation in technology\, business and culture.
+URL;VALUE=URI:http://modolabs.com/demo/upside-down-market
+SEQUENCE:0
+SUMMARY:The Historical Upside of a Down Market
+LAST-MODIFIED:20121018T024821Z
+DTSTART;TZID=America/New_York:20120903T100000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:3067A6F8-2B3F-4527-8E8A-D4A247449F43
+UID:3067A6F8-2B3F-4527-8E8A-D4A247449F43
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120911T183000
+UID:47883565-D47D-4272-B5A1-AE6C75896673
+DTSTAMP:20121018T025434Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Computer Science Building
+DESCRIPTION:Free for Students\n\nHosted by The Computer Science Departme
+ nt\, Sociology Department and Business School\n\nWith access to an ever-
+ increasing selection of social-based technologies\, modern students are 
+ finding alternative ways to acquire data and process the results. But wi
+ thout the anchors of experienced perspectives and personal accountabilit
+ y\, how valid is this new crowd-sourced model
+URL;VALUE=URI:http://modolabs.com/demo/crowd-sourced-learning-revolution
+SEQUENCE:0
+SUMMARY:The Crowd-Sourced Learning Revolution
+LAST-MODIFIED:20121018T025434Z
+DTSTART;TZID=America/New_York:20120911T163000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:56AADAFF-E091-456E-8715-1A0DC8AE2B41
+UID:56AADAFF-E091-456E-8715-1A0DC8AE2B41
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;VALUE=DATE:20120923
+UID:B7AEB145-9D98-4579-9FC5-E9D9926AF492
+DTSTAMP:20121018T025256Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Studio Art Building
+DESCRIPTION:Free for Students\, $15 for non-university attendees\n\nPres
+ ented by The Universitas Art Department\n\nChris Ware’s unique graphic s
+ torytelling and artwork will be on display and the artist will hold a br
+ ief question and answer session. Mr. Ware’s style simultaneously encompa
+ sses a modern\, digitally-informed sensibility with a clear reverence fo
+ r the comics and stories of yesteryear.
+URL;VALUE=URI:http://modolabs.com/demo/chris-ware
+SEQUENCE:0
+SUMMARY:The Graphic Art of Chris Ware
+LAST-MODIFIED:20121018T025255Z
+DTSTART;VALUE=DATE:20120912
+RRULE:FREQ=MONTHLY
+BEGIN:VALARM
+X-WR-ALARMUID:BCB6CEE2-79EE-4231-82C6-6C40D9DCB4AE
+UID:BCB6CEE2-79EE-4231-82C6-6C40D9DCB4AE
+TRIGGER:-PT15H
+X-APPLE-DEFAULT-ALARM:TRUE
+ATTACH;VALUE=URI:Basso
+ACTION:AUDIO
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120902T213000
+UID:059E5638-B71E-48A7-B6CC-E3B0067CBC53
+DTSTAMP:20121018T025154Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Old Chapel
+DESCRIPTION:Free for Students\n\nEvening sermon and quiet prayer.
+URL;VALUE=URI:http://modolabs.com/demo/evening-service
+SEQUENCE:0
+SUMMARY:Evening Service
+LAST-MODIFIED:20121018T025154Z
+DTSTART;TZID=America/New_York:20120902T200000
+RRULE:FREQ=WEEKLY
+BEGIN:VALARM
+X-WR-ALARMUID:B98F4C91-BF66-4D52-A0D8-9F68F81AC8A5
+UID:B98F4C91-BF66-4D52-A0D8-9F68F81AC8A5
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120915T190000
+UID:D6C1B12A-22DE-4FFA-88CB-0A8A737DFBCE
+DTSTAMP:20121018T025540Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Fine Arts Center
+DESCRIPTION:Free for Students\, $20 for non-university attendees\n\nHost
+ ed by Universitas Theatre Works\n\nBroadway veteran Marc Kudisch runs a 
+ limited master class exploring the Viewpoints method for theatrical expl
+ oration. A select group of students from any major will be permitted to 
+ participate along with eligible students from the Theatre department. Th
+ e master class will also be open to non-participating observers.
+URL;VALUE=URI:http://modolabs.com/demo/marc-kudisch-viewpoints
+SEQUENCE:0
+SUMMARY:Marc Kudisch Viewpoints Workshop
+LAST-MODIFIED:20121018T025539Z
+DTSTART;TZID=America/New_York:20120913T150000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:6D8514EB-E44A-4B7D-BA85-A51F4D19711F
+UID:6D8514EB-E44A-4B7D-BA85-A51F4D19711F
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120903T223000
+UID:F769D6D8-5BB0-4666-968D-C89D7D3E452D
+DTSTAMP:20121018T024844Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Fine Arts Center
+DESCRIPTION:$15\n\nPresented by Universitas Theatre Works\n\nVampire Cow
+ boys Theatre Company brings their latest combat-based\, comic-book and m
+ anga-influenced insanity to the stage. Whirlwind martial arts and edge o
+ f your seat storytelling make for an evening you won’t forget. If you su
+ rvive.
+URL;VALUE=URI:kurogo/demo/pirates-ninjas
+SEQUENCE:0
+SUMMARY:Pirates vs. Ninjas!
+LAST-MODIFIED:20121018T024839Z
+DTSTART;TZID=America/New_York:20120903T200000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:758AD33E-9B68-43A4-9FB6-585E81024A0B
+UID:758AD33E-9B68-43A4-9FB6-585E81024A0B
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120912T123000
+UID:3578EC3B-FE5F-43A8-8DFA-3CBE077A989E
+DTSTAMP:20121018T025508Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Thompson Hall
+DESCRIPTION:Free for Students\n\nHosted by the Sociology Department\n\nB
+ log and social narrative pioneer Violet Brazier puts forth a vision of t
+ he future where an extended community of cultural nomads forge new commo
+ n mythologies using the power of social media-powered collaborative stor
+ ytelling. She examines the ramifications of such an evolution and how it
+  is surprisingly a return to the “old ways”.
+URL;VALUE=URI:http://modolabs.com/demo/social-media-collaborative-narrativ
+ e
+SEQUENCE:0
+SUMMARY:Social Media and the Art of Collaborative Narrative
+LAST-MODIFIED:20121018T025503Z
+DTSTART;TZID=America/New_York:20120912T103000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:A9F2FCFD-D359-4266-9589-3337AFFFC467
+UID:A9F2FCFD-D359-4266-9589-3337AFFFC467
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120906T160000
+UID:1A72748D-40C7-45CA-9ACE-E3334640054D
+DTSTAMP:20121018T024940Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Student Union
+DESCRIPTION:Free for Students\n\nHosted by The Green Movement\n\nBring y
+ our Flip cameras\, your walkmans\, your vcr’s\, your dreamcasts - anythi
+ ng that used to beep and now lies dormant in your desk drawer.
+URL;VALUE=URI:http://modolabs.com/demo/electronics-recycling
+SEQUENCE:0
+SUMMARY:Electronics Recycling Day
+LAST-MODIFIED:20121018T024934Z
+DTSTART;TZID=America/New_York:20120906T080000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:717D6D47-BF29-4F30-BFC7-A180A1A89002
+UID:717D6D47-BF29-4F30-BFC7-A180A1A89002
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+TRANSP:OPAQUE
+DTEND;TZID=America/New_York:20120914T183000
+UID:78FD4305-1BC6-4CC7-895A-7C567A67CFC5
+DTSTAMP:20121018T025555Z
+X-BUSYMAC-LASTMODBY:Hoon Lee
+LOCATION:Warren McGuirk Alumni Stadium
+DESCRIPTION:Free for Students
+URL;VALUE=URI:http://modolabs.com/demo/football-universitas-stvincent
+SEQUENCE:0
+SUMMARY:Football: Universitas vs. St. Vincent
+LAST-MODIFIED:20121018T025555Z
+DTSTART;TZID=America/New_York:20120914T153000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+BEGIN:VALARM
+X-WR-ALARMUID:BADD17D6-7582-4496-9EBE-58835DF2824B
+UID:BADD17D6-7582-4496-9EBE-58835DF2824B
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T174858Z
+UID:21A88BBE-95D3-4376-BB6F-D98110F1E99E
+DTEND;TZID=America/New_York:20120903T141500
+RRULE:FREQ=DAILY;INTERVAL=3
+TRANSP:OPAQUE
+SUMMARY:President's Lunch
+DTSTART;TZID=America/New_York:20120903T131500
+DTSTAMP:20121101T190853Z
+SEQUENCE:6
+DESCRIPTION:For Students but space is limited\n\nPresented by Universita
+ s Office of the President\n\nA regular lunch with the school president w
+ here students may voice their opinions about the current state of the ca
+ mpus.
+BEGIN:VALARM
+X-WR-ALARMUID:14FCD77F-FDF2-4112-801A-268745EAFDC8
+UID:14FCD77F-FDF2-4112-801A-268745EAFDC8
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T175526Z
+UID:17644613-FF51-4E58-BA8B-F884F329725B
+DTEND;TZID=America/New_York:20120904T141500
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Building Unions: The Future of the EU's Economy
+DTSTART;TZID=America/New_York:20120904T121500
+DTSTAMP:20121101T175934Z
+LOCATION:Thompson Hall
+SEQUENCE:7
+DESCRIPTION:Free to Students\n\nPresented by the Economics Department\n\
+ nWith guest lecturer Hans Grubing\, students are invited to a moderated 
+ forum conversation about the challenges currently facing the European Un
+ ion's economic development. International students are encouraged to att
+ end and present their personal perspectives. Attendance limited.\n\n
+BEGIN:VALARM
+X-WR-ALARMUID:3FF11C85-28D4-4B4A-9251-14D9AB3A23A3
+UID:3FF11C85-28D4-4B4A-9251-14D9AB3A23A3
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T180013Z
+UID:C1588A6B-A5AA-42BD-941A-B3D046AEACD8
+DTEND;TZID=America/New_York:20120906T190000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Lecture Series: Making Happiness at Home
+DTSTART;TZID=America/New_York:20120906T163000
+DTSTAMP:20121101T180342Z
+LOCATION:Thompson Hall
+SEQUENCE:8
+DESCRIPTION:Free to Students\n\nPresented by the Economics and Engineeri
+ ng Department\n\nAn examination of the migration of manufacturing overse
+ as and the rise of the artisan movement at home. Guest speaker Peter Y. 
+ Kim examines whether the hand-crafted movement has scalable implications
+  for new economic growth domestically.\n\n
+BEGIN:VALARM
+X-WR-ALARMUID:1A3386A1-9C53-4870-A425-880C4CD706D0
+UID:1A3386A1-9C53-4870-A425-880C4CD706D0
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T180426Z
+UID:FBD18E1E-3D07-463B-82E4-3E32EFBED189
+DTEND;TZID=America/New_York:20120905T234500
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Late Night Groove Explorer
+DTSTART;TZID=America/New_York:20120905T211500
+DTSTAMP:20121101T180658Z
+LOCATION:Computer Science Building
+SEQUENCE:6
+DESCRIPTION:$5 Suggested Donation\n\nPresented by DigX Student Operators
+ \n\nStudents (and faculty for that matter) are encouraged to stop and si
+ t in on live electronic music creation sessions with campus practitioner
+ s. Half of the evening's session is dedicated to small group tutorials f
+ or those interested in learning more about the technologies. And afterwa
+ rds…we DANCE.
+BEGIN:VALARM
+X-WR-ALARMUID:9D67426E-BC9B-4816-9DD3-F926F5854C51
+UID:9D67426E-BC9B-4816-9DD3-F926F5854C51
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T180732Z
+UID:9D6EC268-04CC-4BF2-9623-AD6A944EC511
+DTEND;TZID=America/New_York:20120905T071500
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+SUMMARY:Train and Shine: Morning 5K
+DTSTART;TZID=America/New_York:20120905T060000
+DTSTAMP:20121101T181208Z
+LOCATION:Warren McGuirk Alumni Stadium
+SEQUENCE:5
+DESCRIPTION:Free to Students\n\nThe tradition continues. Join students a
+ nd faculty for a mid-week morning run to clear the cobwebs and re-energi
+ ze for the rest of the week. Followed by a traditional visit to Jane's B
+ akery for coffee and mini-donuts. Run begins at 6am sharp.
+BEGIN:VALARM
+X-WR-ALARMUID:E155CFC7-9012-4995-8674-0289A12105DD
+UID:E155CFC7-9012-4995-8674-0289A12105DD
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T180732Z
+UID:1C82BE4E-FE90-48D9-86B3-693E7C1A1FE4
+DTEND;TZID=America/New_York:20120907T163000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Aikido Demonstration
+DTSTART;TZID=America/New_York:20120907T143000
+DTSTAMP:20121101T181605Z
+LOCATION:Warren McGuirk Alumni Stadium
+SEQUENCE:7
+DESCRIPTION:Free to Students\n\nPresented by Aikikai Universitas\n\nBegi
+ nning with a brief introduction and demonstration\, participants and obs
+ ervers alike are invited to meditate. Training will be limited to existi
+ ng members and up to 5 observers. Student members of Aikikai will be on 
+ hand to answer questions about the history and culture surrounding Aikid
+ o.
+BEGIN:VALARM
+X-WR-ALARMUID:56071C2C-753B-4554-B748-ADC179AD4358
+UID:56071C2C-753B-4554-B748-ADC179AD4358
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T181856Z
+UID:ABA69BF6-E72C-47AA-9399-8C4F56399C9D
+DTEND;TZID=America/New_York:20120904T160000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:French Accent Club Meeting
+DTSTART;TZID=America/New_York:20120904T150000
+DTSTAMP:20121101T182059Z
+LOCATION:Bartlett Hall
+SEQUENCE:4
+DESCRIPTION:Free to Students\n\nPresented by the French Accent Club\n\nG
+ ather with like-minded students with a passion for the French language a
+ nd an equally strong lack of ability to speak it. Croissants and cafe au
+  lait is served grudgingly by club members. Berets are encouraged.
+BEGIN:VALARM
+X-WR-ALARMUID:292A0416-CEB9-46BA-89EE-D8A924D47C34
+UID:292A0416-CEB9-46BA-89EE-D8A924D47C34
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T182509Z
+UID:50156BB1-610E-4356-B2A2-1F326C1E5FDC
+DTEND;TZID=America/New_York:20120907T111500
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+SUMMARY:Student Representatives Meeting
+DTSTART;TZID=America/New_York:20120907T091500
+DTSTAMP:20121101T182650Z
+LOCATION:Memorial Hall
+SEQUENCE:4
+DESCRIPTION:Free to Observe.\n\nPresented by the Student Representatives
+ \n\nWeekly gathering of elected student representatives to address campu
+ s needs and topics of interest. Free to observe for members of the campu
+ s community. Seating is limited.
+BEGIN:VALARM
+X-WR-ALARMUID:6CB6E6A3-E3F1-4045-9696-DA0E9B769406
+UID:6CB6E6A3-E3F1-4045-9696-DA0E9B769406
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T182707Z
+UID:5597582A-80FF-417A-BAC2-156D7AD8746B
+DTEND;TZID=America/New_York:20120902T110000
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+SUMMARY:Coffee and Code
+DTSTART;TZID=America/New_York:20120902T100000
+DTSTAMP:20121101T182916Z
+LOCATION:Computer Science Building
+SEQUENCE:8
+DESCRIPTION:$5 cover\n\nPresented by the Computer Science Department\n\n
+ Didn't quite finish that assignment did you? Don't wait til midnight on 
+ Sunday! Begin with a strong cup of coffee with your fellow nerds and get
+  a good jump on it while there's daylight. What else are you going to do
+  ? Go jogging?
+BEGIN:VALARM
+X-WR-ALARMUID:3E900D57-5CC6-461B-8B81-EF3ECFE7DA54
+UID:3E900D57-5CC6-461B-8B81-EF3ECFE7DA54
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T184331Z
+UID:0D386387-0E6C-4F4F-ABA3-57B0256FD070
+DTEND;TZID=America/New_York:20120903T183000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Unified Arts Conference
+DTSTART;TZID=America/New_York:20120903T160000
+DTSTAMP:20121101T184526Z
+LOCATION:Fine Arts Center
+SEQUENCE:5
+DESCRIPTION:Free to Students\n\nPresented by the Fine Arts Department\n\
+ nAn ongoing cross-collaborative conversation between faculty from multip
+ le disciplines. Presentation of new finds abroad that marry the fields o
+ f art\, technology\, architecture and performance.
+BEGIN:VALARM
+X-WR-ALARMUID:71BF0BEA-66F5-4A89-96AF-9067D6C53AC7
+UID:71BF0BEA-66F5-4A89-96AF-9067D6C53AC7
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T184546Z
+UID:937F5639-6A55-4120-BFE2-45ED52BFCA31
+DTEND;TZID=America/New_York:20120906T220000
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+SUMMARY:Big Sisters and Brothers Recruiting
+DTSTART;TZID=America/New_York:20120906T190000
+DTSTAMP:20121101T185017Z
+LOCATION:Student Union
+SEQUENCE:7
+DESCRIPTION:Every week at the Student Union\, a representative of Univer
+ sitas Big Sisters and Brothers sets up a table to answer questions\, sig
+ n up volunteers and hand out information. The organization has been inst
+ rumental in improving the community surrounding Universitas for nearly 1
+ 0 years.
+BEGIN:VALARM
+X-WR-ALARMUID:6CC8C8B9-A36D-4FAF-982E-5DDC5B77CE52
+UID:6CC8C8B9-A36D-4FAF-982E-5DDC5B77CE52
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T185331Z
+UID:9C176732-1B4A-4AA9-B32E-CC2F65BD3692
+DTEND;TZID=America/New_York:20120910T210000
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+SUMMARY:InProgression: Student Screenings
+DTSTART;TZID=America/New_York:20120910T190000
+DTSTAMP:20121101T185447Z
+LOCATION:Fine Arts Center
+SEQUENCE:4
+DESCRIPTION:$2 suggested donation for refreshments\n\nPresented by the F
+ ine Arts Department\n\nWeekly open screening and critique of works in pr
+ ogress by student filmmakers\, videographers and animators.
+BEGIN:VALARM
+X-WR-ALARMUID:D9FC5355-7534-4737-A3B3-00FB581909F7
+UID:D9FC5355-7534-4737-A3B3-00FB581909F7
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T185520Z
+UID:BE50D0B5-E05C-45BF-82B7-BCFF7197333C
+DTEND;TZID=America/New_York:20120911T140000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Lecture Series: Social Epidemics
+DTSTART;TZID=America/New_York:20120911T120000
+DTSTAMP:20121101T185744Z
+LOCATION:Thompson Hall
+SEQUENCE:5
+DESCRIPTION:Free to Students and Faculty\n\nPresented by the Sociology D
+ epartment\n\nWith guest speaker David M. Lange\, the forum examines the 
+ nature of social movements that create flashover moments of significant 
+ cultural change.
+BEGIN:VALARM
+X-WR-ALARMUID:6D8F4D3B-0E7B-434A-A1E5-D46405118650
+UID:6D8F4D3B-0E7B-434A-A1E5-D46405118650
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T185803Z
+UID:1B4C36DC-2FC4-4995-9259-EA996B99CFAA
+DTEND;TZID=America/New_York:20120913T120000
+RRULE:FREQ=WEEKLY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Post-Productivity: Finding Rhythm in the New Economy
+DTSTART;TZID=America/New_York:20120913T101500
+DTSTAMP:20121101T190045Z
+SEQUENCE:4
+DESCRIPTION:Free to Students and Faculty\n\nPresented by the Computer Sc
+ ience Department and the Sociology Department\n\nIn an attempt to drive 
+ even higher levels of productivity from intellectual capital employees\,
+  companies have turned a huge amount of attention to productivity method
+ ologies. But are the underlying assumptions of these methodologies sound
+ ?
+BEGIN:VALARM
+X-WR-ALARMUID:E03478B6-E9B8-4398-9096-49F165CB2E67
+UID:E03478B6-E9B8-4398-9096-49F165CB2E67
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T190521Z
+UID:D7C9AF6D-66A5-421A-85AD-06C8B7BC91A9
+DTEND;TZID=America/New_York:20120904T180000
+RRULE:FREQ=DAILY;INTERVAL=4
+TRANSP:OPAQUE
+SUMMARY:Entrepreneurs Club Meeting
+DTSTART;TZID=America/New_York:20120904T160000
+DTSTAMP:20121101T190751Z
+LOCATION:Student Union
+SEQUENCE:4
+DESCRIPTION:Open to Students\n\nPresented by the Young Entrepreneurs Clu
+ b and Economics Department\n\nA regular meeting and critical thinking me
+ eting with the Young Entrepreneurs Club and their guest speakers. Ideati
+ on and concept refinement techniques are studied and used to evaluate ge
+ stating ideas.
+BEGIN:VALARM
+X-WR-ALARMUID:4D67D41D-733F-4819-BAEA-43973063A9A7
+UID:4D67D41D-733F-4819-BAEA-43973063A9A7
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T185039Z
+UID:A56190F7-6228-47C5-B336-3C1FF58D479D
+DTEND;TZID=America/New_York:20120911T110000
+RRULE:FREQ=DAILY;INTERVAL=2
+TRANSP:OPAQUE
+SUMMARY:Campus Tour
+DTSTART;TZID=America/New_York:20120911T090000
+DTSTAMP:20121101T190952Z
+SEQUENCE:9
+DESCRIPTION:Open to All. First come first serve.\n\nPresented by Univers
+ itas Student Services\n\nCampus tour led by seniors for an informal look
+  at the school through the eyes of the student. Unlike the more formal u
+ niversity tours\, emphasis is on social life\, local color and activitie
+ s for incoming students.
+BEGIN:VALARM
+X-WR-ALARMUID:72FF1268-B33C-4403-AC91-DAC0B2ED6002
+UID:72FF1268-B33C-4403-AC91-DAC0B2ED6002
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+CREATED:20121101T191022Z
+UID:D1BEAF7E-5101-441B-8404-5F6B62958AA7
+DTEND;TZID=America/New_York:20120910T100000
+RRULE:FREQ=WEEKLY;INTERVAL=1
+TRANSP:OPAQUE
+SUMMARY:Monday Kickstart
+DTSTART;TZID=America/New_York:20120910T080000
+DTSTAMP:20121101T191135Z
+LOCATION:Mullins Center
+SEQUENCE:5
+DESCRIPTION:Open to All\n\nA student-led morning wake-up call with physi
+ cal activities: Cross-fit\, P90X\, Calisthenics\, Stretching and Meditat
+ ion. Use what you like\, stay as long as works for you.
+BEGIN:VALARM
+X-WR-ALARMUID:B36AC0B8-0660-4E1B-99AB-8666DE18B684
+UID:B36AC0B8-0660-4E1B-99AB-8666DE18B684
+TRIGGER;VALUE=DATE-TIME:19760401T005545Z
+X-APPLE-DEFAULT-ALARM:TRUE
+ACTION:NONE
+END:VALARM
+END:VEVENT
+END:VCALENDAR

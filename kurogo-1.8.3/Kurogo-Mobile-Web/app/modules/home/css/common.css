@@ -1,0 +1,35 @@
+.focal .loading {
+  text-align: left;
+  margin: 0;
+  padding: 0 0 0 27px;
+  line-height: 21px;
+  background-image: url('/common/images/loading.gif');
+  background-position: left 50%;
+  background-repeat: no-repeat;
+}
+.banner-notice, .banner-notice-basic {
+  background-color: #171717;
+  font-size: 88.23%;
+  position: relative;
+  border-bottom: 1px solid #333333;
+}
+.banner-notice .banner-icon {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  margin-top: -14px;
+  height: 28px;
+  width: 28px;
+}
+.banner-notice .banner-message, .banner-notice a.banner-message { 
+  display: block;
+  background-image: url('/common/images/action-arrow.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  padding: 10px 24px 10px 36px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ccc;
+}

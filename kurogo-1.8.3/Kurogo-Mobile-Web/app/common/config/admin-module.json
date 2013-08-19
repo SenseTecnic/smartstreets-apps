@@ -1,0 +1,70 @@
+{
+    "general": {
+        "titleKey":"ADMIN_MODULE_GENERAL_TITLE",
+        "descriptionKey":"ADMIN_MODULE_GENERAL_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "id": {"labelKey":"ADMIN_MODULE_GENERAL_ID_TITLE","type":"label","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_ID_DESCRIPTION", "valueMethod":"getID"},
+            "configModule": {"labelKey":"ADMIN_MODULE_GENERAL_CONFIGMODULE_TITLE","type":"label","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_CONFIGMODULE_DESCRIPTION", "valueMethod":"getConfigModule"},
+            "title":{"labelKey":"ADMIN_MODULE_GENERAL_TITLE_TITLE","type":"text","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_TITLE_DESCRIPTION"},
+            "icon":{"labelKey":"ADMIN_MODULE_GENERAL_ICON_TITLE","type":"select","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_ICON_DESCRIPTION","optionsMethod":"getIcons","optionsFirst":"Default","omitBlankValue":true},
+            "disabled":{"labelKey":"ADMIN_MODULE_GENERAL_DISABLED_TITLE","type":"inversecheckbox","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_DISABLED_DESCRIPTION"},
+            "secure":{"labelKey":"ADMIN_MODULE_GENERAL_SECURE_TITLE","type":"checkbox","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_SECURE_DESCRIPTION"},
+            "search":{"labelKey":"ADMIN_MODULE_GENERAL_SEARCH_TITLE","type":"checkbox","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_SEARCH_DESCRIPTION"},
+            "robots":{"labelKey":"ADMIN_MODULE_GENERAL_ROBOTS_TITLE","type":"checkbox","config":"module","section":"module","descriptionKey":"ADMIN_MODULE_GENERAL_ROBOTS_DESCRIPTION", "valueMethod":"allowRobots", "enabledMethod":"canAllowRobots"},
+            "help":{"labelKey":"ADMIN_MODULE_GENERAL_HELP_TITLE","type":"paragraph","config":"module","section":"strings","descriptionKey":"ADMIN_MODULE_GENERAL_HELP_DESCRIPTION","omitBlankValue":true}
+       }
+    },
+    "pages": {
+        "titleKey":"ADMIN_MODULE_PAGES_TITLE",
+        "config":"pages",
+        "descriptionKey":"ADMIN_MODULE_PAGES_DESCRIPTION",
+        "sectiontype":"section",
+        "fields":{
+            "section":{"labelKey":"ADMIN_MODULE_PAGES_PAGE_TITLE","type":"label"},
+            "pageTitle":{"labelKey":"ADMIN_MODULE_PAGES_PAGETITLE_TITLE","type":"text","class":"field0","omitBlankValue":true},
+            "breadcrumbTitle":{"labelKey":"ADMIN_MODULE_PAGES_BCTITLE_TITLE","type":"text","class":"field0","omitBlankValue":true},
+            "breadcrumbLongTitle":{"labelKey":"ADMIN_MODULE_PAGES_BCLONGTITLE_TITLE","type":"text","class":"field1","omitBlankValue":true}
+        },
+        "sectionindex":"string",
+        "sectionsmethod":"getPageData",
+        "sectionaddnew":true,
+        "sectiontable":true,
+        "sectiondelete":true
+    },
+    "authorization":{
+        "titleKey":"ADMIN_MODULE_ACL_TITLE",
+        "descriptionKey":"ADMIN_MODULE_ACL_DESCRIPTION",
+        "config":"acls",
+        "sectiontype":"section",
+        "fields":  {
+            "type":{"labelKey":"ADMIN_MODULE_ACL_TYPE_TITLE","type":"select","options":{"U":"Access","A":"Admin"}, "descriptionKey":"ADMIN_MODULE_ACL_TYPE_DESCRIPTION"},
+            "action":{"labelKey":"ADMIN_MODULE_ACL_ACTION_TITLE","type":"select","options":{"A":"Allow","D":"Deny"},"descriptionKey":"ADMIN_MODULE_ACL_ACTION_DESCRIPTION"},
+            "scope":{"labelKey":"ADMIN_MODULE_ACL_SCOPE_TITLE","type":"select","options":{"U":"User","G":"Group","E":"Everyone"},"descriptionKey":"ADMIN_MODULE_ACL_SCOPE_DESCRIPTION"},
+            "authority":{"labelKey":"ADMIN_MODULE_ACL_AUTHORITY_TITLE","type":"select","descriptionKey":"ADMIN_MODULE_ACL_AUTHORITY_DESCRIPTION","optionsMethod":["AuthenticationAuthority","getDefinedAuthenticationAuthorityNames"],"optionsFirst":"Any","showIf":["scope",["U","G"]]},
+            "value":{"labelKey":"ADMIN_MODULE_ACL_VALUE_TITLE","type":"text","showIf":["scope",["U","G"]],"descriptionKey":"ADMIN_MODULE_ACL_VALUE_DESCRIPTION"}
+        },
+        "showIfSiteVar":["AUTHENTICATION_ENABLED","1"],
+        "sectionclearvalues":true,
+        "sectionsnoneKey":"ADMIN_MODULE_ACL_NONE",
+        "sectionindex":"numeric",
+        "sectionvalidatemethod":["AccessControlList","validateACL"],
+        "sectionsmethod":"getModuleAccessControlListArrays",
+        "sectionaddnew":true,
+        "sectiondelete":true
+    },
+    "appq":{
+        "titleKey":"ADMIN_MODULE_APPQ_TITLE",
+        "descriptionKey":"ADMIN_MODULE_APPQ_DESCRIPTION",
+        "sectiontype":"fields",
+        "showIfSiteVar":["APPQ_ENABLED","1"],
+        "fields":  {
+            "BUILD_NATIVE_TEMPLATES_IOS":{"labelKey":"ADMIN_MODULE_APPQ_BUILD_NATIVE_TEMPLATES_IOS_TITLE","valueKey":"ADMIN_MODULE_APPQ_BUILD_NATIVE_TEMPLATES_IOS_BUTTON","type":"action","dynamicParams":["moduleID"],"params":{"platform":"iphone"},"action":"buildNativeWebTemplates","runningMessage":"Building templates for iPhone. This may take up to 1 minute", "descriptionKey":"ADMIN_MODULE_APPQ_BUILD_NATIVE_TEMPLATES_IOS_DESCRIPTION"},
+            "NATIVE_TEMPLATES_LAST_BUILD_IOS":{"labelKey":"ADMIN_MODULE_APPQ_NATIVE_TEMPLATES_LAST_BUILD_IOS_TITLE","type":"label","valueMethod":["getLastNativeWebTemplatesBuildForPlatform","iphone"],"default":"Never"},
+            "DOWNLOAD_NATIVE_TEMPLATES_IOS":{"labelKey":"ADMIN_MODULE_APPQ_DOWNLOAD_NATIVE_TEMPLATES_IOS_TITLE","type":"link","valueMethod":["getNativeWebTemplatesURLForPlatform","iphone"],"useConstant":false},
+            "BUILD_NATIVE_TEMPLATES_ANDROID":{"labelKey":"ADMIN_MODULE_APPQ_BUILD_NATIVE_TEMPLATES_ANDROID_TITLE","valueKey":"ADMIN_MODULE_APPQ_BUILD_NATIVE_TEMPLATES_ANDROID_BUTTON","type":"action","dynamicParams":["moduleID"],"params":{"platform":"android"},"action":"buildNativeWebTemplates","runningMessage":"Building templates for Android. This may take up to 1 minute","descriptionKey":"ADMIN_MODULE_APPQ_BUILD_NATIVE_TEMPLATES_ANDROID_DESCRIPTION"},
+            "NATIVE_TEMPLATES_LAST_BUILD_ANDROID":{"labelKey":"ADMIN_MODULE_APPQ_NATIVE_TEMPLATES_LAST_BUILD_ANDROID_TITLE","type":"label","valueMethod":["getLastNativeWebTemplatesBuildForPlatform","android"],"default":"Never"},
+            "DOWNLOAD_NATIVE_TEMPLATES_ANDROID":{"labelKey":"ADMIN_MODULE_APPQ_DOWNLOAD_NATIVE_TEMPLATES_ANDROID_TITLE","type":"link","valueMethod":["getNativeWebTemplatesURLForPlatform","android"],"useConstant":false}
+        }
+    }
+}

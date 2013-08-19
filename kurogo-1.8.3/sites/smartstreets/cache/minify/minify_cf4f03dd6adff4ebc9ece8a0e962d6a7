@@ -1,0 +1,19 @@
+/* Adding url prefix '/device/tablet-computer-unknown/' */
+
+/* Minify_CSS_UriRewriter::$debugText
+
+docRoot    : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www
+currentDir : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/app/modules/calendar/css
+
+*/
+
+/* pane-tablet.css */
+
+/* 1 */ .calendar .results li .smallprint {
+/* 2 */   display: inline-block;
+/* 3 */ }
+/* 4 */ 
+
+/* id::themeConfigModTimeChecker */
+
+/* 1 */ 

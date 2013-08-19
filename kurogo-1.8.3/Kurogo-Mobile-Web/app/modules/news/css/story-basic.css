@@ -1,0 +1,18 @@
+.news {
+	background-color: @@@focal_background_color@@@;
+    padding: 0.67em;
+}
+#storybody img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+.slugline {
+	margin: 0 0 0.5em 0;
+}
+
+.wp-caption {
+    width: auto !important;
+    font-size: 84%;
+}

@@ -1,0 +1,16 @@
+#links {
+	padding: 0;
+	margin-left: 1px;
+}
+#links div {
+	width: 78px;
+	height: 85px;
+}
+#links a {
+	-webkit-border-radius: 5px;
+	padding: 8px 6px;
+	line-height: 1.1em;
+}
+#links a img {
+	margin-bottom: 1px
+}

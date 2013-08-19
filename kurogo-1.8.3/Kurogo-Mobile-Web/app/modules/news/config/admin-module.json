@@ -1,0 +1,45 @@
+{
+    "options": {
+        "titleKey":"NEWS_ADMIN_OPTIONS_TITLE",
+        "descriptionKey":"NEWS_ADMIN_OPTIONS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "MAX_RESULTS":{"labelKey":"NEWS_ADMIN_OPTIONS_MAXRESULTS_TITLE","type":"number","config":"module","section":"module","descriptionKey":"NEWS_ADMIN_OPTIONS_MAXRESULTS_DESCRIPTION","placeholder":10},
+            "SHARING_ENABLED":{"labelKey":"NEWS_ADMIN_OPTIONS_SHARING_TITLE", "descriptionKey":"NEWS_ADMIN_OPTIONS_SHARING_DESCRIPTION","config":"module","section":"module","type":"checkbox","default":1}
+       }
+    },
+    "feeds": {
+        "titleKey":"NEWS_ADMIN_FEEDS_TITLE",
+        "descriptionKey":"NEWS_ADMIN_FEEDS_DESCRIPTION",
+        "config":"feeds",
+        "sectiontype":"section",
+        "fieldgroups":{
+            "advanced":{"labelKey":"ADMIN_ADVANCED_OPTIONS", "collapsed": true, "descriptionKey":"NEWS_ADMIN_FEEDS_ADVANCED_DESCRIPTION"}
+        },
+        "fields":{
+            "TITLE":{"labelKey":"NEWS_ADMIN_FEEDS_TITLE_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_TITLE_DESCRIPTION", "type":"text"},
+            "BASE_URL":{"labelKey":"NEWS_ADMIN_FEEDS_BASEURL_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_BASEURL_DESCRIPTION","type":"text"},
+            "SHOW_IMAGES":{"labelKey":"NEWS_ADMIN_FEEDS_SHOWIMAGES_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_SHOWIMAGES_DESCRIPTION","type":"checkbox","default":1},
+            "SHOW_PUBDATE":{"labelKey":"NEWS_ADMIN_FEEDS_SHOWPUBDATE_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_SHOWPUBDATE_DESCRIPTION","type":"checkbox"},
+            "SHOW_AUTHOR":{"labelKey":"NEWS_ADMIN_FEEDS_SHOWAUTHOR_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_SHOWAUTHOR_DESCRIPTION","type":"checkbox"},
+            "CACHE_LIFETIME":{"labelKey":"NEWS_ADMIN_FEEDS_CACHE_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_CACHE_DESCRIPTION","type":"select","optionsMethod":["Kurogo","getLifetimeOptions"],"fieldgroup":"advanced"},
+            "REMOVE_DUPLICATES":{"labelKey":"NEWS_ADMIN_FEEDS_REMOVE_DUPLICATES_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_REMOVE_DUPLICATES_DESCRIPTION", "type":"checkbox","fieldgroup":"advanced"},
+            "FETCH_CONTENT":{"labelKey":"NEWS_ADMIN_FEEDS_FETCH_CONTENT_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_FETCH_CONTENT_DESCRIPTION","type":"checkbox","fieldgroup":"advanced"},
+            "ITEM_CLASS":{"labelKey":"NEWS_ADMIN_FEEDS_ITEMCLASS_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_ITEMCLASS_DESCRIPTION","type":"text","placeholder":"RSSItem","omitBlankValue":true,"fieldgroup":"advanced"},
+            "ENCLOSURE_CLASS":{"labelKey":"NEWS_ADMIN_FEEDS_ENCLOSURECLASS_TITLE","descriptionKey":"NEWS_ADMIN_FEEDS_ENCLOSURECLASS_DESCRIPTION","type":"text","placeholder":"RSSEnclosure","omitBlankValue":true,"fieldgroup":"advanced"},
+            "THUMB_MAX_WIDTH":{"labelKey":"NEWS_ADMIN_FEEDS_THUMB_MAX_WIDTH_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_THUMB_MAX_WIDTH_DESCRIPTION", "type":"text","fieldgroup":"advanced"},
+            "THUMB_MAX_HEIGHT":{"labelKey":"NEWS_ADMIN_FEEDS_THUMB_MAX_HEIGHT_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_THUMB_MAX_HEIGHT_DESCRIPTION", "type":"text","fieldgroup":"advanced"},
+            "THUMB_CROP":{"labelKey":"NEWS_ADMIN_FEEDS_THUMB_CROP_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_THUMB_CROP_DESCRIPTION", "type":"checkbox","fieldgroup":"advanced"},
+            "THUMB_BACKGROUND_RGB":{"labelKey":"NEWS_ADMIN_FEEDS_THUMB_BACKGROUND_RGB_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_THUMB_BACKGROUND_RGB_DESCRIPTION", "type":"text","fieldgroup":"advanced","showIf":["THUMB_CROP",1]},
+            "SHOW_BODY_THUMBNAIL":{"labelKey":"NEWS_ADMIN_FEEDS_SHOW_BODY_THUMBNAIL_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_SHOW_BODY_THUMBNAIL_DESCRIPTION", "type":"checkbox","fieldgroup":"advanced","default":1},
+            "HTML_ESCAPED_CDATA":{"labelKey":"NEWS_ADMIN_FEEDS_HTML_ESCAPED_CDATA_TITLE", "descriptionKey":"NEWS_ADMIN_FEEDS_HTML_ESCAPED_CDATA_DESCRIPTION", "type":"checkbox","fieldgroup":"advanced"}
+        },
+        "sectionindex":"string",
+        "sectionsmethod":"loadFeedData",
+        "sectionvalidatemethod":["NewsWebModule","validateFeed"],
+        "sectionaddnew":true,
+        "sectiondelete":true,
+        "sectionreorder":true
+    }
+    
+}

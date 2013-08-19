@@ -1,0 +1,99 @@
+body.fullscreen #navbar {
+	margin-bottom: 1px;
+}
+
+#bookmarkContainer {
+	margin-top: -2px;
+	margin-right: -6px;
+}
+
+#toolbar .inputcombo {
+  overflow-x: visible;
+}
+
+#tabs li a {
+	line-height: 1em;
+}
+#tabbodies {
+	border-radius:0; 
+	min-height: none;
+}
+.tabbody {
+	min-height: none;
+	padding-bottom: 2em;
+}
+.tabbody .nav {
+	margin: 0;
+	border: 1px solid @@@focal_border_color@@@;
+}
+
+.photo-tabbody {
+	text-align: center;
+}
+.map-tabbody {
+	padding-bottom: 0;
+	height: 100%;
+}
+
+.mapimage {
+  min-height: 500px;
+  position: relative;
+}
+
+.fullmap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+}
+
+.tabbody #staticmapimage {
+    width: 292px;
+    height: 292px;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+
+.tabbody #mapscrollers {
+	height: 294px;
+}
+
+#mapzoom {
+	position: relative;
+	height: 50px;
+}
+
+#mapzoom a {
+	display: block;
+	position: absolute;
+	width: 40px;
+	height: 34px;
+	margin-top: 8px;
+	background-image: url(/modules/map/images/buttons.png);
+	background-repeat: no-repeat;
+}
+
+/* copying the fullscreen style for now */
+
+body.portrait .mapimage, body.landscape .mapimage {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#loadingimage,
+#loadingimage2 {
+	position: absolute;
+	z-index: 100;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	margin-top: -20px;
+	opacity: 0.75;
+}
+

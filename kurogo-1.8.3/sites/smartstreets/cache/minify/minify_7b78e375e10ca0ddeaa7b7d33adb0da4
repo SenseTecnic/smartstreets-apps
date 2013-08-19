@@ -1,0 +1,275 @@
+
+/* ellipsizer.js */
+
+/* 1   */ /*
+/* 2   *|  * Copyright © 2010 - 2013 Modo Labs Inc. All rights reserved.
+/* 3   *|  *
+/* 4   *|  * The license governing the contents of this file is located in the LICENSE
+/* 5   *|  * file located at the root directory of this distribution. If the LICENSE file
+/* 6   *|  * is missing, please contact sales@modolabs.com.
+/* 7   *|  *
+/* 8   *|  */
+/* 9   */ 
+/* 10  */ /* 
+/* 11  *|  * Ellipsizer text block module
+/* 12  *|  * 
+/* 13  *|  * Handles multiple elements for efficiency
+/* 14  *|  */
+/* 15  */  
+/* 16  */ (function (window) {
+/* 17  */ 
+/* 18  */ function ellipsizer (options) {
+/* 19  */     // set caller options
+/* 20  */     if (typeof options == 'object') {
+/* 21  */         for (var i in options) {
+/* 22  */             this.options[i] = options[i];
+/* 23  */         }
+/* 24  */     }
+/* 25  */     
+/* 26  */     if (this.options.refreshOnResize) {
+/* 27  */         // Bind the global event handler to the element
+/* 28  */         if (window.addEventListener) {
+/* 29  */             window.addEventListener(RESIZE_EVENT, this, false);
+/* 30  */         
+/* 31  */         } else if (window.attachEvent) {
+/* 32  */             window.attachEvent(RESIZE_EVENT, this);
+/* 33  */         }
+/* 34  */     }
+/* 35  */ }
+/* 36  */ 
+/* 37  */ ellipsizer.prototype = {
+/* 38  */     elements: [],
+/* 39  */     options: {
+/* 40  */         refreshOnResize: true,
+/* 41  */         beforeRefresh: null,
+/* 42  */         afterRefresh: null
+/* 43  */     },
+/* 44  */     
+/* 45  */     addElement: function (element) {
+/* 46  */         element.ellipsizer = {
+/* 47  */             'original' : element.cloneNode(true)
+/* 48  */         };
+/* 49  */         
+/* 50  */         refreshElement(element);
+
+/* ellipsizer.js */
+
+/* 51  */         
+/* 52  */         this.elements.push(element);
+/* 53  */     },
+/* 54  */   
+/* 55  */     addElements: function (elements) {
+/* 56  */         for (var i = 0; i < elements.length; i++) {
+/* 57  */             this.addElement(elements[i]);
+/* 58  */         }
+/* 59  */     },
+/* 60  */   
+/* 61  */     handleEvent: function (e) {
+/* 62  */         switch (e.type) {
+/* 63  */           case 'orientationchange':
+/* 64  */           case 'resize':
+/* 65  */               var self = this;
+/* 66  */               setTimeout(function() { self.refresh(); }, 0);
+/* 67  */               break;
+/* 68  */         }
+/* 69  */     },
+/* 70  */   
+/* 71  */     refresh: function () {
+/* 72  */         if (this.options.beforeRefresh != null) {
+/* 73  */             this.options.beforeRefresh(this.elements);
+/* 74  */         }
+/* 75  */         
+/* 76  */         for (var i = 0; i < this.elements.length; i++) {
+/* 77  */             refreshElement(this.elements[i]);
+/* 78  */         }
+/* 79  */         
+/* 80  */         if (this.options.afterRefresh != null) {
+/* 81  */             this.options.afterRefresh(this.elements);
+/* 82  */         }
+/* 83  */     },
+/* 84  */     
+/* 85  */     destroy: function () {
+/* 86  */         if (this.options.refreshOnResize) {
+/* 87  */             // Bind the global event handler to the element
+/* 88  */             if (window.removeEventListener) {
+/* 89  */                 window.removeEventListener(RESIZE_EVENT, this, false);
+/* 90  */             
+/* 91  */             } else if (window.detachEvent) {
+/* 92  */                 window.detachEvent(RESIZE_EVENT, this);
+/* 93  */             }
+/* 94  */         }
+/* 95  */         
+/* 96  */         for (var i = 0; i < this.elements.length; i++) {
+/* 97  */             this.elements[i].innerHTML = this.elements[i].originalInnerHTML;
+/* 98  */         }
+/* 99  */         
+/* 100 */         return null;
+
+/* ellipsizer.js */
+
+/* 101 */     }
+/* 102 */ };
+/* 103 */ 
+/* 104 */ function cloneNodes(nodeList) {
+/* 105 */     var children = [];
+/* 106 */     for (var i = 0; i < nodeList.length; i++) {
+/* 107 */         children.push(nodeList[i].cloneNode(true));
+/* 108 */     }
+/* 109 */     return children;
+/* 110 */ }
+/* 111 */ 
+/* 112 */ function setTextContent(element, content) {
+/* 113 */     try {
+/* 114 */         if ("innerText" in element) {
+/* 115 */             element.innerText = content;
+/* 116 */             
+/* 117 */         } else if ("nodeValue" in element) {
+/* 118 */             element.nodeValue = content;
+/* 119 */             
+/* 120 */         } else if ("textContent" in element) {
+/* 121 */             element.textContent = content;
+/* 122 */         }
+/* 123 */     } catch (e) {
+/* 124 */         // ignore errors here they may be caused by elements which cannot have
+/* 125 */         // text (e.g. images)
+/* 126 */     }
+/* 127 */ }
+/* 128 */   
+/* 129 */ function getTextContent(element) {
+/* 130 */     if (element.innerText) {
+/* 131 */         return element.innerText;
+/* 132 */         
+/* 133 */     } else if (element.nodeValue) {
+/* 134 */         return element.nodeValue;
+/* 135 */         
+/* 136 */     } else if (element.textContent) {
+/* 137 */         return element.textContent;
+/* 138 */         
+/* 139 */     } else {
+/* 140 */         return "";
+/* 141 */     }
+/* 142 */ }
+/* 143 */ 
+/* 144 */ // returns true when the element needs to be entirely removed
+/* 145 */ function walkForTruncation(element, maxHeight, ellipsizedElement) {
+/* 146 */     if (!ellipsizedElement) {
+/* 147 */         ellipsizedElement = element; // first call
+/* 148 */     }
+/* 149 */     
+/* 150 */     var killCount = 0;
+
+/* ellipsizer.js */
+
+/* 151 */     while (ellipsizedElement.offsetHeight > maxHeight) {
+/* 152 */         if (killCount++ > 30) break;
+/* 153 */         
+/* 154 */         if (element.childNodes.length) {
+/* 155 */             var lastElement = element.childNodes[element.childNodes.length-1];
+/* 156 */             if (walkForTruncation(lastElement, maxHeight, ellipsizedElement)) {
+/* 157 */                 element.removeChild(lastElement);
+/* 158 */             }
+/* 159 */         } else {
+/* 160 */             var text = getTextContent(element);
+/* 161 */             
+/* 162 */             // quick check to short circuit if the entire node needs to be removed
+/* 163 */             setTextContent(element, "");
+/* 164 */             if (element.offsetHeight > maxHeight) {
+/* 165 */                 return true;
+/* 166 */             }
+/* 167 */             
+/* 168 */             var lastTestLoc = -1;
+/* 169 */             var lower = 0;
+/* 170 */             var upper = text.length;
+/* 171 */             
+/* 172 */             var killCount2 = 0;
+/* 173 */             while (lower < upper) {
+/* 174 */                 if (killCount2++ > 30) break;
+/* 175 */                 
+/* 176 */                 var testLoc = Math.floor((lower + upper) / 2);
+/* 177 */                 if (testLoc == lastTestLoc) {
+/* 178 */                     break
+/* 179 */                 } else {
+/* 180 */                     lastTestLoc = testLoc;
+/* 181 */                 }
+/* 182 */                 
+/* 183 */                 // only append an ellipsis if we are showing some of the text
+/* 184 */                 var suffix = testLoc > 0 ? '...' : '';
+/* 185 */                  
+/* 186 */                 setTextContent(element, text.substr(0, testLoc) + suffix);
+/* 187 */                 if (ellipsizedElement.offsetHeight > maxHeight) {
+/* 188 */                     upper = testLoc;
+/* 189 */                     
+/* 190 */                 } else if (ellipsizedElement.offsetHeight < maxHeight) {
+/* 191 */                     lower = testLoc;
+/* 192 */                     
+/* 193 */                 } else if (upper - lower > 1) {
+/* 194 */                     lower = testLoc; // this works but try to fill out last line
+/* 195 */                     
+/* 196 */                 } else {
+/* 197 */                     upper = lower = testLoc; // found it!
+/* 198 */                 }
+/* 199 */             }
+/* 200 */             
+
+/* ellipsizer.js */
+
+/* 201 */             newText = getTextContent(element);
+/* 202 */             return !newText.length
+/* 203 */         }
+/* 204 */     }
+/* 205 */     return false;
+/* 206 */ }
+/* 207 */ 
+/* 208 */ // private function to refresh each element
+/* 209 */ function refreshElement(element) {
+/* 210 */     // skip elements which have been removed from the DOM
+/* 211 */     if (getCSSValue(element, 'display') == 'none') { return; }
+/* 212 */     
+/* 213 */     var maxHeight = element.offsetHeight;
+/* 214 */     var width = getCSSWidth(element)+'px';
+/* 215 */ 
+/* 216 */     // Create a copy of the element and put the full text in it
+/* 217 */     // Let it grow so we can see how big it gets
+/* 218 */     var copy = element.ellipsizer.original.cloneNode(true);
+/* 219 */     copy.id = '__ellipsisCopy';
+/* 220 */     setCSSValue(copy, 'visibility', 'hidden');
+/* 221 */     setCSSValue(copy, 'display',    'block');
+/* 222 */     //setCSSValue(copy, 'color',      'pink');
+/* 223 */     setCSSValue(copy, 'position',   'absolute');
+/* 224 */     setCSSValue(copy, 'top',        '0');
+/* 225 */     setCSSValue(copy, 'left',       '0');
+/* 226 */     setCSSValue(copy, 'bottom',     'auto');
+/* 227 */     setCSSValue(copy, 'right',      'auto');
+/* 228 */     setCSSValue(copy, 'overflow',   'visible');
+/* 229 */     setCSSValue(copy, 'max-width',  'none');
+/* 230 */     setCSSValue(copy, 'max-height', 'none');
+/* 231 */     setCSSValue(copy, 'width',      width);
+/* 232 */     setCSSValue(copy, 'height',     'auto');
+/* 233 */     
+/* 234 */     var parentPosition = getCSSValue(element.parentNode, 'position');
+/* 235 */     if (parentPosition != 'absolute' && parentPosition != 'relative') {
+/* 236 */         setCSSValue(element.parentNode, 'position', 'relative');
+/* 237 */     }
+/* 238 */     element.parentNode.appendChild(copy);
+/* 239 */     
+/* 240 */     // Binary search through lengths to see where the copy gets
+/* 241 */     // bigger than the real div.  Clip at that length.
+/* 242 */     
+/* 243 */     walkForTruncation(copy, maxHeight);
+/* 244 */     
+/* 245 */     element.innerHTML = copy.innerHTML;
+/* 246 */     copy.parentNode.removeChild(copy);
+/* 247 */ }
+/* 248 */ 
+/* 249 */ var RESIZE_EVENT = window.addEventListener ? 
+/* 250 */     ('onorientationchange' in window ? 
+
+/* ellipsizer.js */
+
+/* 251 */       'orientationchange' :  // touch device
+/* 252 */       'resize')              // desktop browser
+/* 253 */     : ('onresize');          // IE
+/* 254 */   
+/* 255 */ window.ellipsizer = ellipsizer;
+/* 256 */ })(window);
+/* 257 */ 

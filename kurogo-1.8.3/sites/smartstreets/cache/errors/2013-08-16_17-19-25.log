@@ -1,0 +1,10 @@
+<strong>Config variable 'BASE_URL' not set in section smartstreets</strong><br><br><strong>Fatal error</strong>:  Uncaught exception 'KurogoKeyNotFoundException' with message 'Config variable 'BASE_URL' not set in section smartstreets' in /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Config.php:234
+Stack trace:
+#0 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Config/ConfigStore.php(201): getVar(string, string)
+#1 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Module.php(445): getVar(string, string, string, object)
+#2 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/sites/smartstreets/app/modules/catalogueBrowser/CatalogueBrowserWebModule.php(95): getModuleVar(string, string, string)
+#3 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/WebModule.php(1784): initializeForPage()
+#4 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/WebModule.php(1990): setPageVariables()
+#5 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www/index.php(323): displayPage()
+#6 {main}
+  thrown in <strong>/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Config.php</strong> on line <strong>234</strong>

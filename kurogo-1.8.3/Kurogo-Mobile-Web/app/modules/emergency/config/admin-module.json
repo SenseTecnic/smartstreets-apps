@@ -1,0 +1,33 @@
+{
+    "strings":{
+        "titleKey":"EMERGENCY_ADMIN_STRINGS_TITLE",
+        "descriptionKey":"EMERGENCY_ADMIN_STRINGS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "MORE_CONTACTS":{"labelKey":"EMERGENCY_ADMIN_STRINGS_MORECONTACTS_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"EMERGENCY_ADMIN_STRINGS_MORECONTACTS_DESCRIPTION"},
+            "NO_EMERGENCY":{"labelKey":"EMERGENCY_ADMIN_STRINGS_NOEMERGENCY_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"EMERGENCY_ADMIN_STRINGS_NOEMERGENCY_DESCRIPTION"}
+        }
+    },
+    "contacts":{
+        "titleKey":"EMERGENCY_ADMIN_CONTACTS_TITLE",
+        "descriptionKey":"EMERGENCY_ADMIN_CONTACTS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "RETRIEVER_CLASS":{"labelKey":"EMERGENCY_ADMIN_CONTACTS_CLASS_TITLE","descriptionKey":"EMERGENCY_ADMIN_CONTACTS_CLASS_DESCRIPTION","type":"select","optionsMethod":["EmergencyContactsDataModel","getContactsListDataRetrievers"],"config":"feeds","section":"contacts"},
+            "DRUPAL_SERVER_URL":{"labelKey":"EMERGENCY_ADMIN_CONTACTS_DRUPALSERVER_TITLE","descriptionKey":"EMERGENCY_ADMIN_CONTACTS_DRUPALSERVER_DESCRIPTION","type":"text","config":"feeds","section":"contacts","showIf":["RETRIEVER_CLASS","DrupalContactsDataRetriever"]},
+            "FEED_VERSION":{"labelKey":"EMERGENCY_ADMIN_CONTACTS_VERSION_TITLE","descriptionKey":"EMERGENCY_ADMIN_CONTACTS_VERSION_DESCRIPTION","type":"select","options":{"1":"1"},"config":"feeds","section":"contacts","showIf":["RETRIEVER_CLASS","DrupalContactsDataRetriever"]},
+            "BASE_URL":{"labelKey":"EMERGENCY_ADMIN_CONTACTS_BASEURL_TITLE","descriptionKey":"EMERGENCY_ADMIN_CONTACTS_BASEURL_DESCRIPTION","type":"file","config":"feeds","section":"contacts","showIf":["RETRIEVER_CLASS","INIFileContactsListRetriever"]}
+        }
+    },
+    "notice":{
+        "titleKey":"EMERGENCY_ADMIN_NOTICE_TITLE",
+        "descriptionKey":"EMERGENCY_ADMIN_NOTICE_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "BASE_URL":{"labelKey":"EMERGENCY_ADMIN_NOTICE_BASEURL_TITLE","descriptionKey":"EMERGENCY_ADMIN_NOTICE_BASEURL_DESCRIPTION","type":"text","config":"feeds","section":"notice"},
+            "NOTICE_MAX_COUNT":{"labelKey":"EMERGENCY_ADMIN_NOTICE_MAX_COUNT_TITLE","descriptionKey":"EMERGENCY_ADMIN_NOTICE_MAX_COUNT_DESCRIPTION","type":"number","config":"feeds","section":"notice","omitBlankValue":true},
+            "NOTICE_EXPIRATION":{"labelKey":"EMERGENCY_ADMIN_NOTICE_EXPIRATION_TITLE","descriptionKey":"EMERGENCY_ADMIN_NOTICE_EXPIRATION_DESCRIPTION","type":"select","optionsMethod":["Kurogo","getLifetimeOptions"],"config":"feeds","section":"notice","omitBlankValue":true}
+     }
+    }
+    
+}

@@ -1,0 +1,213 @@
+h1.roomfornew {
+	text-align: left;
+}
+#new {
+	position: absolute;
+	top: -13px;
+	right: -9px;
+	width: 80px;
+	height: 80px;
+	background-image: url(/modules/home/images/newbig.png);
+	background-repeat: no-repeat;
+	color: #fff;
+	font-size: 70.59%;
+	line-height: 1.1em;
+	text-align: center;
+	overflow: hidden;
+}
+#new a {
+	display: block;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	text-decoration: none;
+	color: #fff;
+	position: absolute;
+	top: 19px;
+	right: 10px;
+}
+#new a .newlabel {
+	display: block;
+	font-size: 52.94%;
+	line-height: 1em;
+	color: #ffcece;
+}
+#beta {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#footer {
+	text-align: center;
+	clear: both;
+}
+form {
+	margin: 0 0 -7px 0;
+}
+
+.banner-notice {
+    height: 42px;
+}
+.portlets {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+}
+.portlets-below-banner {
+    top: 43px;
+}
+
+.portlet {
+    position: relative;
+    width: 33.33333%;
+    float: left;
+    height: 50%;
+}
+.portlet-tall {
+    height: 100%;
+}
+.portlet-wide {
+    width: 66.66666%;
+}
+.portlet-right {
+    float: right;
+}
+@media only screen and (max-width: 900px) {
+    /* Narrower screens e.g., tablets in portrait orientation */
+    .portlet {
+        height: 33.33333%;
+        width: 50%;
+    }
+    .portlet-tall {
+        height: 66.66666%;
+    }
+    .portlet-wide {
+        width: 100%;
+    }
+}
+.portlet-container {
+    position: absolute;
+    overflow: hidden;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+.portlet-header,
+.portlet-full-bleed .portlet-content,
+.portlet-full-bleed .portlet-content-top-element {
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-top-left-radius: 4px;
+    -moz-border-top-right-radius: 4px;
+    -o-border-top-left-radius: 4px;
+    -o-border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.portlet-content {
+    -webkit-border-bottom-left-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-bottom-left-radius: 4px;
+    -moz-border-bottom-right-radius: 4px;
+    -o-border-bottom-left-radius: 4px;
+    -o-border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.portlet-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #666;
+    background-color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    font: 12px/1em Helvetica, Arial, sans-serif;
+    height: 30px;
+    line-height: 28px;
+    font-weight: bold;
+    color: #fff;
+}
+.portlet-header a,
+.portlet-header a:visited,
+.portlet-header span {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 2px 10px;
+}
+.portlet-header .portlet-icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    background-color: transparent;
+}
+.portlet-header .portlet-nextlink {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+    background: transparent url(/common/images/action-arrow-white.png) no-repeat left top;
+}
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  /* Pixel-doubled versions to take advantage of Retina Displays and XHDPI displays */ 
+  .portlet-header .portlet-nextlink {
+      background-image: url(/common/images/action-arrow-white@2x.png);
+      background-size: 14px 17px;
+  }
+}
+.portlet-content {
+    overflow: hidden;
+    position: absolute;
+    line-height: 1.33em;
+    top: 30px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.portlet-full-bleed .portlet-content {
+    top: 0;
+}
+.portlet-content .smallprint {
+	line-height: 1.25em;
+}
+.portlet-content .loading {
+    background-image: url(/common/images/loading2.gif);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.portlet-content .results {
+    margin: 0;
+    background: transparent;
+    border: none;
+}
+.portlet-content .results li {
+    border: none;
+    padding-top: 0;
+}
+.portlet-content .results li:first-child {
+    padding-top: 10px;
+}
+.portlet-content .results a,
+.portlet-content .results a:visited {
+    background: none;
+    padding-right: 7px;
+}

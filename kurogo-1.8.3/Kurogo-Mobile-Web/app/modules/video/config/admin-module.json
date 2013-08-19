@@ -1,0 +1,33 @@
+{
+    "options": {
+        "titleKey":"VIDEO_ADMIN_OPTIONS_TITLE",
+        "descriptionKey":"VIDEO_ADMIN_OPTIONS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "MAX_RESULTS":{"labelKey":"VIDEO_ADMIN_OPTIONS_MAXRESULTS_TITLE","type":"number","config":"module","section":"module","descriptionKey":"VIDEO_ADMIN_OPTIONS_MAXRESULTS_DESCRIPTION"},
+            "MAX_PANE_RESULTS":{"labelKey":"VIDEO_ADMIN_OPTIONS_MAXPANERESULTS_TITLE","type":"number","config":"module","section":"module","descriptionKey":"VIDEO_ADMIN_OPTIONS_MAXPANERESULTS_DESCRIPTION","omitBlankValue":true},
+            "SHARING_ENABLED":{"labelKey":"VIDEO_ADMIN_OPTIONS_SHARINGENABLED_TITLE", "descriptionKey":"VIDEO_ADMIN_OPTIONS_SHARINGENABLED_DESCRIPTION","config":"module","section":"module","type":"checkbox","default":1},
+            "BOOKMARKS_ENABLED":{"labelKey":"VIDEO_ADMIN_OPTIONS_BOOKMARKSENABLED_TITLE", "descriptionKey":"VIDEO_ADMIN_OPTIONS_BOOKMARKSENABLED_DESCRIPTION","config":"module","section":"module","type":"checkbox","default":1}
+       }
+    },
+    "feeds": {
+        "titleKey":"VIDEO_ADMIN_FEEDS_TITLE",
+        "descriptionKey":"VIDEO_ADMIN_FEEDS_DESCRIPTION",
+        "config":"feeds",
+        "sectiontype":"section",
+        "fields":{
+            "section":{"labelKey":"VIDEO_ADMIN_FEEDS_SECTION_TITLE", "descriptionKey":"VIDEO_ADMIN_FEEDS_SECTION_DESCRIPTION", "type":"label"},
+            "TITLE":{"labelKey":"VIDEO_ADMIN_FEEDS_TITLE_TITLE","descriptionKey":"VIDEO_ADMIN_FEEDS_TITLE_DESCRIPTION", "type":"text"},
+            "RETRIEVER_CLASS":{"labelKey":"VIDEO_ADMIN_FEEDS_CONTROLLER_TITLE", "descriptionKey":"VIDEO_ADMIN_FEEDS_CONTROLLER_DESCRIPTION", "type":"select","optionsMethod":["VideoDataModel","getVideoDataRetrievers"],"optionsFirst":"-- Choose a video provider --"},
+            "AUTHOR":{"labelKey":"VIDEO_ADMIN_FEEDS_AUTHOR_TITLE","descriptionKey":"VIDEO_ADMIN_FEEDS_AUTHOR_DESCRIPTION","type":"text","omitBlankValue":true},
+            "CHANNEL":{"labelKey":"VIDEO_ADMIN_FEEDS_CHANNEL_TITLE","descriptionKey":"VIDEO_ADMIN_FEEDS_CHANNEL_DESCRIPTION","type":"text","omitBlankValue":true,"showIf":["RETRIEVER_CLASS",["VimeoRetriever"]]},
+            "PLAYLIST":{"labelKey":"VIDEO_ADMIN_FEEDS_PLAYLIST_TITLE","descriptionKey":"VIDEO_ADMIN_FEEDS_PLAYLIST_DESCRIPTION","type":"text","omitBlankValue":true,"showIf":["RETRIEVER_CLASS",["YouTubeRetriever"]]},
+            "TAG":{"labelKey":"VIDEO_ADMIN_FEEDS_TAG_TITLE","descriptionKey":"VIDEO_ADMIN_FEEDS_TAG_DESCRIPTION","type":"text","omitBlankValue":true}
+        },
+        "sectionindex":"string",
+        "sectionsmethod":"loadFeedData",
+        "sectionaddnew":true,
+        "sectiondelete":true,
+        "sectionreorder":true
+    }
+}

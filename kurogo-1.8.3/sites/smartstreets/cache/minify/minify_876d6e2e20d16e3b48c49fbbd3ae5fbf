@@ -1,0 +1,78 @@
+/* Adding url prefix '/device/tablet-computer-unknown/' */
+
+/* Minify_CSS_UriRewriter::$debugText
+
+docRoot    : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www
+currentDir : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/app/modules/map/css
+
+*/
+
+/* pane-common.css */
+
+/* 1  */ .mapimage {
+/* 2  */   position: absolute;
+/* 3  */   top: 2px;
+/* 4  */   bottom: 2px;
+/* 5  */   left: 2px;
+/* 6  */   right: 2px;
+/* 7  */ }
+/* 8  */ 
+/* 9  */ .infoBox {
+/* 10 */ 	border-radius: 6px;
+/* 11 */ 	padding: 0;
+/* 12 */ 	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.7);
+/* 13 */ 	box-shadow: 0 1px 5px rgba(0,0,0,0.7);
+/* 14 */ 	height: auto!important;
+/* 15 */ }
+/* 16 */ 
+/* 17 */ .infoBox img {
+/* 18 */ 	display: none;
+/* 19 */ }
+/* 20 */ 
+/* 21 */ .calloutMain {
+/* 22 */ 	display: table;
+/* 23 */ 	height: 100%;
+/* 24 */ 	width: 100%;
+/* 25 */ }
+/* 26 */ 
+/* 27 */ .calloutMain a {
+/* 28 */ 	display: table-cell;
+/* 29 */ 	vertical-align: middle;
+/* 30 */ 	width: 100%;
+/* 31 */ 	height: 100%;
+/* 32 */ 	text-decoration: none;
+/* 33 */ 	font-size: 15px;
+/* 34 */ 	line-height: 18px;	
+/* 35 */ 	text-align: left;
+/* 36 */ 	padding: 8px 37px 8px 8px;
+/* 37 */ 	background: url("/device/tablet-computer-unknown/modules/map/images/map-callout.png") no-repeat right;
+/* 38 */ 	background-size: 35px 31px;
+/* 39 */ 	overflow: hidden;
+/* 40 */ }
+/* 41 */ 
+/* 42 */ .calloutMain a, .calloutMain a:visited {
+/* 43 */ 	color: #111;
+/* 44 */ }
+/* 45 */ 
+/* 46 */ .calloutDisclosure {
+/* 47 */     margin: 6px 0;
+/* 48 */ }
+/* 49 */ 
+/* 50 */ .calloutTail {
+
+/* pane-common.css */
+
+/* 51 */ 	position: absolute;
+/* 52 */ 	bottom: -10px;
+/* 53 */ 	width: 12px;
+/* 54 */ 	height: 10px;
+/* 55 */ 	left: 50%;
+/* 56 */ 	margin-left: -6px;
+/* 57 */ 	background: url("/device/tablet-computer-unknown/modules/map/images/callout-tail.png") no-repeat center;
+/* 58 */ 	background-size: 12px 10px;
+/* 59 */ }	
+/* 60 */ 
+
+/* id::themeConfigModTimeChecker */
+
+/* 1 */ 

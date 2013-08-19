@@ -1,0 +1,16 @@
+{
+    "strings":{
+        "titleKey":"LOGIN_ADMIN_STRINGS_TITLE",
+        "descriptionKey":"LOGIN_ADMIN_STRINGS_DESCRIPTION",
+        "sectiontype":"fields",
+        "fields":{
+            "LOGIN_INDEX_MESSAGE":{"labelKey":"LOGIN_ADMIN_STRINGS_INDEX_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_INDEX_DESCRIPTION"},
+            "LOGIN_DIRECT_MESSAGE":{"labelKey":"LOGIN_ADMIN_STRINGS_DIRECT_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_DIRECT_DESCRIPTION"},
+            "LOGIN_INDIRECT_MESSAGE":{"labelKey":"LOGIN_ADMIN_STRINGS_INDIRECT_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_INDIRECT_DESCRIPTION"},
+            "LOGIN_LABEL":{"labelKey":"LOGIN_ADMIN_STRINGS_LOGIN_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_LOGIN_DESCRIPTION"},
+            "PASSWORD_LABEL":{"labelKey":"LOGIN_ADMIN_STRINGS_PASSWORD_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_PASSWORD_DESCRIPTION"},
+            "FORGET_PASSWORD_TEXT":{"labelKey":"LOGIN_ADMIN_STRINGS_FORGOTTEXT_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_FORGOTTEXTDESCRIPTION"},
+            "FORGET_PASSWORD_URL":{"labelKey":"LOGIN_ADMIN_STRINGS_FORGOTURL_TITLE","type":"text","config":"module","section":"strings","descriptionKey":"LOGIN_ADMIN_STRINGS_FORGOTURL_DESCRIPTION"}
+        }
+    }
+}

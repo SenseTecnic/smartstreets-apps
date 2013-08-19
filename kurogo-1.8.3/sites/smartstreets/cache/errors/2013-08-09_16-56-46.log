@@ -1,0 +1,10 @@
+<strong>Config section ':catalogue:rel' not set</strong><br><br><strong>Fatal error</strong>:  Uncaught exception 'KurogoKeyNotFoundException' with message 'Config section ':catalogue:rel' not set' in /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Config.php:204
+Stack trace:
+#0 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Config/ConfigStore.php(179): getSection(string)
+#1 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Module.php(473): getSection(string, string, object)
+#2 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/sites/smartstreets/app/modules/CatalogueBrowser/CatalogueBrowserWebModule.php(115): getModuleSection(string, string)
+#3 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/WebModule.php(1784): initializeForPage()
+#4 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/WebModule.php(1990): setPageVariables()
+#5 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www/index.php(323): displayPage()
+#6 {main}
+  thrown in <strong>/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/Config.php</strong> on line <strong>204</strong>

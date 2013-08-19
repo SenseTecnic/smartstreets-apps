@@ -1,0 +1,104 @@
+#navbar {
+	height: 44px;
+	margin-bottom: 0
+	-webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#toolbar {
+	margin-top: 0;
+}
+
+#toolbar .inputcombo {
+  overflow-x: visible;
+}
+
+h2 {
+	margin-bottom: 4px;
+}
+
+/* photo classes may not be used */
+#photo {
+}
+
+#phototab {
+	text-align: center;
+}
+
+#phototab img {
+	margin-bottom: 8px
+}
+
+.map-tabbody {
+  text-align: center;
+}
+
+.fullmap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+}
+
+#staticmapimage {
+	width: 600px;
+	height: 350px;
+	border: 1px solid #999;
+	background-color: #fff;
+}
+
+.tabbody #mapscrollers {
+	height: 352px;
+}
+
+.tabbody .nav {
+	margin: 0;
+	border: 1px solid @@@focal_border_color@@@;
+}
+
+#mapzoom {
+	position: relative;
+	height: 34px;
+	margin: 7px 5px;
+}
+
+#mapzoom a {
+	display: block;
+	position: absolute;
+	width: 40px;
+	height: 34px;
+	background-image: url(/modules/map/images/buttons.png);
+	background-repeat: no-repeat;
+}
+
+#loadingimage,
+#loadingimage2 {
+	position: absolute;
+	z-index: 100;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	margin-top: -20px;
+	opacity: 0.75;
+}
+
+#container .mapimage {
+    position: absolute;
+    top: 52px; /* toolbar height plus top margin */
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#tabbodies .mapimage {
+    position: static;
+}
+
+#search-form input[type="text"] {
+    width: 98%;
+    padding: 4px 1% 6px 1%;
+}
+

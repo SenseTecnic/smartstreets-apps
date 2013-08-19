@@ -1,0 +1,11 @@
+{
+    "feeds":[
+        {
+            "name":"smartstreets",
+            "title":"Smart Streets",
+            "url":"http://smartstreets.sensetecnic.com/cat/data"
+        }
+    ]
+
+}
+

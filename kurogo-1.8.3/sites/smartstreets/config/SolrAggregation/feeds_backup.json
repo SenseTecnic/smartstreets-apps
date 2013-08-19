@@ -1,0 +1,26 @@
+{
+    "feeds":[
+        {
+            "name":"smartstreets",
+            "title":"Smart Streets",
+            "url":"http://smartstreets.sensetecnic.com/cat"
+        }
+        ,{
+            "name":"stride",
+            "title":"Stride",
+            "url":"http://smartstreets.sensetecnic.com/cat"
+        }
+        ,{
+            "name":"openiot",
+            "title":"Open IoT",
+            "url":"http://smartstreets.sensetecnic.com/cat"
+        }
+        ,{
+            "name":"distance",
+            "title":"Distance",
+            "url":"http://smartstreets.sensetecnic.com/cat/data"
+        }
+    ]
+
+}
+

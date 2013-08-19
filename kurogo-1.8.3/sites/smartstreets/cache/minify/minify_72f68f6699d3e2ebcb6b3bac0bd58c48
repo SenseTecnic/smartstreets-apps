@@ -1,0 +1,106 @@
+
+/* paneStories.js */
+
+/* 1   */ /*
+/* 2   *|  * Copyright © 2010 - 2013 Modo Labs Inc. All rights reserved.
+/* 3   *|  *
+/* 4   *|  * The license governing the contents of this file is located in the LICENSE
+/* 5   *|  * file located at the root directory of this distribution. If the LICENSE file
+/* 6   *|  * is missing, please contact sales@modolabs.com.
+/* 7   *|  *
+/* 8   *|  */
+/* 9   */ 
+/* 10  */ /* 
+/* 11  *|  * paneStories text block module
+/* 12  *|  * 
+/* 13  *|  * Handles multiple elements for efficiency
+/* 14  *|  */
+/* 15  */  
+/* 16  */ (function (window) {
+/* 17  */ 
+/* 18  */ function paneStories (elementID) {
+/* 19  */     this.element = document.getElementById(elementID);
+/* 20  */     
+/* 21  */     this.stories = getElementsByClassName('pane-story', this.element);
+/* 22  */     
+/* 23  */     this.pager = getFirstElementByClassName('pane-stories-pager', this.element);
+/* 24  */     if (this.pager) {
+/* 25  */         this.dots = getElementsByClassName('pane-stories-pager-dot', this.pager);
+/* 26  */         this.prev = getFirstElementByClassName('pane-stories-pager-prev', this.pager);
+/* 27  */         this.next = getFirstElementByClassName('pane-stories-pager-next', this.pager);
+/* 28  */     }
+/* 29  */     
+/* 30  */     // set caller options
+/* 31  */     if (typeof options == 'object') {
+/* 32  */         for (var i in options) {
+/* 33  */             this.options[i] = options[i];
+/* 34  */         }
+/* 35  */     }
+/* 36  */ }
+/* 37  */ 
+/* 38  */ paneStories.prototype = {
+/* 39  */     element: null,
+/* 40  */     stories: [],
+/* 41  */     pager: null,
+/* 42  */     dots: [],
+/* 43  */     prev: null,
+/* 44  */     next: null,
+/* 45  */     ellipsizer: null,
+/* 46  */     options: {
+/* 47  */     },
+/* 48  */ 	
+/* 49  */ 	  resizeHandler: function () {
+/* 50  */         if (!this.ellipsizer) {
+
+/* paneStories.js */
+
+/* 51  */             var elements = getElementsByClassName('ellipsis', this.element);
+/* 52  */             this.ellipsizer = new ellipsizer({refreshOnResize: false});
+/* 53  */             this.ellipsizer.addElements(elements);
+/* 54  */         } else {
+/* 55  */             var that = this;
+/* 56  */             setTimeout(function () {
+/* 57  */                 that.ellipsizer.refresh();
+/* 58  */             }, 1);
+/* 59  */         }
+/* 60  */     },
+/* 61  */     
+/* 62  */     switchStory: function (elem, direction) {
+/* 63  */         if (hasClass(elem, 'disabled')) { return false; }
+/* 64  */         
+/* 65  */         for (var i = 0; i < this.stories.length; i++) {
+/* 66  */             if (hasClass(this.stories[i], 'current')) {
+/* 67  */                 var j = direction == 'next' ? i+1 : i-1;
+/* 68  */                 
+/* 69  */                 if (j >= 0 || j < this.stories.length) {
+/* 70  */                     removeClass(this.stories[i], 'current');
+/* 71  */                     addClass(this.stories[j], 'current');
+/* 72  */                     
+/* 73  */                     removeClass(this.dots[i], 'current');
+/* 74  */                     addClass(this.dots[j], 'current');
+/* 75  */                     
+/* 76  */                     if (j == 0) {
+/* 77  */                         addClass(this.prev, 'disabled');
+/* 78  */                     } else {
+/* 79  */                         removeClass(this.prev, 'disabled');
+/* 80  */                     }
+/* 81  */                     if (j == (this.stories.length-1)) {
+/* 82  */                         addClass(this.next, 'disabled');
+/* 83  */                     } else {
+/* 84  */                         removeClass(this.next, 'disabled');
+/* 85  */                     }
+/* 86  */                     
+/* 87  */                     this.ellipsizer.refresh();
+/* 88  */                 }
+/* 89  */                 
+/* 90  */                 break;
+/* 91  */             }
+/* 92  */         }
+/* 93  */         
+/* 94  */         return false;
+/* 95  */     }
+/* 96  */ }
+/* 97  */ 
+/* 98  */ window.paneStories = paneStories;
+/* 99  */ })(window);
+/* 100 */ 

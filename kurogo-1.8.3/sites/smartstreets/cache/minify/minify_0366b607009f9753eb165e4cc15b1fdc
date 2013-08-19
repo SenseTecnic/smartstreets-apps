@@ -1,0 +1,65 @@
+/* Adding url prefix '/device/tablet-computer-unknown/' */
+
+/* Minify_CSS_UriRewriter::$debugText
+
+docRoot    : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www
+currentDir : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/app/modules/social/css
+
+file-relative URI  : common/images/button-twitter-24.png
+path prepended     : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/app/modules/social/css/common/images/button-twitter-24.png
+docroot stripped   : /modules/social/css/common/images/button-twitter-24.png
+traversals removed : /modules/social/css/common/images/button-twitter-24.png
+
+file-relative URI  : common/images/button-facebook-24.png
+path prepended     : /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/app/modules/social/css/common/images/button-facebook-24.png
+docroot stripped   : /modules/social/css/common/images/button-facebook-24.png
+traversals removed : /modules/social/css/common/images/button-facebook-24.png
+
+*/
+
+/* pane-tablet.css */
+
+/* 1  */ .portlet-module-social .pane-stories .source-info {
+/* 2  */     margin-top: 10px;
+/* 3  */ }
+/* 4  */ .portlet-module-social .pane-stories .source-info img,
+/* 5  */ .portlet-module-social .pane-stories .source-info .author-created
+/* 6  */ {
+/* 7  */   float: left;
+/* 8  */ }
+/* 9  */ 
+/* 10 */ .portlet-module-social .pane-stories .source-info .author-created
+/* 11 */ {
+/* 12 */     padding: 4px 0 4px 6px;
+/* 13 */ }
+/* 14 */ 
+/* 15 */ .portlet-module-social .pane-stories .source-info .author-created .author,
+/* 16 */ .portlet-module-social .pane-stories .source-info .author-created .post-date
+/* 17 */ {
+/* 18 */     display: block;
+/* 19 */     padding: 2px;
+/* 20 */ }
+/* 21 */ 
+/* 22 */ .portlet-module-social .pane-stories .twitter .source-info .post-date
+/* 23 */ {
+/* 24 */     background-image: url("/device/tablet-computer-unknown/modules/social/css/common/images/button-twitter-24.png");
+/* 25 */ }
+/* 26 */ .portlet-module-social .pane-stories .facebook .source-info .post-date
+/* 27 */ {
+/* 28 */     background-image: url("/device/tablet-computer-unknown/modules/social/css/common/images/button-facebook-24.png");
+/* 29 */ }
+/* 30 */ .portlet-module-social .pane-stories .twitter .source-info .post-date,
+/* 31 */ .portlet-module-social .pane-stories .facebook .source-info .post-date
+/* 32 */ {
+/* 33 */     padding-left: 20px;
+/* 34 */     background-repeat: no-repeat;
+/* 35 */     background-size: 16px 16px;
+/* 36 */     background-position: left;
+/* 37 */     display: inline-block;
+/* 38 */ 
+/* 39 */ }
+/* 40 */ 
+
+/* id::themeConfigModTimeChecker */
+
+/* 1 */ 

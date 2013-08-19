@@ -1,0 +1,43 @@
+h1.slugline a {
+    text-decoration: none;
+}
+
+li.story {
+    height: 88px;
+	  margin: 0;
+    padding: 1px;
+    overflow: hidden;
+    position: relative;
+}
+
+li.story.noimage {
+    padding-left: 8px;
+}
+
+.results li.story a {
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 88px;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+.results li.story a .ellipsis {
+    overflow: hidden;
+    margin: 6px 25px 6px 0;
+    line-height: 1.2em;
+    height: 76px;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+}
+
+.results li.story .thumbnail {
+    float:left;
+    margin: 0 8px 0 0;
+    width: 88px;
+    height: 88px;
+    background: transparent url('/modules/news/images/news-placeholder.png') no-repeat left top;
+    background-size: 5.5em;
+}
+

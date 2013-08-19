@@ -1,0 +1,259 @@
+.springboard {
+	padding: 0;
+}
+.springboard div {
+	margin: 1px 4px;
+	line-height: 1.1em;
+}
+.springboard div a {	
+	padding: 4px 6px;
+}
+.springboard div.utility a {
+	font-size: 90%;
+}
+.springboard a img, .springboard div.utility a img {
+	width: 60px;
+	height: 60px;
+}
+.springboard a:hover {
+	border: 2px solid #c00;
+	padding: 2px 4px;
+	text-decoration: none;
+}
+.springboard a:active {
+	border: 4px solid #c00;
+	padding: 0px 2px;
+}
+.springboard div.separator {
+	clear: both;
+	float: none;
+	width: 100%;
+	height: 10px;
+}
+.forminput {
+	width: 90%;
+	height: 1.2em;
+	border-width: 2px;
+}
+.imagebutton {
+    float: right;
+}
+#search {
+    font-size: 64.7%;
+}
+#searchformcontainer {
+    margin-top: 0px;
+    margin-bottom: 1em;
+    padding-top: 0px;
+}
+
+.homelink {
+    float: left;
+}
+/*.pagetitle {
+    margin-top:-2.7em;
+    margin-left: 0.2em;
+}*/
+
+/* blackberry browsers do not support max-width */
+.crumb1 {
+	width: 120px;
+}
+.crumb2a  {
+	width: 45px;
+}
+.crumb2b  {
+	width: 50px;
+}
+.crumb3a {
+	width: 40px;
+}
+.crumb3b {
+	width: 45px;
+}
+.crumb3c {
+	width: 50px;
+}
+
+#tabs {
+	margin: 0 0;
+}
+
+#tabs li {
+	padding: 4px 10px 5px 10px;
+}
+
+#tabs li.active {
+	margin-top: -2px;
+	padding-top: 5px;
+	padding-bottom: 6px;
+}
+
+#tabs li a {
+	display: block;
+	text-decoration: none;
+	min-width: 40px;
+}
+
+#tabs.smalltabs li {
+	font-size: 88.235%;
+	margin-right: 3px;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+#tabbodies {
+	margin: 0 -12px 0 -12px;
+}
+
+.tabbody {
+	display: block;
+	position: relative;
+	min-height: 230px;
+}
+
+.tabbody h3 {
+	margin-top: 22px;
+}
+
+.tabbody h3:first-child {
+    margin-top: 8px;
+}
+
+.tabbody li:first-child h3 {
+	margin-top: 2px;
+}
+
+.tabstrip ,
+#tabstrip {
+	list-style-type: none;
+	height: 32px;
+	-webkit-border-radius: 10px;	
+	margin: 0;
+	padding: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.tabstrip li ,
+#tabstrip li {
+	float: left;
+	margin: 0;
+	text-align: center;
+	height: 33px;
+}
+
+.tabstrip a ,
+#tabstrip a {
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	text-decoration: none;
+	color: #fff;
+	background: url(/common/images/tabstrip.jpg) repeat-x;
+	border-right: 1px solid #999;
+	border-radius: 1px;
+}	
+
+.tabstrip li.active a ,
+#tabstrip li.active a {
+	background-image: url(/common/images/tabstrip-active.jpg);
+}
+
+.tabstrip li:first-child a ,
+#tabstrip li:first-child a {
+	-webkit-border-bottom-left-radius: 10px;	
+	-webkit-border-top-left-radius: 10px;	
+}
+
+.tabstrip li:last-child a ,
+#tabstrip li:last-child a {
+	-webkit-border-bottom-right-radius: 10px;	
+	-webkit-border-top-right-radius: 10px;	
+}
+
+.twotabs li {
+	width: 50%;
+}
+
+.threetabs li {
+	width: 33.333%;
+}
+
+.fourtabs li {
+	width: 25%;
+}
+
+.fivetabs li {
+	width: 20%;
+}
+
+.fontsize {
+	clear: both;
+	font-size: 75%;
+	padding: 20px 10px;
+}
+
+.fontsize a, .fontsize span {
+	padding: 0 10px;
+}
+
+.fontsmall {
+	font-size: 5pt;
+}
+
+.fontmedium {
+	font-size: 8pt;
+}
+
+.fontlarge {
+	font-size: 11pt;
+}
+
+.fontxlarge {
+	font-size: 14pt;
+}
+
+.homepage .moduleicon {
+	padding-left: 0;
+	margin-right: 8px;
+	margin-left: -2px;
+	float: left;
+}
+
+
+/* Login-related buttons */
+
+.loginbuttons li.facebook {
+	background-image: url(/common/images/button-facebook-24.png);
+}
+
+.loginbuttons li.google {
+	background-image: url(/common/images/button-google-24.png);
+}
+
+.loginbuttons li.oauth {
+	background-image: url(/common/images/button-oauth-24.png);
+}
+
+.loginbuttons li.openid {
+	background-image: url(/common/images/button-openid-24.png);
+}
+
+.loginbuttons li.twitter {
+	background-image: url(/common/images/button-twitter-24.png);
+}
+
+.loginbuttons li.windows {
+	background-image: url(/common/images/button-windows-24.png);
+}
+
+#shareback {
+  /* for now hide this because height 100% doesn't work right on BB */
+	display: none;
+}
+
+#sharedialog {
+  border: solid 1px #333;
+}
+

@@ -1,0 +1,9 @@
+kurogo-1.8.3/sites/smartstreets/cache/*
+kurogo-1.8.3/sites/smartstreets/logs/kurogo.log
+kurogo-1.8.3/sites/smartstreets/log/kurogo_stats_log_v1
+
+*.odt#
+*.DS_Store
+*.project
+*.buildpath
+

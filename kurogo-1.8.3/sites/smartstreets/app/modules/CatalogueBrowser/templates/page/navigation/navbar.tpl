@@ -96,14 +96,14 @@
 {/capture}
 
 
-<!-- {capture name="kgoNavbarSearch" assign="kgoNavbarSearch"} -->
+{capture name="kgoNavbarSearch" assign="kgoNavbarSearch"}
     {block name="kgoNavbarSearch"}
         <div class="search">
           <!-- Search Link -->
           <a href="search" title="Search Catalogues"><img src="/common/images/search.png" width="46" height="45" /></a>
         </div>
     {/block}
-<!-- {/capture} -->
+{/capture}
 
 {block name="kgoNavbar"}
   <div id="navbar" class="searchon">

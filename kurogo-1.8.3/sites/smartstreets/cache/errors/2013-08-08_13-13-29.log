@@ -1,9 +1,0 @@
-<strong>Unable to load template file 'modules/CatalogueBrowser/templates/results'</strong><br><br><strong>Fatal error</strong>:  Uncaught exception 'SmartyException' with message 'Unable to load template file 'modules/CatalogueBrowser/templates/results'' in /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/smarty/sysplugins/smarty_internal_template.php:163
-Stack trace:
-#0 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/smarty/sysplugins/smarty_internal_template.php(550): isExisting(boolean)
-#1 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/smarty/Smarty.class.php(336): getRenderedTemplate()
-#2 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/TemplateEngine.php(438): fetch(string, NULL, NULL)
-#3 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/WebModule.php(1993): fetchForDevice(string)
-#4 /Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/www/index.php(323): displayPage()
-#5 {main}
-  thrown in <strong>/Users/crysng/Magic/project_repo/smart_streets_apps/kurogo-1.8.3/Kurogo-Mobile-Web/lib/smarty/sysplugins/smarty_internal_template.php</strong> on line <strong>163</strong>

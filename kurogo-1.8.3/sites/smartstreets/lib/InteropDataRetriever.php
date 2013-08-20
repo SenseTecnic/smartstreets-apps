@@ -7,7 +7,7 @@ class InteropDataRetriever extends URLDataRetriever
  	
 
  	public function getCatalogues($datahubURL) { 
-        $this->setBaseURL($datahubURL."/cat/"); 
+        $this->setBaseURL($datahubURL."/cat"); 
         $data = $this->getData($response); 
         return $data; 
     } 

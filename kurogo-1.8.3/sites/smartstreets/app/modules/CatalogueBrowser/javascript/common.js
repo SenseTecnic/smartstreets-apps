@@ -1,18 +1,18 @@
 $(document).ready(function() {
 
 	// enable/disable search submit button depends on selected option
-	$("#catalogue_select").change(function(){
-		if ($(this).val()!=""){
-			//enable submit button
-			$("#search_button").addClass("enabled");
-			$("#search_button").removeClass("disabled");
-			$("#search_button").removeAttr("disabled", "disabled");
-		}else{
-			$("#search_button").removeClass("enabled");
-			$("#search_button").addClass("disabled");
-			$("#search_button").attr("disabled", "disabled");
-		}
-	});
+	// $("#catalogue_select").change(function(){
+	// 	if ($(this).val()!=""){
+	// 		//enable submit button
+	// 		$("#search_button").addClass("enabled");
+	// 		$("#search_button").removeClass("disabled");
+	// 		$("#search_button").removeAttr("disabled", "disabled");
+	// 	}else{
+	// 		$("#search_button").removeClass("enabled");
+	// 		$("#search_button").addClass("disabled");
+	// 		$("#search_button").attr("disabled", "disabled");
+	// 	}
+	// });
 });
 
 function viewItemDetails(that){

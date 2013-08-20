@@ -62,18 +62,55 @@ class CatalogueItemManager {
           //replace "/cat/..." with href
           if (strpos($item["href"], "http") !==false){
             //replace entire url 
-            print "\n This is a resource, not a catalogue";
-          }else{
-            $isCatalogue=true;
-            $pos = strpos($feed_url, "/cat");
-            $childrenUrl = substr_replace ($feed_url, $item["href"], $pos);
-            print "\nchildren url = ".$childrenUrl;
-            $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
+            print "\n This is a resource, not a catalogue: full url";
 
-            //merge two arrays
-            foreach ($childrenFeeds as $child){
-              $feed_array[]= $child;
+            //FIX: try to get response.. if it's json wiht items, it's a catalogue
+            $response= $this->interopController->getItemDetails($item["href"]);
+            print "\nresponse: ".$response["item-metadata"];
+            if ($response["item-metadata"]!=null){
+              //is catalogue
+              $isCatalogue= true;
+              $childrenUrl = $item["href"];
+              print "\nchildren url = ".$childrenUrl;
+              $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
+
+              //merge two arrays
+              foreach ($childrenFeeds as $child){
+                $feed_array[]= $child;
+              }
+            }else{
+                $isCatalogue=false;
             }
+
+          }else{
+            $tPos = strpos($feed_url, "/cat");
+            $tUrl = substr_replace ($feed_url, $item["href"], $tPos);
+            $response= $this->interopController->getItemDetails($tUrl);
+            if ($response["item-metadata"]!=null){
+              //is catalogue
+              $isCatalogue= true;
+              $childrenUrl = $tUrl;
+              print "\nchildren url = ".$childrenUrl;
+              $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
+
+              //merge two arrays
+              foreach ($childrenFeeds as $child){
+                $feed_array[]= $child;
+              }
+            }else{
+              $isCatalogue=false;
+            }
+
+            // $isCatalogue=true;
+            // $pos = strpos($feed_url, "/cat");
+            // $childrenUrl = substr_replace ($feed_url, $item["href"], $pos);
+            // print "\nchildren url = ".$childrenUrl;
+            // $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
+
+            // //merge two arrays
+            // foreach ($childrenFeeds as $child){
+            //   $feed_array[]= $child;
+            // }
           }
           $parentUrl = $feed_url;
           $newCatalogueItem = CatalogueItem::createCatalogueItem ();

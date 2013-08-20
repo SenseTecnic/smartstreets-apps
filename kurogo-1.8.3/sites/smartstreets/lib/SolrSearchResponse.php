@@ -20,8 +20,9 @@ class SolrSearchResponse
            
             $searchSort = new SearchSort($sortField, $isAscending);
             $searchQuery->addSort($searchSort);
-            $searchQuery->setMaxItems(10000000);//temporary to display all results until scroll to load more is implemented.
+            
         }
+        $searchQuery->setMaxItems(10000000);//temporary to display all results until scroll to load more is implemented.
 
         $searchQuery->addReturnField("title");
         $searchQuery->addReturnField("id");

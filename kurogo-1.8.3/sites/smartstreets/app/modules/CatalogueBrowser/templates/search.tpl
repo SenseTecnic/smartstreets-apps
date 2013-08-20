@@ -14,8 +14,6 @@
 				</select>
 				<select id= "catalogue_select" name="catalogue">
 					<option value="">None</option>
-					<!-- <option value="/cat/data">Data</option>
-					<option value="/cat/sensors">Sensors</option> -->
 				</select> 
 				</th>
 			</tr>

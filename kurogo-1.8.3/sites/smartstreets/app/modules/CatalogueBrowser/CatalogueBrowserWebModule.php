@@ -294,7 +294,7 @@ class CatalogueBrowserWebModule extends WebModule
            		//create array of params
                 $params= array();
                 // $params['datahub'] = strtolower($this->getArg('datahub'));
-                $params['datahub'] = strtolower($this->getArg('hub_selected'));
+                // $params['datahub'] = strtolower($this->getArg('hub_selected'));
                 // $params['catalogue_href'] = $this->getArg('catalogue');
                 $params['iscontenttype'] = $this->getArg('content_type');
                 $params['id']= $this->getArg('id');
@@ -307,7 +307,7 @@ class CatalogueBrowserWebModule extends WebModule
                 $params['license'] = $this->getArg('license');
                 $sort = $this->getArg('sort');
 
-                $baseURL= $this->getModuleVar('BASE_URL', strtolower($params['datahub']),"datahub");
+                // $baseURL= $this->getModuleVar('BASE_URL', strtolower($params['datahub']),"datahub");
 
                 //CREATE SOLR SEARCH QUERIES
                 $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort);
@@ -344,7 +344,7 @@ class CatalogueBrowserWebModule extends WebModule
 
                         $tagArray = explode(',', $tags);
                         // $itemSearchURL=isset($item["hasDescription"]) ? $item["hasDescription"] : null;
-
+                        $baseURL= $this->getModuleVar('BASE_URL', strtolower($datahub),"datahub");
 
                         if ($isCatalogue){
                             // open to another view catalogue page 

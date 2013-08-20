@@ -110,7 +110,7 @@
   <!-- To make ID unique, ID = "hash of {datahub}.{description}.{hasId}" -->
    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
 
-   <field name="hasid" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
+   <field name="hasid" type="string" indexed="true" stored="true" required="false" multiValued="false" /> 
    <field name="datahub" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
    <field name="isCatalogue" type="boolean" indexed="true" stored="true" required="false" multiValued="false" /> 
    <field name="itemCounts" type="int" indexed="true" stored="true" required="false" multiValued="false" /> 
@@ -119,7 +119,7 @@
   <field name="parentUrl" type="string" indexed="true" stored="true" required="false" multiValued="false" /> 
    <!-- Sensor Data ONLY fields -->
    <field name="title" type="text_en" indexed="true" stored="true" multiValued="false" required="false"/>
-   <field name="maintainer" type="text_en" indexed="true" stored="false" required="false"/>
+   <field name="maintainer" type="text_en" indexed="true" stored="true" required="false"/>
    <field name="fields" type="string" indexed="false" stored="true" required="false"/>
    <field name="data" type="string" indexed="false" stored="true" required="false"/>
    <field name="lat" type="string" indexed="false" stored="true" required="false"/>
@@ -127,9 +127,9 @@
    <field name="locationGeo" type="location" indexed="true" stored="true" required="false"/>
 
    <!-- Common fields -->
-   <field name="lastupdate" type="date" indexed="true" stored="true" multiValued="true" required="false"/>
+   <field name="lastupdate" type="date" indexed="true" stored="true" multiValued="false" required="false"/>
    <field name="hasdescription" type="text_en" indexed="true" stored="true" required="false"/>
-   <field name="iscontenttype" type="string" indexed="true" stored="true" required="false"/>
+   <field name="iscontenttype" type="text_en" indexed="true" stored="true" required="false"/>
    <field name="hasparentpackage" type="string" indexed="true" stored="true" required="false"/>
    <field name="license" type="text_en" indexed="true" stored="true" required="false"/>
    <field name="name" type="text_en" indexed="true" stored="true" required="false"/>
@@ -141,7 +141,7 @@
    <field name="owner" type="text_en" indexed="true" stored="true" required="false"/>
    <field name="href" type="string" indexed="true" stored="true"/>
 
-   <!-- <field name="testCopyField" type="string" indexed="true" stored="true" required="false"/> -->
+   <field name="name_sort" type="string" indexed="true" stored="false"/>
 
 
    <dynamicField name="children_id_*" type="string" indexed="true"  stored="true"/>
@@ -217,6 +217,8 @@
 
    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
    <!-- <copyField source="name" dest="alphaNameSort"/> -->
+
+   <copyField source="name" dest="name_sort" /> 
  
   <types>
     <!-- field type definitions. The "name" attribute is
@@ -423,6 +425,7 @@
         <filter class="solr.EnglishMinimalStemFilterFactory"/>
   -->
         <filter class="solr.PorterStemFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="3" maxGramSize="25" />
       </analyzer>
     </fieldType>
 

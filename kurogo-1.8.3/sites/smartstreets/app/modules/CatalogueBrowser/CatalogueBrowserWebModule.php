@@ -1,5 +1,5 @@
 <?php 
-include 'chromephp-master/ChromePhp.php';
+// include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserWebModule extends WebModule
 {
@@ -11,7 +11,7 @@ class CatalogueBrowserWebModule extends WebModule
 
     protected function initialize(){
     	//set up data structures and js libs
-        ChromePhp::log ("SELECTED_DATAHUB");
+        // ChromePhp::log ("SELECTED_DATAHUB");
     }
 
     protected function initializeForPage() {
@@ -30,8 +30,23 @@ class CatalogueBrowserWebModule extends WebModule
         { 
             case 'index': 
 
+                //populate datahubs in page
+                $datahub_array = $this -> getModuleSection ("datahubs", "datahub");
+                $select_options_array = array();
+                foreach ($datahub_array as $key => $val){     
+                    $select_options_array[] = $key;
+                }
+
+                $this->assign('datahub_array', $select_options_array);
+
+                break; 
+
+            case 'datahub':
+
+
                 //TODO: make a page for selecting datahubs
-                $SELECTED_DATAHUB = "Smartstreets";
+                $SELECTED_DATAHUB = $this->getArg('datahub');
+                // $SELECTED_DATAHUB = "Smartstreets";
                 $baseURL= $this->getModuleVar('BASE_URL', strtolower($SELECTED_DATAHUB),"datahub");
 
                 
@@ -40,49 +55,49 @@ class CatalogueBrowserWebModule extends WebModule
 
                  //prepare the list of catalogues
                  $catalogueList = array();
+                 if ($catalogues!=null){
+                    foreach ($catalogues["items"] as $catalogueItem){
+                        //each item has "i-object-metadata", and "href"
+                        $href = $catalogueItem["href"];
+                        // $metadata = json_encode($catalogueItem["i-object-metadata"], true);
 
-                 foreach ($catalogues["items"] as $catalogueItem){
-                 	//each item has "i-object-metadata", and "href"
-                 	$href = $catalogueItem["href"];
-                 	// $metadata = json_encode($catalogueItem["i-object-metadata"], true);
-                  //   ChromePhp::log ("test: ".$metadata);
+                        //check if catalog supports search and has description
+                        $description= ""; 
+                        $isSearchable = false;
+                        foreach ($catalogueItem["i-object-metadata"] as $metaItem){
+                            
 
-                 	//check if catalog supports search and has description
-                 	$description= ""; 
-                 	$isSearchable = false;
-                 	foreach ($catalogueItem["i-object-metadata"] as $metaItem){
-                        
+                            if ($metaItem["rel"]== $this->getModuleVar('Description', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub")){
+                                $description = $metaItem["val"];
+                            }
+                            if ($metaItem["rel"]== $this->getModuleVar('Support_Search', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub") && $metaItem["val"]== "urn:X-tsbiot:search:simple"){
+                                $isSearchable=true;
+                            }
+                        }
 
-                 		if ($metaItem["rel"]== $this->getModuleVar('Description', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub")){
-                 			$description = $metaItem["val"];
-                 		}
-                 		if ($metaItem["rel"]== $this->getModuleVar('Support_Search', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub") && $metaItem["val"]== "urn:X-tsbiot:search:simple"){
-                 			$isSearchable=true;
-                 		}
-                 	}
+                        //build view catalogue redirect URL and args to pass 
+                        $args = array(
+                            'href' => $href,
+                            'hub' => $SELECTED_DATAHUB
+                        );
 
-                 	//build view catalogue redirect URL and args to pass 
-                 	$args = array(
-                 		'href' => $href,
-                        'hub' => $SELECTED_DATAHUB
-                 	);
-
-                 	// create navlist item
-                 	$catalogue = array (
-                 		'label'=> $this->getModuleVar($SELECTED_DATAHUB, "datahubs", "datahub")." Hub",
-                 		'boldLabels'=> true,
-                 		'title'=> $href,
-                 		'subtitle' => $description,
-                 		'url' => $this->buildBreadcrumbURL("viewCatalogue", $args, true)
-                 	);
-             
-                 	$catalogueList[]= $catalogue;
-                 	//KurogoDebug::debug($catalogueItem["href"], $halt=false);
-                 }
+                        // create navlist item
+                        $catalogue = array (
+                            'label'=> $this->getModuleVar($SELECTED_DATAHUB, "datahubs", "datahub")." Hub",
+                            'boldLabels'=> true,
+                            'title'=> $href,
+                            'subtitle' => $description,
+                            'url' => $this->buildBreadcrumbURL("viewCatalogue", $args, true)
+                        );
                  
+                        $catalogueList[]= $catalogue;
+                        //KurogoDebug::debug($catalogueItem["href"], $halt=false);
+                    }
+                 }
                  $this->assign('catalogueList', $catalogueList);
+                 $this->assign('selectedHub', $SELECTED_DATAHUB);
 
-                 break; 
+                 break;
 
             case 'viewCatalogue':
 
@@ -92,7 +107,7 @@ class CatalogueBrowserWebModule extends WebModule
             	//set page title
             	$this -> setPageTitle ($parent_href);
             	//query data from smartstreets
-                ChromePhp::log ("section id: ".$this->getArg('hub'));
+                // ChromePhp::log ("section id: ".$this->getArg('hub'));
                 $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
                 $catItems = $this->controller->getCatalogueItems($baseURL, $parent_href);
 
@@ -118,7 +133,7 @@ class CatalogueBrowserWebModule extends WebModule
                             }
                         }	           
 	                }  
-	                ChromePhp::log('Cat info: '.implode("\n", $catMetadata));
+	                // ChromePhp::log('Cat info: '.implode("\n", $catMetadata));
 	                $this->assign('catalogueInfo', $catMetadata);
                 }
 
@@ -200,7 +215,7 @@ class CatalogueBrowserWebModule extends WebModule
 
                         }
 
-                        ChromePhp::log('metaItem: '.json_encode($metaItem));
+                        // ChromePhp::log('metaItem: '.json_encode($metaItem));
                  	}
 
                  	
@@ -220,7 +235,15 @@ class CatalogueBrowserWebModule extends WebModule
                  		// ChromePhp::log('DRILL DOWN');
                  	}else{
                  		//create resource download url
-                 		$resourceURL = $href;
+                        //check  if href contains "Http", if not, append to current url
+                        if (strpos($href, "http")!==false){
+                            $resourceURL = $href;
+                            // ChromePhp::log ("full url!: ".$href);
+                        }else{
+                            $resourceURL = $baseURL.$href;
+                            // ChromePhp::log ("part url! ".$href);
+                        }
+                 		
                  	}
 
                     $tag_array = "";
@@ -239,7 +262,7 @@ class CatalogueBrowserWebModule extends WebModule
                  		'itemSearchURL'=> $itemSearchURL,
                         'badge'=>$tag_array
                  	);
-             
+            
                  	$itemList[]= $itemData;
                 }
 
@@ -260,7 +283,7 @@ class CatalogueBrowserWebModule extends WebModule
 
                     $select_options_array[$hub_url] = $hub;
                 }
-                ChromePhp::log ($select_options_array);
+                // ChromePhp::log ($select_options_array);
                 $this->assign('select_options_array', $select_options_array);
                 $this->assign('mySelect', "");
                 break;
@@ -270,8 +293,8 @@ class CatalogueBrowserWebModule extends WebModule
                 $this -> setPageTitle ("Search Results");
            		//create array of params
                 $params= array();
-                // $params['datahub'] = $this->getArg('datahub');
-                $params['datahub'] = $this->getArg('hub_selected');
+                // $params['datahub'] = strtolower($this->getArg('datahub'));
+                $params['datahub'] = strtolower($this->getArg('hub_selected'));
                 // $params['catalogue_href'] = $this->getArg('catalogue');
                 $params['iscontenttype'] = $this->getArg('content_type');
                 $params['id']= $this->getArg('id');
@@ -284,6 +307,8 @@ class CatalogueBrowserWebModule extends WebModule
                 $params['license'] = $this->getArg('license');
                 $sort = $this->getArg('sort');
 
+                $baseURL= $this->getModuleVar('BASE_URL', strtolower($params['datahub']),"datahub");
+
                 //CREATE SOLR SEARCH QUERIES
                 $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort);
                 
@@ -291,12 +316,12 @@ class CatalogueBrowserWebModule extends WebModule
 
                 // TODO: check that the json returned is not NULL .
                 if ($response ==null){
-                     ChromePhp::log ("There is no result");
+                     // ChromePhp::log ("There is no result");
                 }else{
                     //process json and create nav list data
                     $resultList = array();
                     $results = json_decode($response, true);//convert to associative array
-                    ChromePhp::log ("search result: ".$response);
+                    // ChromePhp::log ("search result: ".$response);
 
                     foreach($results["docs"] as $item){
                         $resourceURL = "";
@@ -305,7 +330,7 @@ class CatalogueBrowserWebModule extends WebModule
                         $href = isset($item["href"]) ? $item["href"] : null;
                         $description= isset($item["hasdescription"]) ? $item["hasdescription"] : "No Description";
                         $id=isset($item["id"]) ? $item["id"] : null;
-                        $itemId=isset($item["hasId"]) ? $item["hasId"] : null;
+                        $itemId=isset($item["hasid"]) ? $item["hasid"] : null;
                         $name = isset($item["name"]) ? $item["name"] : "No Name";
                         $title = isset($item["title"]) ? $item["title"] : "No Title";
                         $maintainer = isset($item["maintainer"]) ? $item["maintainer"] : null;
@@ -335,18 +360,21 @@ class CatalogueBrowserWebModule extends WebModule
                         }else{
 
                             //create resource download url
-                            $resourceURL = $href;
+                            //check  if href contains "Http", if not, append to current url
+                            if (strpos($href, "http")!==false){
+                                $resourceURL = $href;
+                                // ChromePhp::log ("full url!: ".$href);
+                            }else{
+                                $resourceURL = $baseURL.$href;
+                                // ChromePhp::log ("part url! ".$href);
+                            }
                         }
 
                         //set itemSearchURl
                         if ($itemId!= null){
                             //create search URL//urn:X-smartstreets:rels:hasId
-                            $itemSearchURL =$parentURL."?rel=urn:X-".$datahub.":rels:hasId"."&val=".$itemId;
-                            
+                            $itemSearchURL =$parentURL."?rel=urn:X-".$datahub.":rels:hasId"."&val=".$itemId;    
                         }
-
-                        // foreach ($tagArray as $tag)
-                        //     ChromePhp::log ("tags: ".$tag);
 
                         // create navlist item
                         $itemData = array (
@@ -364,104 +392,12 @@ class CatalogueBrowserWebModule extends WebModule
                         $resultList[]= $itemData;
                     }
 
+                    // ChromePhp::log ("searchURl".$itemSearchURL);
+
                     $this->assign('itemList', $resultList);
                     $this->assign ('resultCount', $results["numFound"]);
                 }
 
-                // foreach ($results["items"] as $resultItem){
-                //     //each item has "i-object-metadata", and "href"
-                //     $resultCount++;
-                //     $href = $resultItem["href"];
-
-                //     $description= "No Description"; 
-                //     $id="";
-                //     $name = "No Name";
-                //     $title = "";
-                //     $maintainer = "";
-                //     $isSearchable = 0;
-                //     $isCatalogue = 0;
-                 
-
-                //     $url="";
-                //     $resourceURL="";
-                //     $itemSearchURL="";
-
-                //     foreach ($resultItem["i-object-metadata"] as $metaItem){
-
-                //         // urn:X-smartstreets:rels:lastUpdate
-                //         // urn:X-tsbiot:rels:hasDescription:en
-                //         // urn:X-smartstreets:rels:hasId
-                //         // urn:X-smartstreets:rels:hasName:en
-                //         // urn:X-tsbiot:rels:isContentType
-                //         // urn:X-smartstreets:rels:hasParentPackage
-
-                //         if ($metaItem["rel"]== "urn:X-tsbiot:rels:hasDescription:en"){
-                //             if ($metaItem["val"]!="")
-                //                 $description = $metaItem["val"];
-                //         }
-                //         if ($metaItem["rel"]== "urn:X-tsbiot:rels:supportsSearch" && $metaItem["val"]== "urn:X-tsbiot:search:simple"){
-                //             $isSearchable=1;
-                //         }
-                //         if ($metaItem["rel"]== "urn:X-smartstreets:rels:hasId"){
-                //             $id = $metaItem["val"];
-                //             //create search URL
-                //             $itemSearchURL =$this->SMARTSTREETS_URL.$catalogue_href."?rel=".$metaItem["rel"]."&val=".$id;
-                //         }
-                //         if ($metaItem["rel"]== "urn:X-smartstreets:rels:hasName:en"){
-                //             $name = $metaItem["val"];
-                //             ChromePhp::log('name: '.$name);
-                //         }
-                //         if ($metaItem["rel"]== "urn:X-smartstreets:rels:hasTitle:en"){
-                //             $title = $metaItem["val"];
-                //         }
-                //         if ($metaItem["rel"]== "urn:X-smartstreets:rels:hasMaintainer"){
-                //             $maintainer = $metaItem["val"];
-                //         }
-                //         if ($metaItem["rel"]== "urn:X-tsbiot:rels:isContentType" && $metaItem["val"]=="application/vnd.tsbiot.catalogue+json"){
-                //             $isCatalogue= 1;
-                //         }
-                //     }
-                //     //build view catalogue redirect URL and args to pass 
-                //     $args = array(
-                //         'id' => $id,
-                //         'href' => $href,
-                //         'hub' => $datahub_name
-                //     );
-
-                    
-                //     //check if it is an item or catalogue
-
-                //     if ($isCatalogue){
-                //         // open to another view catalogue page 
-                //         $url = $this->buildBreadcrumbURL("viewCatalogue", $args, true);
-                //     }else{
-
-                //         //create resource download url
-                //         $resourceURL = $href;
-                //     }
-
-                //     // create navlist item
-                //     $itemData = array (
-                //         'label'=> $name,
-                //         'boldLabels'=> true,
-                //         'title'=> $title,
-                //         'subtitle' => $description,
-                //         'url' => $url,
-                //         'resourceURL' => $resourceURL,
-                //         'itemSearchURL'=> $itemSearchURL
-                //     );
-             
-                //     $resultList[]= $itemData;
-                // }//end of foreach
-
-                // }
-
-                // $this->assign('itemList', $resultList);
-                // $this->assign ('resultCount', $resultCount);
-                // ChromePhp::log ("url: ".$url);
-                //Case 1: No results, when item's href = href/data or href/sensor
-
-                //Case 2: Returns catalogues
 
                 break;
 

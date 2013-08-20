@@ -38,20 +38,16 @@
         {$item['subtitle']}
       {if $subTitleNewline|default:true}</div>{else}</span>{/if}
     {/if}
-<!--     {if $item['badge']}
-      <span class="badge">{$item['badge']}</span>
-    {/if}
- -->
- {if $item['badge']}
- <br><br><strong>Tags: </strong>
-    {foreach $item['badge'] as $tag}
-      <span class="badge">{$tag}</span>
-    {/foreach}
- {/if}
+
+   {if $item['badge']!=""}
+   <br><br><strong>Tags: </strong>
+      {foreach $item['badge'] as $tag}
+        <span class="badge">{$tag}</span>
+      {/foreach}
+   {/if}
   {if $item['url']}
     </a>
   {else}
-    <!-- add download button and details button -->
     <a class = "details_link" onclick="viewItemDetails(this)" data-search = {$item['itemSearchURL']}>View Details</a>
     {if $item['resourceURL']}
       <a class = "resource_link" href="{$item['resourceURL']}">Download Resource</a>

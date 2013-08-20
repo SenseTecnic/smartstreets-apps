@@ -4,6 +4,11 @@
             "name":"smartstreets",
             "title":"Smart Streets",
             "url":"http://smartstreets.sensetecnic.com/cat/data"
+        },
+        {
+            "name":"openiot",
+            "title":"Open IoT",
+            "url":"https://alertmeadaptor.appspot.com/cat/armmeetingrooms.json"
         }
     ]
 

@@ -1,5 +1,5 @@
 <?php
-
+ini_set("memory_limit","-1");
 /**
  * Class that executes data retrieval from various data sources.
  */
@@ -42,6 +42,8 @@ class CatalogueItemManager {
     //check if returned json is a data feed
     if ($data ["items"]!=null && $data["item-metadata"]!=null){
       //IS a valid data feed, create new catalogue item
+      //hack to get sensor data in:
+      //$root_url = "http://smartstreets.sensetecnic.com/cat/sensors";
       $jsonFeeds= $this->_parseResultsToCatalogueItems($data, $root_url, $datahub);
     }else{
       print "The response is not a valid sourcefeed, output: ".json_encode($data)."\n";

@@ -27,7 +27,7 @@
       {$customHeader}
     {else}
       {block name="kgoHeaderNavigation"}
-        {include file="findInclude:modules/CatalogueBrowser/templates/page/navigation/navbar.tpl"}
+        {include file="findInclude:common/templates/page/navigation/navbar.tpl"}
       {/block}
     {/if}
     

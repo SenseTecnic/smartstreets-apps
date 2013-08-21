@@ -1,6 +1,5 @@
 {block name="homeHeader"}
-  {include file="findInclude:modules/CatalogueBrowser/templates/header.tpl" scalable=false}
-  <!-- {include file="findInclude:common/templates/header.tpl" scalable=false} -->
+  {include file="findInclude:common/templates/header.tpl" scalable=false}
 {/block}
 
 {block name="userContextList"}{/block}

@@ -9,7 +9,6 @@
     {/block}
 {/capture}
 
-<!--
 {block name="kgoNavbar"}
   <div id="navbar" class="searchon">
     <div class="breadcrumbs{if $isModuleHome} homepage{/if}">
@@ -21,7 +20,8 @@
     {$kgoNavbarHelp}
   </div>
 {/block}
--->
+
+<!--
 {block name="kgoNavbar"}
   <div id="navbar" class = "searchon" {if $hasHelp} class="searchon helpon"{/if}>
     {if isset($customNavmenuButton)}
@@ -39,3 +39,4 @@
     {$kgoNavbarHelp}
   </div>
 {/block}
+-->

@@ -476,7 +476,7 @@ a.module img {
 	/*added by crysng*/
 	position: absolute;
 	top:0px;
-	right: 96px;
+	right: 46px;
 	width: 36px;
 }
 
@@ -484,8 +484,32 @@ a.module img {
     padding-right: 46px;
 }
 #navbar.searchon {
-    padding-right: 86px;
+    padding-right: 46px;
 }
+
+/*tablet*/
+.help {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 46px;
+}
+
+.search-tablet{
+	/*added by crysng*/
+	position: absolute;
+	top:0px;
+	right: 86px;
+	width: 36px;
+}
+
+#navbar.helpon-tablet {
+    padding-right: 46px;
+}
+#navbar.searchon-tablet {
+    padding-right: 96px;
+}
+
 /* Springboards */
 
 .springboard {

@@ -7,7 +7,9 @@
 {include file="findInclude:modules/CatalogueBrowser/templates/navlist.tpl" navlistItems=$itemList secondary=true accessKey=false navlistID="searchResults"} 
 {include file="findInclude:common/templates/footer.tpl"}
 
-<div id="scrollText" style="color: black; padding-left: 20%;">Scroll To Load 10 More Items... </div>
+{if $resultCount gt 10}
+<div id="scrollText" style="color: black; padding-left: 20%;">Scroll To Load More Items... </div>
+{/if}
 
 <div id="dialog-modal" title="Item Details">
   <div id = "item-details"></div>

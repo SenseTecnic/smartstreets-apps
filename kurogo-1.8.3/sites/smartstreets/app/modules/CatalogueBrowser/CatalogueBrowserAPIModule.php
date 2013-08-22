@@ -1,12 +1,10 @@
 <?php 
-
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserAPIModule extends APIModule
 {
     protected $id='CatalogueBrowser';
 
     //datahubs url
-    //protected $SMARTSTREETS_URL='http://smartstreets.sensetecnic.com';
     protected function initializeForCommand() {
         //instantiate controller 
         $this->controller = DataRetriever::factory('InteropDataRetriever', array());
@@ -20,7 +18,6 @@ class CatalogueBrowserAPIModule extends APIModule
                 $this->setResponse($details);
                 $this->setResponseVersion(1);
                 break; 
-
             case 'getDatahubCatalogues':
                 $baseURL = $this->getArg('baseURL');
                 $catalogues = $this->controller -> getCatalogues($baseURL);
@@ -28,13 +25,21 @@ class CatalogueBrowserAPIModule extends APIModule
                 $this->setResponse($catalogues);
                 $this->setResponseVersion(1);
                 break;
-
             case 'loadMoreItems':
                 $params['parentUrl']= $this->getArg('parentUrl');
                 $index = $this->getArg('index');
                 $sort="";
                 //TODO
                 $items = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, $index);
+
+                $this->setResponse($items);
+                $this->setResponseVersion(1);
+                break;
+            case 'loadMoreResults':
+                $params= $this->getArg('searchParam');
+                $index = $this->getArg('index');
+                $sort=$this->getArg('sort');
+                $items = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, json_decode($params), $sort, $index);
 
                 $this->setResponse($items);
                 $this->setResponseVersion(1);

@@ -40,7 +40,6 @@ class CatalogueBrowserAPIModule extends APIModule
                 $index = $this->getArg('index');
                 $sort=$this->getArg('sort');
                 $items = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, json_decode($params), $sort, $index);
-
                 $this->setResponse($items);
                 $this->setResponseVersion(1);
                 break;

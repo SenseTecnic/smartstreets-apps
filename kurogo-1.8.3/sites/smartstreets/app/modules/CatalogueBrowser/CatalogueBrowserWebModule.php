@@ -445,7 +445,6 @@ class CatalogueBrowserWebModule extends WebModule
                     //process json and create nav list data
                     $resultList = array();
                     $results = json_decode($response, true);//convert to associative array
-                    // ChromePhp::log ("search result: ".$response);
 
                     foreach($results["docs"] as $item){
                         $resourceURL = "";
@@ -530,8 +529,10 @@ class CatalogueBrowserWebModule extends WebModule
                         $resultList[]= $itemData;
                     }
 
+                    //fix: replace space with &nbps for css data attribute
+                    $params["tags"]=str_replace(" ","&#160;",$params["tags"]);
+
                     $searchParam=json_encode($params);
-                    // ChromePhp::log ("decode json: ".$searchParam);
                     $this->assign('itemList', $resultList);
                     $this->assign ('resultCount', $results["numFound"]);
                     $this->assign('searchParam', $searchParam);

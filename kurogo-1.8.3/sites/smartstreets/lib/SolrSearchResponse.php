@@ -2,7 +2,6 @@
 /**
  * Contains methods that handle simple search queries
  */
-
 includePackage ('SolrDataAggregation');
 
 class SolrSearchResponse
@@ -10,6 +9,7 @@ class SolrSearchResponse
  
     public static function getKeywordSearchResponse ($controller, $params, $sort, $offset){
 
+        foreach ($params as $key=>$value)
         $searchQuery = SearchQueryFactory::createKeywordSearchQuery($params);
 
         

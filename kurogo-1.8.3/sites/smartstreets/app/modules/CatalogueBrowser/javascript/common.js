@@ -31,6 +31,17 @@ $(document).ready(function() {
 	});
 });
 
+function searchTag(tag){
+  //check on tag to search tags
+  var text = $(tag).text();
+
+  //build redirect url
+  var current =$(location).attr('href');
+  
+  var sub_href = current.substr(0, current.indexOf("CatalogueBrowser")+16);
+  var redirect=sub_href+"/searchResults?tags="+text;
+  window.location.replace(redirect);
+}
 
 function viewItemDetails(that){
 	var itemSearchURL= $(that).data("search");
@@ -179,13 +190,6 @@ function loadMorePosts(){
           	textToInsert[i++] = '</span>';
           }
           
-          if(tags!=null){
-          	textToInsert[i++] = "<br><br><strong>Tags: </strong>";
-          	for(var y in tagArray ){
-          		textToInsert[i++] = "<span class='badge'>"+tagArray[y];
-          		textToInsert[i++] = "</span>";
-          	}
-          }
 
           if(iscatalogue){
           	textToInsert[i++] = "</a>";
@@ -211,6 +215,14 @@ function loadMorePosts(){
           	textToInsert[i++] = resourceURL;
           	textToInsert[i++] = '">Download Resource</a>';
           }
+
+          if(tags!=null){
+            textToInsert[i++] = "<br><br><strong>Tags: </strong>";
+            for(var y in tagArray ){
+              textToInsert[i++] = "<span class='badge' onclick='searchTag(this)'>"+tagArray[y];
+              textToInsert[i++] = "</span>";
+            }
+          }
       
        	  textToInsert[i++]  = '</li>';
           $("#navResults").append(textToInsert.join(''));
@@ -232,9 +244,7 @@ function loadMoreResults(){
   var index= $("#searchStorage").data("index");
   var sort= $("#searchStorage").data("sort");
   console.log ("sort: "+sort);
-  // var index= $(".sortinput").attr("data-index");
-  // var sort= (param["sort"]);
-
+ 
   makeAPICall(
     'POST', 'CatalogueBrowser', 'loadMoreResults',
     {"searchParam":param_string, "index": index, "sort": sort},
@@ -309,13 +319,7 @@ function loadMoreResults(){
           	textToInsert[i++] = description;
           	textToInsert[i++] = '</span>';
           }
-          if(tags!=null){
-          	textToInsert[i++] = "<br><br><strong>Tags: </strong>";
-          	for(var y in tagArray ){
-          		textToInsert[i++] = "<span class='badge'>"+tagArray[y];
-          		textToInsert[i++] = "</span>";
-          	}
-          }
+          
 
           if(iscatalogue){
           	textToInsert[i++] = "</a>";
@@ -340,6 +344,14 @@ function loadMoreResults(){
           	textToInsert[i++] = '<a class = "resource_link" href="';
           	textToInsert[i++] = resourceURL;
           	textToInsert[i++] = '">Download Resource</a>';
+          }
+
+          if(tags!=null){
+            textToInsert[i++] = "<br><br><strong>Tags: </strong>";
+            for(var y in tagArray ){
+              textToInsert[i++] = "<span class='badge' onclick='searchTag(this)'>"+tagArray[y];
+              textToInsert[i++] = "</span>";
+            }
           }
       
        	  textToInsert[i++]  = '</li>';

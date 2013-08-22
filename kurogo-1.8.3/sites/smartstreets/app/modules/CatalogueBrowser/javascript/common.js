@@ -130,6 +130,7 @@ function loadMorePosts(){
           var iscatalogue= data.isCatalogue;
           var parentUrl= data.parentUrl;
           var href= data.href;
+          var maintainer= data.maintainer;
           var tagArray;
            console.log ("is catalogue: "+iscatalogue);
           if(tags!=null){
@@ -143,32 +144,41 @@ function loadMorePosts(){
           	textToInsert[i++] = lastupdate;
          	textToInsert[i++] = '</div>';
           }
-          textToInsert[i++] = ' <strong>Name: </strong>';
-          if(name!=null){
-          	textToInsert[i++] = name;
+          var type="";
+          if (iscatalogue){
+          	type="Catalogue";
           }else{
-          	textToInsert[i++] = "No Name";
+          	type="Item";
           }
+
+          textToInsert[i++] = '<span class="type-badge">'+type+'</span><br>';
           if(iscatalogue){
           	//build breadcrumb url
             var sub_href = href.substr(href.indexOf("/cat"));
             console.log ("subref:: "+sub_href);
-           console.log ("HI:: "+$(location).attr('href'));
            var current =$(location).attr('href');
            var base_href= current.substr(0,current.indexOf('?'));
-           console.log("bz url:"+base_href);
            var breadcrumb = base_href+'?'+"href="+sub_href+"&hub="+datahub;
            console.log("bz url:"+breadcrumb);
 
           	textToInsert[i++] = "<a href='"+breadcrumb+"'>";
           }
-          textToInsert[i++] = ' <br><strong>Description: </strong>&nbsp;<span class="smallprint">';
-          if(description!=null){
-          	textToInsert[i++] = description;
-          }else{
-          	textToInsert[i++] = "No Description";
+          
+          if(name!=null){
+          	textToInsert[i++] = ' <strong>Name: </strong>';
+          	textToInsert[i++] = name;
           }
-          textToInsert[i++] = '</span>';
+          
+          if(maintainer!=null){
+          	textToInsert[i++] = '<br><strong>Maintainer: </strong>'+maintainer;
+          }
+          
+          if(description!=null){
+          	textToInsert[i++] = ' <br><strong>Description: </strong>&nbsp;<span class="smallprint">';
+          	textToInsert[i++] = description;
+          	textToInsert[i++] = '</span>';
+          }
+          
           if(tags!=null){
           	textToInsert[i++] = "<br><br><strong>Tags: </strong>";
           	for(var y in tagArray ){
@@ -192,9 +202,11 @@ function loadMorePosts(){
           	console.log ("item serach url: "+itemSearchURL);
 
           	//TODO: build view details and resource url
-          	textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
-          	textToInsert[i++] = itemSearchURL;
-          	textToInsert[i++] = ">View Details</a>";
+          	if (id!=null){
+          		textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
+	          	textToInsert[i++] = itemSearchURL;
+	          	textToInsert[i++] = ">View Details</a>";
+          	}
           	textToInsert[i++] = '<a class = "resource_link" href="';
           	textToInsert[i++] = resourceURL;
           	textToInsert[i++] = '">Download Resource</a>';
@@ -248,6 +260,7 @@ function loadMoreResults(){
           var iscatalogue= data.isCatalogue;
           var parentUrl= data.parentUrl;
           var href= data.href;
+          var maintainer= data.maintainer;
           var tagArray;
            console.log ("is catalogue: "+iscatalogue);
           if(tags!=null){
@@ -261,12 +274,13 @@ function loadMoreResults(){
           	textToInsert[i++] = lastupdate;
          	textToInsert[i++] = '</div>';
           }
-          textToInsert[i++] = ' <strong>Name: </strong>';
-          if(name!=null){
-          	textToInsert[i++] = name;
+          var type="";
+          if (iscatalogue){
+          	type="Catalogue";
           }else{
-          	textToInsert[i++] = "No Name";
+          	type="Item";
           }
+          textToInsert[i++] = '<span class="type-badge">'+type+'</span><br>';
           if(iscatalogue){
           	//build breadcrumb url
             var sub_href = href.substr(href.indexOf("/cat"));
@@ -280,13 +294,21 @@ function loadMoreResults(){
 
           	textToInsert[i++] = "<a href='"+breadcrumb+"'>";
           }
-          textToInsert[i++] = ' <br><strong>Description: </strong>&nbsp;<span class="smallprint">';
-          if(description!=null){
-          	textToInsert[i++] = description;
-          }else{
-          	textToInsert[i++] = "No Description";
+
+          if(name!=null){
+          	textToInsert[i++] = ' <strong>Name: </strong>';
+          	textToInsert[i++] = name;
           }
-          textToInsert[i++] = '</span>';
+
+          if(maintainer!=null){
+          	textToInsert[i++] = '<br><strong>Maintainer: </strong>'+maintainer;
+          }
+          
+          if(description!=null){
+          	textToInsert[i++] = ' <br><strong>Description: </strong>&nbsp;<span class="smallprint">';
+          	textToInsert[i++] = description;
+          	textToInsert[i++] = '</span>';
+          }
           if(tags!=null){
           	textToInsert[i++] = "<br><br><strong>Tags: </strong>";
           	for(var y in tagArray ){
@@ -310,9 +332,11 @@ function loadMoreResults(){
           	console.log ("item serach url: "+itemSearchURL);
 
           	//TODO: build view details and resource url
-          	textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
-          	textToInsert[i++] = itemSearchURL;
-          	textToInsert[i++] = ">View Details</a>";
+          	if (id!=null){
+          		textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
+	          	textToInsert[i++] = itemSearchURL;
+	          	textToInsert[i++] = ">View Details</a>";
+          	}
           	textToInsert[i++] = '<a class = "resource_link" href="';
           	textToInsert[i++] = resourceURL;
           	textToInsert[i++] = '">Download Resource</a>';

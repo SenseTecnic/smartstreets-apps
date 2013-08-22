@@ -106,15 +106,11 @@ class CatalogueBrowserWebModule extends WebModule
             	//set page title
             	$this -> setPageTitle ($parent_href);
             	//query data from smartstreets
-                // ChromePhp::log ("section id: ".$this->getArg('hub'));
                 $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
 
                 
                 $searchURL= $baseURL.$parent_href;
-                // ChromePhp::log ("search href: ".$searchURL);
-
                 
-
                 //query solr for parentUrl == searchURL
                 $params['parentUrl'] = $searchURL;
                 $sort = "";
@@ -151,21 +147,24 @@ class CatalogueBrowserWebModule extends WebModule
                         $url="";
                         $itemSearchURL = "";
                         $href = isset($item["href"]) ? $item["href"] : null;
-                        $description= isset($item["hasdescription"]) ? $item["hasdescription"] : "No Description";
+                        $description= isset($item["hasdescription"]) ? $item["hasdescription"] : null;
                         $id=isset($item["id"]) ? $item["id"] : null;
                         $itemId=isset($item["hasid"]) ? $item["hasid"] : null;
-                        $name = isset($item["name"]) ? $item["name"] : "No Name";
-                        $title = isset($item["title"]) ? $item["title"] : "No Title";
+                        $name = isset($item["name"]) ? $item["name"] : null;
+                        $title = isset($item["title"]) ? $item["title"] : null;
                         $maintainer = isset($item["maintainer"]) ? $item["maintainer"] : null;
                         $lastupdate = isset($item["lastupdate"]) ? $item["lastupdate"] : null;
-                        // $isSearchable = isset($item["hasDescription"]) ? $item["hasDescription"] : null;
                         $isCatalogue = isset($item["isCatalogue"]) ? $item["isCatalogue"] : null;
                         // $url=isset($item["hasDescription"]) ? $item["hasDescription"] : null;
                         $parentURL=isset($item["parentUrl"]) ? $item["parentUrl"] : null;
                         $datahub=isset($item["datahub"]) ? $item["datahub"] : null;
                         $tags= isset($item["tags"]) ? $item["tags"] : null;
+                        $tagArray=null;
 
-                        $tagArray = explode(',', $tags);
+                        if ($tags!=null)
+                            $tagArray = explode(',', $tags);
+                        else
+                             $tagArray =null;
 
                         if ($isCatalogue){
                             // open to another view catalogue page 
@@ -195,19 +194,28 @@ class CatalogueBrowserWebModule extends WebModule
                         if ($itemId!= null){
                             //create search URL//urn:X-smartstreets:rels:hasId
                             $itemSearchURL =$parentURL."?rel=urn:X-".$datahub.":rels:hasId"."&val=".$itemId;    
+                        }else{
+                             $itemSearchURL =null;
                         }
 
+                        $type="";
+                        if($isCatalogue=="true"){
+                            $type = "Catalogue";
+                        }else{
+                            $type = "Item";
+                        }
                         // create navlist item
                         $itemData = array (
                             'lastupdate'=>$lastupdate,
                             'label'=> $name,
                             'boldLabels'=> true,
-                            'title'=> $title,
+                            'maintainer'=> $maintainer,
                             'subtitle' => $description,
                             'url' => $url,
                             'resourceURL' => $resourceURL,
                             'itemSearchURL'=> $itemSearchURL,
-                            'badge'=>$tagArray
+                            'badge'=>$tagArray,
+                            'type'=>$type
 
                         );
                  
@@ -215,6 +223,7 @@ class CatalogueBrowserWebModule extends WebModule
                     }
                     //populate search parameters for load more posts
                     // $searchParam["parentUrl"]=$searchURL;
+                    
                     $this->assign('itemList', $resultList);
                     $this->assign('itemNum', $results["numFound"]);
                     $this->assign ('catalogueURL', $searchURL);
@@ -443,7 +452,7 @@ class CatalogueBrowserWebModule extends WebModule
                         $url="";
                         $itemSearchURL = "";
                         $href = isset($item["href"]) ? $item["href"] : null;
-                        $description= isset($item["hasdescription"]) ? $item["hasdescription"] : "No Description";
+                        $description= isset($item["hasdescription"]) ? $item["hasdescription"] : null;
                         $id=isset($item["id"]) ? $item["id"] : null;
                         $itemId=isset($item["hasid"]) ? $item["hasid"] : null;
                         $name = isset($item["name"]) ? $item["name"] : "No Name";
@@ -456,8 +465,12 @@ class CatalogueBrowserWebModule extends WebModule
                         $parentURL=isset($item["parentUrl"]) ? $item["parentUrl"] : null;
                         $datahub=isset($item["datahub"]) ? $item["datahub"] : null;
                         $tags= isset($item["tags"]) ? $item["tags"] : null;
+                        $tagArray=null;
 
-                        $tagArray = explode(',', $tags);
+                        if ($tags!=null)
+                            $tagArray = explode(',', $tags);
+                        else
+                            $tagArray =null;
                         // $itemSearchURL=isset($item["hasDescription"]) ? $item["hasDescription"] : null;
                         $baseURL= $this->getModuleVar('BASE_URL', strtolower($datahub),"datahub");
 
@@ -489,6 +502,15 @@ class CatalogueBrowserWebModule extends WebModule
                         if ($itemId!= null){
                             //create search URL//urn:X-smartstreets:rels:hasId
                             $itemSearchURL =$parentURL."?rel=urn:X-".$datahub.":rels:hasId"."&val=".$itemId;    
+                        }else{
+                             $itemSearchURL =null;
+                        }
+
+                        $type="";
+                        if($isCatalogue=="true"){
+                            $type = "Catalogue";
+                        }else{
+                            $type = "Item";
                         }
 
                         // create navlist item
@@ -496,21 +518,18 @@ class CatalogueBrowserWebModule extends WebModule
                             'lastupdate'=>$lastupdate,
                             'label'=> $name,
                             'boldLabels'=> true,
-                            'title'=> $title,
+                            'maintainer'=> $maintainer,
                             'subtitle' => $description,
                             'url' => $url,
                             'resourceURL' => $resourceURL,
                             'itemSearchURL'=> $itemSearchURL,
-                            'badge'=>$tagArray
+                            'badge'=>$tagArray,
+                            'type'=>$type
                         );
                  
                         $resultList[]= $itemData;
                     }
 
-                    $searchString=array();
-                    foreach ($params as $key=>$value){
-                        $searchString[]= $key.'*'.$value;
-                    }
                     $searchParam=json_encode($params);
                     // ChromePhp::log ("decode json: ".$searchParam);
                     $this->assign('itemList', $resultList);

@@ -8,7 +8,7 @@ includePackage ('SolrDataAggregation');
 class SolrSearchResponse
 { 
  
-    public static function getKeywordSearchResponse ($controller, $params, $sort){
+    public static function getKeywordSearchResponse ($controller, $params, $sort, $offset){
 
         $searchQuery = SearchQueryFactory::createKeywordSearchQuery($params);
 
@@ -22,8 +22,8 @@ class SolrSearchResponse
             $searchQuery->addSort($searchSort);
             
         }
-        $searchQuery->setMaxItems(10000000);//temporary to display all results until scroll to load more is implemented.
-
+        $searchQuery->setMaxItems(10);//temporary to display all results until scroll to load more is implemented.
+        $searchQuery->setStartIndex($offset);
         $searchQuery->addReturnField("title");
         $searchQuery->addReturnField("id");
         $searchQuery->addReturnField("hasid");

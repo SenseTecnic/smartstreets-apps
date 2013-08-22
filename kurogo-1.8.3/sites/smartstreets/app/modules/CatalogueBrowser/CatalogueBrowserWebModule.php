@@ -512,7 +512,7 @@ class CatalogueBrowserWebModule extends WebModule
                         $searchString[]= $key.'*'.$value;
                     }
                     $searchParam=json_encode($params);
-                    ChromePhp::log ("decode json: ".$searchParam);
+                    // ChromePhp::log ("decode json: ".$searchParam);
                     $this->assign('itemList', $resultList);
                     $this->assign ('resultCount', $results["numFound"]);
                     $this->assign('searchParam', $searchParam);

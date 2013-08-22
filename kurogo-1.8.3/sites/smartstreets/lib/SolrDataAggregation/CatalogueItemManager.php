@@ -32,7 +32,7 @@ class CatalogueItemManager {
       file_put_contents($file, $jsonUpdateString);*/ 
       
       //write to solr
-      $this->catalogueItemSolrController->persistFeedItems($feeds);
+      // $this->catalogueItemSolrController->persistFeedItems($feeds);
     }
   }
 
@@ -43,8 +43,9 @@ class CatalogueItemManager {
     if ($data ["items"]!=null && $data["item-metadata"]!=null){
       //IS a valid data feed, create new catalogue item
       //hack to get sensor data in:
-      //$root_url = "http://smartstreets.sensetecnic.com/cat/sensors";
+      // $root_url = "http://smartstreets.sensetecnic.com/cat/sensors"; //HACK for adding sensors data form local env
       $jsonFeeds= $this->_parseResultsToCatalogueItems($data, $root_url, $datahub);
+      $this->catalogueItemSolrController->persistFeedItems($jsonFeeds);
     }else{
       print "The response is not a valid sourcefeed, output: ".json_encode($data)."\n";
     }
@@ -60,70 +61,46 @@ class CatalogueItemManager {
 
           $isCatalogue=false;
 
-          //get children catalogues feeds
-          //replace "/cat/..." with href
-          if (strpos($item["href"], "http") !==false){
-            //replace entire url 
-            print "\n This is a resource, not a catalogue: full url";
+          foreach ($item["i-object-metadata"] as $pair){
+            $rel=$pair["rel"];
+            $val=$pair["val"];
 
-            //FIX: try to get response.. if it's json wiht items, it's a catalogue
-            $response= $this->interopController->getItemDetails($item["href"]);
-            print "\nresponse: ".$response["item-metadata"];
-            if ($response["item-metadata"]!=null){
-              //is catalogue
-              $isCatalogue= true;
-              $childrenUrl = $item["href"];
-              print "\nchildren url = ".$childrenUrl;
-              $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
+            if ($rel == "urn:X-tsbiot:rels:isContentType"){
+              if (strpos($val, "vnd.tsbiot.catalogue") !==false){
+                //is Catalogue
+                print "\n This is a catalog, val= ".$val;
+                $isCatalogue=true;
 
-              //merge two arrays
-              foreach ($childrenFeeds as $child){
-                $feed_array[]= $child;
-              }
-            }else{
+                //check if url is full
+                if (strpos($item["href"], "http") !==false){
+                  $childrenUrl = $item["href"];
+                }else{
+                  $tPos = strpos($feed_url, "/cat");
+                  $tUrl = substr_replace ($feed_url, $item["href"], $tPos);
+                  $childrenUrl = $tUrl;
+                }
+
+                print "\nchildren url = ".$childrenUrl;
+                $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
+
+                //merge two arrays
+                foreach ($childrenFeeds as $child){
+                  $feed_array[]= $child;
+                }
+              }else{
+                print "\n This is a resource, val= ".$val;
                 $isCatalogue=false;
-            }
-
-          }else{
-            $tPos = strpos($feed_url, "/cat");
-            $tUrl = substr_replace ($feed_url, $item["href"], $tPos);
-            $response= $this->interopController->getItemDetails($tUrl);
-            if ($response["item-metadata"]!=null){
-              //is catalogue
-              $isCatalogue= true;
-              $childrenUrl = $tUrl;
-              print "\nchildren url = ".$childrenUrl;
-              $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
-
-              //merge two arrays
-              foreach ($childrenFeeds as $child){
-                $feed_array[]= $child;
               }
-            }else{
-              $isCatalogue=false;
             }
-
-            // $isCatalogue=true;
-            // $pos = strpos($feed_url, "/cat");
-            // $childrenUrl = substr_replace ($feed_url, $item["href"], $pos);
-            // print "\nchildren url = ".$childrenUrl;
-            // $childrenFeeds = $this->_retrieve($childrenUrl,$datahub);
-
-            // //merge two arrays
-            // foreach ($childrenFeeds as $child){
-            //   $feed_array[]= $child;
-            // }
           }
           $parentUrl = $feed_url;
-          $newCatalogueItem = CatalogueItem::createCatalogueItem ();
+          $newCatalogueItem = CatalogueItem::createCatalogueItem();
           $this->_populateCatalogueItem($newCatalogueItem, $item, $parentUrl, $datahub, $isCatalogue);
           $json = $newCatalogueItem->getSolrUpdateJson();
           $feed_array[]= $newCatalogueItem;
-
         }
     }
-    if ($feed["item-metadata"]){
-    }
+
     return $feed_array;
   }
 

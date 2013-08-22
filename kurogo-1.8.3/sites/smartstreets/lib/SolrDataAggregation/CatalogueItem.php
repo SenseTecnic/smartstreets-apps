@@ -102,6 +102,30 @@ class CatalogueItem
     $this->dataMap[$key] = $value;
   }
 
+    /**
+   * Create FeedItem from solr query results.
+   * @Note when creating from solr, the feedItem is validated on initialization
+   */
+  public static function createFromSolr($solrResponse) {
+    $CatalogueItem = new CatalogueItem();
+    $CatalogueItem->createdFrom = "solr";
+
+    $CatalogueItem->dataMap = $solrResponse;
+
+    // if (!$CatalogueItem->isValid()) {
+    //   throw new KurogoDataException("Invalid feed item returned from solr");
+    // }
+    return $CatalogueItem;
+  }
+
+  public function isDuplicate() {
+    return $this->duplicate;
+  }
+
+  public function setDuplicate() {
+    $this->duplicate = true;
+  }
+
 }
 
 

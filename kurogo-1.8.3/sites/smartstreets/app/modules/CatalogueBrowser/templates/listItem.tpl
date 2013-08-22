@@ -38,12 +38,6 @@
       {if $subTitleNewline|default:true}</div>{else}</span>{/if}
     {/if}
 
-   {if isset($item['badge'])}
-   <br><br><strong>Tags: </strong>
-      {foreach $item['badge'] as $tag}
-        <span class="badge">{$tag}</span>
-      {/foreach}
-   {/if}
   {if $item['url']}
     </a>
   {else}
@@ -53,6 +47,13 @@
     {if $item['resourceURL']}
       <a class = "resource_link" href="{$item['resourceURL']}">Download Resource</a>
     {/if}
+
     </span>
   {/if}
+      {if isset($item['badge'])}
+     <br><br><strong>Tags: </strong>
+        {foreach $item['badge'] as $tag}
+          <span class="badge" onclick="searchTag(this)" >{$tag}</span>
+        {/foreach}
+    {/if}
 {/block}

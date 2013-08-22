@@ -9,7 +9,10 @@
 {include file="findInclude:modules/CatalogueBrowser/templates/navlist.tpl" navlistItems=$itemList secondary=true accessKey=false navlistID="navResults"} 
 
 
-<div id="scrollText" style="color: black; padding-left: 20%;">Scroll To Load 10 More Items... </div>
+
+{if $itemList|@count gt 10}
+	<div id="scrollText" style="color: black; padding-left: 20%;">Scroll To Load 10 More Items... </div>
+{/if}
 
 {include file="findInclude:common/templates/footer.tpl"}
 

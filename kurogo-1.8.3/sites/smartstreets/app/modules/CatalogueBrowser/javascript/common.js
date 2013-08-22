@@ -57,7 +57,7 @@ function viewItemDetails(that){
 
 		$( "#dialog-modal" ).dialog({
 		      height: 'auto',//how to make responsive height 
-		      width: 'auto',
+		      width: '90%',
 		      modal: true,
 		      dialogClass: 'detailDialog'
 		});

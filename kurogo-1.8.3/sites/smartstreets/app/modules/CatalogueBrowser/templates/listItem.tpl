@@ -3,8 +3,9 @@
       Last Updated: {$item['lastupdate']}
   {/if}
 </div>
-
+<span class="type-badge">{$item['type']}</span>
 {capture name="listItemLabel" assign="listItemLabel"}
+
   {if isset($item['label'])}
     {if $boldLabels}
       <strong>
@@ -28,10 +29,8 @@
     {/if}
     {$listItemLabel}
 
-    {if $titleTruncate}
-      {$item['title']|truncate:$titleTruncate}
-    {else}
-      {$item['title']}
+    {if isset($item['maintainer'])}
+      <br><strong>Maintainer: </strong>{$item['maintainer']}
     {/if}
     {if $item['subtitle']}
       <br><strong>Description: </strong> {if $subTitleNewline|default:true}<div{else}&nbsp;<span{/if} class="smallprint">
@@ -39,7 +38,7 @@
       {if $subTitleNewline|default:true}</div>{else}</span>{/if}
     {/if}
 
-   {if $item['badge']!=""}
+   {if isset($item['badge'])}
    <br><br><strong>Tags: </strong>
       {foreach $item['badge'] as $tag}
         <span class="badge">{$tag}</span>
@@ -48,7 +47,9 @@
   {if $item['url']}
     </a>
   {else}
-    <a class = "details_link" onclick="viewItemDetails(this)" data-search = {$item['itemSearchURL']}>View Details</a>
+    {if isset($item['itemSearchURL'])}
+      <a class = "details_link" onclick="viewItemDetails(this)" data-search = {$item['itemSearchURL']}>View Details</a>
+    {/if}
     {if $item['resourceURL']}
       <a class = "resource_link" href="{$item['resourceURL']}">Download Resource</a>
     {/if}

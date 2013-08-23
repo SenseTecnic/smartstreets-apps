@@ -13,7 +13,20 @@ $(document).ready(function() {
 	// 		$("#search_button").attr("disabled", "disabled");
 	// 	}
 	// });
+  $("#search_form").hide();
 
+  $("#advanced_search_selector").click(function(){
+
+    if ($("#search_form").is(":visible")){
+      $("#search_form").hide('slow', function() {
+        $("#advanced_search_selector").text("Show Advanced Search >>");
+      });
+    }else{
+      $("#search_form").show('slow', function() {
+        $("#advanced_search_selector").text("<<Hide Advanced Search");
+      });
+    }
+  });
 
 	//detect scroll to bottom
 	$(window).scroll(function(){

@@ -13,6 +13,16 @@ $(document).ready(function() {
 	// 		$("#search_button").attr("disabled", "disabled");
 	// 	}
 	// });
+
+  $("#sortView").change(function(){
+    //sort view
+    var sortString=$("#sortView").val();
+    var current =$(location).attr('href');
+    var redirect = current+"&sort="+sortString;
+    window.location.replace(redirect);
+
+  });
+
   $("#search_form").hide();
 
   $("#advanced_search_selector").click(function(){
@@ -126,12 +136,12 @@ function loadMorePosts(){
   // console.log ("parent url"+parentUrl);
   var index= $("#storage").data("index");
   console.log ("index"+index);
-  // var index= $(".sortinput").attr("data-index");
+  var sort= $("#storage").data("sort");
   // var sort= (param["sort"]);
 
   makeAPICall(
     'POST', 'CatalogueBrowser', 'loadMoreItems',
-    {"parentUrl":param, "index": index},
+    {"parentUrl":param, "index": index, "sort":sort},
     function(response){
       console.log (response);
       // set new index value

@@ -65,7 +65,7 @@ class SearchQuery {
   }
 
   // Return query parameters as an associative array of key to value
-  public function getQueryParams() {
+  public function getQueryParams($type) {
     $searchParams  = array();
 
     $keywords = array();
@@ -80,8 +80,13 @@ class SearchQuery {
       $keywords[] = "*:*";
     }
 
-    // Do a OR search of label keywords
-    $searchParams["q"] = implode(" OR ", $keywords);
+    if ($type=='AND'){
+      $searchParams["q"] = implode(" AND ", $keywords);
+    }else{
+      // Do a OR search of label keywords
+      $searchParams["q"] = implode(" OR ", $keywords);
+    }
+    
 
     if ($this->returnFields != null) {
       $searchParams["fl"] = implode(',', $this->returnFields);

@@ -10,9 +10,9 @@ abstract class SolrDataRetriever extends URLDataRetriever {
   abstract protected function getSolrBaseUrl();
 
   // internal function to retrieve query
-  public function query(SearchQuery $searchQuery) {
+  public function query(SearchQuery $searchQuery, $type) {
     $this->setBaseURL($this->getSolrBaseUrl(). "select");
-    $queryParams = $searchQuery->getQueryParams();
+    $queryParams = $searchQuery->getQueryParams($type);
     //print_r($queryParams);
     foreach ($queryParams as $key => $value) {
       $this->addParameter($key, $value);

@@ -9,10 +9,10 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
     return "http://localhost:8983/solr/CatalogueItems/";
   }
 
-  public function query(SearchQuery $searchQuery) {
+  public function query(SearchQuery $searchQuery, $type) {
     // Add testing filter
     //$searchQuery->addFilter(new FieldQueryFilter("testing", Tester::isTesting() ? "1" : "0"));
-    return parent::query($searchQuery);
+    return parent::query($searchQuery, $type);
   }
 
   /**

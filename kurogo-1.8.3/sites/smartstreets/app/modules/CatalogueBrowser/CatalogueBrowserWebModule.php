@@ -1,5 +1,5 @@
 <?php 
-// include 'chromephp-master/ChromePhp.php';
+include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserWebModule extends WebModule
 {
@@ -232,166 +232,6 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('index', 10);
                 }
 
-
-                // $catItems = $this->controller->getCatalogueItems($baseURL, $parent_href);
-
-                // //prepare the list of catalogues
-                // $itemList = array();
-                // $json= json_encode($catItems, true);
-
-                // if ($catItems["item-metadata"]){
-
-                //  	//it is a catalogue 
-                //  	// dispaly catalogue metadata details
-                //  	$catMetadata = array();
-	               //  foreach ($catItems["item-metadata"] as $metadata){
-
-	               //  	$rel = $metadata["rel"];
-	               //  	$val = $metadata["val"];
-
-                //         $rel_array = $this->getModuleSection(strtolower($SELECTED_DATAHUB).":catalogue:rel", "datahub");
-                //         foreach ($rel_array as $key => $meta_val){                    
-                //             if ($rel == $meta_val){
-                //                 $key = str_replace ("_", " ", $key);//replace '_' with space
-                //                 $catMetadata[] = $key.": ".$val;
-                //             }
-                //         }	           
-	               //  }  
-	               //  // ChromePhp::log('Cat info: '.implode("\n", $catMetadata));
-	               //  $this->assign('catalogueInfo', $catMetadata);
-                // }
-
-                
-                // foreach ($catItems["items"] as $item){
-                // 	//each item has "i-object-metadata", and "href"
-                //  	$href = $item["href"];
-                //  	$metadata = json_encode($item["i-object-metadata"], TRUE);
-
-
-                //  	//check if catalog supports search and has description
-                //  	$description= "No Description"; 
-                //  	$id="";
-                //  	$name = "No Name";
-                //  	$title = "";
-                //  	$maintainer = "";
-                //  	$isSearchable = 0;
-                //  	$isCatalogue = 0;
-                //     $lastupdate ="";
-                //     $tags ="";
-                 
-
-                //  	$url="";
-                //  	$resourceURL="";
-                //  	$itemSearchURL="";
-
-                //  	foreach ($item["i-object-metadata"] as $metaItem){
-
-
-                //         $rel = $metaItem["rel"];
-                //         $val = $metaItem["val"];
-
-                //         // $item_rel_array = $this->getModuleSection($SELECTED_DATAHUB.":item:rel", "datahub");
-                //         // foreach ($item_rel_array as $key => $meta_val){                    
-                //         //     if ($rel == $meta_val){
-                //         //         $catMetadata[] = $key.": ".$val;
-                //         //     }
-                //         // }
-
-                //         switch ($rel){
-                //             case $this->getModuleVar('Description', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !="")
-                //                     $description = $val;
-                //                 break;
-                //             case $this->getModuleVar('Support_Search', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val =="urn:X-tsbiot:search:simple")
-                //                     $isSearchable=1;
-                //                 break;
-                //             case $this->getModuleVar('ID', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !=""){
-                //                     $id = $val;
-                //                     $itemSearchURL =$baseURL.$parent_href."?rel=".$rel."&val=".$id;
-                //                 }
-                //                 break;
-                //             case $this->getModuleVar('Name', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !="")
-                //                     $name = $val;
-                //                 break;
-                //             case $this->getModuleVar('Title', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !="")
-                //                     $title = $val;
-                //                 break;
-                //             case $this->getModuleVar('Maintainer', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !="")
-                //                     $maintainer = $val;
-                //                 break;
-                //             case $this->getModuleVar('Content_Type', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val =="application/vnd.tsbiot.catalogue+json")
-                //                     $isCatalogue=1;
-                //                 break;
-                //             case $this->getModuleVar('Last_Updated', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !="")
-                //                     $lastupdate=$val;
-                //                 break;
-                //             case $this->getModuleVar('Tags', strtolower($SELECTED_DATAHUB).":item:rel", 'datahub'):
-                //                 if ($val !="")
-                //                     $tags=$val;
-                //                 break;
-
-                //         }
-
-                //         // ChromePhp::log('metaItem: '.json_encode($metaItem));
-                //  	}
-
-                 	
-                //  	//build view catalogue redirect URL and args to pass 
-                //  	$args = array(
-                //  		'id' => $id,
-                //  		'href' => $href,
-                //         'hub' => $SELECTED_DATAHUB
-                //  	);
-
-                 	
-                //  	//check if it is an item or catalogue
-                //     $resourceURL ="";
-                //  	if ($isCatalogue){
-                //  		// open to another view catalogue page 
-                //  		$url = $this->buildBreadcrumbURL("viewCatalogue", $args, true);
-                //  		// ChromePhp::log('DRILL DOWN');
-                //  	}else{
-                //  		//create resource download url
-                //         //check  if href contains "Http", if not, append to current url
-                //         if (strpos($href, "http")!==false){
-                //             $resourceURL = $href;
-                //             // ChromePhp::log ("full url!: ".$href);
-                //         }else{
-                //             $resourceURL = $baseURL.$href;
-                //             // ChromePhp::log ("part url! ".$href);
-                //         }
-                 		
-                //  	}
-
-                //     $tag_array = "";
-                //     if ($tags!=null)
-                //         $tag_array = explode(',', $tags);                    
-
-                //  	// create navlist item
-                //  	$itemData = array (
-                //         'lastupdate'=>$lastupdate,
-                //  		'label'=> $name,
-                //  		'boldLabels'=> true,
-                //  		'title'=> $title,
-                //  		'subtitle' => $description,
-                //  		'url' => $url,
-                //  		'resourceURL' => $resourceURL,
-                //  		'itemSearchURL'=> $itemSearchURL,
-                //         'badge'=>$tag_array
-                //  	);
-            
-                //  	$itemList[]= $itemData;
-                // }
-
-                // $this->assign('itemList', $itemList);
-
             	 break;
 
             case 'search':
@@ -399,7 +239,7 @@ class CatalogueBrowserWebModule extends WebModule
                 $datahub_array = $this -> getModuleSection ("datahubs", "datahub");
 
                 $select_options_array = array();
-                $select_options_array [""]= "None";
+                $select_options_array ["all"]= "All";
                 foreach ($datahub_array as $key => $val){     
                     $hub =$key;              
                     $hub_url = $this-> getModuleVar('BASE_URL', strtolower($key),"datahub");   //get base url from datahub.ini file using $key as section
@@ -415,28 +255,45 @@ class CatalogueBrowserWebModule extends WebModule
            	case 'searchResults':
                 //set page title
                 $this -> setPageTitle ("Search Results");
-           		//create array of params
+
+                $searchAllKeyword=$this->getArg('searchAll');
                 $params= array();
-                // $params['datahub'] = strtolower($this->getArg('datahub'));
-                // $params['datahub'] = strtolower($this->getArg('hub_selected'));
-                // $params['catalogue_href'] = $this->getArg('catalogue');
-                $params['iscontenttype'] = $this->getArg('content_type');
-                $params['id']= $this->getArg('id');
-                $params['hasdescription'] = $this->getArg('description');
-                $params['name'] = $this->getArg('name');
-                $params['tags'] = $this->getArg('tags');
-                $params['maintainer'] = $this->getArg('maintainer');
-                $params['owner'] = $this->getArg('owner');
-                $params['organization'] = $this->getArg('organization');
-                $params['license'] = $this->getArg('license');
-                $sort = $this->getArg('sort');
-
-                // $baseURL= $this->getModuleVar('BASE_URL', strtolower($params['datahub']),"datahub");
-
-                //CREATE SOLR SEARCH QUERIES
-                $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
-                
-                
+                $sort ="";
+                $response="";
+                if($searchAllKeyword==null){
+                    //advanced search
+                    //create array of params
+                    // $params['datahub'] = strtolower($this->getArg('datahub'));
+                    // $params['datahub'] = strtolower($this->getArg('hub_selected'));
+                    // $params['catalogue_href'] = $this->getArg('catalogue');
+                    $params['iscontenttype'] = $this->getArg('content_type');
+                    $params['id']= $this->getArg('id');
+                    $params['hasdescription'] = $this->getArg('description');
+                    $params['name'] = $this->getArg('name');
+                    $params['tags'] = $this->getArg('tags');
+                    $params['maintainer'] = $this->getArg('maintainer');
+                    $params['owner'] = $this->getArg('owner');
+                    $params['organization'] = $this->getArg('organization');
+                    $params['license'] = $this->getArg('license');
+                    $sort = $this->getArg('sort');
+                    $response = SolrSearchResponse::getAdvancedSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
+                    //fix: replace space with &nbps for css data attribute
+                    $params["tags"]=str_replace(" ","&#160;",$params["tags"]);
+                }else{
+                    //simple search
+                    $params['containscontenttype'] = $searchAllKeyword;
+                    $params['id']= $searchAllKeyword;
+                    $params['hasdescription'] = $searchAllKeyword;
+                    $params['name'] = $searchAllKeyword;
+                    $params['tags'] =$searchAllKeyword;
+                    $params['maintainer'] = $searchAllKeyword;
+                    $params['owner'] = $searchAllKeyword;
+                    $params['organization'] = $searchAllKeyword;
+                    $params['license'] = $searchAllKeyword;
+                    $params['title']= $searchAllKeyword;
+                    //CREATE SOLR SEARCH QUERIES
+                    $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
+                }
 
                 // TODO: check that the json returned is not NULL .
                 if ($response ==null){
@@ -528,10 +385,6 @@ class CatalogueBrowserWebModule extends WebModule
                  
                         $resultList[]= $itemData;
                     }
-
-                    //fix: replace space with &nbps for css data attribute
-                    $params["tags"]=str_replace(" ","&#160;",$params["tags"]);
-
                     $searchParam=json_encode($params);
                     $this->assign('itemList', $resultList);
                     $this->assign ('resultCount', $results["numFound"]);
@@ -539,8 +392,6 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('index', 10);
                     $this->assign('sort', $sort);
                 }
-
-
                 break;
 
         } 

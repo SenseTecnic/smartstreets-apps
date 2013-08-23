@@ -113,7 +113,7 @@ class CatalogueBrowserWebModule extends WebModule
                 
                 //query solr for parentUrl == searchURL
                 $params['parentUrl'] = $searchURL;
-                $sort = "";
+                $sort = $this->getArg('sort');
                 //CREATE SOLR SEARCH QUERIES
                 $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
                 // ChromePhp::log ("Response: ".$response);
@@ -155,7 +155,6 @@ class CatalogueBrowserWebModule extends WebModule
                         $maintainer = isset($item["maintainer"]) ? $item["maintainer"] : null;
                         $lastupdate = isset($item["lastupdate"]) ? $item["lastupdate"] : null;
                         $isCatalogue = isset($item["isCatalogue"]) ? $item["isCatalogue"] : null;
-                        // $url=isset($item["hasDescription"]) ? $item["hasDescription"] : null;
                         $parentURL=isset($item["parentUrl"]) ? $item["parentUrl"] : null;
                         $datahub=isset($item["datahub"]) ? $item["datahub"] : null;
                         $tags= isset($item["tags"]) ? $item["tags"] : null;
@@ -183,10 +182,8 @@ class CatalogueBrowserWebModule extends WebModule
                             //check  if href contains "Http", if not, append to current url
                             if (strpos($href, "http")!==false){
                                 $resourceURL = $href;
-                                // ChromePhp::log ("full url!: ".$href);
                             }else{
                                 $resourceURL = $baseURL.$href;
-                                // ChromePhp::log ("part url! ".$href);
                             }
                         }
 
@@ -230,6 +227,7 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('catalogueInfo', $catInfo);
                     $this->assign('searchParam', $searchURL);
                     $this->assign('index', 10);
+                    $this->assign('sort', $sort);
                 }
 
             	 break;

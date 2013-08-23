@@ -28,7 +28,7 @@ class CatalogueBrowserAPIModule extends APIModule
             case 'loadMoreItems':
                 $params['parentUrl']= $this->getArg('parentUrl');
                 $index = $this->getArg('index');
-                $sort="";
+                $sort=$this->getArg('sort');
                 //TODO
                 $items = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, $index);
 

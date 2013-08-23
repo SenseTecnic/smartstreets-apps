@@ -21,7 +21,12 @@
 .resource_link{
 }
 
-
+#sortView{
+	width:200px;
+	left: 10px;
+	position: relative;
+	margin-right: 3px;
+}
 
 
 

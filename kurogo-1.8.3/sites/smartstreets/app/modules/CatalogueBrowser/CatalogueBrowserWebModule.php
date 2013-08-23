@@ -1,5 +1,5 @@
 <?php 
-include 'chromephp-master/ChromePhp.php';
+// include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserWebModule extends WebModule
 {

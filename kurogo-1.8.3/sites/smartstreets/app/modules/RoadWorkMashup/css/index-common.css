@@ -1,0 +1,315 @@
+/*** map canvas -cng ***/
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
+
+#map_container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px 0 10px;
+  clear: both;
+
+}
+
+#map { 
+	width: 100%;
+	height:85%;
+	min-height: 320px;
+	top:-8px;
+}
+
+.uk_boundary{
+	fill: rgba(0, 0, 0, 0.10);
+	stroke: rgba(255, 255, 255, 0.75);
+	stroke-width: 2px;
+}
+
+.vms_points{
+	fill: skyblue;
+	stroke: rgba(255, 255, 255, 0.75);
+	stroke-width: 2px;
+}
+
+.roadwork_points{
+	fill: orange;
+	stroke: rgba(255, 255, 255, 0.75);
+	stroke-width: 2px;
+}
+
+.accident_points{
+	fill: #80002B;
+	stroke: rgba(255, 255, 255, 0.75);
+	stroke-width: 2px;
+}
+
+
+div#slider{
+	width:200px;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0px;
+	z-index: 999999999;
+	background:#171716;
+	display: none;
+
+	-moz-box-shadow: inset 0 0 10px #000000;
+   	-webkit-box-shadow: inset 0 0 10px #000000;
+   	box-shadow: inset 0 0 10px #000000;
+}
+div.cells{
+	margin: 5px;
+	width: auto;
+	height: 15px;
+	padding:15px;
+	border-bottom:1px solid #302D2A;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 3px 1px -1px black;
+}
+
+div#menu_button{
+	width:50px;
+	position: absolute;
+	bottom: 0px;
+	background: black;
+	left: 0px;
+	z-index: 9999999999;
+	display: inline;
+	color: white;
+	padding-left: 5px;
+	border-radius: 2px;
+	border:1px solid grey;
+}
+
+.close{
+	left:-200px;
+}
+
+div.tag{
+	float: left;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	border-width:3px;
+	border-color:white;
+}
+
+div.cells.clicked{
+	background-color: #333333;
+	border-radius: 4px;
+	-moz-box-shadow:    inset 0 0 10px #000000;
+   	-webkit-box-shadow: inset 0 0 10px #000000;
+   	box-shadow:         inset 0 0 10px #000000;
+
+}
+
+div.cells > span{
+	float: left;
+	text-indent: 20px;
+	font-size: 13px;
+	color: white;
+}
+
+div.label{
+	color: grey;
+	font-size: 14px;
+	text-align: center;
+	padding: 10px;
+}
+
+div#timeline{
+	width: 350px;
+	height: 80px;
+	position: absolute;
+	top:60%;
+	opacity: 0.9;
+	right: 15px;
+	z-index: 999998;
+	display: inline;
+}
+div#timeline > #left{
+	width: 5%;
+	cursor: pointer;
+	float: left;
+	height: 100%;
+	top:0%;
+	position: relative;
+	background-color: white;
+	border: 1px solid #BDBDBD;
+	border-radius: 5px 0px 0px 5px;
+	line-height: 80px;
+}
+div#timeline > #right{
+	/*padding-left:2px;*/
+	top:0%;
+	width: 5%;
+	float: left;
+	height: 100%;
+	position: relative;
+	cursor: pointer;
+	background-color: white;
+	border: 1px solid #BDBDBD;
+	border-radius: 0px 5px 5px 0px;
+	line-height: 80px;
+}
+
+div#timeline > #right:hover{
+	background-color: #D6D6D6;
+}
+
+div#timeline > #left:hover{
+	background-color: #D6D6D6;
+}
+
+div#timeline > #left:active {
+}
+
+div#timeline > #right:active {
+}
+
+div#timeline > #window{
+	background-color: white;
+	float: left;
+	width: 87%;
+	height: 100%;
+	position: relative;
+	border-bottom: 1px #BDBDBD solid;
+	border-top:1px #BDBDBD solid;
+	overflow: auto;
+}
+div#window > #scrollContent{
+	/*width:2000px;*/
+	float: left;
+}
+
+div#slider-range{
+	width:87%;
+	float: left;
+	position: relative;
+	left: 5%;
+}
+
+div.ui-slider-range.ui-widget-header {
+    background: #D3d3d3;
+}
+
+/******Date Slider*******/
+div#date-slider{
+	width: 80%;
+	/*height: 80px;*/
+	position: absolute;
+	top:85%;
+	opacity: 0.9;
+	right: 15px;
+	z-index: 9999999;
+	display: inline;
+}
+
+/******Summary Accordion*******/
+
+div#summary{
+	background-color: white;
+	opacity: 0.9;
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	height: auto;
+	/*border-radius: 5px;*/
+	box-shadow: rgba(0, 0, 0, 0.0980392) 5px 5px 2px 0px;
+	z-index: 999999;
+}
+
+div.summary{
+	width: 200px;
+	padding:5px;
+}
+
+div#summary_header{
+	background-color: #FF9A40;
+}
+
+div#item_summary_header{
+	background-color: #BF7330;
+}
+
+div#summary_content{
+
+}
+
+div#item_summary_content{
+
+}
+
+/****tool tip ******/
+/*div.tooltip {   
+  position: absolute;           
+  text-align: center;           
+  width: 120px;                  
+  height: auto;                 
+  padding: 2px;             
+  font: 12px sans-serif;        
+  background: white;   
+  border: 0px;      
+  border-radius: 8px;           
+  pointer-events: none;  
+
+  text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0px;
+
+}*/
+/* base CSS element */
+.tooltip {
+	position: absolute;           
+  	text-align: center;           
+  	width: 200px;                  
+  	height: auto;                 
+  	font: 12px sans-serif;
+  	z-index: 9999999;
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 10px;
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	/*position: relative;*/
+	display: none;
+}
+
+/* arrows - :before and :after */
+.tooltip:before {
+	position: absolute;
+	display: inline-block;
+	border-left: 11px solid transparent;
+	border-top: 15px solid #eee;
+	border-right: 11px solid transparent;
+	border-top-color: rgba(0, 0, 0, 0.2);
+	left: 97px;
+	bottom: -15px;
+	content: '';
+}
+
+.tooltip:after {
+	position: absolute;
+	display: inline-block;
+	border-left: 11px solid transparent;
+	border-top: 13px solid #eee;
+	border-right: 11px solid transparent;
+	left: 95px;
+	bottom: -12px;
+	content: '';
+}
+.tooltip table{
+	font-size: 12px;
+}
+.tooltip .locationData{
+	font-size: 20px; 
+}
+
+.tooltip .bold{
+	font-weight: bold;
+}
+.tooltip #type{
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+}

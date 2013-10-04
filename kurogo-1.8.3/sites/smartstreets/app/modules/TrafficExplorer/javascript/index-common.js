@@ -133,13 +133,15 @@ $(document).ready(function() {
 		function map_gullies(query){
 	  		var collection= "gully";
 	  		var oldQuery;
-	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "gully", query: query}, function(response){
+	  		makeAPICall('POST', "TrafficExplorer" , "getEntireMongoCollection", {collection: "gully", query: query}, function(response){
+	  		// makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "gully", query: query}, function(response){
 	  			var json= JSON.parse(response);
+	  			$results=json;
             	var itemArray=new Array();
-            	$.each(json["results"], function (i, ob) {
-            		itemArray.push(json["results"][i]);
+            	$.each($results, function (i, ob) {
+            		itemArray.push($results[i]);
 				});
-				oldQuery=json["query"];
+				oldQuery="test";
 				//plot map pins
 				g.selectAll(".gully-map-points")
 					.data(itemArray)

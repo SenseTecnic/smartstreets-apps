@@ -133,15 +133,13 @@ $(document).ready(function() {
 		function map_gullies(query){
 	  		var collection= "gully";
 	  		var oldQuery;
-	  		makeAPICall('POST', "TrafficExplorer" , "getEntireMongoCollection", {collection: "gully", query: query}, function(response){
-	  		// makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "gully", query: query}, function(response){
+	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "gully", query: query}, function(response){
 	  			var json= JSON.parse(response);
-	  			$results=json;
             	var itemArray=new Array();
-            	$.each($results, function (i, ob) {
-            		itemArray.push($results[i]);
+            	$.each(json["results"], function (i, ob) {
+            		itemArray.push(json["results"][i]);
 				});
-				oldQuery="test";
+				oldQuery=json["query"];
 				//plot map pins
 				g.selectAll(".gully-map-points")
 					.data(itemArray)
@@ -332,7 +330,7 @@ $(document).ready(function() {
 					      d3.select('#gully_type_chart')
 						  	.append("text")
 						    .attr("x", 170)             
-					  	  	.attr("y", 20)
+					  	  	.attr("y", 0)
 							.attr("class", "graph-title")
 							.attr("text-anchor", "middle")  
 							.text("Gully Types");

@@ -1,5 +1,4 @@
 <?php 
-include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class TrafficExplorerWebModule extends WebModule
 {
@@ -45,21 +44,6 @@ class TrafficExplorerWebModule extends WebModule
         switch ($this->page) 
         { 
             case 'index': 
-
-                //test on getting air quality data
-                // $url = "http://guiness.magic.ubc.ca/wotkit/api/sensors/58024/data?beforeE=1000";
-                // $response = $this->controller->getItemDetails($url);
-                // $json= json_decode($response, 1);
-                // ChromePhp::log ("response: ".$json[0]["id"]);
-                break; 
-            case 'trafficMap':
-
-                break;
-            case 'leaflet':
-                break;
-            case 'chart':
-                
-
                 break;
         } 
     }

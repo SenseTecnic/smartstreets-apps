@@ -1,0 +1,30 @@
+{
+    "feeds":[
+        {
+            "name":"trafficFlow",
+            "title":"UK Traffic Data",
+            "id":"42607",
+            "count":"10000"
+
+        },
+        {
+            "name":"trafficTime",
+            "title":"UK Traffic Time",
+            "id":"42598",
+            "count":"5000"
+        },
+        {
+            "name":"airQuality",
+            "title":"UK Air Quality",
+            "id":"862",
+            "count":"5000"
+        },
+        {
+            "name":"roadwork",
+            "title":"UK Roadwork",
+            "id":"42602",
+            "count":"5000"
+        }
+    ]
+
+}

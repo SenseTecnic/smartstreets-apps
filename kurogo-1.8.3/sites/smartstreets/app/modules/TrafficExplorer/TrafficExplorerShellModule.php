@@ -3,9 +3,9 @@ ini_set("memory_limit","-1");
 includePackage ('SolrDataAggregation');
 
 
-class VisualDemoShellModule extends ShellModule {
+class TrafficExplorerShellModule extends ShellModule {
 
-  protected $id='VisualDemo';
+  protected $id='TrafficExplorer';
 
 
   protected function initializeForCommand(){
@@ -223,7 +223,7 @@ class VisualDemoShellModule extends ShellModule {
       case "loadLocations":
 
         //convert xml into json objects
-        $xmlfile = file_get_contents(SITE_DIR."/config/VisualDemo/location_data/predefined_locations.xml");
+        $xmlfile = file_get_contents(SITE_DIR."/config/TrafficExplorer/location_data/predefined_locations.xml");
         $ob = simplexml_load_string($xmlfile);
         $json = json_encode($ob);
         $array = json_decode($json, true);
@@ -245,7 +245,7 @@ class VisualDemoShellModule extends ShellModule {
         // TODO: upsert doc
         $baseURL= "http://smartstreets.sensetecnic.com/wotkit/api/sensors/";
         //read from feed file
-        $json = file_get_contents(SITE_DIR."/config/VisualDemo/feeds.json");
+        $json = file_get_contents(SITE_DIR."/config/TrafficExplorer/feeds.json");
         $array = json_decode($json, true);
         $reference_time=1000*strtotime('-1 month');
         foreach($array["feeds"] as $feed){
@@ -321,7 +321,7 @@ class VisualDemoShellModule extends ShellModule {
         $location_collection= $db->locationData;
         $baseURL= "http://smartstreets.sensetecnic.com/wotkit/api/sensors/";
         //read from feed file
-        $json = file_get_contents(SITE_DIR."/config/VisualDemo/feeds.json");
+        $json = file_get_contents(SITE_DIR."/config/TrafficExplorer/feeds.json");
         $array = json_decode($json, true);
         $reference_time=1000*strtotime('-1 month');
         foreach($array["feeds"] as $feed){
@@ -420,7 +420,7 @@ class VisualDemoShellModule extends ShellModule {
         $location_collection= $db->locationData;
         $baseURL= "http://smartstreets.sensetecnic.com/wotkit/api/sensors/";
         //read from feed file
-        $json = file_get_contents(SITE_DIR."/config/VisualDemo/feeds.json");
+        $json = file_get_contents(SITE_DIR."/config/TrafficExplorer/feeds.json");
         $array = json_decode($json, true);
         $reference_time=1000*strtotime('-1 month');
         foreach($array["feeds"] as $feed){
@@ -511,7 +511,7 @@ class VisualDemoShellModule extends ShellModule {
         $location_collection= $db->locationData;
         $baseURL= "http://smartstreets.sensetecnic.com/wotkit/api/sensors/";
         //read from feed file
-        $json = file_get_contents(SITE_DIR."/config/VisualDemo/feeds.json");
+        $json = file_get_contents(SITE_DIR."/config/TrafficExplorer/feeds.json");
         $array = json_decode($json, true);
         $reference_time=1000*strtotime('-1 month');
         foreach($array["feeds"] as $feed){
@@ -584,7 +584,7 @@ class VisualDemoShellModule extends ShellModule {
         $location_collection= $db->locationData;
         $baseURL= "http://smartstreets.sensetecnic.com/wotkit/api/sensors/";
         //read from feed file
-        $json = file_get_contents(SITE_DIR."/config/VisualDemo/feeds.json");
+        $json = file_get_contents(SITE_DIR."/config/TrafficExplorer/feeds.json");
         $array = json_decode($json, true);
         $reference_time=1000*strtotime('-1 month');
         // $reference_time=1379314800000;//2013/01/01
@@ -720,7 +720,7 @@ class VisualDemoShellModule extends ShellModule {
 
       case "deleteData":
         print "Dropping All Data Feeds...\n";
-        $json = file_get_contents(SITE_DIR."/config/VisualDemo/feeds.json");
+        $json = file_get_contents(SITE_DIR."/config/TrafficExplorer/feeds.json");
         $array = json_decode($json, true);
         foreach($array["feeds"] as $feed){
           $db->$feed["name"]->drop();

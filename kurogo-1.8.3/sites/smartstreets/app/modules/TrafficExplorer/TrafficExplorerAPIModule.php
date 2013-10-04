@@ -1,7 +1,6 @@
 <?php 
 ini_set("memory_limit","-1");
 includePackage ('SolrDataAggregation');
-include 'chromephp-master/ChromePhp.php';
 class TrafficExplorerAPIModule extends APIModule
 {
     protected $id='TrafficExplorer';
@@ -57,7 +56,6 @@ class TrafficExplorerAPIModule extends APIModule
                     $cursor = $db->$collection->find($query);
                 }
                 $queryArray= ["query"=>$query];
-                ChromePhp::log("php query: ".json_encode($queryArray));
                 $resultsArray=["results"=>iterator_to_array($cursor)];
                 $results= json_encode(array_merge($queryArray, $resultsArray));
                 $this->setResponse($results);
@@ -114,7 +112,6 @@ class TrafficExplorerAPIModule extends APIModule
                 $queryArray = array(
                     'geo'=> Array('$near' => $geoRangeArray)
                 );
-                ChromePhp::log("php query: ".json_encode($queryArray));
                 $cursor = $db->$collection->find($queryArray);
                 $results= json_encode(iterator_to_array($cursor));
                 $this->setResponse($results);

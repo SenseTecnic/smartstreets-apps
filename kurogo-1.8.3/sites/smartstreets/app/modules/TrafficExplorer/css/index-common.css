@@ -160,8 +160,9 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 #gully_type_chart{
 	height: 90%;
 	width: 90%;
-	margin: 10px;
-	overflow: auto;
+	margin-top: 40px;
+	padding-top:50px;
+	/*overflow: auto;*/
 }
 #gully_silt_chart{
 	height: 90%;

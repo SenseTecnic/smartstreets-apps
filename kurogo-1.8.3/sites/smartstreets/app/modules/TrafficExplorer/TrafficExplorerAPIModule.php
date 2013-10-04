@@ -45,22 +45,22 @@ class TrafficExplorerAPIModule extends APIModule
                 $this->setResponseVersion(1);
                 break;
 
-            case 'queryMongoBySingleKey':
-                //AND QUERIES
-                $collection = $this->getArg('collection');
-                $query = $this->getArg('query');
-                if ($query=="null"){
-                    $cursor = $db->$collection->find();
-                }else{
-                    $query = json_decode($this->getArg('query'));
-                    $cursor = $db->$collection->find($query);
-                }
-                $queryArray= ["query"=>$query];
-                $resultsArray=["results"=>iterator_to_array($cursor)];
-                $results= json_encode(array_merge($queryArray, $resultsArray));
-                $this->setResponse($results);
-                $this->setResponseVersion(1);
-                break;
+            // case 'queryMongoBySingleKey':
+            //     //AND QUERIES
+            //     $collection = $this->getArg('collection');
+            //     $query = $this->getArg('query');
+            //     if ($query=="null"){
+            //         $cursor = $db->$collection->find();
+            //     }else{
+            //         $query = json_decode($this->getArg('query'));
+            //         $cursor = $db->$collection->find($query);
+            //     }
+            //     $queryArray= ["query"=>$query];
+            //     $resultsArray=["results"=>iterator_to_array($cursor)];
+            //     $results= json_encode(array_merge($queryArray, $resultsArray));
+            //     $this->setResponse($results);
+            //     $this->setResponseVersion(1);
+            //     break;
 
             case 'getMongoCorrelation':
                 $collection = $this->getArg('collection');

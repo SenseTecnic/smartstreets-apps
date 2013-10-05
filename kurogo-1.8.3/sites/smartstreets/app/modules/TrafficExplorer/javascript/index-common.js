@@ -810,8 +810,13 @@ $(document).ready(function() {
 				                .remove();
 		                	console.log("region name: "+ i);
 		                	//build queries
-							var start = new Date("2013-09-23 00:00:00") ;
-							var end = new Date("2013-09-25 00:00:00") ;
+							// var start = new Date("2013-09-23 00:00:00") ;
+							// var end = new Date("2013-09-25 00:00:00") ;
+							var start = new Date();
+							var end = new Date();
+							start.setDate(start.getDate()-2);
+							start.setDate(start.getDate()+2);
+							
 							var query = {"tf_recordedtime": {$gte: start, $lt: end}, "region":d["name"]};
 					  		var stringQuery = JSON.stringify( query );
 					  		console.log("stringQuery:"+stringQuery);

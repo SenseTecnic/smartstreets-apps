@@ -55,8 +55,8 @@ class TrafficExplorerAPIModule extends APIModule
                     $query = json_decode($this->getArg('query'));
                     $cursor = $db->$collection->find($query);
                 }
-                $queryArray= ["query"=>$query];
-                $resultsArray=["results"=>iterator_to_array($cursor)];
+                $queryArray= array("query"=>$query);
+                $resultsArray=array("results"=>iterator_to_array($cursor));
                 $results= json_encode(array_merge($queryArray, $resultsArray));
                 $this->setResponse($results);
                 $this->setResponseVersion(1);

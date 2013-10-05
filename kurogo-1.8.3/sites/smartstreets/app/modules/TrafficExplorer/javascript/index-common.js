@@ -157,8 +157,8 @@ $(document).ready(function() {
 		            		level= parseInt(d["silt"].replace("%",""), 10);		            	
 		               	return 2*(1+level/25);
 		        	})
-		        	.on('mouseover',function(){
-
+		        	.on('mouseover',function(d){
+		        		
 		        	});
 
 		        	//cross filter the data by silt levels
@@ -329,8 +329,8 @@ $(document).ready(function() {
 					          .call(chart);
 					      d3.select('#gully_type_chart')
 						  	.append("text")
-						    .attr("x", 170)             
-					  	  	.attr("y", 0)
+						    .attr("x", 190)             
+					  	  	.attr("y", "95%")
 							.attr("class", "graph-title")
 							.attr("text-anchor", "middle")  
 							.text("Gully Types");
@@ -460,7 +460,8 @@ $(document).ready(function() {
 							      .showValues(true)
 							      .transitionDuration(250)
 							      ;
-
+							      chart.yAxis.axisLabel("# of Gullies");
+								  chart.xAxis.axisLabel("Gully Silt Level (%)");
 							  	d3.select('#gully_roadwork_chart')
 							      .datum(historicalBarChart)
 							      .call(chart);
@@ -706,9 +707,8 @@ $(document).ready(function() {
 						  var chart = nv.models.lineChart();
 						  chart.xAxis // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
 						      .tickFormat(function(d) { return d3.time.format('%I:%M %p')(new Date(d)); })
-						  chart.yAxis
-						      .axisLabel('Flow')
-						      .tickFormat(d3.format(',.2f'));
+						      .axisLabel('Time');
+						  chart.yAxis.axisLabel('Flow');
 						  chart.tooltipContent(function(key, y, e, graph){
 						  	var x = graph.point.x;
 				            var y = String(graph.point.y);
@@ -746,7 +746,8 @@ $(document).ready(function() {
 	  		$("#top-right-box").html("");
 	  		$("#top-right-box").append( "<div style='margin: 0 auto; display:table; margin-top:40%;'><strong>Select a data point from the chart below.</strong><div>" );
 	  		$("#bottom-box").append( "<div style='margin: 0 auto; display:table; top:40%; position: relative;'><strong>No Data! Begin by selecting a region on the map.</strong><div>" );
-	  		var query= {name: {$in: ["Haringey Roadside","London Harrow Stanmore","Southampton Centre","Walsall Woodlands","Leeds Centre","Salford Eccles","Coventry Memorial Park","London Hillingdon","Portsmouth","Horley","Bristol St Paul's"]}};
+	  		//REMOVED Haringey Roadside
+	  		var query= {name: {$in: ["London Harrow Stanmore","Southampton Centre","Walsall Woodlands","Leeds Centre","Salford Eccles","Coventry Memorial Park","London Hillingdon","Portsmouth","Horley","Bristol St Paul's"]}};
 	  		var stringQuery= encodeURIComponent(JSON.stringify( query ));
 	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "region", query: stringQuery}, function(response){
             	//parse results here and draw plots
@@ -916,6 +917,9 @@ $(document).ready(function() {
 								                ;
 								  chart.xAxis.tickFormat(d3.format('.02f'));
 								  chart.yAxis.tickFormat(d3.format('.02f'));
+								  chart.yAxis.axisLabel("Actual Time/Ideal Time Ratio");
+								  chart.xAxis.axisLabel("Traffic Flow (# of Vehicles)");
+
 								  chart.tooltipContent(function(key, x, y, d) {
 								      return '<div> Average Speed: ' + d["point"]["speed"] + 'km/hr</div>'
 								      		 +'Timestamp: '+d["point"]["time"];

@@ -70,6 +70,11 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	margin:10px;
 }
 
+.flow_roadwork_plot{
+	width: 80%;
+}
+
+
 
 /*** SVG in descriptions ***/
 .gully-dot {
@@ -160,9 +165,9 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 #gully_type_chart{
 	height: 90%;
 	width: 90%;
-	margin-top: 40px;
-	padding-top:50px;
-	/*overflow: auto;*/
+	margin-top: 30px;
+/*	padding-top:30px;
+*/	/*overflow: auto;*/
 }
 #gully_silt_chart{
 	height: 90%;

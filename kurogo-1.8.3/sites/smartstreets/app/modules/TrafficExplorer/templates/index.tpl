@@ -16,25 +16,7 @@
 	<div id="map" >
 
 		<div class="tooltip">
-			<div id="header"></div>
-			<div id="content">
-				<div id="type"></div>
-				<table border="0">
-					<tr>
-						<td style="border-right: 1px solid grey;">Latitude <span id="lat" class="locationData"></span></td>
-						<td>Longitude <span id="lng" class="locationData"></span></td>
-					</tr>
-				</table>
-				<table border="0">
-					<tr>
-						<td style="border-top: 1px solid grey;">Start Time<br><span id="startTime" class="bold"></span></td>
-					</tr>
-					<tr>
-						<td style="border-bottom: 1px solid grey;">End Time <br><span id="endTime" class="bold"></span></td>
-					</tr>
-				</table>
-				<div id="extra_content"></div>
-			</div>
+			
 		</div>
 	</div> 
 

@@ -92,7 +92,9 @@
 		</div>
 		<div id="top-right-box">
 		</div>
-		<div id="bottom-box"></div>
+		<div id="bottom-box">
+			
+		</div>
 	</div>
 	
 </div>

@@ -9,7 +9,7 @@ class TrafficExplorerWebModule extends WebModule
     }
 
     protected function initializeForPage() {
-
+        $this->addInternalJavascript("/modules/TrafficExplorer/javascript/common.js"); //FIREFOX does not recognize MAKEAPICALL
         //JS
     	$this->addExternalJavascript('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
     	$this->addExternalJavascript('http://code.jquery.com/ui/1.10.3/jquery-ui.js');

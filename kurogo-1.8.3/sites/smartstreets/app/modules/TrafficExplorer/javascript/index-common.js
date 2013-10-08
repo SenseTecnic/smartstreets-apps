@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 	$( "#radiusSlider" ).slider({
       range: "min",
       value: 500,
@@ -92,6 +93,7 @@ $(document).ready(function() {
 		function initialize(){
 	  		$(".description").hide();
 	  		$("#gully_overview_desc").show();
+	  		$("#dropdown_select").val("gully_overview");
 	  		get_gully_overview();
 	  	}
 		
@@ -131,6 +133,10 @@ $(document).ready(function() {
 		}
 
 		function map_gullies(query){
+
+			$("#bottom-box").append('<div id="bottom-box-left"></div>');
+			$("#bottom-box").append('<div id="bottom-box-right"></div>');
+
 	  		var collection= "gully";
 	  		var oldQuery;
 	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "gully", query: query}, function(response){
@@ -184,7 +190,10 @@ $(document).ready(function() {
 					];
 
 					//graph a bar chart
-			       	$("#bottom-box").append("<svg id="+"'gully_silt_chart'"+"></svg>");
+					if ($("#gully_silt_chart").length==0){
+						$("#bottom-box-left").append("<svg id="+"'gully_silt_title'"+"' class='chart_title'></svg>");
+				       	$("#bottom-box-left").append("<svg id="+"'gully_silt_chart'"+"></svg>");
+			       	}
 		        	nv.addGraph(function() {  
 					  	var chart = nv.models.discreteBarChart()
 						    .x(function(d) { return d.label })
@@ -195,18 +204,17 @@ $(document).ready(function() {
 							.transitionDuration(250);
 						chart.yAxis.axisLabel("Number of Gullies");
 						chart.xAxis.axisLabel("Silt Levels (in %)");
-
-
-						d3.select('#gully_silt_chart')
-							.datum(siltLevelBarData)
-							.call(chart);
-						d3.select('#gully_silt_chart')
+						
+						d3.select('#gully_silt_title')
 						  .append("text")
-						  .attr("x", 150)             
-						  .attr("y", 0)
+						  .attr("x", "50%")             
+						  .attr("y", "50%")
 						  .attr("class", "graph-title")
 						  .attr("text-anchor", "middle")  
 						  .text("Gully Silt Levels");
+						d3.select('#gully_silt_chart')
+							.datum(siltLevelBarData)
+							.call(chart);
 						nv.utils.windowResize(chart.update);
 						return chart;
 					},function(){
@@ -249,31 +257,36 @@ $(document).ready(function() {
 					];
 					//graph a bar chart for states
         			var myColors = ["#336699", "crimson", "salmon", "#99ffff", "#cccccc"];
-			       	$("#bottom-box").append("<svg id="+"'gully_state_chart'"+" class='gully_overview_chart'></svg>");
+        			if ($("#gully_state_title").length==0){
+				       	$("#bottom-box-right").append("<svg id="+"'gully_state_title'"+" class='chart_title'></svg>");
+				       	$("#bottom-box-right").append("<svg id="+"'gully_state_chart'"+"></svg>");
+			       	}
 					nv.addGraph(function() {
-					    var chart = nv.models.pieChart()
+					    var chart1 = nv.models.pieChart()
 					        .x(function(d) { return d.key })
 					        .y(function(d) { return d.y })
 					        .color(myColors);
 
-					    chart.pie.pieLabelsOutside(false).labelType("percent");
-					    d3.select("#gully_state_chart")
-					        .datum(state_values)
-					        .transition().duration(500)
-					          .call(chart);
-					    d3.select('#gully_state_chart')
+					    chart1.pie.pieLabelsOutside(false).labelType("percent");
+					    
+					    d3.select('#gully_state_title')
 							.append("text")
-						    .attr("x", 150)             
-					  	  	.attr("y", 0)
+						    .attr("x", "50%")             
+						  	.attr("y", "50%")
 							.attr("class", "graph-title")
 							.attr("text-anchor", "middle")  
 							.text("Gully States");
+
+						d3.select("#gully_state_chart")
+					        .datum(state_values)
+					        .transition().duration(500)
+					          .call(chart1);
 						//move legend
 						// d3.select(".nv-legendWrap")
 						// 	.attr("class", "legend-text");
 
 
-					    return chart;
+					    return chart1;
 					},function(){
 				        d3.selectAll("#gully_state_chart .nv-slice").on('click',
 				            function(e){
@@ -313,24 +326,36 @@ $(document).ready(function() {
 						}
 					];
 					//graph a bar chart for states
+					var width = $(window).width()*0.48*0.4;
+					var height = $(window).height()*0.7*0.5;
         			var myColors2 = ["#336699", "crimson", "salmon", "#99ffff"];
-			       	$("#top-right-box").append("<svg id="+"'gully_type_chart'"+"'></svg>");
+        			if ($("#gully_type_chart").length==0){
+        				$("#top-right-box").append("<svg id="+"'gully_type_title'"+"' class='chart_title'></svg>");
+			       		$("#top-right-box").append("<svg id="+"'gully_type_chart'"+"'></svg>");
+			       		
+        			}
 					nv.addGraph(function() {
-					    var chart = nv.models.pieChart()
+					    var chart2 = nv.models.pieChart()
 					        .x(function(d) { return d.key })
 					        .y(function(d) { return d.y })
+					        .height(height)
+					        .width(width)
 							// .margin ({top: 20, right: 20, bottom: 20, left: 20})
 						    .color(myColors2);
 
-					      chart.pie.pieLabelsOutside(false).labelType("percent");
+					      chart2.pie.pieLabelsOutside(false).labelType("percent");
 					      d3.select("#gully_type_chart")
 					          .datum(type_values)
 					        .transition().duration(500)
-					          .call(chart);
-					      d3.select('#gully_type_chart')
+					          .call(chart2)
+					          .attr("height",height)
+					          .attr("width",width);
+					      d3.select('#gully_type_title')
 						  	.append("text")
-						    .attr("x", 190)             
-					  	  	.attr("y", "95%")
+						  	.attr("width", width)
+						  	.attr("height", height)
+						    .attr("x", "50%")             
+						  	.attr("y", "50%")
 							.attr("class", "graph-title")
 							.attr("text-anchor", "middle")  
 							.text("Gully Types");
@@ -339,7 +364,7 @@ $(document).ready(function() {
 						// 	.attr("class", "legend-text");
   							// .attr("transform", "translate(-10,-20)");
 
-					    return chart;
+					    return chart2;
 					},function(){
 				        d3.selectAll("#gully_type_chart .nv-slice").on('click',
 				            function(e){
@@ -450,21 +475,36 @@ $(document).ready(function() {
 								];
 							//graph a bar chart
 							var chart;
-					       	$("#top-right-box").append("<svg id="+"'gully_roadwork_chart'"+" class='chart'></svg>");
+							var width = $(window).width()*0.45*0.5;
+							var height = $(window).height()*0.35;
+							$("#top-right-box").append("<svg id="+"'gully_roadwork_title'"+"' class='chart_title'></svg>");
+					       	$("#top-right-box").append("<svg id="+"'gully_roadwork_chart'"+" ></svg>");
+					       	
 		        			nv.addGraph(function() {  
 
-							  	var chart = nv.models.discreteBarChart()
+							  	chart = nv.models.discreteBarChart()
 							      .x(function(d) { return d.label })
 							      .y(function(d) { return d.value })
+							      // .width(width)
+							      // .height(height)
 							      .tooltips(false)
 							      .showValues(true)
 							      .transitionDuration(250)
 							      ;
 							      chart.yAxis.axisLabel("# of Gullies");
 								  chart.xAxis.axisLabel("Gully Silt Level (%)");
+								d3.select('#gully_roadwork_title')
+								  .append("text")
+								  .attr("x", "50%")             
+								  .attr("y", "50%")
+								  .attr("class", "graph-title")
+								  .attr("text-anchor", "middle")  
+								  .text("Gully Silt Levels");
 							  	d3.select('#gully_roadwork_chart')
 							      .datum(historicalBarChart)
-							      .call(chart);
+							      .call(chart)
+							      .attr("width", width)
+							      .attr("height",height);
 							  	nv.utils.windowResize(chart.update);
 							  	return chart;
 							});
@@ -497,12 +537,18 @@ $(document).ready(function() {
 					];
 
 					//graph a bar chart
+					var chart;
 					var myColors = ["#FFCC00", "#E68A00", "#CC3300", "#6699FF", "#cccccc"];
-			       	$("#bottom-box").append("<svg id="+"'gully_roadwork_status_chart'"+" class='chart'></svg>");
+					$("#bottom-box").append("<svg id="+"'gully_roadwork_status_title'"+"' class='chart_title'></svg>");
+			       	$("#bottom-box").append("<svg id="+"'gully_roadwork_status_chart'"+" ></svg>");
+			       	var width = $(window).width()*0.48;
+					var height = $(window).height()*0.45;
 		        	nv.addGraph(function() {  
-					  	var chart = nv.models.discreteBarChart()
+					  	chart = nv.models.discreteBarChart()
 						    .x(function(d) { return d.label })
 							.y(function(d) { return d.value })
+							// .width(width)
+							// .height(height)
 							.staggerLabels(false)
 							.tooltips(false)
 							.color(myColors)
@@ -514,11 +560,14 @@ $(document).ready(function() {
 
 						d3.select('#gully_roadwork_status_chart')
 							.datum(barChartData)
-							.call(chart);
-						d3.select('#gully_roadwork_status_chart')
+							.call(chart)
+							.attr("width", width)             
+						  	.attr("height", height);
+						d3.select('#gully_roadwork_status_title')
 						  .append("text")
-						  .attr("x", 150)             
-						  .attr("y", 0)
+						  .attr("x", "50%")             
+						  .attr("y", "50%")
+						  .attr("class", "graph-title")
 						  .attr("text-anchor", "middle")  
 						  .text("Roadwork Statuses");
 						nv.utils.windowResize(chart.update);
@@ -702,24 +751,39 @@ $(document).ready(function() {
 						}
 						//graph the line chart 
 						var chart;
+						var width = $(window).width()*0.45;
+						var height = $(window).height()*0.6;
+						$("#bottom-box").append("<svg id="+"'flow_roadwork_title'"+"' class='chart_title'></svg>");
 					    $("#bottom-box").append("<svg id="+"'flow_roadwork_plot'"+"></svg>");
 						nv.addGraph(function() {  
 						  var chart = nv.models.lineChart();
-						  chart.xAxis // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
-						      .tickFormat(function(d) { return d3.time.format('%I:%M %p')(new Date(d)); })
-						      .axisLabel('Time');
 						  chart.yAxis.axisLabel('Flow');
+						  chart.xAxis // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
+						      .tickFormat(function(d) { return d3.time.format('%H:%M')(new Date(d)); })
+						      .axisLabel('Time')
+						      .height(height)
+						      .width(width);
+						 
 						  chart.tooltipContent(function(key, y, e, graph){
 						  	var x = graph.point.x;
 				            var y = String(graph.point.y);
 				            tooltip_str = '<center><b>#'+key+'</b></center>' +'Traffic Flow: '+ y + ' vehicles</br> Avg. Speed: ' + graph["point"]["speed"]+'km/hr</br>Time: '+x;
 				            return tooltip_str;
 						  });
+						  d3.select('#flow_roadwork_title')
+							  .append("text")
+							  .attr("x", "50%")             
+							  .attr("y", "50%")
+							  .attr("class", "graph-title")
+							  .attr("text-anchor", "middle")  
+							  .text("Traffic Flow over Time");
 						  d3.select('#flow_roadwork_plot')
 						      .datum(data)
 						    .transition().duration(500)
-						      .call(chart);
-
+						      .call(chart)
+						      .attr("width", width)
+						      .attr("height", height);
+						     
 						  //TODO: Figure out a good way to do this automatically
 						  nv.utils.windowResize(chart.update);
 						  //nv.utils.windowResize(function() { d3.select('#chart1 svg').call(chart) });
@@ -810,12 +874,12 @@ $(document).ready(function() {
 				                .remove();
 		                	console.log("region name: "+ i);
 		                	//build queries
-							// var start = new Date("2013-09-23 00:00:00") ;
-							// var end = new Date("2013-09-25 00:00:00") ;
-							var start = new Date();
-							var end = new Date();
-							start.setDate(start.getDate()-2);
-							end.setDate(end.getDate()+2);
+							var start = new Date("September 23, 2013 00:00:00");
+							var end = new Date("September 25, 2013 00:00:00") ;
+							// var start = new Date();
+							// var end = new Date();
+							// start.setDate(start.getDate()-2);
+							// end.setDate(end.getDate()+2);
 
 							var query = {"tf_recordedtime": {$gte: start, $lt: end}, "region":d["name"]};
 					  		var stringQuery = JSON.stringify( query );
@@ -910,7 +974,10 @@ $(document).ready(function() {
 					        	}
 					        	//graph a chart
 					        	var chart;
-					        	$("#bottom-box").append("<svg id="+"'testplot'"+" class='scatterplot chart'></svg>");
+					        	var width = $(window).width()*0.45;
+					        	var height = $(window).height()*0.5;
+					        	$("#bottom-box").append("<svg id="+"'flow_time_title'"+"' class='chart_title'></svg>");
+					        	$("#bottom-box").append("<svg id="+"'flow_time_chart'"+"></svg>");
 								nv.addGraph(function() {
 								  chart = nv.models.scatterChart()
 								                .showDistX(true)
@@ -920,21 +987,35 @@ $(document).ready(function() {
 								                .color(colorArray)
 								                .transitionDuration(300)
 								                ;
-								  chart.xAxis.tickFormat(d3.format('.02f'));
-								  chart.yAxis.tickFormat(d3.format('.02f'));
-								  chart.yAxis.axisLabel("Actual Time/Ideal Time Ratio");
-								  chart.xAxis.axisLabel("Traffic Flow (# of Vehicles)");
+								  chart.xAxis.tickFormat(d3.format('.02f'))
+									  .axisLabel("Traffic Flow (# of Vehicles)");
+									  // .width(width);
+									  
+								  chart.yAxis.tickFormat(d3.format('.02f'))
+								  	.axisLabel("Actual Time/Ideal Time Ratio");
+								  	// .height(height);
 
 								  chart.tooltipContent(function(key, x, y, d) {
 								      return '<div> Average Speed: ' + d["point"]["speed"] + 'km/hr</div>'
 								      		 +'Timestamp: '+d["point"]["time"];
 								  });
-								  d3.select('#testplot')
+								  d3.select('#flow_time_title')
+									  .append("text")
+									  .attr("x", "50%")             
+									  .attr("y", "50%")
+									  .attr("class", "graph-title")
+									  .attr("text-anchor", "middle")  
+									  .text("Traffic Flow vs. Travel Time");
+								  d3.select('#flow_time_chart')
 								      .datum(data)
-								      .call(chart);
+								     .transition().duration(500)
+								      .call(chart)
+								      .attr('width', width)
+								      .attr('height', height);
 								  nv.utils.windowResize(chart.update);
 								  chart.scatter.dispatch.on('elementClick', function(point) {
 								  	$("#top-right-box").html("");
+
 								  	console.log(" clicked point paths");
 							                var values=new Array();
 										    var flows= ["Small", "Medium", "Large", "Long"];
@@ -957,6 +1038,9 @@ $(document).ready(function() {
 												    values: values
 												}
 											];
+											var width = $(window).width()*0.48*0.45;
+					        				var height = $(window).height()*0.8*0.45;	
+					        				$("#top-right-box").append("<svg id="+"'flow_dist_title'"+"' class='chart_title'></svg>");
 							                $("#top-right-box").append("<svg id="+"'flow_dist_chart'"+" class='gully_overview_chart'></svg>");
 								        	nv.addGraph(function() {  
 											  	var chart = nv.models.discreteBarChart()
@@ -972,13 +1056,17 @@ $(document).ready(function() {
 
 												d3.select('#flow_dist_chart')
 													.datum(barChartData)
-													.call(chart);
-												d3.select('#flow_dist_chart')
+													.call(chart)
+													.attr('width', width)
+												    .attr('height', height)
+												    ;
+												d3.select('#flow_dist_title')
 												  .append("text")
-												  .attr("x", 150)             
-												  .attr("y", 0)
+												  .attr("x", "50%")             
+												  .attr("y", "50%")
+												  .attr("class", "graph-title")
 												  .attr("text-anchor", "middle")  
-												  .text("Traffic Flow Dist.");
+												  .text("Vehicle Flow");
 												nv.utils.windowResize(chart.update);
 												return chart;
 											},function(){

@@ -9,7 +9,7 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	width: 25%;
 	height: 10%;
 	left: 2%;
-	bottom: 5%;
+	bottom: 3%;
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -52,11 +52,13 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 }
 
 #slider-box{
-	min-height: 15px;
+	min-height: 10px;
 	float: right;
 	margin-right: 5%;
 	margin-bottom: 10%;
 	width:50%;
+	bottom:5%;
+	position: relative;
 }
 
 #radiusSlider{
@@ -68,11 +70,11 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	color: #24587A;
 	font-size: 15;
 	margin:10px;
+	width:90%;
+	height:90%;
+	overflow: auto;
 }
 
-.flow_roadwork_plot{
-	width: 80%;
-}
 
 
 
@@ -116,19 +118,93 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 }
 
 /*** chart area ***/
-#top-right-box{
-	height: 40%;
-	width:48%;
-	background-color: white;
-	margin-left: 8px;
-	margin-top: 8px;
-	margin-bottom: 8px;
-	border-radius: 10px;
+
+
+/*chart 1: gully status overview*/
+#bottom-box-left{
+	position: relative;
+	left:0;
+	width: 48%;
+	height: 100%;
+	float:left;
+	overflow: auto;
+}
+#bottom-box-right{
+	position: relative;
+	/*left:50%;*/
+	width: 48%;
+	height: 100%;
+	float:right;
+	overflow: auto;
+}
+
+#gully_type_chart{
+	height: 80%;
+	width: 90%;
+	float:left;
+	overflow: auto;
+}
+#gully_silt_chart{
+	height: 80%;
+	width:90%;
+	float: left;
+	overflow: auto;
+}
+
+#gully_state_chart{
+	height: 80%;
+	width:90%;
+	float: left;
+	overflow: auto;
+}
+
+#gully_silt_title{
+
+}
+
+
+/*chart 2: gully roadwork impact*/
+
+#gully_roadwork_chart{
+	height: 80%;
+	width: 90%;
+	overflow: auto;
+	float: left;
+}
+#gully_roadwork_status_chart{
+	height: 80%;
+	width: 90%;
+	overflow: auto;
 	float: left;
 }
 
-#top-left-box{
-	position: relative;
+/*chart 3: traffic flow impact*/
+#flow_time_chart{
+	overflow: auto;
+	height: 80%;
+	width: 90%;
+	float: left;
+}
+#flow_dist_chart{
+	height: 80%;
+	width: 90%;
+	/*position: relative;*/
+	overflow: auto;
+	float: left;
+}
+
+/*chart 4: roadwork impact on flow*/
+
+#flow_roadwork_plot{
+	height: 80%;
+	width: 90%;
+	float:left;
+	overflow: auto;
+}
+
+
+#top-right-box{
+	/*position: relative;*/
 	height: 40%;
 	width:48%;
 	background-color: white;
@@ -137,6 +213,20 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	margin-bottom: 8px;
 	border-radius: 10px;
 	float: left;
+	/*border: red 1px solid;*/
+}
+
+#top-left-box{
+	/*position: relative;*/
+	height: 40%;
+	width:48%;
+	background-color: white;
+	margin-left: 8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 10px;
+	float: left;
+	/*border: red 1px solid;*/
 }
 #bottom-box{
 	/*position: relative;*/
@@ -148,6 +238,8 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	margin-bottom: 8px;
 	clear:both;
 	border-radius: 10px;
+	/*border: red 1px solid;*/
+	float: left;
 }
 
 .description{
@@ -158,40 +250,14 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	overflow: auto;
 }
 /*** Charts ***/
-#testplot{
 
+.chart_title{
+	/*border: 1px blue solid;*/
+	width: 250px;
+	height:10%;
+	/*left:50%;*/
+	position: relative;
 }
-
-#gully_type_chart{
-	height: 90%;
-	width: 90%;
-	margin-top: 30px;
-/*	padding-top:30px;
-*/	/*overflow: auto;*/
-}
-#gully_silt_chart{
-	height: 90%;
-	width:39%;
-	padding-top: 20px;
-	padding-left: 5%;
-	padding-right: 5%;
-	padding-bottom: 5%;
-	float: left;
-	top:3%;
-}
-
-#gully_state_chart{
-	height: 90%;
-	width:39%;
-	top:0%;
-	padding-top: 20px;
-	padding-left: 5%;
-	padding-right: 5%;
-	padding-bottom: 5%;
-	float: left;
-	overflow: auto;
-}
-
 /*** Map ***/
 #map_container{
   position: relative;

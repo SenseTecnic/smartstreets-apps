@@ -1,391 +1,795 @@
-$(document).ready(function() {
+/*
+ * Copyright © 2010 - 2013 Modo Labs Inc. All rights reserved.
+ *
+ * The license governing the contents of this file is located in the LICENSE
+ * file located at the root directory of this distribution. If the LICENSE file
+ * is missing, please contact sales@modolabs.com.
+ *
+ */
 
-	// enable/disable search submit button depends on selected option
-	// $("#catalogue_select").change(function(){
-	// 	if ($(this).val()!=""){
-	// 		//enable submit button
-	// 		$("#search_button").addClass("enabled");
-	// 		$("#search_button").removeClass("disabled");
-	// 		$("#search_button").removeAttr("disabled", "disabled");
-	// 	}else{
-	// 		$("#search_button").removeClass("enabled");
-	// 		$("#search_button").addClass("disabled");
-	// 		$("#search_button").attr("disabled", "disabled");
-	// 	}
-	// });
+String.prototype.strip = function() {
+    return this.replace(/^\s+/, '').replace(/\s+$/, '');
+}
 
-  $("#sortView").change(function(){
-    //sort view
-    var sortString=$("#sortView").val();
-    var current =$(location).attr('href');
-    var redirect = current+"&sort="+sortString;
-    window.location.replace(redirect);
-
-  });
-
-  $("#search_form").hide();
-
-  $("#advanced_search_selector").click(function(){
-
-    if ($("#search_form").is(":visible")){
-      $("#search_form").hide('slow', function() {
-        $("#advanced_search_selector").text("Show Advanced Search >>");
-      });
-    }else{
-      $("#search_form").show('slow', function() {
-        $("#advanced_search_selector").text("<<Hide Advanced Search");
-      });
+function showTab(id) {
+    var tabId = id+'-tab';
+    var tabbodyId = id+'-tabbody';
+    
+    var tab = document.getElementById(tabId);
+    var tabbody = document.getElementById(tabbodyId);
+    if (!tab || !tabbody) { return; } // safety check
+    
+    var tabs = tab.parentNode.getElementsByTagName('li');
+    if (!tabs) { return; } // safety check
+    
+    var tabBodies = tabbody.parentNode.childNodes;
+    if (!tabBodies) { return; } // safety check
+    
+    // Display the tab body and hide others
+    for (var i = 0; i < tabBodies.length; i++) {
+        if (tabBodies[i].id == tabbodyId) {
+            show(tabBodies[i].id);
+        } else {
+            hide(tabBodies[i].id);
+        }
     }
-  });
-
-	//detect scroll to bottom
-	$(window).scroll(function(){
-	  if ($(window).scrollTop() == $(document).height() - $(window).height()){
-	    console.log ("bottom!");
-	    var current =$(location).attr('href');
-	    if (current.indexOf("searchResults")>-1){
-	    	//search result page
-	    	loadMoreResults();
-	    }else{
-	    	loadMorePosts();
-	    }
-	    
-	  }
-	});
-});
-
-function searchTag(tag){
-  //check on tag to search tags
-  var text = $(tag).text();
-
-  //build redirect url
-  var current =$(location).attr('href');
-  
-  var sub_href = current.substr(0, current.indexOf("CatalogueBrowser")+16);
-  var redirect=sub_href+"/searchResults?tags="+text;
-  window.location.replace(redirect);
+    
+    // Display the tab and hide others
+    for (var i = 0; i < tabs.length; i++) {
+        if (tabs[i].id == tabId) {
+            addClass(tabs[i], 'active');
+        } else {
+            removeClass(tabs[i], 'active');
+        }
+    }
+    
+    // fake resize event in case tab body was resized while hidden 
+    if (document.createEvent) {
+        var e = document.createEvent('HTMLEvents');
+        e.initEvent('resize', true, true);
+        window.dispatchEvent(e);
+    
+    } else if( document.createEventObject ) {
+        var e = document.createEventObject();
+        document.documentElement.fireEvent('onresize', e);
+    }
+    
+    onDOMChange();
 }
 
-function viewItemDetails(that){
-	var itemSearchURL= $(that).data("search");
-	console.log ("item url: "+ itemSearchURL);
-	var part1= itemSearchURL.substr(0, itemSearchURL.indexOf("&val="));
-	var part2 = itemSearchURL.substr(itemSearchURL.indexOf("&val=")+5);
-
-	console.log("part1: "+part1);
-	console.log("part2: "+part2);
-	var params = {"part1" : part1,"part2" :part2};
-	// console.log ("module id: "+ moduleId);
-
-	//TODO: Call AJAX to get item details
-	makeAPICall('POST', "CatalogueBrowser" , 'viewItemDetails', params, function(response){
-		//clear all previous dialog content
-		$("#item-details").html ("");
-
-		console.log (" item details response: "+response);
-		//display details in a pop up 
-		$(response.items[0]["i-object-metadata"]).each(function(i,data){
-			//append data content to dialog 
-			$( "#item-details" ).append("<b>"+data["rel"].split (':')[3]+ ": </b>"+data["val"]+"<br>");
-		});
-
-		$( "#dialog-modal" ).dialog({
-		      height: 'auto',//how to make responsive height 
-		      width: '90%',
-		      modal: true,
-		      dialogClass: 'detailDialog'
-		});
-	});
-}
-
-function sortResults (sel){
-	var selected_sort = sel.options[sel.selectedIndex].value;
-	console.log ("selected: "+selected_sort);
-}
-
-function getDatahubCatalogues(sel){
-	var selected_datahub_url = sel.options[sel.selectedIndex].value;
-	var selected_datahub_name = sel.options[sel.selectedIndex].label;
-
-	$("#hub_selected").val(selected_datahub_name);
-
-	//TODO: set global var of base url
-	console.log ("selected hub url : "+selected_datahub_url); 
-	if (selected_datahub_name=="None"){
-		//clear catalogue selector options and set default to none
-		$("#catalogue_select").html ("<option value=''>None</option>");
-	}else{
-		// fetch first level catalogues using AJAX
-		var params = {"baseURL" : selected_datahub_url };
-		makeAPICall('GET', "CatalogueBrowser" , 'getDatahubCatalogues', params, function(response){
-			//update combo box
-			$(response.items).each(function(i,data){
-				//append href to dropdown
-				$("#catalogue_select").append($("<option></option>")
-	         		.attr("value", data["href"])
-	         		.text(data["href"])); 
-			});
-		});
-	}	
-}
-
-function loadMorePosts(){
-  var param= $("#storage").data("param");
-  // var parentUrl= (param["parentUrl"]);
-  console.log ("param"+param);
-  // console.log ("parent url"+parentUrl);
-  var index= $("#storage").data("index");
-  console.log ("index"+index);
-  var sort= $("#storage").data("sort");
-  // var sort= (param["sort"]);
-
-  makeAPICall(
-    'POST', 'CatalogueBrowser', 'loadMoreItems',
-    {"parentUrl":param, "index": index, "sort":sort},
-    function(response){
-      console.log (response);
-      // set new index value
-      var newIndex= parseInt(index)+10;
-      console.log("new index: "+newIndex);
-      $('#storage').data("index", newIndex);
-
-      var json = $.parseJSON(response);
-      var textToInsert = [];
-
-
-      $(json.docs).each(function(i,data){
-
-      	  var id = data.hasid;
-      	  var datahub = data.datahub;
-          var name = data.name;
-          var description= data.hasdescription;
-          var lastupdate= data.lastupdate;
-          var tags= data.tags;
-          var iscatalogue= data.isCatalogue;
-          var parentUrl= data.parentUrl;
-          var href= data.href;
-          var maintainer= data.maintainer;
-          var tagArray;
-           console.log ("is catalogue: "+iscatalogue);
-          if(tags!=null){
-          	tagArray = tags.split(',');
-          }
-
-          //dynammically append list item
-          textToInsert[i++]  = '<li>';
-          if(lastupdate!=null){
-          	textToInsert[i++] = '<div class="lastUpdateLabel">Last Updated: ';
-          	textToInsert[i++] = lastupdate;
-         	textToInsert[i++] = '</div>';
-          }
-          var type="";
-          if (iscatalogue){
-          	type="Catalogue";
-          }else{
-          	type="Item";
-          }
-
-          textToInsert[i++] = '<span class="type-badge">'+type+'</span><br>';
-          if(iscatalogue){
-          	//build breadcrumb url
-            var sub_href = href.substr(href.indexOf("/cat"));
-            console.log ("subref:: "+sub_href);
-           var current =$(location).attr('href');
-           var base_href= current.substr(0,current.indexOf('?'));
-           var breadcrumb = base_href+'?'+"href="+sub_href+"&hub="+datahub;
-           console.log("bz url:"+breadcrumb);
-
-          	textToInsert[i++] = "<a href='"+breadcrumb+"'>";
-          }
-          
-          if(name!=null){
-          	textToInsert[i++] = ' <strong>Name: </strong>';
-          	textToInsert[i++] = name;
-          }
-          
-          if(maintainer!=null){
-          	textToInsert[i++] = '<br><strong>Maintainer: </strong>'+maintainer;
-          }
-          
-          if(description!=null){
-          	textToInsert[i++] = ' <br><strong>Description: </strong>&nbsp;<span class="smallprint">';
-          	textToInsert[i++] = description;
-          	textToInsert[i++] = '</span>';
-          }
-          
-
-          if(iscatalogue){
-          	textToInsert[i++] = "</a>";
-          }else{
-          	var hubUrl=parentUrl.substr(0, parentUrl.indexOf("/cat"));
-          	var itemSearchURL=parentUrl+"?rel=urn:X-"+datahub+":rels:hasId"+"&val="+id;;
-          	var resourceURL="";
-          	if(href.indexOf("http")>-1){
-          		resourceURL=href;
-          	}else{
-          		resourceURL=hubUrl+href;
-          	}	
-          	console.log ("resource url: "+resourceURL);
-          	console.log ("item serach url: "+itemSearchURL);
-
-          	//TODO: build view details and resource url
-          	if (id!=null){
-          		textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
-	          	textToInsert[i++] = itemSearchURL;
-	          	textToInsert[i++] = ">View Details</a>";
-          	}
-          	textToInsert[i++] = '<a class = "resource_link" href="';
-          	textToInsert[i++] = resourceURL;
-          	textToInsert[i++] = '">Download Resource</a>';
-          }
-
-          if(tags!=null){
-            textToInsert[i++] = "<br><br><strong>Tags: </strong>";
-            for(var y in tagArray ){
-              textToInsert[i++] = "<span class='badge' onclick='searchTag(this)'>"+tagArray[y];
-              textToInsert[i++] = "</span>";
+function onOrientationChange() {
+    /* the galaxy tab sends orientation change events constantly */
+    if (typeof onOrientationChange.lastOrientation == 'undefined') {
+        onOrientationChange.lastOrientation = null;
+    }
+    
+    var newOrientation = getOrientation();
+    
+    if (newOrientation != onOrientationChange.lastOrientation) {
+        rotateScreen();
+        
+        if (typeof onOrientationChange.callbackFunctions !== 'undefined') {
+            for (var i = 0; i < onOrientationChange.callbackFunctions.length; i++) {
+                onOrientationChange.callbackFunctions[i]();
             }
-          }
-      
-       	  textToInsert[i++]  = '</li>';
-          $("#navResults").append(textToInsert.join(''));
-          textToInsert = [];
-      });
-
-      if (newIndex>=json.numFound){
-        $("#scrollText").text("End of list.");
-      }
-
-
-  });
+        }
+        
+        onOrientationChange.lastOrientation = newOrientation;
+    }
 }
 
-function loadMoreResults(){
-  var param= $("#searchStorage").data("param");
-  var param_string = JSON.stringify(param);
-  console.log ("param json: "+JSON.stringify(param));
-  var index= $("#searchStorage").data("index");
-  var sort= $("#searchStorage").data("sort");
-  console.log ("sort: "+sort);
+function onResize() {
+    if (typeof onResize.callbackFunctions !== 'undefined') {
+        for (var i = 0; i < onResize.callbackFunctions.length; i++) {
+            onResize.callbackFunctions[i]();
+        }
+    }
+
+    setOrientation(getOrientation());
+}
+
+function addOnOrientationChangeCallback(callback) {
+    if (typeof onOrientationChange.callbackFunctions == 'undefined') {
+        onOrientationChange.callbackFunctions = [];
+    }
+    onOrientationChange.callbackFunctions.push(callback);
+    
+    if (typeof onResize.callbackFunctions == 'undefined') {
+        onResize.callbackFunctions = [];
+    }
+    onResize.callbackFunctions.push(callback);
+}
+
+function setupOrientationChangeHandlers() {
+    if (window.addEventListener) {
+        window.addEventListener("orientationchange", onOrientationChange, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onorientationchange", onOrientationChange);
+    }
+    if (window.addEventListener) {
+        window.addEventListener("resize", onResize, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onresize", onResize);
+    }
+}
+
+function rotateScreen() {
+    setTimeout(scrollToTop, 500);
+}
+
+function getOrientation() {
+    var width = document.documentElement.clientWidth || document.body.clientWidth;
+    var height = document.documentElement.clientHeight || document.body.clientHeight;
+
+    return (width > height) ? 'landscape' : 'portrait';
+}
+
+function setOrientation(orientation) {
+    var body = document.getElementsByTagName("body")[0];
  
-  makeAPICall(
-    'POST', 'CatalogueBrowser', 'loadMoreResults',
-    {"searchParam":param_string, "index": index, "sort": sort},
-    function(response){
-      console.log (response);
-      // set new index value
-      var newIndex= parseInt(index)+10;
-      console.log("new index: "+newIndex);
-      $('#searchStorage').data("index", newIndex);
+    // remove existing portrait/landscape class if there
+    removeClass(body, 'portrait');
+    removeClass(body, 'landscape');
+    addClass(body, orientation);
+}
 
-      var json = $.parseJSON(response);
-      var textToInsert = [];
+// Localized ajax loading and error content
+// takes either an element or an id
+function showAjaxLoadingMsg(e) {
+    if (typeof e == 'string') {
+        e = document.getElementById(element);
+    }
+    if (e) {
+      e.innerHTML = AJAX_CONTENT_LOADING_HTML;
+    }
+    onDOMChange();
+}
 
+function showAjaxErrorMsg(e) {
+    if (typeof e == 'string') {
+        e = document.getElementById(element);
+    }
+    if (e) {
+      e.innerHTML = AJAX_CONTENT_ERROR_HTML;
+    }
+    onDOMChange();
+}
 
-      $(json.docs).each(function(i,data){
+function hide(strID) {
+    // Hides the object with ID strID 
+    var objToHide = document.getElementById(strID);
+    if (objToHide) {
+        objToHide.style.display = "none";
+    }
+    onDOMChange();
+}
 
-      	  var id = data.hasid;
-      	  var datahub = data.datahub;
-          var name = data.name;
-          var description= data.hasdescription;
-          var lastupdate= data.lastupdate;
-          var tags= data.tags;
-          var iscatalogue= data.isCatalogue;
-          var parentUrl= data.parentUrl;
-          var href= data.href;
-          var maintainer= data.maintainer;
-          var tagArray;
-           console.log ("is catalogue: "+iscatalogue);
-          if(tags!=null){
-          	tagArray = tags.split(',');
-          }
+function show(strID) {
+    // Displays the object with ID strID 
+    var objToHide = document.getElementById(strID);
+    if (objToHide) {
+        objToHide.style.display = "block";
+    }
+    onDOMChange();
+}
 
-          //dynammically append list item
-          textToInsert[i++]  = '<li>';
-          if(lastupdate!=null){
-          	textToInsert[i++] = '<div class="lastUpdateLabel">Last Updated: ';
-          	textToInsert[i++] = lastupdate;
-         	textToInsert[i++] = '</div>';
-          }
-          var type="";
-          if (iscatalogue){
-          	type="Catalogue";
-          }else{
-          	type="Item";
-          }
-          textToInsert[i++] = '<span class="type-badge">'+type+'</span><br>';
-          if(iscatalogue){
-          	//build breadcrumb url
-            var sub_href = href.substr(href.indexOf("/cat"));
-            console.log ("subref:: "+sub_href);
-           console.log ("HI:: "+$(location).attr('href'));
-           var current =$(location).attr('href');
-           var base_href= current.substr(0,current.indexOf('?'));
-           console.log("bz url:"+base_href);
-           var breadcrumb = base_href+'?'+"href="+sub_href+"&hub="+datahub;
-           console.log("bz url:"+breadcrumb);
+function showHideFull(objContainer) {
+    var strClass = objContainer.className;
+    if (strClass.indexOf("collapsed") > -1) {
+        strClass = strClass.replace("collapsed","expanded");
+    } else {
+        strClass = strClass.replace("expanded","collapsed");
+    }
+    objContainer.className = strClass;
+    objContainer.blur();
+    
+    onDOMChange();
+}
 
-          	textToInsert[i++] = "<a href='"+breadcrumb+"'>";
-          }
+function clearField(objField,strDefault) {
+    // Clears the placeholder text in an input field if it matches the default string - fixes a bug in Android
+	  if ((objField.value == strDefault) || (objField.value == "")) {
+		    objField.value = "";
+	  }
+}
 
-          if(name!=null){
-          	textToInsert[i++] = ' <strong>Name: </strong>';
-          	textToInsert[i++] = name;
-          }
+// Android doesn't respond to onfocus="clearField(...)" until the 
+// input field loses focus
+function androidPlaceholderFix(searchbox) {
+    // this forces the search box to display the empty string
+    // instead of the place holder when the search box takes focus
+    if (searchbox.value == "") {
+        searchbox.value = "";
+    }
+}
 
-          if(maintainer!=null){
-          	textToInsert[i++] = '<br><strong>Maintainer: </strong>'+maintainer;
-          }
-          
-          if(description!=null){
-          	textToInsert[i++] = ' <br><strong>Description: </strong>&nbsp;<span class="smallprint">';
-          	textToInsert[i++] = description;
-          	textToInsert[i++] = '</span>';
-          }
-          
+function getCookie(name) {
+    var cookie = document.cookie;
+    var result = "";
+    var start = cookie.indexOf(name + "=");
+    if (start > -1) {
+        start += name.length + 1;
+        var end = cookie.indexOf(";", start);
+        if (end < 0) {
+            end = cookie.length;
+        }
+        result = unescape(cookie.substring(start, end));
+    }
+    return result;
+}
 
-          if(iscatalogue){
-          	textToInsert[i++] = "</a>";
-          }else{
-          	var hubUrl=parentUrl.substr(0, parentUrl.indexOf("/cat"));
-          	var itemSearchURL=parentUrl+"?rel=urn:X-"+datahub+":rels:hasId"+"&val="+id;;
-          	var resourceURL="";
-          	if(href.indexOf("http")>-1){
-          		resourceURL=href;
-          	}else{
-          		resourceURL=hubUrl+href;
-          	}	
-          	console.log ("resource url: "+resourceURL);
-          	console.log ("item serach url: "+itemSearchURL);
+function clearCookie(name, path) {
+    var value = 'deleted';
+    var exdate = new Date(0);
+    var exdateclause = "; expires=" + exdate.toGMTString();
+    var pathclause = (path == null) ? "" : "; path=" + path;
+    document.cookie = name + "=" + escape(value) + exdateclause + pathclause;
+}
 
-          	//TODO: build view details and resource url
-          	if (id!=null){
-          		textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
-	          	textToInsert[i++] = itemSearchURL;
-	          	textToInsert[i++] = ">View Details</a>";
-          	}
-          	textToInsert[i++] = '<a class = "resource_link" href="';
-          	textToInsert[i++] = resourceURL;
-          	textToInsert[i++] = '">Download Resource</a>';
-          }
+function setCookie(name, value, expireseconds, path) {
+    var exdate = new Date();
+    exdate.setTime(exdate.getTime() + (expireseconds * 1000));
+    var exdateclause = (expireseconds == 0) ? "" : "; expires=" + exdate.toGMTString();
+    var pathclause = (path == null) ? "" : "; path=" + path;
+    document.cookie = name + "=" + escape(value) + exdateclause + pathclause;
+}
 
-          if(tags!=null){
-            textToInsert[i++] = "<br><br><strong>Tags: </strong>";
-            for(var y in tagArray ){
-              textToInsert[i++] = "<span class='badge' onclick='searchTag(this)'>"+tagArray[y];
-              textToInsert[i++] = "</span>";
+function getCookieArrayValue(name) {
+    var value = getCookie(name);
+    if (value && value.length) {
+        return value.split('@@');
+    } else {
+        return new Array();
+    }
+}
+
+function setCookieArrayValue(name, values, expireseconds, path) {
+    var value = '';
+    if (values && values.length) {
+        value = values.join('@@');
+    }
+    setCookie(name, value, expireseconds, path);
+}
+
+function hasClass(ele,cls) {
+    return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+        
+function addClass(ele,cls) {
+    if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+}
+
+function removeClass(ele,cls) {
+    if (hasClass(ele,cls)) {
+        var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+        ele.className=ele.className.replace(reg,' ').strip();
+    }
+}
+        
+function toggleClass(ele, cls) {
+    if (hasClass(ele, cls)) {
+        removeClass(ele, cls);
+    } else {
+        addClass(ele, cls);
+    }
+}
+
+// Share-related functions
+function showShare() {
+    var sharesheet = document.getElementById("sharesheet");
+    if (!sharesheet) {
+        return;
+    }
+    if (!sharesheet.parentNode || sharesheet.parentNode.nodeName != 'BODY') {
+        var elements = document.getElementsByTagName('body');
+        if (elements.length) {
+            var body = elements[0];
+            body.appendChild(sharesheet);
+        }
+    }
+    sharesheet.style.display="block";
+    var iframes = document.getElementsByTagName('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+        iframes[i].style.visibility = 'hidden';
+        iframes[i].style.height = '0';
+    }
+    window.scrollTo(0,0);
+}
+function hideShare() {
+    if (!document.getElementById("sharesheet")) {
+        return;
+    }
+    document.getElementById("sharesheet").style.display="none";
+    var iframes = document.getElementsByTagName('iframe');
+    for (var i = 0; i < iframes.length; i++) {
+        iframes[i].style.visibility = 'visible';
+        iframes[i].style.height = '';
+    }
+}
+
+// Bookmarks
+function toggleBookmark(name, item, expireseconds, path, bookmarkId) {
+    // facility for module to respond to bookmark state change
+    if (typeof moduleBookmarkWillToggle != 'undefined') {
+        $result = moduleBookmarkWillToggle(name, item, expireseconds, path);
+        if ($result === false) { return; }
+    }
+  
+    if (!bookmarkId) {
+        bookmarkId = "bookmark";
+    }
+    var bookmark = document.getElementById(bookmarkId);
+    toggleClass(bookmark, "on");
+    var items = getCookieArrayValue(name);
+    var newItems = new Array();
+    if (items.length == 0) {
+        newItems[0] = item;
+    } else {
+        var found = false;
+        for (var i = 0; i < items.length; i++) {
+            if (items[i] == item) {
+                found = true;
+            } else {
+                newItems.push(items[i]);
             }
+        }
+        if (!found) {
+            newItems.push(item);
+        }
+    }
+    setCookieArrayValue(name, newItems, expireseconds, path);
+    
+    // facility for module to respond to bookmark state change
+    if (typeof moduleBookmarkToggled != 'undefined') {
+        moduleBookmarkToggled(name, item, expireseconds, path);
+    }
+}
+
+// TODO this needs to handle encoded strings and parameter separators (&amp;)
+if (typeof makeAPICall === 'undefined' && typeof jQuery === 'undefined') {
+    function makeAPICall(type, module, command, data, callback) {
+        var urlParts = [];
+        for (var param in data) {
+            urlParts.push(param + "=" + data[param]);
+        }
+        url = URL_BASE + API_URL_PREFIX + '/' + module + '/' + command + '?' + urlParts.join('&');
+        var handleError = function(errorObj) {}
+    
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.open("GET", url, true);
+        httpRequest.onreadystatechange = function() {
+            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                var obj;
+                if (window.JSON) {
+                    obj = JSON.parse(httpRequest.responseText);
+                    // TODO: catch SyntaxError
+                } else {
+                    obj = eval('(' + httpRequest.responseText + ')');
+                }
+                if (obj !== undefined) {
+                    if ("response" in obj) {
+                      callback(obj["response"]);
+                    }
+          
+                    if ("error" in obj && obj["error"] !== null) {
+                      handleError(obj["error"]);
+                    } else {
+                      handleError("response not found");
+                    }
+                } else {
+                    handleError("failed to parse response");
+                }
+            }
+        }
+        httpRequest.send(null);
+    }
+}
+
+function ajaxContentIntoContainer(options) {
+    if (typeof options != 'object') { return; } // safety
+    
+    if (typeof ajaxContentIntoContainer.pendingRequests == 'undefined') {
+        ajaxContentIntoContainer.pendingRequests = new Array();
+    }
+    
+    var _removeRequestsForContainer = function (container) {
+        // go backwards so removing items doesn't cause us to skip requests
+        for (var i = ajaxContentIntoContainer.pendingRequests.length-1; i >= 0; i--) {
+            if (ajaxContentIntoContainer.pendingRequests[i].options.container == container) {
+                ajaxContentIntoContainer.pendingRequests[i].httpRequest.abort();
+                ajaxContentIntoContainer.pendingRequests.splice(i, 1);
+            }
+        }
+    }
+    
+    var _removeCompletedRequest = function (httpRequest) {
+        for (var i = 0; i < ajaxContentIntoContainer.pendingRequests.length; i++) {
+            if (ajaxContentIntoContainer.pendingRequests[i].httpRequest == httpRequest) {
+                ajaxContentIntoContainer.pendingRequests.splice(i, 1);
+                break;
+            }
+        }
+    }
+   
+    var defaults = {
+        url: null, 
+        container: null, 
+        timeout: 60, 
+        addAjaxParameter: true,
+        loadMessage: true,
+        errorMessage: true,
+        success: function () {},
+        error: function (code) {} 
+    };
+    for (var i in defaults) {
+        if (typeof options[i] == 'undefined') {
+            options[i] = defaults[i];
+        }
+    }
+    if (!options.url || !options.container) { return; } // safety
+    
+    if (options.addAjaxParameter && options.url.search(/[\?\&]ajax=/) < 0) {
+        options.url += (options.url.search(/\?/) < 0 ? "?" : "&")+"ajax=1";
+    }
+    
+    _removeRequestsForContainer(options.container);
+    
+    var httpRequest = new XMLHttpRequest();
+    httpRequest.open("GET", options.url, true);
+    
+    var requestTimer = setTimeout(function() {
+        // some browsers set readyState to 4 on abort so remove handler first
+        httpRequest.onreadystatechange = function() { };
+        httpRequest.abort();
+        
+        options.error(408); // http request timeout status code
+    }, options.timeout * 1000);
+    
+    httpRequest.onreadystatechange = function() {
+        // return if still in progress
+        if (httpRequest.readyState != 4) { return; }
+        
+        // Got answer, don't abort
+        clearTimeout(requestTimer);
+        
+        if (httpRequest.status == 200) { // Success
+            options.container.innerHTML = "";
+            
+            insertContentIntoContainer({
+                "container" : options.container,
+                "html"      : httpRequest.responseText
+            });
+            
+            options.success();
+            
+        } else {
+            if (options.errorMessage) {
+                showAjaxErrorMsg(options.container);
+            }
+            options.error(httpRequest.status);
+        }
+        
+        _removeCompletedRequest(httpRequest);
+    };
+    
+    if (options.loadMessage) {
+        showAjaxLoadingMsg(options.container);
+    }
+    
+    httpRequest.send(null);
+    
+    ajaxContentIntoContainer.pendingRequests.push({
+        'options'     : options,
+        'httpRequest' : httpRequest
+    });
+}
+
+function insertContentIntoContainer(options) {
+    if (typeof options != 'object') { return; } // safety
+
+    var defaults = {
+        html: null, 
+        container: null
+    };
+    for (var i in defaults) {
+        if (typeof options[i] == 'undefined') {
+            options[i] = defaults[i];
+        }
+    }
+    if (!options.html || !options.container) { return; } // safety
+    
+    // If there are no non-empty non-script nodes before scripts then IE8 will 
+    // remove all the scripts when innerHTML is used.  So temporarily add a 
+    // non-empty div to the beginning of the HTML.
+    var ie8HackId = '__insertContentIntoContainer_ie8Hack';
+    options.container.innerHTML = '<div id="'+ie8HackId+'" style="display:none;">&nbsp;</div>'+options.html;
+    
+    var scripts = options.container.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+        var script = scripts[i];
+        
+        // Manually execute scripts
+        var src = (script.text || script.textContent || script.innerHTML || "");
+        if (src.length) {
+            try {
+                if (window.execScript) {
+                    window.execScript(src);
+                } else {
+                    (function(src) {
+                        window.eval.call(window, src);
+                    })(src);
+                }
+            } catch (e) {
+            }
+        } else if (script.src && script.src.length) {
+            // create new javascript include and add to head
+            // which is the only cross-browser way to ensure it executes
+            var copy = document.createElement("script");
+            if (script.type && script.type.length) {
+                copy.type = script.type;
+            }
+            copy.src = script.src;
+            document.getElementsByTagName("head")[0].appendChild(copy);
+        }
+    }
+    
+    // move styles to head tag
+    var styles = options.container.getElementsByTagName('style');
+    for (var i = 0; i < styles.length; i++) {
+        document.getElementsByTagName("head")[0].appendChild(styles[i]);
+    }
+    
+    // remove IE8 hack
+    var ie8Hack = document.getElementById(ie8HackId);
+    if (ie8Hack) {
+        ie8Hack.parentNode.removeChild(ie8Hack);
+    }
+    
+    onDOMChange();
+}
+
+function getCSSValue(element, key) {
+    if (window.getComputedStyle) {
+      return document.defaultView.getComputedStyle(element, null).getPropertyValue(key);
+        
+    } else if (element.currentStyle) {
+        if (key == 'float') { 
+            key = 'styleFloat'; 
+        } else {
+            var re = /(\-([a-z]){1})/g; // hyphens to camel case
+            if (re.test(key)) {
+                key = key.replace(re, function () {
+                    return arguments[2].toUpperCase();
+                });
+            }
+        }
+        var style = element.currentStyle[key] ? element.currentStyle[key] : '';
+        
+        // Fix IE8 border width and margins so that parseFloat doesn't return NaN on them
+        var parts = [ 'Top', 'Left', 'Bottom', 'Right' ];
+        for (var i = 0; i < parts.length; i++) {
+            if (key == "border"+parts[i]+"Width" && element.currentStyle["border"+parts[i]+"Style"] == "none") {
+                style = "0px";
+                break;
+            }
+        }
+        for (var i = 0; i < parts.length; i++) {
+            if (key == "margin"+parts[i] && style == "auto") {
+                style = "0px";
+                break;
+            }
+        }
+        return style;
+    }
+    return '';
+}
+
+function setCSSValue(element, key, value) {
+    if (key == 'float') { 
+        key = 'styleFloat'; 
+    } else {
+        var re = /(\-([a-z]){1})/g; // hyphens to camel case
+        if (re.test(key)) {
+            key = key.replace(re, function () {
+                return arguments[2].toUpperCase();
+            });
+        }
+    }
+    
+    try {
+        element.style[key] = value; // IE will go kaboom here if the style is bad
+    } catch (e) {}
+}
+
+function getCSSValueNumber(element, key) {
+    var number = parseFloat(getCSSValue(element, key));
+    return isNaN(number) ? 0 : number;
+}
+
+function getCSSHeight(element) {
+    return element.offsetHeight
+        - getCSSValueNumber(element, 'border-top-width')
+        - getCSSValueNumber(element, 'border-bottom-width')
+        - getCSSValueNumber(element, 'padding-top')
+        - getCSSValueNumber(element, 'padding-bottom');
+}
+
+function getCSSWidth(element) {
+    return element.offsetWidth
+        - getCSSValueNumber(element, 'border-left-width') 
+        - getCSSValueNumber(element, 'border-right-width')
+        - getCSSValueNumber(element, 'padding-left')
+        - getCSSValueNumber(element, 'padding-right');
+}
+
+function _getStringForArgs(args) {
+    var argString = "";
+    if (typeof args == "string" && args.length) {
+        argString = "?" + args;
+    } else if (typeof args == "object") {
+        for (var param in args) {
+            argString += (argString.length ? "&" : "?") + 
+                param + "=" + encodeURIComponent(args[param]);
+        }
+    }
+    return argString;    
+}
+
+function redirectTo(page, args) {
+    window.location = "./" + page + _getStringForArgs(args);
+}
+
+function redirectToModule(module, page, args) {
+    window.location = "../" + module + "/" + page + _getStringForArgs(args);
+}
+
+/*
+	Developed by Robert Nyman, http://www.robertnyman.com
+	Code/licensing: http://code.google.com/p/getelementsbyclassname/
+	
+	Reversed element and tag arguments for convenience
+*/	
+var getElementsByClassName = function (className, elm, tag) {
+    if (document.getElementsByClassName) {
+        getElementsByClassName = function (className, elm, tag) {
+            elm = elm || document;
+            var elements = elm.getElementsByClassName(className),
+                nodeName = (tag)? new RegExp("\\b" + tag + "\\b", "i") : null,
+                returnElements = [],
+                current;
+            for (var i=0, il=elements.length; i<il; i+=1){
+                current = elements[i];
+                if (!nodeName || nodeName.test(current.nodeName)) {
+                    returnElements.push(current);
+                }
+            }
+            return returnElements;
+        };
+    }
+    else if (document.evaluate) {
+        getElementsByClassName = function (className, elm, tag) {
+          tag = tag || "*";
+          elm = elm || document;
+          var classes = className.split(" "),
+              classesToCheck = "",
+              xhtmlNamespace = "http://www.w3.org/1999/xhtml",
+              namespaceResolver = (document.documentElement.namespaceURI === xhtmlNamespace)? xhtmlNamespace : null,
+              returnElements = [],
+              elements,
+              node;
+          for (var j=0, jl=classes.length; j<jl; j+=1){
+              classesToCheck += "[contains(concat(' ', @class, ' '), ' " + classes[j] + " ')]";
           }
-      
-       	  textToInsert[i++]  = '</li>';
-          $("#searchResults").append(textToInsert.join(''));
-          textToInsert = [];
-      });
+          try	{
+              elements = document.evaluate(".//" + tag + classesToCheck, elm, namespaceResolver, 0, null);
+          }
+          catch (e) {
+              elements = document.evaluate(".//" + tag + classesToCheck, elm, null, 0, null);
+          }
+          while ((node = elements.iterateNext())) {
+              returnElements.push(node);
+          }
+          return returnElements;
+        };
+    }
+    else {
+        getElementsByClassName = function (className, elm, tag) {
+            tag = tag || "*";
+            elm = elm || document;
+            var classes = className.split(" "),
+                classesToCheck = [],
+                elements = (tag === "*" && elm.all)? elm.all : elm.getElementsByTagName(tag),
+                current,
+                returnElements = [],
+                match;
+            for (var k=0, kl=classes.length; k<kl; k+=1){
+                classesToCheck.push(new RegExp("(^|\\s)" + classes[k] + "(\\s|$)"));
+            }
+            for (var l=0, ll=elements.length; l<ll; l+=1){
+                current = elements[l];
+                match = false;
+                for(var m=0, ml=classesToCheck.length; m<ml; m+=1){
+                    match = classesToCheck[m].test(current.className);
+                    if (!match) {
+                        break;
+                    }
+                }
+                if (match) {
+                    returnElements.push(current);
+                }
+            }
+            return returnElements;
+        };
+    }
+    return getElementsByClassName(className, elm, tag);
+};
 
-      if (newIndex>=json.numFound){
-        $("#scrollText").text("End of list.");
-      }
+function getFirstElementByClassName(className, elem, tag) {
+    var elements = getElementsByClassName(className, elem, tag);
+    return elements.length ? elements[0] : null;
+}
 
+function setUserContext(context, container, url, ajax, success) {
+    if (!url) {
+        return;
+    }
+    
+    if (!ajax) {
+        if (url.charAt(0)=='/') {
+            url = URL_BASE + url.substr(1);
+        }
 
-  });
+        window.location = url;
+        return;
+    }
+    
+    if (!document.getElementById(container)) {
+        return;
+    }
+    
+    var opts = {
+     url: url,
+     container: document.getElementById(container),
+     loadMessage: false,
+     success: success
+    }
+    
+    var userData = getCookie(MODULE_NAV_COOKIE);
+    if (userData) {
+        if (!confirm('Changing the home screen layout will reset your customized module order preferences. Are you sure you wish to update the layout?')) {
+            return;
+        }
+        clearCookie(MODULE_NAV_COOKIE, COOKIE_PATH);
+    }
+
+    ajaxContentIntoContainer(opts);
+    scrollToTop();
+    return false;
+}
+
+function updateUserContextSelect(select, container) {
+    var option = select.options[select.selectedIndex];
+    var context = option.value;
+    var url = option.getAttribute('url');
+    var ajax = option.getAttribute('ajax');
+    setUserContext(context, container, url, ajax);
+}
+
+function updateUserContextLink(link, container) {
+    var li = link.parentNode;
+    var list = li.parentNode;
+    var context = li.getAttribute('context');
+    var url = li.getAttribute('url');
+    var ajax = li.getAttribute('ajax');
+    var result = setUserContext(context, container, url, ajax);
+    if (typeof result == 'undefined') {
+        return;
+    }
+    var lis = list.children;
+    for (var i=0; i<lis.length; i++) {
+        lis[i].className = '';
+        if (context == lis[i].getAttribute('context')) {
+            lis[i].className = 'contextSelected';
+        }
+    }
 }

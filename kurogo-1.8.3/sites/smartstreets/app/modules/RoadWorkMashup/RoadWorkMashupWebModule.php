@@ -9,7 +9,7 @@ class RoadWorkMashupWebModule extends WebModule
     }
 
     protected function initializeForPage() {
-
+         $this->addInternalJavascript("/modules/RoadWorkMashup/javascript/common.js"); //FIREFOX does not recognize MAKEAPICALL
         //JS
     	$this->addExternalJavascript('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
     	$this->addExternalJavascript('http://code.jquery.com/ui/1.10.3/jquery-ui.js');
@@ -43,12 +43,6 @@ class RoadWorkMashupWebModule extends WebModule
         switch ($this->page) 
         { 
             case 'index': 
-
-                //test on getting air quality data
-                // $url = "http://guiness.magic.ubc.ca/wotkit/api/sensors/58024/data?beforeE=1000";
-                // $response = $this->controller->getItemDetails($url);
-                // $json= json_decode($response, 1);
-                // ChromePhp::log ("response: ".$json[0]["id"]);
                 break; 
         } 
     }

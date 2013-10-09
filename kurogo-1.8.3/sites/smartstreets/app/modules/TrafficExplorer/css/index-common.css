@@ -75,16 +75,27 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 	overflow: auto;
 }
 
+.mouseovered {
+	stroke: red;
+	stroke-width:2px;
+}
 
+.gully-stroke{
+	stroke: #baa5d5;
+	stroke-width: 1px;
+}
+
+.regular-stroke{
+	stroke: white;
+	stroke-width: 1px;
+}
 
 
 /*** SVG in descriptions ***/
 .gully-dot {
 	width: 15px;
 	height: 15px;
-	stroke: #baa5d5;
 	fill:#592680;
-	stroke-width: 1px;
 }
 
 /**** FONTS ****/
@@ -376,8 +387,8 @@ body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 
 
 .roadwork_points{
-	stroke: rgba(255, 255, 255, 0.75);
-	stroke-width: 0px;
+	/*stroke: rgba(255, 255, 255, 0.75);
+	stroke-width: 0px;*/
 }
 
 .data_points{

@@ -151,7 +151,7 @@ $(document).ready(function() {
 					.data(itemArray)
 					.enter()
 					.append("circle")
-					.attr("class", "gully-dot gully-map-points")
+					.attr("class", "gully-dot gully-map-points gully-stroke")
 					.attr("cx", function(d) {
 		                    return project([d["geo"]["coordinates"][0], d["geo"]["coordinates"][1]])[0];
 		            })
@@ -164,8 +164,15 @@ $(document).ready(function() {
 		               	return 2*(1+level/25);
 		        	})
 		        	.on('mouseover',function(d){
+		        		d3.select(this)
+                           .classed("mouseovered", true)
+                           .classed("gully-stroke", false);
 		        		
-		        	});
+		        	}).on('mouseout', function(d, i){
+                     	d3.select(this)
+                           .classed("mouseovered", false)
+                           .classed("gully-stroke", true);
+                	});
 
 		        	//cross filter the data by silt levels
 				    var gullyFilter= crossfilter(itemArray);
@@ -398,7 +405,7 @@ $(document).ready(function() {
 					.data(itemArray)
 					.enter()
 					.append("path")
-					.attr("class", "redcar_roadwork_points")
+					.attr("class", "redcar_roadwork_points regular-stroke")
 			      	.attr('d', function(d) { 
 			        	var x = project([d["geo"]["coordinates"][0], d["geo"]["coordinates"][1]])[0]; 
 			        	y = project([d["geo"]["coordinates"][0], d["geo"]["coordinates"][1]])[1];
@@ -432,9 +439,28 @@ $(document).ready(function() {
 			        		}
 		        		}
 		        	})
+		        	.on('mouseover',function(d){
+		        		d3.select(this)
+                           .classed("mouseovered", true)
+                           .classed("regular-stroke", false);
+		        		
+		        	}).on('mouseout', function(d, i){
+		        		if (d3.select(this).classed("clicked")==false)
+	                     	d3.select(this)
+	                           .classed("mouseovered", false)
+	                           .classed("regular-stroke", true);
+                	})
 		        	.on("click", function(d, i){
 		        		$("#top-right-box").html("");
 		        		var latest_record_index= d["records"].length-1;
+		        		d3.selectAll(".redcar_roadwork_points")
+                           .classed("mouseovered", false)
+                           .classed("regular-stroke", true)
+                           .classed("clicked", false);
+                        d3.select(this)
+                        	.classed("clicked", true)
+                           .classed("mouseovered", true)
+                           .classed("regular-stroke", false);
 
 		        		var geo = d["geo"];
 		        		var radius=$( "#radiusSlider" ).slider("option", "value");
@@ -601,7 +627,7 @@ $(document).ready(function() {
 					.data(itemArray)
 					.enter()
 					.append("circle")
-					.attr("class", "gully-dot gully-map-points")
+					.attr("class", "gully-dot gully-map-points gully-stroke")
 					.attr("cx", function(d) {
 		                    return project([d["geo"]["coordinates"][0], d["geo"]["coordinates"][1]])[0];
 		            })
@@ -659,7 +685,7 @@ $(document).ready(function() {
 		                .data(itemArray)
 		                .enter()
 		                .append("circle")
-		                .attr("class", "roadwork_points")
+		                .attr("class", "roadwork_points regular-stroke")
 		                .attr("cx", function(d) {
 		                    return project([d["rw_geo"]["coordinates"][0], d["rw_geo"]["coordinates"][1]])[0];
 		                })
@@ -674,11 +700,28 @@ $(document).ready(function() {
 		        			var id= d["rw_id"];
 		        			return color_array[$.inArray(id,roadwork_array)];
 		        		})
-		        		.on('mouseover', function(d, i){
-		                    //display region name and stats
-		                })
+		        		.on('mouseover',function(d){
+		        			//TODO: display details
+			        		d3.select(this)
+	                           .classed("mouseovered", true)
+	                           .classed("regular-stroke", false);
+			        		
+			        	}).on('mouseout', function(d, i){
+			        		if (d3.select(this).classed("clicked")==false)
+		                     	d3.select(this)
+		                           .classed("mouseovered", false)
+		                           .classed("regular-stroke", true);
+	                	})
 		                .on('click', function(d, i){
 		                	$("#top-right-box").html("");
+		                	d3.selectAll(".roadwork_points")
+	                           .classed("mouseovered", false)
+	                           .classed("regular-stroke", true)
+	                           .classed("clicked", false);
+	                        d3.select(this)
+	                        	.classed("clicked", true)
+	                           .classed("mouseovered", true)
+	                           .classed("regular-stroke", false);
 		                	// $("#top-right-box").addClass("flow_roadwork_text");
 		                	// display roadwork details on overview plot
 		                	var htmlToInsert =[];

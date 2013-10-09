@@ -7,19 +7,19 @@ $(document).ready(function() {
 	   		'Road Works': {
 	   			'class':'roadwork_points', 
 	   			'color':'#FFA200',
-	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/504/data?beforeE=2000',
+	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42602/data?beforeE=4000',
 	   			'dataField':'comment'
 	   		},
 	   		'VMS Messages': {
 	   			'class':'vms_points', 
 	   			'color':'#6BC4D6',
-	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42605/data?beforeE=2000',
+	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42605/data?beforeE=4000',
 	   			'dataField':'message'
 	   		},
 	   		'Accidents': {
 	   			'class':'accident_points', 
 	   			'color':'#C72C53',
-	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42601/data?beforeE=2000',
+	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42601/data?beforeE=4000',
 	   			'dataField':'comment'
 	   		}
 	}
@@ -38,6 +38,7 @@ $(document).ready(function() {
 
 	//create timeline
 	create_timeline();
+	
 	
 	//Draw with D3
 	d3.json("media/maps/subunits.json", function(error, collection) {
@@ -94,26 +95,11 @@ $(document).ready(function() {
 			}
 		});
 
+		slider_onChange($("#date-slider").dateRangeSlider("values"));
+
 	  	//bind event for date range slider
 	  	$("#date-slider").bind("valuesChanged", function(e, data){
-	  		$(".tooltip").css("display", "none");
-  			console.log("Values just changed. min: " + data.values.min + " max: " + data.values.max);
-  			$("#summary_content").html("");
-  			$("#item_summary_content").html("");
-  			//check which cells are selected
-  			$(".filter").each(function(){
-  				if ($(this).hasClass("clicked")){
-  					var key = $(this).children("span").text();
-  					var obj = layer[key];
-  					//remove existing data on map
-				   	g.selectAll("."+obj["class"])
-					.data([])
-					.exit()
-	                .remove();
-	                //plot new data 
-	                plot_data(obj["url"], obj["class"], obj["color"], obj["dataField"]);
-  				}	
-  			});
+	  		slider_onChange(data.values);
 		});
 
 		$("#date-slider").click(function(event){
@@ -124,6 +110,26 @@ $(document).ready(function() {
 	  	reset();
 
 	  	//D3 functions
+	  	function slider_onChange(data){
+		  	$(".tooltip").css("display", "none");
+	  		console.log("Values just changed. min: " + data.min + " max: " + data.max);
+	  		$("#summary_content").html("");
+	  		$("#item_summary_content").html("");
+	  		//check which cells are selected
+	  		$(".filter").each(function(){
+	  				if ($(this).hasClass("clicked")){
+	  					var key = $(this).children("span").text();
+	  					var obj = layer[key];
+	  					//remove existing data on map
+					   	g.selectAll("."+obj["class"])
+						.data([])
+						.exit()
+		                .remove();
+		                //plot new data 
+		                plot_data(obj["url"], obj["class"], obj["color"], obj["dataField"]);
+	  				}	
+	  		});
+		}
 		function plot_data(url, className, color, dataFieldName){
             makeAPICall('POST', "RoadWorkMashup" , "getDataResponse", {"url" : url}, function(response){
             	//filter data with Cross Filter here...
@@ -197,8 +203,8 @@ $(document).ready(function() {
         	}else{
         		title= "Accident";
         	}
-
-        	$("#item_summary_content").append(title+" Impact<svg id="+"'"+chart_id+"'"+" class='mypiechart chart'></svg>");
+        	if ($("#"+chart_id).length==0)
+        		$("#item_summary_content").append(title+" Impact<svg id="+"'"+chart_id+"'"+" class='mypiechart chart'></svg>");
 
         	//nvd3 graph
         	nv.addGraph(function() {
@@ -330,12 +336,18 @@ $(document).ready(function() {
 		    g   .attr("transform", "translate(" + -bottomLeft[0] + "," + -topRight[1] + ")");
 		    feature.attr("d", path);
 		    //redraw the pins due to zoom level
-		    for (var key in layer) {
-			   	var obj = layer[key];
-				g.selectAll("."+obj["class"])
-		    		.attr("cx", function (d) { return project([d.lng, d.lat])[0]; })
-	           		.attr("cy", function (d) { return project([d.lng, d.lat])[1]; });
-			}	
+		 //    for (var key in layer) {
+			//    	var obj = layer[key];
+			// 	g.selectAll("."+obj["class"])
+		 //    		.attr("cx", function (d) { return project([d.lng, d.lat])[0]; })
+	  //          		.attr("cy", function (d) { return project([d.lng, d.lat])[1]; });
+			// }	
+			g.selectAll(".accident_points")
+	        	.attr("cx", function (d) { return project([d.lng, d.lat])[0]; })
+	           	.attr("cy", function (d) { return project([d.lng, d.lat])[1]; });
+	        g.selectAll(".roadwork_points")
+	        	.attr("cx", function (d) { return project([d.lng, d.lat])[0]; })
+	           	.attr("cy", function (d) { return project([d.lng, d.lat])[1]; });
 		    
 	        g.selectAll(".vms_points")
 	        	.attr("cx", function (d) { return project([d.lng, d.lat])[0]; })
@@ -431,11 +443,11 @@ $(document).ready(function() {
 		// var months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		var today = new Date();
-	  	var tomorrow= new Date(today.getTime() - 60*(24 * 60 * 60 * 1000));
+	  	var before= new Date(today.getTime() - 60*(24 * 60 * 60 * 1000));
 	  	$("#date-slider").dateRangeSlider({
 	  		
 		    bounds: {min: new Date(2013, 0, 1), max: new Date(2013, 11, 31, 12, 59, 59)},
-		    defaultValues: {min: today, max: tomorrow},
+		    defaultValues: {min: before, max: today},
 		    step:{days: 1},
 		    scales: [{
 		      first: function(value){ return value; },
@@ -454,6 +466,8 @@ $(document).ready(function() {
 	  	});
 
 	} //end of create_timeline
+
+	
 
 	// Summary events
 	$("#summary_header").click(function (event) {

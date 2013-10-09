@@ -877,7 +877,7 @@ $(document).ready(function() {
 							// var start = new Date("September 23, 2013 00:00:00");
 							// var end = new Date("September 25, 2013 00:00:00") ;
 							var start = new Date(2013, 9, 2, 0, 0, 0) ;
- 814               			var end = new Date(2013, 9, 10, 0, 0, 0) ;
+	               			var end = new Date(2013, 9, 10, 0, 0, 0) ;
 							// var start = new Date();
 							// var end = new Date();
 							// start.setDate(start.getDate()-2);

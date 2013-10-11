@@ -62,8 +62,9 @@ $(document).ready(function() {
 				$(self).addClass("clicked");
 				if($(self).hasClass("filter")){
 					//add map layer
+					preloader_on();//add preloader 
 					$("#summary_content").html("");
-					plot_data(layer[selected].url, layer[selected]["class"], layer[selected]["color"], layer[selected]["dataField"]);
+					plot_data(layer[selected].url, layer[selected]["class"], layer[selected]["color"], layer[selected]["dataField"], true);
 				}
 				//turn on layers
 				if(selected.indexOf("Statistics")>-1){
@@ -110,14 +111,31 @@ $(document).ready(function() {
 	  	reset();
 
 	  	//D3 functions
+	  	function preloader_on(){
+	  		//turn on preloader 
+	  		$("#preloader").show();
+			$("#status").fadeIn(); // will first fade out the loading animation
+			$("#preloader").delay(150).fadeIn("slow"); // will fade out the white DIV that covers the website.
+	  	}
+	  	function preloader_off(){
+	  		//turn off preloader
+	  		$("#status").fadeOut(); // will first fade out the loading animation
+			$("#preloader").delay(150).fadeOut("slow"); // will fade out the white DIV that covers the website.
+			$("#preloader").hide();
+	  	}
+
 	  	function slider_onChange(data){
+	  		preloader_on();
 		  	$(".tooltip").css("display", "none");
 	  		console.log("Values just changed. min: " + data.min + " max: " + data.max);
 	  		$("#summary_content").html("");
 	  		$("#item_summary_content").html("");
 	  		//check which cells are selected
-	  		$(".filter").each(function(){
-	  				if ($(this).hasClass("clicked")){
+	  		if ($(".filter.clicked").length>0){
+	  			var count =0;
+	  			$(".filter.clicked").each(function(){
+	  				// if ($(this).hasClass("clicked")){
+	  					count++;
 	  					var key = $(this).children("span").text();
 	  					var obj = layer[key];
 	  					//remove existing data on map
@@ -126,11 +144,19 @@ $(document).ready(function() {
 						.exit()
 		                .remove();
 		                //plot new data 
-		                plot_data(obj["url"], obj["class"], obj["color"], obj["dataField"]);
-	  				}	
-	  		});
+		                var endPreloader=false;
+		                if (count==$(".filter.clicked").length)
+		                	endPreloader=true;
+		                plot_data(obj["url"], obj["class"], obj["color"], obj["dataField"], endPreloader);
+	  				// }	
+	  			});
+	  		}else{
+	  			preloader_off();
+	  		}
+	  		
+	  		
 		}
-		function plot_data(url, className, color, dataFieldName){
+		function plot_data(url, className, color, dataFieldName, endPreloader){
             makeAPICall('POST', "RoadWorkMashup" , "getDataResponse", {"url" : url}, function(response){
             	//filter data with Cross Filter here...
             	var dateValues = $("#date-slider").dateRangeSlider("values");
@@ -163,6 +189,8 @@ $(document).ready(function() {
                		if(filter_count>0){
                			graphImpact(filteredResponse, className,color);
                		}
+               	if (endPreloader)
+               		preloader_off();
             }); 
         }
 

@@ -241,23 +241,6 @@ div#item_summary_content{
 
 }
 
-/****tool tip ******/
-/*div.tooltip {   
-  position: absolute;           
-  text-align: center;           
-  width: 120px;                  
-  height: auto;                 
-  padding: 2px;             
-  font: 12px sans-serif;        
-  background: white;   
-  border: 0px;      
-  border-radius: 8px;           
-  pointer-events: none;  
-
-  text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
-  box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0px;
-
-}*/
 /* base CSS element */
 .tooltip {
 	position: absolute;           
@@ -312,4 +295,30 @@ div#item_summary_content{
 	font-weight: bold;
 	font-size: 18px;
 	text-align: center;
+}
+
+
+/* Preloader */
+#preloader {
+	display: none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:black; /* change if the mask should have another color then white */
+    opacity: 0.6;
+    z-index:999999999999999; /* makes sure it stays on top */
+}
+
+#status {
+    width:200px;
+    height:200px;
+    position:absolute;
+    left:50%; /* centers the loading animation horizontally one the screen */
+    top:50%; /* centers the loading animation vertically one the screen */
+    background-image:url(/common/images/preloader.gif); /* path to your loading animation */
+    background-repeat:no-repeat;
+    background-position:center;
+    margin:-100px 0 0 -100px; /* is width and height divided by two */
 }

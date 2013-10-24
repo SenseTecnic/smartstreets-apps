@@ -1065,8 +1065,8 @@ $(document).ready(function() {
 	      //          			var end = new Date(2013, 9, 10, 0, 0, 0) ;
 							var start = new Date();
 							var end = new Date();
-							start.setDate(start.getDate()-5);
-							end.setDate(end.getDate()+5);
+							start.setDate(start.getDate()-20);
+							end.setDate(end.getDate()+20);
 
 							var query = {"tf_recordedtime": {$gte: start, $lt: end}, "region":d["name"]};
 					  		var stringQuery = JSON.stringify( query );

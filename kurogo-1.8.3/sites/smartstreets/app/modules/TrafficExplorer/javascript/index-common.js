@@ -679,6 +679,7 @@ $(document).ready(function() {
 							.y(function(d) { return d.value })
 							.staggerLabels(false)
 							.tooltips(false)
+							.color(myColors)
 							.showValues(true)
 							.transitionDuration(250);
 						chart.yAxis.axisLabel("Number of Gullies");

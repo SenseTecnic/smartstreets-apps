@@ -12,14 +12,14 @@
 			<option value="flow_roadwork">UK Roadwork Impact on Traffic Flow and Speed</option>
 		</select>
 	</div>
-	<div id="dim" class="hide"></div>
+	
 	<div id="map" >
-
 		<div class="tooltip">
-			
+			<div id="tooltip_content"></div>
 		</div>
-	</div> 
 
+	</div> 
+	<!-- <div id= "date-slider"></div> -->
 	<div id="chart">
 		<div id="top-left-box">
 

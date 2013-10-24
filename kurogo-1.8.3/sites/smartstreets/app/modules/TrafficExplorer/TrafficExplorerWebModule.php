@@ -26,6 +26,11 @@ class TrafficExplorerWebModule extends WebModule
         $this->addExternalCSS("http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css");
         $this->addExternalJavascript("http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js");
 
+        //heatmap.js
+        $this->addInternalJavascript("/modules/TrafficExplorer/javascript/heatmap-leaflet.js");
+        $this->addInternalJavascript("/modules/TrafficExplorer/javascript/heatmap.js");
+        $this->addInternalJavascript("/modules/TrafficExplorer/javascript/QuadTree.js");
+
         //cross filter.js
         $this->addInternalJavascript("/modules/TrafficExplorer/javascript/crossfilter.min.js");
 

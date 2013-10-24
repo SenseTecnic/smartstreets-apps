@@ -16,10 +16,132 @@ class TrafficExplorerShellModule extends ShellModule {
 
     //Initialize Mongodb
     $dbhost = 'localhost';  
-    $dbname = 'traffic';
+    $dbname = 'test'; //TODO: temporary switch to test (should be traffic)
     $db=$this->_initializeMongo($dbhost, $dbname);
 
     switch ($this->command){
+      case "test":
+        $params= array("tags"=>"gully");
+        $sort=null;
+        $index=0;
+        $total=0;
+        $collection= $db->gully_test;
+        do{
+          $items = SolrSearchResponse::getKeywordSearchResponse($this->solr_controller, $params, $sort, $index);
+          $json = json_decode($items, 1);
+          $total= $json["numFound"];
+          foreach ($json["docs"] as $gully_sensor){
+            if ($gully_sensor["iscontenttype"]=="application/json"){
+              //1. check if id exists in mongo
+              $sensorId=$gully_sensor["hasid"];
+
+              //make api call to fetch data from url
+              $url = "http://smartstreets.sensetecnic.com/wotkit/api/sensors/".$gully_sensor["hasid"]."/data?reverse=true";
+              $response = $this->controller->getItemDetails($url);
+              if($response!=null){
+                $cursor= $collection->count(array('sensor_id'=>(int)$sensorId));
+                if ($cursor==0){
+                  //not exist, insert new item
+                  $count=0;
+                  $gully= array();
+                  $gully_records=array();
+                  foreach ($response as $key => $value) {
+                    if ($count==0){
+                      //common data
+                      $gully["sensor_id"]=$response[$key]["sensor_id"];
+                      $gully["lastupdated"]=$response[$key]["timestamp"];
+                      $geojson["type"]="Point";
+                      $geojson["coordinates"]=array((float)$response[$key]["lng"], (float)$response[$key]["lat"]);
+                      $gully["geo"]= $geojson;
+                      $gully["type"]=isset($response[$key]["gullytype"])? $response[$key]["gullytype"]:null;                      
+                    }
+                      $record=array();
+                      $record["recordedtime"]=$response[$key]["timestamp"];
+                      $record["gully_id"]=$response[$key]["id"];
+                      $state=isset($response[$key]["gullystate(onarrival)"])? $response[$key]["gullystate(onarrival)"]:null;
+                      if (strtolower($state) =="clean and running")
+                        $record["state"]= "Clean & Running";
+                      else if (strtolower($state)=="blocked and cleaned")
+                        $record["state"]= "Blocked & Cleaned";
+                      else if (strtolower($state)=="cleaned and not running")
+                        $record["state"]= "Cleaned & Not Running";
+                      else if (strtolower($state)=="obstructed")
+                        $record["state"]= "Obstructed";
+                      else
+                        $record["state"]= "No Info";
+
+                      if (!isset($response[$key]["siltLevel"])){
+                        $record["silt"]= $response[$key]["siltlevel(onarrival)"];
+                      }else{
+                        $record["silt"]= $response[$key]["siltLevel"];
+                      }
+                      array_push($gully_records, $record);
+                    $count+=1;
+                  }//end of foreach
+                  $gully["records"]=$gully_records;
+                  $collection->insert($gully);    
+                  print_r ("id: ".$sensorId."inserted new item!! cursor=".$cursor."\n");
+                }else{
+                  //exist check update
+                  $count=0;
+                  $mod_count=0;
+                  $cursor1=$collection->find(array('sensor_id'=>(int)$sensorId))->limit(1);
+                  foreach ($response as $key => $value) {
+                    if ($count==0){
+                      //check if last update time is the same-> yes: most updated! else update records
+                      $lastupdate=null;
+                      foreach($cursor1 as $item){
+                        $lastupdate=$item["lastupdated"];
+                      }  
+                      if ($lastupdate==$response[$key]["timestamp"]){
+                          print_r ("equal timestamp!\n");
+                          break;
+                      }else{
+                        print_r ("NOT equal timestamp!\n");
+                        if($mod_count==0){
+                          //update lastupdated field
+                          $newdata = array('$set' => array('lastupdated' => $response[$key]["timestamp"]));
+                          $collection->update(array('sensor_id' => (int)$sensorId), $newdata);
+                          $mod_count++;
+                        }
+                        $record=array();
+                        $record["recordedtime"]=$response[$key]["timestamp"];
+                        $record["gully_id"]=$response[$key]["id"];
+                        $state=isset($response[$key]["gullystate(onarrival)"])? $response[$key]["gullystate(onarrival)"]:null;
+                        if (strtolower($state) =="clean and running")
+                          $record["state"]= "Clean & Running";
+                        else if (strtolower($state)=="blocked and cleaned")
+                          $record["state"]= "Blocked & Cleaned";
+                        else if (strtolower($state)=="cleaned and not running")
+                          $record["state"]= "Cleaned & Not Running";
+                        else if (strtolower($state)=="obstructed")
+                          $record["state"]= "Obstructed";
+                        else
+                          $record["state"]= "No Info";
+
+                        if (!isset($response[$key]["siltLevel"])){
+                          $record["silt"]= $response[$key]["siltlevel(onarrival)"];
+                        }else{
+                          $record["silt"]= $response[$key]["siltLevel"];
+                        }
+                        $collection->update(
+                          array('sensor_id' => (int)$sensorId),
+                          array('$push' => array('records' => $record))
+                        );
+                      }              
+                    }
+                    $count+=1;
+                  }//end of foreach
+                  print_r ("id: ".$sensorId."item exists!! \n");
+                }
+              }
+            }
+          $index+=10;
+            }
+        }while($index<$total);
+        $db->gully->ensureIndex(array("geo" => "2dsphere"));
+        break;
+
 
       case "retrieveGully":
         $params= array("tags"=>"gully");
@@ -138,10 +260,15 @@ class TrafficExplorerShellModule extends ShellModule {
         $trafficFlow_collection= $db->trafficFlow;
         $roadwork_collection= $db->roadwork;
         $airQuality_collection= $db->airQuality;
-
-        $flow_records = $trafficFlow_collection->find();
+        //find dirty bit ==1
+        
+        $flow_records = $trafficFlow_collection->find(array('dirty' => 1));
         $count=0;
         foreach ($flow_records as $doc) {
+          //set dity bit to 0
+          $newdata = array('$set' => array('dirty' => 0));
+          $trafficFlow_collection->update(array('_id' => $doc["_id"]), $newdata);
+          
           //filter criteria
           $tf_recordedtime= $doc["recordedtime"];
           $tf_region= $doc["region"];
@@ -181,6 +308,7 @@ class TrafficExplorerShellModule extends ShellModule {
               print "region: ".$record["region"]."\n";
               $item["tt_recordedtime"]= $record["recordedtime"];
               $item["tt_idealtime"]= $record["idealtime"];
+              $item["tt_actualtime"]= $record["value"];
               $item["tt_historictime"]= $record["historictime"];
               $item["tt_geo"]= $record["geo"];
             }
@@ -356,6 +484,7 @@ class TrafficExplorerShellModule extends ShellModule {
                   if (isset($item["averagespeed"])&&isset($item["mediumflow"])){
                     $data = array();
                     $data["id"]= $item["id"];
+                    $data["dirty"]=1; //set dirty bit 
                     $data["recordedtime"]= new MongoDate(strtotime($item["recordedtime"]));
                     $data["averagespeed"]= $item["averagespeed"];
                     $data["mediumflow"]= $item["mediumflow"];
@@ -449,7 +578,7 @@ class TrafficExplorerShellModule extends ShellModule {
                 }
                 //check duplicate
                 $IdQuery= array("id"=> $item["id"]);
-                if($collection->count($IdQuery)==0){
+                if($collection->count($IdQuery)==0&& $item["value"]!=-1&& $item["idealtime"]!=-1){
                   //NOT duplicate, INSERT DATA
                   $data = array();
                   $data["id"]= $item["id"];
@@ -493,7 +622,7 @@ class TrafficExplorerShellModule extends ShellModule {
                   $checkDup=false;
                   print $feed["name"]." : Inserted ".$total." items to DB\n".$time."\n";
                 }else{
-                    print("Found duplicate!");
+                    print("Found duplicate! OR value is undefined!");
                 }
                 $count++;
               }

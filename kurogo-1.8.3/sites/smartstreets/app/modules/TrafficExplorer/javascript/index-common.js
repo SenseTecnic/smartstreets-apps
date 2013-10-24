@@ -12,17 +12,50 @@ $(document).ready(function() {
         //TODO: update graph if a roadwork is selected
       }
     });
+    //styles: 64570* , 47928, 39577, 2400*
+	var cloudmadeUrl= "http://{s}.tile.cloudmade.com/d33d78dd8edd4f61a812a0d56b062f56/2400/256/{z}/{x}/{y}.png";
+	var baseLayer=new L.TileLayer(cloudmadeUrl);
+	//heatmap layer
+	var heatmapLayer = new L.TileLayer.heatMap({
+                    radius: { value: 90, absolute: true },
+                    opacity: 0.6,
+                    gradient: {
+                        0.45: "rgb(0,0,255)",
+                        0.55: "rgb(0,255,255)",
+                        0.65: "rgb(0,255,0)",
+                        0.95: "yellow",
+                        1.0: "rgb(255,0,0)"
+                    }
+                });
 
 	//map creation on default (Gully Overview)
 	var map = new L.Map("map", {
 	    center: [54.56011889582139, -1.023101806640625],
       	zoom: 11,
       	minZoom: 5,
-      	maxZoom:19
-	}).addLayer(new L.TileLayer("http://{s}.tile.cloudmade.com/d33d78dd8edd4f61a812a0d56b062f56/998/256/{z}/{x}/{y}.png"));
-	var svg = d3.select(map.getPanes().overlayPane).append("svg"),
-	    g = svg.append("g").attr("class", "leaflet-zoom-hide");
+      	maxZoom:19,
+      	layers: [baseLayer, heatmapLayer]
+	});
 
+    var overlayMaps = {
+                    'Heatmap': heatmapLayer
+                }; 
+    var controls = L.control.layers(null, overlayMaps, {collapsed: false});
+
+	controls.addTo(map);
+	$(".leaflet-control-layers").append("<label><input id='gully-dot-control' type='checkbox' checked></input><span>Gully Pins</span></label>");
+	$( "#gully-dot-control" ).click( function(){
+      if ($(this).is(':checked'))
+      	$(".gully-dot").show();
+      else
+      	$(".gully-dot").hide();
+    });
+
+	//SVG
+	var pane = map.getPanes().overlayPane;
+
+	var svg = d3.select(pane).append("svg"),
+	    g = svg.append("g").attr("class", "leaflet-zoom-hide");
 	//Draw with D3
 	d3.json("media/maps/subunits.json", function(error, collection) {
 	 	var bounds = d3.geo.bounds(collection),
@@ -35,17 +68,19 @@ $(document).ready(function() {
 	  	var div= d3.select(".tooltip").style("opacity", 0);  
 
 	  	initialize();
+	  	// create_timeline();
+	  	// $("#date-slider").hide();
 	  	map.on("viewreset", reset);
 	  	reset();
 	  	
 	  	$(".reset").click(function(){
 	  		clear_map();
-
+	  		$(".tooltip").hide();
 	  		var mode= $("#dropdown_select").val();
-
-	  		console.log("mode:"+mode);
 	  		switch (mode){
 	  			case "gully_overview":
+	  				$( "#gully-dot-control" ).prop("checked", true);
+	  				map.addLayer(heatmapLayer);
 	  				get_gully_overview();
 	  				break;
 	  			case "gully_roadwork":
@@ -68,9 +103,13 @@ $(document).ready(function() {
 			$("#dropdown_filters").html("");
 			$(".description").hide();
 			$("#slider-box").hide();
+			$(".leaflet-control-layers").hide();
 			// Create filter options, plot data on map, draw graphs
 			switch (mode){
 	  			case "gully_overview":
+	  				map.addLayer(heatmapLayer);
+	  				$(".leaflet-control-layers").show();
+	  				$( "#gully-dot-control" ).prop("checked", true);
 	  				$("#gully_overview_desc").show();
 	  				get_gully_overview();
 	  				break;
@@ -78,6 +117,8 @@ $(document).ready(function() {
 	  				$("#gully_roadwork_desc").show();
 	  				$("#slider-box").show();
 	  				get_gully_roadwork();
+	  				create_timeline();
+
 	  				break;
 	  			case "flow_time":
 	  				$("#flow_time_desc").show();
@@ -90,6 +131,37 @@ $(document).ready(function() {
 	  		}
 		});
 
+		function create_timeline(){
+			//create timeline scroll
+			$("<div id= 'date-slider'></div>").insertAfter("#map");
+			console.log("create timeline");
+			var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			var today = new Date();
+		  	var before= new Date(today.getTime() - 60*(24 * 60 * 60 * 1000));
+		  	$("#date-slider").dateRangeSlider({
+		  		
+			    bounds: {min: new Date(2013, 0, 1), max: new Date(2013, 11, 31, 12, 59, 59)},
+			    defaultValues: {min: before, max: today},
+			    step:{days: 1},
+			    scales: [{
+			      first: function(value){ return value; },
+			      end: function(value) {return value; },
+			      next: function(value){
+			        var next = new Date(value);
+			        return new Date(next.setMonth(value.getMonth() + 1));
+			      },
+			      label: function(value){
+			        return months[value.getMonth()];
+			      },
+			      format: function(tickContainer, tickStart, tickEnd){
+			        tickContainer.addClass("myCustomClass");
+			      }
+			    }]
+		  	});
+
+		} //end of create_timeline
+
+
 		function initialize(){
 	  		$(".description").hide();
 	  		$("#gully_overview_desc").show();
@@ -99,7 +171,7 @@ $(document).ready(function() {
 		
 		function clear_graph(){
 			$("#bottom-box").html("");
-			$("#top-right-box").html("");
+			$("#top-right-box").html([]);
 		}
 
 		function clear_map(){
@@ -109,7 +181,9 @@ $(document).ready(function() {
 			g.selectAll(".region_points").data([]).exit().remove();
 			g.selectAll(".data_points").data([]).exit().remove();
 			g.selectAll(".roadwork_points").data([]).exit().remove();
-
+			map.removeLayer(heatmapLayer);
+			$(".tooltip").hide();
+			$("#date-slider").remove();
 		}
 
 		function get_gully_roadwork(){
@@ -142,10 +216,19 @@ $(document).ready(function() {
 	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "gully", query: query}, function(response){
 	  			var json= JSON.parse(response);
             	var itemArray=new Array();
+            	var heatmapArray=new Array();
             	$.each(json["results"], function (i, ob) {
+            		heatmapArray.push({lat:json["results"][i]["geo"]["coordinates"][1] , lon:json["results"][i]["geo"]["coordinates"][0] , value: parseFloat(json["results"][i]["silt"]) / 100.0});
             		itemArray.push(json["results"][i]);
 				});
 				oldQuery=json["query"];
+				var testData={
+            max: 46,
+            data: [{lat: 33.5363, lon:-117.044, value: 1},{lat: 33.5608, lon:-117.24, value: 1}]
+        };
+				var heatmapData = {max: 5000, data: heatmapArray};
+				heatmapLayer.setData(heatmapData.data);
+
 				//plot map pins
 				g.selectAll(".gully-map-points")
 					.data(itemArray)
@@ -167,12 +250,14 @@ $(document).ready(function() {
 		        		d3.select(this)
                            .classed("mouseovered", true)
                            .classed("gully-stroke", false);
+                        
 		        		
 		        	}).on('mouseout', function(d, i){
                      	d3.select(this)
                            .classed("mouseovered", false)
                            .classed("gully-stroke", true);
                 	});
+
 
 		        	//cross filter the data by silt levels
 				    var gullyFilter= crossfilter(itemArray);
@@ -291,8 +376,7 @@ $(document).ready(function() {
 						//move legend
 						// d3.select(".nv-legendWrap")
 						// 	.attr("class", "legend-text");
-
-
+						nv.utils.windowResize(chart1.update);
 					    return chart1;
 					},function(){
 				        d3.selectAll("#gully_state_chart .nv-slice").on('click',
@@ -333,8 +417,8 @@ $(document).ready(function() {
 						}
 					];
 					//graph a bar chart for states
-					var width = $(window).width()*0.48*0.4;
-					var height = $(window).height()*0.7*0.5;
+					// var width = $(window).width()*0.48*0.4;
+					// var height = $(window).height()*0.7*0.5;
         			var myColors2 = ["#336699", "crimson", "salmon", "#99ffff"];
         			if ($("#gully_type_chart").length==0){
         				$("#top-right-box").append("<svg id="+"'gully_type_title'"+"' class='chart_title'></svg>");
@@ -345,8 +429,8 @@ $(document).ready(function() {
 					    var chart2 = nv.models.pieChart()
 					        .x(function(d) { return d.key })
 					        .y(function(d) { return d.y })
-					        .height(height)
-					        .width(width)
+					        // .height(height)
+					        // .width(width)
 							// .margin ({top: 20, right: 20, bottom: 20, left: 20})
 						    .color(myColors2);
 
@@ -354,13 +438,11 @@ $(document).ready(function() {
 					      d3.select("#gully_type_chart")
 					          .datum(type_values)
 					        .transition().duration(500)
-					          .call(chart2)
-					          .attr("height",height)
-					          .attr("width",width);
+					          .call(chart2);
 					      d3.select('#gully_type_title')
 						  	.append("text")
-						  	.attr("width", width)
-						  	.attr("height", height)
+						  	// .attr("width", width)
+						  	// .attr("height", height)
 						    .attr("x", "50%")             
 						  	.attr("y", "50%")
 							.attr("class", "graph-title")
@@ -370,7 +452,7 @@ $(document).ready(function() {
 						// d3.select(".nv-legendWrap")
 						// 	.attr("class", "legend-text");
   							// .attr("transform", "translate(-10,-20)");
-
+  						nv.utils.windowResize(chart2.update);
 					    return chart2;
 					},function(){
 				        d3.selectAll("#gully_type_chart .nv-slice").on('click',
@@ -398,7 +480,9 @@ $(document).ready(function() {
 	  			var json= JSON.parse(response);
             	var itemArray=new Array();
             	$.each(json, function (i, ob) {
-            		itemArray.push(json[i]);
+            		var latest_record_index = json[i]["records"].length-1;
+            		if (json[i]["records"][latest_record_index]["jobstatus"]==query ||query ==null)
+            			itemArray.push(json[i]);
 				});
 				//plot with d3
 				g.selectAll(".redcar_roadwork_points")
@@ -424,9 +508,12 @@ $(document).ready(function() {
 		        		}else if (d["records"][latest_record_index]["jobstatus"]=="Scheduled -Active"){
 		        			return "#6699FF";
 		        		}
-		        		else{
-		        			if (d["records"][latest_record_index]["jobstatus"]=="Scheduled -Pending")
+		        		else if (d["records"][latest_record_index]["jobstatus"]=="Scheduled -Pending"){
 		        			return "#a3a3a3";
+		        		}
+		        		else{
+		        			if (d["records"][latest_record_index]["jobstatus"]=="New")
+		        			return "#b4a444";
 		        		}
 		        	})
 		        	.attr("opacity", function(d){
@@ -468,8 +555,26 @@ $(document).ready(function() {
 		        		var lng= d["geo"]["coordinates"][0];
 		        		var query = {"$near": {$geometry: geo, $maxDistance: radius}};
 					  	var stringQuery = JSON.stringify( query );
-		        		//graph silt levels of gullies within 500m radius
-		        		//search mongo for gullies within 500 radius
+
+					  	//show pop up of roadwork details
+					  	//show tooltip
+                        var height=parseInt($(".tooltip").css("height"),10);
+                        var tooltip= d3.select(".tooltip");
+                        tooltip.transition()       
+                          .duration(200)
+                          .style("display","block")     
+                          .style("opacity", .9)
+                          .style("left", (d3.event.pageX-100-8) + "px")    
+                          .style("top", (d3.event.pageY-75) + "px");
+                        //add tooltip content
+                        $("#tooltip_content").html("");
+                        $("#tooltip_content").append("<div style='text-align: left;'>Sensor ID: <span class='bold'>"+d.id+"</span></div>");
+                        $("#tooltip_content").append("<div style='text-align: left;'>Location: <span class='bold'>"+d.location_desc+"</span></div>");
+                        $("#tooltip_content").append("<div style='text-align: left;'>Latest Status: <span class='bold'>"+d["records"][latest_record_index]["jobstatus"]+"</span></div>");
+                        $("#tooltip_content").append("<div style='text-align: left;'>Record Date: <span class='bold'>"+d["records"][latest_record_index]["recordedtime"]+"</span></div>");
+                        $("#tooltip_content").append("<div style='text-align: left;'>Scheduled Date: <span class='bold'>"+d["records"][latest_record_index]["scheduleddate"]+"</span></div>");
+
+		        		//graph silt levels of gullies within specified radius, search mongo for gullies within 500 radius
 		        		makeAPICall('POST', "TrafficExplorer" , "mongoGeoRadiusSearch", {collection: "gully", lat: lat, lng: lng, radius: radius}, function(response){
 		        			
 		        			//cross filter the data
@@ -500,23 +605,21 @@ $(document).ready(function() {
 								  }
 								];
 							//graph a bar chart
-							var chart;
-							var width = $(window).width()*0.45*0.5;
-							var height = $(window).height()*0.35;
+							// var chart;
+							// var width = $(window).width()*0.45*0.5;
+							// var height = $(window).height()*0.35;
 							$("#top-right-box").append("<svg id="+"'gully_roadwork_title'"+"' class='chart_title'></svg>");
 					       	$("#top-right-box").append("<svg id="+"'gully_roadwork_chart'"+" ></svg>");
 					       	
 		        			nv.addGraph(function() {  
 
-							  	chart = nv.models.discreteBarChart()
+							  	var chart = nv.models.discreteBarChart()
 							      .x(function(d) { return d.label })
 							      .y(function(d) { return d.value })
-							      // .width(width)
-							      // .height(height)
+							      .staggerLabels(false)
 							      .tooltips(false)
 							      .showValues(true)
-							      .transitionDuration(250)
-							      ;
+							      .transitionDuration(250);
 							      chart.yAxis.axisLabel("# of Gullies");
 								  chart.xAxis.axisLabel("Gully Silt Level (%)");
 								d3.select('#gully_roadwork_title')
@@ -528,10 +631,8 @@ $(document).ready(function() {
 								  .text("Gully Silt Levels");
 							  	d3.select('#gully_roadwork_chart')
 							      .datum(historicalBarChart)
-							      .call(chart)
-							      .attr("width", width)
-							      .attr("height",height);
-							  	nv.utils.windowResize(chart.update);
+							      .call(chart);
+							  	nv.utils.windowResize(chart.update());
 							  	return chart;
 							});
 		        		});
@@ -545,12 +646,17 @@ $(document).ready(function() {
 				    }); 
 				    
 				    var values=new Array();
-				    var statuses= ["In Progress", "Completed", "Paused", "Scheduled -Active","Scheduled -Pending"];
+				    var statuses= ["In Progress", "Completed", "Paused", "Scheduled -Active","Scheduled -Pending", "New"];
 				    for (var i in statuses){
 				        dataByJobStatus.filter(statuses[i]);
 				        var count = roadworkFilter.groupAll().reduceCount().value();
 				   		var value={};
-				        value["label"]= statuses[i];
+				   		var label=statuses[i]
+				   		if (statuses[i]=="Scheduled -Active")
+				   			label="Active";
+				   		if (statuses[i]=="Scheduled -Pending")
+				   			label="Pending";
+				        value["label"]= label;
 				    	value["value"]= count;
 				    	values.push(value);
 				    }
@@ -563,48 +669,69 @@ $(document).ready(function() {
 					];
 
 					//graph a bar chart
-					var chart;
-					var myColors = ["#FFCC00", "#E68A00", "#CC3300", "#6699FF", "#cccccc"];
+					var myColors = ["#FFCC00", "#E68A00", "#CC3300", "#6699FF", "#cccccc", "#b4a444"];
 					$("#bottom-box").append("<svg id="+"'gully_roadwork_status_title'"+"' class='chart_title'></svg>");
 			       	$("#bottom-box").append("<svg id="+"'gully_roadwork_status_chart'"+" ></svg>");
-			       	var width = $(window).width()*0.48;
-					var height = $(window).height()*0.45;
-		        	nv.addGraph(function() {  
-					  	chart = nv.models.discreteBarChart()
+			 
+			 		nv.addGraph(function() {  
+					  	var chart = nv.models.discreteBarChart()
 						    .x(function(d) { return d.label })
 							.y(function(d) { return d.value })
-							// .width(width)
-							// .height(height)
 							.staggerLabels(false)
 							.tooltips(false)
-							.color(myColors)
 							.showValues(true)
 							.transitionDuration(250);
-						chart.yAxis.axisLabel("# of Roadworks");
-						chart.xAxis.axisLabel("Roadwork Status");
-
-
-						d3.select('#gully_roadwork_status_chart')
-							.datum(barChartData)
-							.call(chart)
-							.attr("width", width)             
-						  	.attr("height", height);
+						chart.yAxis.axisLabel("Number of Gullies");
+						chart.xAxis.axisLabel("Silt Levels (in %)");
+						
 						d3.select('#gully_roadwork_status_title')
 						  .append("text")
 						  .attr("x", "50%")             
 						  .attr("y", "50%")
 						  .attr("class", "graph-title")
 						  .attr("text-anchor", "middle")  
-						  .text("Roadwork Statuses");
+						  .text("Gully Silt Levels");
+						d3.select('#gully_roadwork_status_chart')
+							.datum(barChartData)
+							.call(chart);
 						nv.utils.windowResize(chart.update);
 						return chart;
+
+		    //     	nv.addGraph(function() {  
+					 //  	var chart3 = nv.models.discreteBarChart()
+						//     .x(function(d) { return d.label })
+						// 	.y(function(d) { return d.value })
+						// 	.staggerLabels(false)
+						// 	.tooltips(false)
+						// 	// .color(myColors)
+						// 	.showValues(true)
+						// 	.transitionDuration(250);
+						// chart3.yAxis.axisLabel("# of Roadworks");
+						// chart3.xAxis.axisLabel("Roadwork Status");
+						// d3.select('#gully_roadwork_status_title')
+						//   .append("text")
+						//   .attr("x", "50%")             
+						//   .attr("y", "50%")
+						//   .attr("class", "graph-title")
+						//   .attr("text-anchor", "middle")  
+						//   .text("Roadwork Statuses");
+						// d3.select('#gully_roadwork_status_chart')
+						// 	.datum(barChartData)
+						// 	.call(chart3);
+						// nv.utils.windowResize(chart3.update);
+						// return chart3;
 					},function(){
 				        d3.selectAll(".nv-bar").on('click',
 				            function(e){
 				                //clear all 
 				               	g.selectAll(".redcar_roadwork_points").data([]).exit().remove();
 				                //remap roadworks
-	  							plot_redcar_roadworks(e.label);
+				                var label=e.label;
+				                if (e.label=="Active")
+						   			label="Scheduled -Active";
+						   		if (e.label=="Pending")
+						   			label="Scheduled -Pending";
+	  							plot_redcar_roadworks(label);
 				        });
 				    });
 
@@ -661,6 +788,7 @@ $(document).ready(function() {
 	  	function plot_flow_roadwork(){
 	  		var query= { rw_starttime: { $exists: true } } ;
 	  		var stringQuery= encodeURIComponent(JSON.stringify( query ));
+	  		var chart;
 	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "correlation", query: stringQuery}, function(response){
             	//parse results here and draw plots
             	var json= JSON.parse(response);
@@ -713,6 +841,7 @@ $(document).ready(function() {
 		                           .classed("regular-stroke", true);
 	                	})
 		                .on('click', function(d, i){
+
 		                	$("#top-right-box").html("");
 		                	d3.selectAll(".roadwork_points")
 	                           .classed("mouseovered", false)
@@ -760,6 +889,19 @@ $(document).ready(function() {
 		                	htmlToInsert[i++]= " </div>";
 
 		                	$("#top-right-box").append(htmlToInsert.join(''));
+
+		                	//toggle line chart
+		                	var state= chart.state();
+		                	var index = $.inArray(d["rw_id"],roadwork_array);
+		                	for(var i=0; i < state.disabled.length; i++) {
+		                	  if (i!=index)
+							  	state.disabled[i] =true;
+							  else
+							  	state.disabled[i] =false;
+							}
+
+							chart.dispatch.changeState(state);
+							chart.update();
 		                });
 						
 						//PREP DATA
@@ -793,13 +935,13 @@ $(document).ready(function() {
 					    	data.push(value);
 						}
 						//graph the line chart 
-						var chart;
+						
 						var width = $(window).width()*0.45;
 						var height = $(window).height()*0.6;
 						$("#bottom-box").append("<svg id="+"'flow_roadwork_title'"+"' class='chart_title'></svg>");
 					    $("#bottom-box").append("<svg id="+"'flow_roadwork_plot'"+"></svg>");
 						nv.addGraph(function() {  
-						  var chart = nv.models.lineChart();
+						  chart = nv.models.lineChart();
 						  chart.yAxis.axisLabel('Flow');
 						  chart.xAxis // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
 						      .tickFormat(function(d) { return d3.time.format('%H:%M')(new Date(d)); })
@@ -919,18 +1061,19 @@ $(document).ready(function() {
 		                	//build queries
 							// var start = new Date("September 23, 2013 00:00:00");
 							// var end = new Date("September 25, 2013 00:00:00") ;
-							var start = new Date(2013, 9, 2, 0, 0, 0) ;
-	               			var end = new Date(2013, 9, 10, 0, 0, 0) ;
-							// var start = new Date();
-							// var end = new Date();
-							// start.setDate(start.getDate()-2);
-							// end.setDate(end.getDate()+2);
+							// var start = new Date(2013, 9, 2, 0, 0, 0) ;
+	      //          			var end = new Date(2013, 9, 10, 0, 0, 0) ;
+							var start = new Date();
+							var end = new Date();
+							start.setDate(start.getDate()-5);
+							end.setDate(end.getDate()+5);
 
 							var query = {"tf_recordedtime": {$gte: start, $lt: end}, "region":d["name"]};
 					  		var stringQuery = JSON.stringify( query );
 					  		console.log("stringQuery:"+stringQuery);
 
 		                	//plot correlation graph 
+		                	var chart;
 		                	makeAPICall('POST', "TrafficExplorer" , "getMongoCorrelation", {collection: "correlation", query:stringQuery}, function(response){
 				            	//parse results here and draw plots
 				            	console.log("results: "+response);
@@ -993,6 +1136,39 @@ $(document).ready(function() {
 					                .attr("r", function(d) {
 					                	region= d["region"];
 					                	return r=5;
+					        		})
+					        		.on('mouseover',function(d){
+						        		d3.select(this)
+				                           .classed("mouseovered", true)
+				                           .classed("gully-stroke", false);
+						        	}).on('mouseout', function(d, i){
+						        		if (d3.select(this).classed("clicked")==false)
+					                     	d3.select(this)
+					                           .classed("mouseovered", false)
+					                           .classed("gully-stroke", true);
+				                	})
+					        		.on('click', function(d, i){
+					        			d3.selectAll(".data_points")
+				                           .classed("mouseovered", false)
+				                           .classed("regular-stroke", true)
+				                           .classed("clicked", false);
+				                        d3.select(this)
+				                        	.classed("clicked", true)
+				                           .classed("mouseovered", true)
+				                           .classed("regular-stroke", false);
+
+					        			//toggle line chart
+					                	var state= chart.state();
+					                	var index = $.inArray(d["tf_geo"]["coordinates"][0], junctionArray);
+					                	for(var i=0; i < state.disabled.length; i++) {
+					                	  if (i!=index)
+										  	state.disabled[i] =true;
+										  else
+										  	state.disabled[i] =false;
+										}
+										chart.dispatch.changeState(state);
+										chart.update();
+
 					        		});
 					        	//prep data
 					        	var data=[];
@@ -1006,7 +1182,10 @@ $(document).ready(function() {
 					        	for (var i in itemArray){
 					        		
 					        		var totalFlow= itemArray[i]["tf_medflow"]+itemArray[i]["tf_longflow"]+itemArray[i]["tf_smallflow"]+itemArray[i]["tf_largeflow"];
-					        		var timeRatio= itemArray[i]["tt_historictime"]/itemArray[i]["tt_idealtime"];
+					        		// var timeRatio= itemArray[i]["tt_historictime"]/itemArray[i]["tt_idealtime"];
+					        		var actualTime= itemArray[i]["tt_actualtime"];
+					        		var idealTime=itemArray[i]["tt_idealtime"]
+					        		var timeRatio= actualTime-idealTime;
 					        		var speed = itemArray[i]["tf_avgspeed"];
 					        		var medflow = itemArray[i]["tf_medflow"];
 					        		var largeflow = itemArray[i]["tf_largeflow"];
@@ -1015,10 +1194,10 @@ $(document).ready(function() {
 					        		var timestamp = new Date(itemArray[i]["tf_recordedtime"]["sec"]*1000);
 					        		var lng = itemArray[i]["tf_geo"]["coordinates"][0];
 					        		var index = $.inArray(lng, junctionArray);
-					        		data[index]["values"].push({x:totalFlow, y:timeRatio, time: timestamp, speed: speed,medflow: medflow,smallflow: smallflow,largeflow: largeflow,longflow: longflow});
+					        		data[index]["values"].push({x:totalFlow, y:timeRatio, actual: actualTime,ideal: idealTime,time: timestamp, speed: speed,medflow: medflow,smallflow: smallflow,largeflow: largeflow,longflow: longflow});
 					        	}
 					        	//graph a chart
-					        	var chart;
+					        	
 					        	var width = $(window).width()*0.45;
 					        	var height = $(window).height()*0.5;
 					        	$("#bottom-box").append("<svg id="+"'flow_time_title'"+"' class='chart_title'></svg>");
@@ -1042,6 +1221,8 @@ $(document).ready(function() {
 
 								  chart.tooltipContent(function(key, x, y, d) {
 								      return '<div> Average Speed: ' + d["point"]["speed"] + 'km/hr</div>'
+								      		+'<div> Actual Time: ' + d["point"]["actual"] + 'seconds </div>'
+								      		+'<div> Ideal Time: ' + d["point"]["ideal"] + 'seconds</div>'
 								      		 +'Timestamp: '+d["point"]["time"];
 								  });
 								  d3.select('#flow_time_title')
@@ -1088,20 +1269,20 @@ $(document).ready(function() {
 					        				$("#top-right-box").append("<svg id="+"'flow_dist_title'"+"' class='chart_title'></svg>");
 							                $("#top-right-box").append("<svg id="+"'flow_dist_chart'"+" class='gully_overview_chart'></svg>");
 								        	nv.addGraph(function() {  
-											  	var chart = nv.models.discreteBarChart()
+											  	var barchart = nv.models.discreteBarChart()
 												    .x(function(d) { return d.label })
 													.y(function(d) { return d.value })
 													.staggerLabels(false)
 													.tooltips(false)
 													.showValues(true)
 													.transitionDuration(250);
-												chart.yAxis.axisLabel("# of Vehicles");
-												chart.xAxis.axisLabel("Vehicle Size");
+												barchart.yAxis.axisLabel("# of Vehicles");
+												barchart.xAxis.axisLabel("Vehicle Size");
 
 
 												d3.select('#flow_dist_chart')
 													.datum(barChartData)
-													.call(chart)
+													.call(barchart)
 													.attr('width', width)
 												    .attr('height', height)
 												    ;
@@ -1112,8 +1293,8 @@ $(document).ready(function() {
 												  .attr("class", "graph-title")
 												  .attr("text-anchor", "middle")  
 												  .text("Vehicle Flow");
-												nv.utils.windowResize(chart.update);
-												return chart;
+												nv.utils.windowResize(barchart.update);
+												return barchart;
 											},function(){
 										     	//TODO
 										    });

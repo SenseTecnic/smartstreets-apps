@@ -961,20 +961,25 @@ $(document).ready(function() {
 							var flow =[];
 							var lat=null;
 							var lon=null;
+							var date =null;
 							for (var j in allFlow){
 								var x_value = new Date (allFlow[j]["tf_recordedtime"]*1000);
 								var totalFlow= allFlow[j]["tf_medflow"]+allFlow[j]["tf_longflow"]+allFlow[j]["tf_smallflow"]+allFlow[j]["tf_largeflow"];
 								var y_value = totalFlow;
-								if (lat==null || lon==null){
+								if (j==0){
 									lat=allFlow[j]["tf_geo"]["coordinates"][1];
 									lon=allFlow[j]["tf_geo"]["coordinates"][0];
+									date=allFlow[j]["tf_recordedtime"];
 								}
 								console.log("item id="+ allFlow[j]["tf_id"]);
 								console.log("item geo="+allFlow[j]["tf_geo"]["coordinates"][0]+ ", "+allFlow[j]["tf_geo"]["coordinates"][1]);
 								console.log("item datetime="+ x_value);
 								if (allFlow[j]["tf_geo"]["coordinates"][0]==lon &&allFlow[j]["tf_geo"]["coordinates"][1]==lat){
-
-									flow.push({x: x_value, y: y_value, speed:allFlow[j]["tf_avgspeed"], region:allFlow[j]["region"]});
+									if (j==0 || allFlow[j]["tf_geo"]["tf_recordedtime"]!=date){
+										flow.push({x: x_value, y: y_value, speed:allFlow[j]["tf_avgspeed"], region:allFlow[j]["region"]});
+										date=allFlow[j]["tf_recordedtime"];
+									}
+									
 								}
 							}
 							var value={};

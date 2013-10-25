@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	var redcar_query=null;
 
 	$( "#radiusSlider" ).slider({
       range: "min",
@@ -163,7 +163,19 @@ $(document).ready(function() {
 			    }]
 		  	});
 
+		  	//bind event for date range slider
+		  	$("#date-slider").bind("valuesChanged", function(e, data){
+		  		slider_onChange(data.values);
+			});
+
 		} //end of create_timeline
+
+		function slider_onChange(data){
+		  	$(".tooltip").css("display", "none");
+	  		console.log("Values just changed. min: " + data.min + " max: " + data.max);
+	  		console.log("redcar_query: " + redcar_query);
+			plot_redcar_roadworks(redcar_query, data.min, data.max);	  			
+		}
 
 
 		function initialize(){
@@ -476,17 +488,32 @@ $(document).ready(function() {
 	  		});
 	  	}
 
-	  	function plot_redcar_roadworks(query){
+	  	function plot_redcar_roadworks(query, minDate, maxDate){
 	  		$("#top-right-box").html("");
 	  		$("#top-right-box").append( "<div style='margin: 0 auto; display:table; margin-top:40%;'><strong>Select a roadwork on map to view chart.</strong><div>" );
 	  		//make api calls to plot gullies
+	  		g.selectAll(".redcar_roadwork_points")
+					.data([])
+					.exit()
+					.remove();
 	  		makeAPICall('POST', "TrafficExplorer" , "getEntireMongoCollection", {collection: "redcarRoadwork"}, function(response){
 	  			var json= JSON.parse(response);
             	var itemArray=new Array();
+            	minDate=new Date(minDate);
+            	maxDate=new Date(maxDate);
+            	console.log("min date="+minDate);
+            	console.log("max date="+maxDate);
             	$.each(json, function (i, ob) {
             		var latest_record_index = json[i]["records"].length-1;
-            		if (json[i]["records"][latest_record_index]["jobstatus"]==query ||query ==null)
-            			itemArray.push(json[i]);
+            		if (json[i]["records"][latest_record_index]["jobstatus"]==query ||query ==null){
+            			recordDate=new Date(json[i]["records"][latest_record_index]["recordedtime"]);
+            			console.log("record date="+recordDate);
+            			if (recordDate<= maxDate && recordDate>= minDate){
+            				itemArray.push(json[i]);
+            				console.log("within date range!");
+            			}
+            			
+            		}
 				});
 				//plot with d3
 				g.selectAll(".redcar_roadwork_points")
@@ -733,11 +760,15 @@ $(document).ready(function() {
 				               	g.selectAll(".redcar_roadwork_points").data([]).exit().remove();
 				                //remap roadworks
 				                var label=e.label;
+				                redcar_query=label;
 				                if (e.label=="Active")
 						   			label="Scheduled -Active";
 						   		if (e.label=="Pending")
 						   			label="Scheduled -Pending";
-	  							plot_redcar_roadworks(label);
+						   		var dateValues = $("#date-slider").dateRangeSlider("values");
+				            	var min_date= dateValues.min;
+				            	var max_date= dateValues.max;
+	  							plot_redcar_roadworks(label, min_date, max_date);
 				        });
 				    });
 
@@ -787,7 +818,10 @@ $(document).ready(function() {
 		        	});
 
 		        //map redcar roadworks
-		        plot_redcar_roadworks(null);
+		        var dateValues = $("#date-slider").dateRangeSlider("values");
+				var min_date= dateValues.min;
+				var max_date= dateValues.max;
+		        plot_redcar_roadworks(null,min_date, max_date);
 	  		});
 	  	}
 

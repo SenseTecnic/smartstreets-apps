@@ -15,7 +15,8 @@ class TrafficExplorerAPIModule extends APIModule
 
         //mongodb initialization
         $dbhost = 'localhost';  
-        $dbname = 'traffic';
+        $dbname = 'test';
+        // $dbname = 'traffic';
         $m = new Mongo("mongodb://localhost");  
         $db = $m->$dbname;  
 

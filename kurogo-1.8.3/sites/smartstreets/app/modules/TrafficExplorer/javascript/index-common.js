@@ -1191,8 +1191,8 @@ $(document).ready(function() {
 					        		// var timeRatio= itemArray[i]["tt_historictime"]/itemArray[i]["tt_idealtime"];
 					        		var actualTime= itemArray[i]["tt_actualtime"];
 					        		var idealTime=itemArray[i]["tt_idealtime"]
-					        		// var timeRatio= actualTime-idealTime;
-					        		var timeRatio= itemArray[i]["tt_historictime"]/itemArray[i]["tt_idealtime"];
+					        		var timeRatio= actualTime/idealTime;
+					        		// var timeRatio= itemArray[i]["tt_historictime"]/itemArray[i]["tt_idealtime"];
 					        		var speed = itemArray[i]["tf_avgspeed"];
 					        		var medflow = itemArray[i]["tf_medflow"];
 					        		var largeflow = itemArray[i]["tf_largeflow"];

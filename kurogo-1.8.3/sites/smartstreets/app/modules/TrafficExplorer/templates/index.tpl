@@ -33,7 +33,10 @@
 					  <circle cx="6" cy="9" r="5"/>
 					</svg>
 					represent gullies, the larger the dot means the higher the gully silt level. </span>
-					<br><br>
+					<br>
+					<span>Use the checkbox controls to toggle the gully map pins and heatmap visualisations.</span>
+					<br>
+
 					<span>To reset the map to show all gully data, click the "RESET" button below.</span>
 
 				</div>

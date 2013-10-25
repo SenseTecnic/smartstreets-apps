@@ -682,8 +682,8 @@ $(document).ready(function() {
 							.color(myColors)
 							.showValues(true)
 							.transitionDuration(250);
-						chart.yAxis.axisLabel("Number of Gullies");
-						chart.xAxis.axisLabel("Silt Levels (in %)");
+						chart.yAxis.axisLabel("# of Roadworks");
+						chart.xAxis.axisLabel("Roadwork Status");
 						
 						d3.select('#gully_roadwork_status_title')
 						  .append("text")
@@ -691,7 +691,7 @@ $(document).ready(function() {
 						  .attr("y", "50%")
 						  .attr("class", "graph-title")
 						  .attr("text-anchor", "middle")  
-						  .text("Gully Silt Levels");
+						  .text("Roadwork Statuses");
 						d3.select('#gully_roadwork_status_chart')
 							.datum(barChartData)
 							.call(chart);

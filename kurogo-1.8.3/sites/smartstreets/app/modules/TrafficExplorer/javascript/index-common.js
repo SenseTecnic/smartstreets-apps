@@ -138,9 +138,12 @@ $(document).ready(function() {
 			var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 			var today = new Date();
 		  	var before= new Date(today.getTime() - 60*(24 * 60 * 60 * 1000));
+
+		  	var lower_bound= new Date(today.getTime() - 180*(24 * 60 * 60 * 1000));
+		  	var upper_bound= new Date(today.getTime() + 180*(24 * 60 * 60 * 1000));
 		  	$("#date-slider").dateRangeSlider({
 		  		
-			    bounds: {min: new Date(2013, 0, 1), max: new Date(2013, 11, 31, 12, 59, 59)},
+			    bounds: {min: lower_bound, max: upper_bound},
 			    defaultValues: {min: before, max: today},
 			    step:{days: 1},
 			    scales: [{
@@ -725,6 +728,7 @@ $(document).ready(function() {
 				        d3.selectAll(".nv-bar").on('click',
 				            function(e){
 				                //clear all 
+				                $(".tooltip").css("display", "none");
 				               	g.selectAll(".redcar_roadwork_points").data([]).exit().remove();
 				                //remap roadworks
 				                var label=e.label;

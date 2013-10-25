@@ -208,6 +208,7 @@ class TrafficExplorerShellModule extends ShellModule {
           $json = json_decode($items, 1);
           $total= $json["numFound"];
           $index+=10;
+          print_r ("total num found from solr: ".$total."!! \n");
           foreach ($json["docs"] as $roadwork_sensor){
             if ($roadwork_sensor["iscontenttype"]=="application/json"){
               

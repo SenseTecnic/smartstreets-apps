@@ -86,6 +86,7 @@ $(document).ready(function() {
 	  			case "gully_roadwork":
 	  				$("#top-right-box").html("");
 	  				get_gully_roadwork();
+	  				create_timeline();
 	  				break;
 	  			case "flow_time":
 	  				get_flow_time();
@@ -144,7 +145,7 @@ $(document).ready(function() {
 		  	$("#date-slider").dateRangeSlider({
 		  		
 			    bounds: {min: lower_bound, max: upper_bound},
-			    defaultValues: {min: before, max: today},
+			    defaultValues: {min: lower_bound, max: upper_bound},
 			    step:{days: 1},
 			    scales: [{
 			      first: function(value){ return value; },

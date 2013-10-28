@@ -827,6 +827,8 @@ $(document).ready(function() {
 
 	  	function plot_flow_roadwork(){
 	  		var query= { rw_starttime: { $exists: true } } ;
+	  		// var today= new Date();
+	  		// var query= { rw_endtime: { $gte: today } } ;
 	  		var stringQuery= encodeURIComponent(JSON.stringify( query ));
 	  		var chart;
 	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "correlation", query: stringQuery}, function(response){
@@ -838,13 +840,19 @@ $(document).ready(function() {
             	$.each(json["results"], function (i, ob) {
             		//populate json item array
             		json["results"][i]["tf_recordedtime"]= json["results"][i]["tf_recordedtime"]["sec"];
-            		itemArray.push(json["results"][i]);
-            		if ($.inArray(json["results"][i]["rw_id"], roadwork_array)==-1){
-            			var item={};
-            			color_array.push(getRandomColor());
-            			roadwork_array.push(json["results"][i]["rw_id"]);
-            			console.log("rodwork uniqque id :"+ json["results"][i]["rw_id"]);
+            		var enddate = json["results"][i]["rw_endtime"]["sec"]*1000;
+            		var today =new Date();
+            		//filter out roadworks that aren't ending in time range
+            		if (enddate>=today.getTime()){
+            			itemArray.push(json["results"][i]);
+	            		if ($.inArray(json["results"][i]["rw_id"], roadwork_array)==-1){
+	            			var item={};
+	            			color_array.push(getRandomColor());
+	            			roadwork_array.push(json["results"][i]["rw_id"]);
+	            			console.log("rodwork uniqque id :"+ json["results"][i]["rw_id"]);
+	            		}
             		}
+            		
 				});
 
 				console.log("response: "+ response);
@@ -1355,9 +1363,7 @@ $(document).ready(function() {
 												  .text("Vehicle Flow");
 												nv.utils.windowResize(barchart.update);
 												return barchart;
-											},function(){
-										     	//TODO
-										    });
+											});
 								  });
 								  return chart;
 								});

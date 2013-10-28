@@ -1132,8 +1132,8 @@ $(document).ready(function() {
 	      //          			var end = new Date(2013, 9, 10, 0, 0, 0) ;
 							var start = new Date();
 							var end = new Date();
-							start.setDate(start.getDate()-40);
-							end.setDate(end.getDate()+40);
+							start.setDate(start.getDate()-2);
+							end.setDate(end.getDate()+2);
 
 							var query = {"tf_recordedtime": {$gte: start, $lt: end}, "region":d["name"]};
 					  		var stringQuery = JSON.stringify( query );
@@ -1274,7 +1274,7 @@ $(document).ready(function() {
 								  chart = nv.models.scatterChart()
 								                .showDistX(true)
 								                .showDistY(true)
-								                .useVoronoi(true)
+								                .useVoronoi(false)
 								                .interactive(true)
 								                .color(colorArray)
 								                .transitionDuration(300)

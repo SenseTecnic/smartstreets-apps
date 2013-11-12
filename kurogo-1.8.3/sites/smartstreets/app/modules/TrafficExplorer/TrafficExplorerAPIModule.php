@@ -138,7 +138,7 @@ class TrafficExplorerAPIModule extends APIModule
                 $queryArray = array(
                     'recordedtime' => $timeRangeArray
                 );
-                $cursor = $db->$collection->find($queryArray)->sort(array('value' => -1))->limit(1000);
+                $cursor = $db->$collection->find($queryArray)->sort(array('value' => -1))->limit(4000);
 
 
                 $results= json_encode(iterator_to_array($cursor));

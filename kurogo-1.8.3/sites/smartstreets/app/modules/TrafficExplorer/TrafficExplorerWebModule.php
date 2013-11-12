@@ -19,7 +19,7 @@ class TrafficExplorerWebModule extends WebModule
         $this->addExternalJavascript("http://d3js.org/topojson.v1.min.js");
 
         //NVD3.JS
-        $this->addInternalJavascript("/modules/TrafficExplorer/javascript/nv.d3.min.js");
+        $this->addInternalJavascript("/modules/TrafficExplorer/javascript/nv.d3.js");
         $this->addInternalCSS("/modules/TrafficExplorer/css/nv.d3.css");
 
         //leaflet.js

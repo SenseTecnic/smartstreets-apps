@@ -1,5 +1,5 @@
 <?php 
-// include 'chromephp-master/ChromePhp.php';
+include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserWebModule extends WebModule
 {
@@ -116,7 +116,7 @@ class CatalogueBrowserWebModule extends WebModule
                 $sort = $this->getArg('sort');
                 //CREATE SOLR SEARCH QUERIES
                 $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
-                // ChromePhp::log ("Response: ".$response);
+                ChromePhp::log ("Response: ".$response);
                 //get catalog details
                 $itemParam['href'] = $searchURL;
                 $itemResponse = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $itemParam, $sort, 0);

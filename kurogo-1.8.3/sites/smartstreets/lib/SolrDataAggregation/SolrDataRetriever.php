@@ -78,4 +78,9 @@ abstract class SolrDataRetriever extends URLDataRetriever {
     $jsonQuery = '{"delete":{"query":"'. $query. '"}}';
     $this->persist($jsonQuery);
   }
+
+  public function deleteDocuments($query) {
+    $jsonQuery = '{"delete":{"query":"'. $query. '"}}';
+    $this->persist($jsonQuery);
+  }
 }

@@ -31,6 +31,11 @@ class SolrAggregationShellModule extends ShellModule {
         }
         break;
 
+      case "deleteDocuments":
+        print "Deleting some documents in solr\n";
+        $CatalogueItemSolrController->deleteDocuments("datahub:distance");
+        break;
+
       case "deleteAllFeeds":
         print "Deleting all documents in solr\n";
         $CatalogueItemSolrController->deleteAll();

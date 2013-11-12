@@ -1,9 +1,9 @@
 {
     "feeds":[
         {
-            "name":"imove",
-            "title":"i-Move",
-            "url":"http://imove-project.org/cat"
+            "name":"distance",
+            "title":"Distance",
+            "url":"http://iostp.org:8080/cat/"
         }
     ]
 

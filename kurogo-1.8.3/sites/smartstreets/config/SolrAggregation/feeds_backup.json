@@ -8,17 +8,21 @@
         ,{
             "name":"stride",
             "title":"Stride",
-            "url":"http://smartstreets.sensetecnic.com/cat"
+            "url":"http://portal.stride-project.com/cat"
         }
         ,{
             "name":"openiot",
             "title":"Open IoT",
-            "url":"http://smartstreets.sensetecnic.com/cat"
+            "url":"https://alertmeadaptor.appspot.com/cat"
         }
         ,{
             "name":"distance",
             "title":"Distance",
-            "url":"http://smartstreets.sensetecnic.com/cat/data"
+            "url":"http://www.iotschool.org/cat/"
+        },{
+            "name":"imove",
+            "title":"i-Move",
+            "url":"http://imove-project.org/cat"
         }
     ]
 

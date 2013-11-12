@@ -3,7 +3,7 @@
         {
             "name":"distance",
             "title":"Distance",
-            "url":"http://iostp.org:8080/cat/"
+            "url":"http://iostp.org:8080/cat/feeds"
         }
     ]
 

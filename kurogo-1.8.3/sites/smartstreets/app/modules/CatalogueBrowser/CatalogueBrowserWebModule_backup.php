@@ -1,5 +1,5 @@
 <?php 
-include 'chromephp-master/ChromePhp.php';
+// include 'chromephp-master/ChromePhp.php';
 class CatalogueBrowserWebModule extends WebModule
 {
     protected $id='CatalogueBrowser';
@@ -85,7 +85,7 @@ class CatalogueBrowserWebModule extends WebModule
             	//set page title
             	$this -> setPageTitle ($parent_href);
             	//query data from smartstreets
-                ChromePhp::log ("section id: ".$this->getArg('hub'));
+                // ChromePhp::log ("section id: ".$this->getArg('hub'));
                 $baseURL= $this->getModuleVar('BASE_URL', $this->getArg('hub'),"datahub");
                 $catItems = $this->controller->getCatalogueItems($baseURL, $parent_href);
 
@@ -150,7 +150,7 @@ class CatalogueBrowserWebModule extends WebModule
 	                	// 		ChromePhp::log('Untracked metadata rel: '.$metadata["rel"]);
 	                	// }	           
 	                }  
-	                ChromePhp::log('Cat info: '.implode("\n", $catMetadata));
+	                // ChromePhp::log('Cat info: '.implode("\n", $catMetadata));
 	                $this->assign('catalogueInfo', $catMetadata);
                 }
 
@@ -246,7 +246,7 @@ class CatalogueBrowserWebModule extends WebModule
                  		// 	$isCatalogue= 1;
                  		// }
 
-                        ChromePhp::log('metaItem: '.json_encode($metaItem));
+                        // ChromePhp::log('metaItem: '.json_encode($metaItem));
                  	}
 
                  	
@@ -300,7 +300,7 @@ class CatalogueBrowserWebModule extends WebModule
 
                     $select_options_array[$hub_url] = $hub;
                 }
-                ChromePhp::log ($select_options_array);
+                // ChromePhp::log ($select_options_array);
                 $this->assign('select_options_array', $select_options_array);
                 $this->assign('mySelect', "");
                 break;
@@ -323,7 +323,7 @@ class CatalogueBrowserWebModule extends WebModule
                 $results= SimpleSearchResponse::getSimpleSearchResponse($this->controller, $datahub, $catalogue_href, $content_type, $maintainer, $id, $description, $name, $tags );
                 
                 $results_json= json_encode($results, true);
-                ChromePhp::log ("results:  ".$results_json);
+                // ChromePhp::log ("results:  ".$results_json);
 
                 //process json and create nav list data
                 $resultList = array();
@@ -331,7 +331,7 @@ class CatalogueBrowserWebModule extends WebModule
                 $resultCount=0;
                 // TODO: check that the json returned is not NULL .
                 if ($results ["items"] ==null){
-                    ChromePhp::log ("There is no result");
+                    // ChromePhp::log ("There is no result");
                 }else{
 
 
@@ -376,7 +376,7 @@ class CatalogueBrowserWebModule extends WebModule
                         }
                         if ($metaItem["rel"]== "urn:X-smartstreets:rels:hasName:en"){
                             $name = $metaItem["val"];
-                            ChromePhp::log('name: '.$name);
+                            // ChromePhp::log('name: '.$name);
                         }
                         if ($metaItem["rel"]== "urn:X-smartstreets:rels:hasTitle:en"){
                             $title = $metaItem["val"];
@@ -424,7 +424,7 @@ class CatalogueBrowserWebModule extends WebModule
 
                 $this->assign('itemList', $resultList);
                 $this->assign ('resultCount', $resultCount);
-                ChromePhp::log ("url: ".$url);
+                // ChromePhp::log ("url: ".$url);
                 //Case 1: No results, when item's href = href/data or href/sensor
 
                 //Case 2: Returns catalogues

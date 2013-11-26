@@ -66,6 +66,28 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
     return $returnedFeedItems[0];
   }
 
+  public function queryByIdAndParentUrl($id, $parentUrl) {
+    $searchQuery = new SearchQuery();
+    $searchQuery->addKeyword($id, null, "id");
+    $searchQuery->addKeyword($parentUrl, null, "parentUrl");
+    $this->setCacheRequest(false);
+    $returnedFeedItems = $this->queryFeedItem($searchQuery);
+    $this->setCacheRequest(true);
+    if (count($returnedFeedItems) == 0 ) {
+      return null;
+    }
+
+    if (count($returnedFeedItems) > 1) {
+      print "More than one feed item found for id: {$id}\n";
+      print_r($feedItem);
+      print "Solr return:\n";
+      print_r($returnedFeedItems);
+      return null;
+    }
+
+    return $returnedFeedItems[0];
+  }
+
 
   /**
    * Insert an array of FeedItems into solr
@@ -81,10 +103,12 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
       // Does not return the items itself
       if (!$overwrite) {
         $id = $feedItem->getLabel('id');
-        $existingItem = $this->queryById($id);
+        $parentUrl = $feedItem->getLabel('parentUrl');
+        // $existingItem = $this->queryById($id);
+        $existingItem = $this->queryByIdAndParentUrl($id,$parentUrl);
 
         if (isset($existingItem)) {
-          print "Item already exists, skipping ". $id. "\n";;
+          print "Item already exists, skipping id: ". $id.", parent url: ".$parentUrl. "\n";;
           $feedItem->setDuplicate();
           $skippedDuplicates[] = $existingItem;
           continue;

@@ -1,9 +1,9 @@
 {
     "feeds":[
         {
-            "name":"distance",
-            "title":"Distance",
-            "url":"http://iostp.org:8080/cat/feeds"
+            "name":"iotbay",
+            "title":"IoT Bay",
+            "url":"http://strauss.ccr.bris.ac.uk/cat"
         }
     ]
 

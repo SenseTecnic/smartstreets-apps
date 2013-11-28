@@ -3,9 +3,9 @@
         {
             "name":"stride",
             "title":"STRIDE",
-            "url":"http://portal.stride-project.com/cat"
+            "url":"http://portal.stride-project.com/cat",
             "header":"Authorization",
-            "general_key":"noKey"
+            "general_key":"Basic ZWI1MDFkMDQtNjJmZS00MTYwLWJkZGQtMTUwMzJjYlMzM2Og=="
         }
     ]
 

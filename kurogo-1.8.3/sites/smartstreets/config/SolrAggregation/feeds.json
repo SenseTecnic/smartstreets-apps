@@ -1,11 +1,11 @@
 {
     "feeds":[
         {
-            "name":"imove",
-            "title":"IMove",
-            "url":"http://imove-project.org/cat",
+            "name":"iotbay",
+            "title":"IoT Bay",
+            "url":"http://strauss.ccr.bris.ac.uk/cat",
             "header":"x-api-key",
-            "general_key":"3f9c804b28349d1ecb94900933c82a75"
+            "general_key":""
         }
     ]
 

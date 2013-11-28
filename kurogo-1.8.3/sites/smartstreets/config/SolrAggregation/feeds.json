@@ -1,16 +1,11 @@
 {
     "feeds":[
         {
-            "name":"openiot",
-            "title":"Open IoT",
-            "url":"http://data.openiot.org/cat",
-            "header":"x-api-key",
-            "general_key":"",
-            "private_catalogs":{
-            	"https://geras.1248.io/cat/armhome":"924a7d4dbfab38c964f5545fd6186559",
-            	"https://geras.1248.io/cat/armmeeting":"924a7d4dbfab38c964f5545fd6186559",
-            	"https://geras.1248.io/cat/enlight":"1bfc8d081f5b1eed8359a7517fdb054a"
-            }
+            "name":"stride",
+            "title":"STRIDE",
+            "url":"http://portal.stride-project.com/cat"
+            "header":"Authorization",
+            "general_key":"Basic ZWI1MDFkMDQtNjJmZS00MTYwLWJkZGQtMTUwMzJjYlMzM2Og=="
         }
     ]
 

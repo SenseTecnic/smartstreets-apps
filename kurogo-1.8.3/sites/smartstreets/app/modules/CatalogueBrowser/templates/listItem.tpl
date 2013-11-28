@@ -42,7 +42,7 @@
     </a>
   {else}
     {if isset($item['itemSearchURL'])}
-      <a class = "details_link" onclick="viewItemDetails(this)" data-search = {$item['itemSearchURL']}>View Details</a>
+      <a class = "details_link" onclick="viewItemDetails(this)" data-search = {$item['itemSearchURL']} data-header = {$item['header']} data-key = {$item['key']}>View Details</a>
     {/if}
     {if $item['resourceURL']}
       <a class = "resource_link" href="{$item['resourceURL']}">Download Resource</a>

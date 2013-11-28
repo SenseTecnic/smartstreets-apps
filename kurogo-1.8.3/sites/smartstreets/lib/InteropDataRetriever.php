@@ -19,11 +19,12 @@ class InteropDataRetriever extends URLDataRetriever
     	return $data;
     }
 
-    public function getItemDetails($fetchURL) { 
+    public function getItemDetails($fetchURL, $header, $key) { 
     	$this->setBaseURL($fetchURL); 
+        $this->addHeader($header, $key);
         $data = $this->getData($response); 
         return $data; 
-    }   
+    }  
 
     public function searchByParameters($searchURL) { 
 
@@ -45,12 +46,19 @@ class InteropDataRetriever extends URLDataRetriever
         return $data; 
     } 
 
-
     /******** Functions below are for retrieving sources to populate Solr ********/
     public function retrieveSource($url){
         $base_url = $url;
         //print $base_url."\n";
         $this->setBaseURL ($base_url);
+        $data = $this->getData($response);
+        return $data;
+    }
+    public function retrieveSourceWithAuthentication($url, $header,$key){
+        $base_url = $url;
+        //print $base_url."\n";
+        $this->setBaseURL ($base_url);
+        $this->addHeader($header, $key);
         $data = $this->getData($response);
         return $data;
     }

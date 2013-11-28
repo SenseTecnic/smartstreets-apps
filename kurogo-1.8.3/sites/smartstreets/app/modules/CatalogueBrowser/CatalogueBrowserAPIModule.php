@@ -12,8 +12,25 @@ class CatalogueBrowserAPIModule extends APIModule
         switch ($this->command) 
         { 
             case 'viewItemDetails': 
+                //TODO: get item details for private stuff
+                // $header ="x-api-key";
+                // $key = "f9c0e0b7-8c4a-4f32-bf9c-7a7fac849659";
+                $header = $this->getArg('header');
+                $key = $this->getArg('key');
                 $baseURL = $this->getArg('part1')."&val=".$this->getArg('part2');
-                $details = $this->controller->getItemDetails($baseURL);
+                $details = $this->controller->getItemDetails($baseURL, $header, $key);
+
+                $this->setResponse($details);
+                $this->setResponseVersion(1);
+                break; 
+            case 'viewItemResource': 
+                //TODO: get item details for private stuff
+                // $header ="x-api-key";
+                // $key = "f9c0e0b7-8c4a-4f32-bf9c-7a7fac849659";
+                $header = $this->getArg('header');
+                $key = $this->getArg('key');
+                $baseURL = $this->getArg('url');
+                $details = $this->controller->retrieveSourceWithAuthentication($baseURL, $header, $key);
 
                 $this->setResponse($details);
                 $this->setResponseVersion(1);

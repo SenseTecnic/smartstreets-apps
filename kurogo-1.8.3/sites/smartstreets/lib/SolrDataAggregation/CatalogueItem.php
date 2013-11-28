@@ -76,7 +76,10 @@ class CatalogueItem
   }
 
   public function getDatamapValue($key){
-    return $this->dataMap[$key];
+    $val = null;
+    if (array_key_exists($key,$this->dataMap))
+      $val= $this->dataMap[$key];
+    return $val;
   }
 
   /*

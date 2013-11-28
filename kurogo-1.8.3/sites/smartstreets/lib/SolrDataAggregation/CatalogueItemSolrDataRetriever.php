@@ -19,8 +19,8 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
    * Query Solr for FeedItems according to searchQuery
    * @return array of FeedItems returned from Solr
    */
-  public function queryFeedItem(SearchQuery $searchQuery) {
-    $response = $this->query($searchQuery);
+  public function queryFeedItem(SearchQuery $searchQuery, $type) {
+    $response = $this->query($searchQuery, $type);
     //print "response\n";
     //print_r($response);
     if ($response["response"]["numFound"] === 0) {
@@ -49,7 +49,7 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
     $searchQuery = new SearchQuery();
     $searchQuery->addKeyword($id, null, "id");
     $this->setCacheRequest(false);
-    $returnedFeedItems = $this->queryFeedItem($searchQuery);
+    $returnedFeedItems = $this->queryFeedItem($searchQuery, 'AND');
     $this->setCacheRequest(true);
     if (count($returnedFeedItems) == 0 ) {
       return null;
@@ -71,7 +71,7 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
     $searchQuery->addKeyword($id, null, "id");
     $searchQuery->addKeyword($parentUrl, null, "parentUrl");
     $this->setCacheRequest(false);
-    $returnedFeedItems = $this->queryFeedItem($searchQuery);
+    $returnedFeedItems = $this->queryFeedItem($searchQuery, 'AND');
     $this->setCacheRequest(true);
     if (count($returnedFeedItems) == 0 ) {
       return null;
@@ -104,15 +104,17 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
       if (!$overwrite) {
         $id = $feedItem->getLabel('id');
         $parentUrl = $feedItem->getLabel('parentUrl');
+        print_r("\n******************** id: ******************: ".$id."\n");
         // $existingItem = $this->queryById($id);
-        $existingItem = $this->queryByIdAndParentUrl($id,$parentUrl);
+        //DISABLE DUP CHECK
+        // $existingItem = $this->queryByIdAndParentUrl($id,$parentUrl);
 
-        if (isset($existingItem)) {
-          print "Item already exists, skipping id: ". $id.", parent url: ".$parentUrl. "\n";;
-          $feedItem->setDuplicate();
-          $skippedDuplicates[] = $existingItem;
-          continue;
-        }
+        // if (isset($existingItem)) {
+        //   print "Item already exists, skipping id: ". $id.", parent url: ".$parentUrl. "\n";;
+        //   $feedItem->setDuplicate();
+        //   $skippedDuplicates[] = $existingItem;
+        //   continue;
+        // }
       } else {
         print "Updating item in database, id: ". $id. "\n";
       }
@@ -124,6 +126,8 @@ class CatalogueItemSolrDataRetriever extends SolrDataRetriever {
     // trim trailing comma and add closing bracket
     $jsonUpdateString = '['. implode(',', $jsonUpdate). ']';
     $this->persist($jsonUpdateString);
+    $file = './log.json';
+    file_put_contents($file, $jsonUpdateString); 
     return $skippedDuplicates;
   }
 }

@@ -1,5 +1,5 @@
 <?php 
-// include 'chromephp-master/ChromePhp.php';
+include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserWebModule extends WebModule
 {
@@ -43,7 +43,6 @@ class CatalogueBrowserWebModule extends WebModule
 
             case 'datahub':
 
-
                 //TODO: make a page for selecting datahubs
                 $SELECTED_DATAHUB = $this->getArg('datahub');
                 // $SELECTED_DATAHUB = "Smartstreets";
@@ -73,6 +72,11 @@ class CatalogueBrowserWebModule extends WebModule
                             if ($metaItem["rel"]== $this->getModuleVar('Support_Search', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub") && $metaItem["val"]== "urn:X-tsbiot:search:simple"){
                                 $isSearchable=true;
                             }
+                            if ($metaItem["rel"]== $this->getModuleVar('Content_Type', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub") && $metaItem["val"]== "application/vnd.tsbiot.catalogue+json"){
+                                $isCatalogue=true;
+                            }else{
+                                $isCatalogue=false;
+                            }
                         }
 
                         //build view catalogue redirect URL and args to pass 
@@ -98,18 +102,28 @@ class CatalogueBrowserWebModule extends WebModule
 
                  break;
 
-            case 'viewCatalogue':
+            case 'viewCatalogue':    
+                //TODO: parent url change to absolute here! 
+                $SELECTED_DATAHUB = $this->getArg('datahub');
+                ChromePhp::log ("Datahub: ".$SELECTED_DATAHUB);
+
+                $parent_href = $this->getArg('href');
+                $header= $this->getModuleVar('HEADER', strtolower($SELECTED_DATAHUB),"datahub");
+                $key = $this->getModuleVar('KEY', strtolower($SELECTED_DATAHUB),"datahub");
+                ChromePhp::log ("my header: ".$header);
+                ChromePhp::log ("my header: ".$key);
+                // $SELECTED_DATAHUB =$this->getArg('hub');
+                // $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
 
                 
-            	$parent_href = $this->getArg('href');
-                $SELECTED_DATAHUB =$this->getArg('hub');
+                $baseURL= $this->getModuleVar('BASE_URL', strtolower($SELECTED_DATAHUB),"datahub");
+                if($parent_href==null)
+                    $parent_href = $baseURL."/cat";
+            	ChromePhp::log ("Parent url: ".$parent_href);
             	//set page title
             	$this -> setPageTitle ($parent_href);
-            	//query data from smartstreets
-                $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
-
-                
-                $searchURL= $baseURL.$parent_href;
+            	//query data by search URl
+                $searchURL= $parent_href;
                 
                 //query solr for parentUrl == searchURL
                 $params['parentUrl'] = $searchURL;
@@ -135,7 +149,7 @@ class CatalogueBrowserWebModule extends WebModule
                 }
 
                 if ($response ==null){
-                     // ChromePhp::log ("There is no result");
+                     ChromePhp::log ("There is no result");
                 }else{
                     //process json and create nav list data
                     $resultList = array();
@@ -165,22 +179,27 @@ class CatalogueBrowserWebModule extends WebModule
                         else
                              $tagArray =null;
 
-                        if ($isCatalogue){
+                        if ($isCatalogue===true){
+                            ChromePhp::log ("href: ".$href);
                             // open to another view catalogue page 
-                            $sub_href = substr($href, strpos($href, "/cat"));
-
+                            // $sub_href = substr($href, strpos($href, "/cat"));
+                            if (strpos($href, "http")===false &&strpos($href, "https")===false){
+                                //parenturl remove /cat
+                                $href = substr($parent_href, 0, strpos($parent_href, "/cat")).$href;
+                                ChromePhp::log ("new url: ".$href);
+                            }
                             //build view catalogue redirect URL and args to pass 
                             $args = array(
                                 'id' => $itemId,
-                                'href' => $sub_href,
-                                'hub' => $datahub
+                                'href' => $href,
+                                'datahub' => $datahub
                             );
                             $url = $this->buildBreadcrumbURL("viewCatalogue", $args, true);
                         }else{
 
                             //create resource download url
                             //check  if href contains "Http", if not, append to current url
-                            if (strpos($href, "http")!==false){
+                            if (strpos($href, "http")!==false ||strpos($href, "https")!==false){
                                 $resourceURL = $href;
                             }else{
                                 $resourceURL = $baseURL.$href;
@@ -201,6 +220,7 @@ class CatalogueBrowserWebModule extends WebModule
                         }else{
                             $type = "Item";
                         }
+                        
                         // create navlist item
                         $itemData = array (
                             'lastupdate'=>$lastupdate,
@@ -212,7 +232,9 @@ class CatalogueBrowserWebModule extends WebModule
                             'resourceURL' => $resourceURL,
                             'itemSearchURL'=> $itemSearchURL,
                             'badge'=>$tagArray,
-                            'type'=>$type
+                            'type'=>$type,
+                            'header'=>$header,
+                            'key'=>$key
 
                         );
                  
@@ -220,7 +242,6 @@ class CatalogueBrowserWebModule extends WebModule
                     }
                     //populate search parameters for load more posts
                     // $searchParam["parentUrl"]=$searchURL;
-                    
                     $this->assign('itemList', $resultList);
                     $this->assign('itemNum', $results["numFound"]);
                     $this->assign ('catalogueURL', $searchURL);
@@ -228,6 +249,9 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('searchParam', $searchURL);
                     $this->assign('index', 10);
                     $this->assign('sort', $sort);
+                    $this->assign('header',$header);
+                    $this->assign('key',$key);
+
                 }
 
             	 break;
@@ -336,7 +360,7 @@ class CatalogueBrowserWebModule extends WebModule
                             $args = array(
                                 'id' => $itemId,
                                 'href' => $sub_href,
-                                'hub' => $datahub
+                                'datahub' => $datahub
                             );
                             $url = $this->buildBreadcrumbURL("viewCatalogue", $args, true);
                         }else{

@@ -13,6 +13,8 @@ $(document).ready(function() {
 	// 		$("#search_button").attr("disabled", "disabled");
 	// 	}
 	// });
+  var header="";
+  var key="";
 
   $("#sortView").change(function(){
     //sort view
@@ -66,23 +68,45 @@ function searchTag(tag){
   window.location.replace(redirect);
 }
 
+function viewItemResource(that){
+  var itemSearchURL= $(that).data("search");
+  header= $(that).data("header");
+  key= $(that).data("key");
+  var params = {"url" : itemSearchURL, "header":header, "key":key};
+  console.log("header: "+header);
+  console.log("key: "+key);
+  console.log("url; "+itemSearchURL);
+  makeAPICall('POST', "CatalogueBrowser" , 'viewItemResource', params, function(response){
+    //clear all previous dialog content
+    // console.log (" item resources response: "+JSON.stringify(response));
+    something = window.open("data:text/json," + JSON.stringify(response),
+                       "_blank");
+    something.focus();
+
+  });
+}
+
 function viewItemDetails(that){
 	var itemSearchURL= $(that).data("search");
+  header= $(that).data("header");
+  key= $(that).data("key");
 	console.log ("item url: "+ itemSearchURL);
+  console.log ("item heaer: "+ header);
+  console.log ("item key: "+ key);
 	var part1= itemSearchURL.substr(0, itemSearchURL.indexOf("&val="));
 	var part2 = itemSearchURL.substr(itemSearchURL.indexOf("&val=")+5);
 
 	console.log("part1: "+part1);
 	console.log("part2: "+part2);
-	var params = {"part1" : part1,"part2" :part2};
-	// console.log ("module id: "+ moduleId);
+	var params = {"part1" : part1,"part2" :part2, "header":header, "key":key};
+	console.log ("url: "+ part1+part2);
 
 	//TODO: Call AJAX to get item details
 	makeAPICall('POST', "CatalogueBrowser" , 'viewItemDetails', params, function(response){
 		//clear all previous dialog content
 		$("#item-details").html ("");
 
-		console.log (" item details response: "+response);
+		console.log (" item details response: "+JSON.stringify(response));
 		//display details in a pop up 
 		$(response.items[0]["i-object-metadata"]).each(function(i,data){
 			//append data content to dialog 
@@ -137,6 +161,10 @@ function loadMorePosts(){
   var index= $("#storage").data("index");
   console.log ("index"+index);
   var sort= $("#storage").data("sort");
+  header = $("#storage").data("header");
+  key = $("#storage").data("key");
+  console.log ("js header"+header);
+  console.log ("js key"+key);
   // var sort= (param["sort"]);
 
   makeAPICall(
@@ -232,6 +260,10 @@ function loadMorePosts(){
           	if (id!=null){
           		textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
 	          	textToInsert[i++] = itemSearchURL;
+              textToInsert[i++] = ' data-header =';
+              textToInsert[i++] = '"'+header+'"';
+              textToInsert[i++] = ' data-key =';
+              textToInsert[i++] = '"'+key+'"';
 	          	textToInsert[i++] = ">View Details</a>";
           	}
           	textToInsert[i++] = '<a class = "resource_link" href="';

@@ -1,5 +1,5 @@
 {include file="findInclude:modules/CatalogueBrowser/templates/header.tpl"} 
-<div id="storage" class = "focal" data-index={$index} data-param={$searchParam} data-sort={$sort}>
+<div id="storage" class = "focal" data-header={$header} data-key={$key} data-index={$index} data-param={$searchParam} data-sort={$sort}>
 	<h1>Catalogue Metadata: {$itemNum} items</h1> 
 	<li class = "smallprint">URL: {$catalogueURL}</li>
 	{foreach from=$catalogueInfo item=line}
@@ -20,7 +20,7 @@
 
 
 {if $itemList|@count gt 10}
-	<div id="scrollText" style="color: black; padding-left: 20%;">Scroll To Load 10 More Items... </div>
+	<div id="scrollText" style="color: black; padding-left: 20%;" >Scroll To Load 10 More Items... </div>
 {/if}
 
 {include file="findInclude:common/templates/footer.tpl"}

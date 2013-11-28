@@ -1,5 +1,5 @@
 <?php 
-include 'chromephp-master/ChromePhp.php';
+// include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserWebModule extends WebModule
 {
@@ -105,13 +105,13 @@ class CatalogueBrowserWebModule extends WebModule
             case 'viewCatalogue':    
                 //TODO: parent url change to absolute here! 
                 $SELECTED_DATAHUB = $this->getArg('datahub');
-                ChromePhp::log ("Datahub: ".$SELECTED_DATAHUB);
+                // ChromePhp::log ("Datahub: ".$SELECTED_DATAHUB);
 
                 $parent_href = $this->getArg('href');
                 $header= $this->getModuleVar('HEADER', strtolower($SELECTED_DATAHUB),"datahub");
                 $key = $this->getModuleVar('KEY', strtolower($SELECTED_DATAHUB),"datahub");
-                ChromePhp::log ("my header: ".$header);
-                ChromePhp::log ("my header: ".$key);
+                // ChromePhp::log ("my header: ".$header);
+                // ChromePhp::log ("my header: ".$key);
                 // $SELECTED_DATAHUB =$this->getArg('hub');
                 // $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
 
@@ -119,7 +119,7 @@ class CatalogueBrowserWebModule extends WebModule
                 $baseURL= $this->getModuleVar('BASE_URL', strtolower($SELECTED_DATAHUB),"datahub");
                 if($parent_href==null)
                     $parent_href = $baseURL."/cat";
-            	ChromePhp::log ("Parent url: ".$parent_href);
+            	// ChromePhp::log ("Parent url: ".$parent_href);
             	//set page title
             	$this -> setPageTitle ($parent_href);
             	//query data by search URl
@@ -149,7 +149,7 @@ class CatalogueBrowserWebModule extends WebModule
                 }
 
                 if ($response ==null){
-                     ChromePhp::log ("There is no result");
+                     // ChromePhp::log ("There is no result");
                 }else{
                     //process json and create nav list data
                     $resultList = array();
@@ -180,13 +180,13 @@ class CatalogueBrowserWebModule extends WebModule
                              $tagArray =null;
 
                         if ($isCatalogue===true){
-                            ChromePhp::log ("href: ".$href);
+                            // ChromePhp::log ("href: ".$href);
                             // open to another view catalogue page 
                             // $sub_href = substr($href, strpos($href, "/cat"));
                             if (strpos($href, "http")===false &&strpos($href, "https")===false){
                                 //parenturl remove /cat
                                 $href = substr($parent_href, 0, strpos($parent_href, "/cat")).$href;
-                                ChromePhp::log ("new url: ".$href);
+                                // ChromePhp::log ("new url: ".$href);
                             }
                             //build view catalogue redirect URL and args to pass 
                             $args = array(

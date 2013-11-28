@@ -1,11 +1,11 @@
 {
     "feeds":[
         {
-            "name":"stride",
-            "title":"STRIDE",
-            "url":"http://portal.stride-project.com/cat",
-            "header":"Authorization",
-            "general_key":"Basic ZWI1MDFkMDQtNjJmZS00MTYwLWJkZGQtMTUwMzJjYlMzM2Og=="
+            "name":"imove",
+            "title":"IMove",
+            "url":"http://imove-project.org/cat",
+            "header":"x-api-key",
+            "general_key":"3f9c804b28349d1ecb94900933c82a75"
         }
     ]
 

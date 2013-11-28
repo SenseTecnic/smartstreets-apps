@@ -1,11 +1,11 @@
 {
     "feeds":[
         {
-            "name":"distance",
-            "title":"DISTANCE",
-            "url":"http://iostp.org:8080/cat",
+            "name":"smartstreets",
+            "title":"Smart Streets",
+            "url":"https://smartstreets.sensetecnic.com/cat",
             "header":"x-api-key",
-            "general_key":"8cyHFd7vHCYeJ4x0mOEcgFmkOPUheWtK4Nu1YTOyKhxwFsLC"
+            "general_key":"f9c0e0b7-8c4a-4f32-bf9c-7a7fac849659"
         }
     ]
 

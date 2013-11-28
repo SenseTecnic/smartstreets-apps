@@ -180,7 +180,13 @@ $(document).ready(function() {
 	            // var sortByStartTime = dataFilter.groupAll().quicksort.by(function(d) { return new Date(d.starttime); });
 
 	   			var filteredResponse= dataByDate.top(Infinity);
-               	drawPins(className, color, dataFieldName,filteredResponse);
+	   			var validResponse =new Array();
+	   			for (var index in filteredResponse) {
+				    if(filteredResponse[index]["lat"]!=null && filteredResponse[index]["lng"]!=null){
+				    	validResponse.push(filteredResponse[index]);
+				    }
+				}
+               	drawPins(className, color, dataFieldName,validResponse);
 
                	
                	var filter_count= dataFilter.groupAll().reduceCount().value();

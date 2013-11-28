@@ -1,11 +1,11 @@
 {
     "feeds":[
         {
-            "name":"smartstreets",
-            "title":"Smart Streets",
-            "url":"https://smartstreets.sensetecnic.com/cat",
+            "name":"eyehub",
+            "title":"Eye Hub",
+            "url":"http://data.eyehubiot.com/cats",
             "header":"x-api-key",
-            "general_key":"f9c0e0b7-8c4a-4f32-bf9c-7a7fac849659"
+            "general_key":"nokey"
         }
     ]
 

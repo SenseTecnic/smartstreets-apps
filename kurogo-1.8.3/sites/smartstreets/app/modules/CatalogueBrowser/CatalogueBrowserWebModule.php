@@ -117,8 +117,12 @@ class CatalogueBrowserWebModule extends WebModule
 
                 
                 $baseURL= $this->getModuleVar('BASE_URL', strtolower($SELECTED_DATAHUB),"datahub");
-                if($parent_href==null)
-                    $parent_href = $baseURL."/cat";
+                if($parent_href==null){
+                    if(strtolower($SELECTED_DATAHUB) =="eyehub")
+                        $parent_href = $baseURL."/cats";
+                    else
+                        $parent_href = $baseURL."/cat";
+                }
             	// ChromePhp::log ("Parent url: ".$parent_href);
             	//set page title
             	$this -> setPageTitle ($parent_href);

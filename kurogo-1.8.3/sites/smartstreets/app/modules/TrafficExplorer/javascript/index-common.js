@@ -234,6 +234,14 @@ $(document).ready(function() {
             	var itemArray=new Array();
             	var heatmapArray=new Array();
             	$.each(json["results"], function (i, ob) {
+            		var silt = parseFloat(json["results"][i]["silt"]);
+            		var value =0;
+            		if (silt==100)
+            			value = 100000;
+            		if (silt ==75)
+            			value= 10000;
+            		if (silt = 50)
+            			value = 1000;
             		heatmapArray.push({lat:json["results"][i]["geo"]["coordinates"][1] , lon:json["results"][i]["geo"]["coordinates"][0] , value: parseFloat(json["results"][i]["silt"]) / 100.0});
             		itemArray.push(json["results"][i]);
 				});

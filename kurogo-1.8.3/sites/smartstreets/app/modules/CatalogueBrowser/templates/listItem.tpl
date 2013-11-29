@@ -45,7 +45,7 @@
       <a class = "details_link" onclick="viewItemDetails(this)" data-search = {$item['itemSearchURL']} data-header = {$item['header']} data-key = {$item['key']}>View Details</a>
     {/if}
     {if $item['resourceURL']}
-      <a class = "resource_link" href="{$item['resourceURL']}">Download Resource</a>
+      <a class = "resource_link" onclick="viewItemResource(this)" data-search = {$item['resourceURL']} data-header = {$item['header']} data-key = {$item['key']} data-content = {$item['contentType']}>Download Resource</a>
     {/if}
 
     </span>

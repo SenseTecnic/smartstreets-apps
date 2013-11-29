@@ -72,18 +72,48 @@ function viewItemResource(that){
   var itemSearchURL= $(that).data("search");
   header= $(that).data("header");
   key= $(that).data("key");
+  var contentType= $(that).data("content").toLowerCase();
   var params = {"url" : itemSearchURL, "header":header, "key":key};
   console.log("header: "+header);
   console.log("key: "+key);
   console.log("url; "+itemSearchURL);
-  makeAPICall('POST', "CatalogueBrowser" , 'viewItemResource', params, function(response){
-    //clear all previous dialog content
-    // console.log (" item resources response: "+JSON.stringify(response));
-    something = window.open("data:text/json," + JSON.stringify(response),
-                       "_blank");
-    something.focus();
-
-  });
+  console.log("content type; "+contentType);
+  if (contentType.indexOf("html")>=0 ||contentType==""||contentType==null){
+    something = window.open(itemSearchURL,
+                "View HTML",
+                "location=1,status=1,scrollbars=1,resizable=yes,width=500,height=500,menubar=no,toolbar=no");
+  }else{
+    makeAPICall('POST', "CatalogueBrowser" , 'viewItemResource', params, function(response){
+      //clear all previous dialog content
+      // console.log (" item resources response: "+JSON.stringify(response));
+      var data;
+      if (contentType.indexOf("json")>=0){
+        data =JSON.stringify(response);
+        if(data == null||data ==""||data =="null"){
+          console.log("Unauthorized: cannot download resource.");
+          data = "Unauthorized: cannot download resource.";
+        }
+      }else if(contentType.indexOf("xml")>=0){
+        // console.log(response);
+        // data = new XMLSerializer().serializeToString(response);
+        data = response;
+        // //Pass results to the SimpleXMLElement function
+        if(data == null||data ==""||data =="null"){
+          console.log("Unauthorized: cannot download resource.");
+          data = "Unauthorized: cannot download resource.";
+        }
+      }
+      if(data == null||data ==""||data =="null"){
+        console.log("Unauthorized: cannot download resource.");
+        data = "Unauthorized: cannot download resource.";
+      }
+      something = window.open("data:" + data,
+                "Resource Download",
+                "location=1,status=1,scrollbars=1,resizable=yes,width=500,height=500,menubar=no,toolbar=no");
+        something.focus();
+    });
+  }
+  
 }
 
 function viewItemDetails(that){
@@ -194,6 +224,7 @@ function loadMorePosts(){
           var href= data.href;
           var maintainer= data.maintainer;
           var tagArray;
+          var content = data.iscontenttype;
            console.log ("is catalogue: "+iscatalogue);
           if(tags!=null){
           	tagArray = tags.split(',');
@@ -266,8 +297,14 @@ function loadMorePosts(){
               textToInsert[i++] = '"'+key+'"';
 	          	textToInsert[i++] = ">View Details</a>";
           	}
-          	textToInsert[i++] = '<a class = "resource_link" href="';
+          	textToInsert[i++] = '<a class = "resource_link" onclick="viewItemResource(this)" data-search = ';
           	textToInsert[i++] = resourceURL;
+            textToInsert[i++] = ' data-header =';
+            textToInsert[i++] = '"'+header+'"';
+            textToInsert[i++] = ' data-key =';
+            textToInsert[i++] = '"'+key+'"';
+            textToInsert[i++] = ' data-content =';
+            textToInsert[i++] = '"'+content+'"';
           	textToInsert[i++] = '">Download Resource</a>';
           }
 

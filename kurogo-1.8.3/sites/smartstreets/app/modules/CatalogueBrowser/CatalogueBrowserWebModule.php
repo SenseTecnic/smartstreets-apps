@@ -105,8 +105,6 @@ class CatalogueBrowserWebModule extends WebModule
             case 'viewCatalogue':    
                 //TODO: parent url change to absolute here! 
                 $SELECTED_DATAHUB = $this->getArg('datahub');
-                // ChromePhp::log ("Datahub: ".$SELECTED_DATAHUB);
-
                 $parent_href = $this->getArg('href');
                 $header= $this->getModuleVar('HEADER', strtolower($SELECTED_DATAHUB),"datahub");
                 $key = $this->getModuleVar('KEY', strtolower($SELECTED_DATAHUB),"datahub");
@@ -176,6 +174,7 @@ class CatalogueBrowserWebModule extends WebModule
                         $parentURL=isset($item["parentUrl"]) ? $item["parentUrl"] : null;
                         $datahub=isset($item["datahub"]) ? $item["datahub"] : null;
                         $tags= isset($item["tags"]) ? $item["tags"] : null;
+                        $isContentType= isset($item["iscontenttype"]) ? $item["iscontenttype"] : null;
                         $tagArray=null;
 
                         if ($tags!=null)
@@ -238,7 +237,8 @@ class CatalogueBrowserWebModule extends WebModule
                             'badge'=>$tagArray,
                             'type'=>$type,
                             'header'=>$header,
-                            'key'=>$key
+                            'key'=>$key,
+                            'contentType'=>$isContentType
 
                         );
                  

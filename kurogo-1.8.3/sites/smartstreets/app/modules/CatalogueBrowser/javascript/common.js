@@ -17,6 +17,7 @@ $(document).ready(function() {
   var key="";
 
   $( "#login-form" ).dialog({
+      dialogClass: "no-close",
       autoOpen: true,
       height: 350,
       width: 350,
@@ -42,10 +43,6 @@ $(document).ready(function() {
           //redirect back to apps/home
           window.location.replace("http://ss-apps.sensetecnic.com/apps/home/");
         }
-      },
-      close: function() {
-        //redirect back to apps/home
-        window.location.replace("http://ss-apps.sensetecnic.com/apps/home/");
       }
   });
 

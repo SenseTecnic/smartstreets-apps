@@ -563,3 +563,6 @@ h1.slugline, h2.itemtitle {
         position:relative;
         top:1px;
     }
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}

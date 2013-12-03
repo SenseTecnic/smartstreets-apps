@@ -5,8 +5,8 @@
 	<div id ="dropdown">
 		<div id = "dropdown_text"> Explore Data: </div>
 		<select id="dropdown_select">
-			<option value="gully_overview">Gully Status Overview (Redcar, UK)</option>
-			<option value="gully_roadwork">Roadwork Impact on Gully Silt Level (Redcar, UK)</option>
+<!-- 			<option value="gully_overview">Gully Status Overview (Redcar, UK)</option>
+			<option value="gully_roadwork">Roadwork Impact on Gully Silt Level (Redcar, UK)</option> -->
 			<!-- <option value="flow_air">UK Traffic Flow Impact on Air Quality</option> -->
 			<option value="flow_time">UK Traffic Flow Impact on Travel Time</option>
 			<option value="flow_roadwork">UK Roadwork Impact on Traffic Flow and Speed</option>

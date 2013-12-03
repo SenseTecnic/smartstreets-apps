@@ -180,9 +180,12 @@ $(document).ready(function() {
 
 		function initialize(){
 	  		$(".description").hide();
-	  		$("#gully_overview_desc").show();
-	  		$("#dropdown_select").val("gully_overview");
-	  		get_gully_overview();
+	  		// $("#gully_overview_desc").show();
+	  		$("#dropdown_select").val("flow_time");
+	  		// get_gully_overview();
+
+	  		$("#flow_time_desc").show();
+	  		get_flow_time();
 	  	}
 		
 		function clear_graph(){

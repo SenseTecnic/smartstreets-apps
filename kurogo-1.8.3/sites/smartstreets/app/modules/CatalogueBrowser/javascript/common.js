@@ -16,6 +16,39 @@ $(document).ready(function() {
   var header="";
   var key="";
 
+  $( "#login-form" ).dialog({
+      autoOpen: true,
+      height: 350,
+      width: 350,
+      modal: true,
+      buttons: {
+        "Login": function() {
+          var params = {"uid" : $("#uid").val(), "password":$("#password").val()};
+          makeAPICall('POST', "CatalogueBrowser" , 'authenticateUser', params, function(response){
+            //clear all previous dialog content
+            $("#login-message").html("");
+            if(response=="false"){
+              $("#login-message").append("Wrong Credentials, try again!");
+            }
+            else{
+              $("#login-message").append("Success!");
+              $( "#login-form" ).dialog( "close" );
+            }
+
+          });
+          
+        },
+        Cancel: function() {
+          //redirect back to apps/home
+          window.location.replace("http://ss-apps.sensetecnic.com/apps/home/");
+        }
+      },
+      close: function() {
+        //redirect back to apps/home
+        window.location.replace("http://ss-apps.sensetecnic.com/apps/home/");
+      }
+  });
+
   $("#sortView").change(function(){
     //sort view
     var sortString=$("#sortView").val();

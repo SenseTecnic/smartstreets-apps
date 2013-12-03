@@ -14,7 +14,7 @@ class CatalogueBrowserAPIModule extends APIModule
             case 'viewItemDetails': 
                 //TODO: get item details for private stuff
                 // $header ="x-api-key";
-                // $key = "f9c0e0b7-8c4a-4f32-bf9c-7a7fac849659";
+                // $key = "f9c0e0b7-8c4a-4f32-bf9c-7a7fac8496f59";
                 $header = $this->getArg('header');
                 $key = $this->getArg('key');
                 $baseURL = $this->getArg('part1')."&val=".$this->getArg('part2');
@@ -40,6 +40,15 @@ class CatalogueBrowserAPIModule extends APIModule
                 $catalogues = $this->controller -> getCatalogues($baseURL);
 
                 $this->setResponse($catalogues);
+                $this->setResponseVersion(1);
+                break;
+            case 'authenticateUser':
+                $isAuthenticated= "false";
+                $uid = $this->getArg('uid');
+                $password = $this->getArg('password');
+                if ($uid == $this->getModuleVar("uid", "authentication" ,"datahub") && $password == $this->getModuleVar("password", "authentication" ,"datahub"))
+                    $isAuthenticated = "true";
+                $this->setResponse($isAuthenticated);
                 $this->setResponseVersion(1);
                 break;
             case 'loadMoreItems':

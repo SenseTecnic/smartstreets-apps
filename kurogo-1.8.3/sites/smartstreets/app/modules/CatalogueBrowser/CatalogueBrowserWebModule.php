@@ -11,7 +11,6 @@ class CatalogueBrowserWebModule extends WebModule
 
     protected function initialize(){
     	//set up data structures and js libs
-        // ChromePhp::log ("SELECTED_DATAHUB");
     }
 
     protected function initializeForPage() {
@@ -22,12 +21,26 @@ class CatalogueBrowserWebModule extends WebModule
 
         $this->assign('message', 'Catalogue Browser');
 
+        $session  = $this->getSession();
+        //make sure user is logged in
+        $login_check = $this->authenticate();
+        if($login_check=="false" && $this->page != 'login'){
+            $this->redirectTo('login', array());
+        }
+
         //instantiate controller 
         $this->controller = DataRetriever::factory('InteropDataRetriever', array());
         $CatalogueItemSolrController = DataRetriever::factory('CatalogueItemSolrDataRetriever', array());
 
         switch ($this->page) 
         { 
+            case 'login':
+
+                // if($this->authenticate()){ //already logged in
+                //     $this->redirectTo('index', array());
+                // }
+
+                break;
             case 'index': 
 
                 //populate datahubs in page
@@ -108,8 +121,6 @@ class CatalogueBrowserWebModule extends WebModule
                 $parent_href = $this->getArg('href');
                 $header= $this->getModuleVar('HEADER', strtolower($SELECTED_DATAHUB),"datahub");
                 $key = $this->getModuleVar('KEY', strtolower($SELECTED_DATAHUB),"datahub");
-                // ChromePhp::log ("my header: ".$header);
-                // ChromePhp::log ("my header: ".$key);
                 // $SELECTED_DATAHUB =$this->getArg('hub');
                 // $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
 
@@ -121,7 +132,6 @@ class CatalogueBrowserWebModule extends WebModule
                     else
                         $parent_href = $baseURL."/cat";
                 }
-            	// ChromePhp::log ("Parent url: ".$parent_href);
             	//set page title
             	$this -> setPageTitle ($parent_href);
             	//query data by search URl
@@ -132,12 +142,10 @@ class CatalogueBrowserWebModule extends WebModule
                 $sort = $this->getArg('sort');
                 //CREATE SOLR SEARCH QUERIES
                 $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
-                // ChromePhp::log ("Response: ".$response);
                 //get catalog details
                 $itemParam['href'] = $searchURL;
                 $itemResponse = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $itemParam, $sort, 0);
                 if ($itemResponse!=null){
-                    // ChromePhp::log ("search result: ".$itemResponse);
                     $catInfo=Array();
                     $itemResponse=json_decode($itemResponse, true);
                     //Parse catalogue details to catInfo
@@ -373,10 +381,8 @@ class CatalogueBrowserWebModule extends WebModule
                             //check  if href contains "Http", if not, append to current url
                             if (strpos($href, "http")!==false){
                                 $resourceURL = $href;
-                                // ChromePhp::log ("full url!: ".$href);
                             }else{
                                 $resourceURL = $baseURL.$href;
-                                // ChromePhp::log ("part url! ".$href);
                             }
                         }
 
@@ -419,7 +425,15 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('sort', $sort);
                 }
                 break;
-
         } 
+    }
+
+    private function authenticate(){
+        if(isset($_SESSION['authenticated'])){
+            return $_SESSION['authenticated'];
+        }else{
+            return "false";
+        }
+        
     }
 }

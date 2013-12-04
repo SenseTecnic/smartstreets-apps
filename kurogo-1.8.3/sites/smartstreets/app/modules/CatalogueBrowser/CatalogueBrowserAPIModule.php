@@ -1,4 +1,5 @@
 <?php 
+// include 'chromephp-master/ChromePhp.php';
 includePackage ('SolrDataAggregation');
 class CatalogueBrowserAPIModule extends APIModule
 {
@@ -9,12 +10,10 @@ class CatalogueBrowserAPIModule extends APIModule
         //instantiate controller 
         $this->controller = DataRetriever::factory('InteropDataRetriever', array());
         $CatalogueItemSolrController = DataRetriever::factory('CatalogueItemSolrDataRetriever', array());
+        $session  = $this->getSession();
         switch ($this->command) 
         { 
             case 'viewItemDetails': 
-                //TODO: get item details for private stuff
-                // $header ="x-api-key";
-                // $key = "f9c0e0b7-8c4a-4f32-bf9c-7a7fac8496f59";
                 $header = $this->getArg('header');
                 $key = $this->getArg('key');
                 $baseURL = $this->getArg('part1')."&val=".$this->getArg('part2');
@@ -24,9 +23,6 @@ class CatalogueBrowserAPIModule extends APIModule
                 $this->setResponseVersion(1);
                 break; 
             case 'viewItemResource': 
-                //TODO: get item details for private stuff
-                // $header ="x-api-key";
-                // $key = "f9c0e0b7-8c4a-4f32-bf9c-7a7fac849659";
                 $header = $this->getArg('header');
                 $key = $this->getArg('key');
                 $baseURL = $this->getArg('url');
@@ -42,12 +38,21 @@ class CatalogueBrowserAPIModule extends APIModule
                 $this->setResponse($catalogues);
                 $this->setResponseVersion(1);
                 break;
+            case 'logout':
+                unset($_SESSION['authenticated']);
+                $this->setResponse("done");
+                $this->setResponseVersion(1);
+                break;
             case 'authenticateUser':
                 $isAuthenticated= "false";
                 $uid = $this->getArg('uid');
                 $password = $this->getArg('password');
-                if ($uid == $this->getModuleVar("uid", "authentication" ,"datahub") && $password == $this->getModuleVar("password", "authentication" ,"datahub"))
+                if ($uid == $this->getModuleVar("uid", "authentication" ,"datahub") && $password == $this->getModuleVar("password", "authentication" ,"datahub")){
                     $isAuthenticated = "true";
+                    $_SESSION['authenticated']="true";
+                }else{
+                    $_SESSION['authenticated']="false";
+                }
                 $this->setResponse($isAuthenticated);
                 $this->setResponseVersion(1);
                 break;

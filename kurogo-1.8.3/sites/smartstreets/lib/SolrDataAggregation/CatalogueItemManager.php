@@ -252,7 +252,7 @@ class CatalogueItemManager {
     }else{
       $id = $parentUrl.$newCatalogueItem->getDatamapValue("hasid");
     }
-    print "\n \n \n ID ID ID ID ID ID = ".$id;
+    print "\n \n \n ID = ".$id;
     //set other metadata
     $newCatalogueItem->addAndValidateOptionalString("id", $id, "The value is not a string");
     $newCatalogueItem->addAndValidateOptionalString("datahub", $datahub, "The value is not a string");

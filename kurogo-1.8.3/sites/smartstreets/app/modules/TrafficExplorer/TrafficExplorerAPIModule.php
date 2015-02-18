@@ -20,6 +20,14 @@ class TrafficExplorerAPIModule extends APIModule
         $m = new Mongo("mongodb://localhost");  
         $db = $m->$dbname;  
 
+  //       $m = new Mongo("mongodb://94.23.54.103:27017,188.165.219.99:27017,94.23.220.151:27017", array("replicaSet" => "cluster"));
+  // var_dump($m);
+  // $db = $m->selectDB('my_database');
+  // $db->authenticate("my_login", "my_password");
+  // $collection = new MongoCollection($db, 'my_collection');
+  // $cursor = $collection->find();
+  // foreach ($cursor as $doc) { var_dump($doc); }
+
         switch ($this->command) 
         { 
             case 'getDataResponse': 

@@ -2,17 +2,12 @@
 
 includePackage ('SolrDataAggregation');
 
-
 class SolrAggregationShellModule extends ShellModule {
 
   protected $id='SolrAggregation';
 
-
   protected function initializeForCommand(){
-    // Load all data sources from file.
-    //$dataSourceConfigsDecoded = $this->loadConfig();
-
-    // Initialize everything necessary for data retrieval and aggregation
+    // Load all data sources from feeds.json file.
     $sourceConfig= $this->_loadDatahubConfig();
     $CatalogueItemSolrController = DataRetriever::factory('CatalogueItemSolrDataRetriever', array());
     $manager = new CatalogueItemManager($sourceConfig, $CatalogueItemSolrController);
@@ -20,9 +15,7 @@ class SolrAggregationShellModule extends ShellModule {
     switch ($this->command){
 
       case "retrieveAll":
-        //populate solr with feed items from all sources
         print "\n Retrieving all data from dathubs...\n";
-
         try {
           $manager->retrieveAndPersistAll();
           print "Finished retrieving and persisting all\n";
@@ -32,17 +25,17 @@ class SolrAggregationShellModule extends ShellModule {
         break;
 
       case "deleteDocuments":
-        print "Deleting some documents in solr\n";
-        $CatalogueItemSolrController->deleteDocuments("datahub:iotbay");
+        print "Deleting solr documents by hub name.\n";
+        $CatalogueItemSolrController->deleteDocuments("datahub:smartstreets"); // replace datahub name
         break;
 
       case "deleteAllFeeds":
-        print "Deleting all documents in solr\n";
+        print "Deleting everything in solr\n";
         $CatalogueItemSolrController->deleteAll();
         break;
 
       default:
-        print "The command {$this->command} does not exist. Commands include: \n\tretrieveAll \n\tdeleteAllFeeds \n";
+        print "The command {$this->command} does not exist. Commands include: \n\tretrieveAll \n\tdeleteDocuments \n\tdeleteAllFeeds \n";
     }
   }
 

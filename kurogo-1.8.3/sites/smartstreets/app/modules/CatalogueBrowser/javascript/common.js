@@ -13,34 +13,6 @@ $(document).ready(function() {
 	// 		$("#search_button").attr("disabled", "disabled");
 	// 	}
 	// });
-  var header="";
-  var key="";
-
-  $('#logout').click(function(){
-    var params = {};
-    makeAPICall('POST', "CatalogueBrowser" , 'logout',  params,function(response){
-      window.location.replace("login");
-    });
-  });
-
-  $('#login-form').bind('submit',function(e) {
-    e.preventDefault(); //Will prevent the submit...
-    //Add additional code here
-    var params = {"uid" : $("#uid").val(), "password":$("#password").val()};
-    makeAPICall('POST', "CatalogueBrowser" , 'authenticateUser', params, function(response){
-            //clear all previous dialog content
-            $("#login-message").html("");
-            console.log("response: "+response);
-            if(response=="false"){
-              $("#login-message").append("Wrong Credentials, try again!");
-            }
-            else{
-              $("#login-message").append("Success!");
-              window.location.replace("index");
-            }
-    });
-  });
-
 
   $("#sortView").change(function(){
     //sort view
@@ -94,75 +66,23 @@ function searchTag(tag){
   window.location.replace(redirect);
 }
 
-function viewItemResource(that){
-  var itemSearchURL= $(that).data("search");
-  header= $(that).data("header");
-  key= $(that).data("key");
-  var contentType= $(that).data("content").toLowerCase();
-  var params = {"url" : itemSearchURL, "header":header, "key":key};
-  console.log("header: "+header);
-  console.log("key: "+key);
-  console.log("url; "+itemSearchURL);
-  console.log("content type; "+contentType);
-  if (contentType.indexOf("html")>=0 ||contentType==""||contentType==null){
-    something = window.open(itemSearchURL,
-                "View HTML",
-                "location=1,status=1,scrollbars=1,resizable=yes,width=500,height=500,menubar=no,toolbar=no");
-  }else{
-    makeAPICall('POST', "CatalogueBrowser" , 'viewItemResource', params, function(response){
-      //clear all previous dialog content
-      // console.log (" item resources response: "+JSON.stringify(response));
-      var data;
-      if (contentType.indexOf("json")>=0){
-        data =JSON.stringify(response);
-        if(data == null||data ==""||data =="null"){
-          console.log("Unauthorized: cannot download resource.");
-          data = "Unauthorized: cannot download resource.";
-        }
-      }else if(contentType.indexOf("xml")>=0){
-        // console.log(response);
-        // data = new XMLSerializer().serializeToString(response);
-        data = response;
-        // //Pass results to the SimpleXMLElement function
-        if(data == null||data ==""||data =="null"){
-          console.log("Unauthorized: cannot download resource.");
-          data = "Unauthorized: cannot download resource.";
-        }
-      }
-      if(data == null||data ==""||data =="null"){
-        console.log("Unauthorized: cannot download resource.");
-        data = "Unauthorized: cannot download resource.";
-      }
-      something = window.open("data:" + data,
-                "Resource Download",
-                "location=1,status=1,scrollbars=1,resizable=yes,width=500,height=500,menubar=no,toolbar=no");
-        something.focus();
-    });
-  }
-  
-}
-
 function viewItemDetails(that){
 	var itemSearchURL= $(that).data("search");
-  header= $(that).data("header");
-  key= $(that).data("key");
 	console.log ("item url: "+ itemSearchURL);
-  console.log ("item heaer: "+ header);
-  console.log ("item key: "+ key);
 	var part1= itemSearchURL.substr(0, itemSearchURL.indexOf("&val="));
 	var part2 = itemSearchURL.substr(itemSearchURL.indexOf("&val=")+5);
 
 	console.log("part1: "+part1);
 	console.log("part2: "+part2);
-	var params = {"part1" : part1,"part2" :part2, "header":header, "key":key};
-	console.log ("url: "+ part1+part2);
+	var params = {"part1" : part1,"part2" :part2};
+	// console.log ("module id: "+ moduleId);
 
 	//TODO: Call AJAX to get item details
 	makeAPICall('POST', "CatalogueBrowser" , 'viewItemDetails', params, function(response){
 		//clear all previous dialog content
 		$("#item-details").html ("");
 
-		console.log (" item details response: "+JSON.stringify(response));
+		console.log (" item details response: "+response);
 		//display details in a pop up 
 		$(response.items[0]["i-object-metadata"]).each(function(i,data){
 			//append data content to dialog 
@@ -217,10 +137,6 @@ function loadMorePosts(){
   var index= $("#storage").data("index");
   console.log ("index"+index);
   var sort= $("#storage").data("sort");
-  header = $("#storage").data("header");
-  key = $("#storage").data("key");
-  console.log ("js header"+header);
-  console.log ("js key"+key);
   // var sort= (param["sort"]);
 
   makeAPICall(
@@ -250,7 +166,6 @@ function loadMorePosts(){
           var href= data.href;
           var maintainer= data.maintainer;
           var tagArray;
-          var content = data.iscontenttype;
            console.log ("is catalogue: "+iscatalogue);
           if(tags!=null){
           	tagArray = tags.split(',');
@@ -317,20 +232,10 @@ function loadMorePosts(){
           	if (id!=null){
           		textToInsert[i++] = '<a class = "details_link" onclick="viewItemDetails(this)" data-search = ';
 	          	textToInsert[i++] = itemSearchURL;
-              textToInsert[i++] = ' data-header =';
-              textToInsert[i++] = '"'+header+'"';
-              textToInsert[i++] = ' data-key =';
-              textToInsert[i++] = '"'+key+'"';
 	          	textToInsert[i++] = ">View Details</a>";
           	}
-          	textToInsert[i++] = '<a class = "resource_link" onclick="viewItemResource(this)" data-search = ';
+          	textToInsert[i++] = '<a class = "resource_link" href="';
           	textToInsert[i++] = resourceURL;
-            textToInsert[i++] = ' data-header =';
-            textToInsert[i++] = '"'+header+'"';
-            textToInsert[i++] = ' data-key =';
-            textToInsert[i++] = '"'+key+'"';
-            textToInsert[i++] = ' data-content =';
-            textToInsert[i++] = '"'+content+'"';
           	textToInsert[i++] = '">Download Resource</a>';
           }
 

@@ -11,6 +11,7 @@ class CatalogueBrowserWebModule extends WebModule
 
     protected function initialize(){
     	//set up data structures and js libs
+        // ChromePhp::log ("SELECTED_DATAHUB");
     }
 
     protected function initializeForPage() {
@@ -21,26 +22,12 @@ class CatalogueBrowserWebModule extends WebModule
 
         $this->assign('message', 'Catalogue Browser');
 
-        $session  = $this->getSession();
-        //make sure user is logged in
-        $login_check = $this->authenticate();
-        if($login_check=="false" && $this->page != 'login'){
-            $this->redirectTo('login', array());
-        }
-
         //instantiate controller 
         $this->controller = DataRetriever::factory('InteropDataRetriever', array());
         $CatalogueItemSolrController = DataRetriever::factory('CatalogueItemSolrDataRetriever', array());
 
         switch ($this->page) 
         { 
-            case 'login':
-
-                // if($this->authenticate()){ //already logged in
-                //     $this->redirectTo('index', array());
-                // }
-
-                break;
             case 'index': 
 
                 //populate datahubs in page
@@ -55,6 +42,7 @@ class CatalogueBrowserWebModule extends WebModule
                 break; 
 
             case 'datahub':
+
 
                 //TODO: make a page for selecting datahubs
                 $SELECTED_DATAHUB = $this->getArg('datahub');
@@ -85,11 +73,6 @@ class CatalogueBrowserWebModule extends WebModule
                             if ($metaItem["rel"]== $this->getModuleVar('Support_Search', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub") && $metaItem["val"]== "urn:X-tsbiot:search:simple"){
                                 $isSearchable=true;
                             }
-                            if ($metaItem["rel"]== $this->getModuleVar('Content_Type', strtolower($SELECTED_DATAHUB).":catalogue:rel","datahub") && $metaItem["val"]== "application/vnd.tsbiot.catalogue+json"){
-                                $isCatalogue=true;
-                            }else{
-                                $isCatalogue=false;
-                            }
                         }
 
                         //build view catalogue redirect URL and args to pass 
@@ -115,37 +98,30 @@ class CatalogueBrowserWebModule extends WebModule
 
                  break;
 
-            case 'viewCatalogue':    
-                //TODO: parent url change to absolute here! 
-                $SELECTED_DATAHUB = $this->getArg('datahub');
-                $parent_href = $this->getArg('href');
-                $header= $this->getModuleVar('HEADER', strtolower($SELECTED_DATAHUB),"datahub");
-                $key = $this->getModuleVar('KEY', strtolower($SELECTED_DATAHUB),"datahub");
-                // $SELECTED_DATAHUB =$this->getArg('hub');
-                // $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
+            case 'viewCatalogue':
 
                 
-                $baseURL= $this->getModuleVar('BASE_URL', strtolower($SELECTED_DATAHUB),"datahub");
-                if($parent_href==null){
-                    if(strtolower($SELECTED_DATAHUB) =="eyehub")
-                        $parent_href = $baseURL."/cats";
-                    else
-                        $parent_href = $baseURL."/cat";
-                }
+            	$parent_href = $this->getArg('href');
+                $SELECTED_DATAHUB =$this->getArg('hub');
             	//set page title
             	$this -> setPageTitle ($parent_href);
-            	//query data by search URl
-                $searchURL= $parent_href;
+            	//query data from smartstreets
+                $baseURL= $this->getModuleVar('BASE_URL', strtolower($this->getArg('hub')),"datahub");
+
+                
+                $searchURL= $baseURL.$parent_href;
                 
                 //query solr for parentUrl == searchURL
                 $params['parentUrl'] = $searchURL;
                 $sort = $this->getArg('sort');
                 //CREATE SOLR SEARCH QUERIES
                 $response = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $params, $sort, 0);
+                // ChromePhp::log ("Response: ".$response);
                 //get catalog details
                 $itemParam['href'] = $searchURL;
                 $itemResponse = SolrSearchResponse::getKeywordSearchResponse($CatalogueItemSolrController, $itemParam, $sort, 0);
                 if ($itemResponse!=null){
+                    // ChromePhp::log ("search result: ".$itemResponse);
                     $catInfo=Array();
                     $itemResponse=json_decode($itemResponse, true);
                     //Parse catalogue details to catInfo
@@ -182,7 +158,6 @@ class CatalogueBrowserWebModule extends WebModule
                         $parentURL=isset($item["parentUrl"]) ? $item["parentUrl"] : null;
                         $datahub=isset($item["datahub"]) ? $item["datahub"] : null;
                         $tags= isset($item["tags"]) ? $item["tags"] : null;
-                        $isContentType= isset($item["iscontenttype"]) ? $item["iscontenttype"] : null;
                         $tagArray=null;
 
                         if ($tags!=null)
@@ -190,27 +165,22 @@ class CatalogueBrowserWebModule extends WebModule
                         else
                              $tagArray =null;
 
-                        if ($isCatalogue===true){
-                            // ChromePhp::log ("href: ".$href);
+                        if ($isCatalogue){
                             // open to another view catalogue page 
-                            // $sub_href = substr($href, strpos($href, "/cat"));
-                            if (strpos($href, "http")===false &&strpos($href, "https")===false){
-                                //parenturl remove /cat
-                                $href = substr($parent_href, 0, strpos($parent_href, "/cat")).$href;
-                                // ChromePhp::log ("new url: ".$href);
-                            }
+                            $sub_href = substr($href, strpos($href, "/cat"));
+
                             //build view catalogue redirect URL and args to pass 
                             $args = array(
                                 'id' => $itemId,
-                                'href' => $href,
-                                'datahub' => $datahub
+                                'href' => $sub_href,
+                                'hub' => $datahub
                             );
                             $url = $this->buildBreadcrumbURL("viewCatalogue", $args, true);
                         }else{
 
                             //create resource download url
                             //check  if href contains "Http", if not, append to current url
-                            if (strpos($href, "http")!==false ||strpos($href, "https")!==false){
+                            if (strpos($href, "http")!==false){
                                 $resourceURL = $href;
                             }else{
                                 $resourceURL = $baseURL.$href;
@@ -231,7 +201,6 @@ class CatalogueBrowserWebModule extends WebModule
                         }else{
                             $type = "Item";
                         }
-                        
                         // create navlist item
                         $itemData = array (
                             'lastupdate'=>$lastupdate,
@@ -243,10 +212,7 @@ class CatalogueBrowserWebModule extends WebModule
                             'resourceURL' => $resourceURL,
                             'itemSearchURL'=> $itemSearchURL,
                             'badge'=>$tagArray,
-                            'type'=>$type,
-                            'header'=>$header,
-                            'key'=>$key,
-                            'contentType'=>$isContentType
+                            'type'=>$type
 
                         );
                  
@@ -254,6 +220,7 @@ class CatalogueBrowserWebModule extends WebModule
                     }
                     //populate search parameters for load more posts
                     // $searchParam["parentUrl"]=$searchURL;
+                    
                     $this->assign('itemList', $resultList);
                     $this->assign('itemNum', $results["numFound"]);
                     $this->assign ('catalogueURL', $searchURL);
@@ -261,9 +228,6 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('searchParam', $searchURL);
                     $this->assign('index', 10);
                     $this->assign('sort', $sort);
-                    $this->assign('header',$header);
-                    $this->assign('key',$key);
-
                 }
 
             	 break;
@@ -372,7 +336,7 @@ class CatalogueBrowserWebModule extends WebModule
                             $args = array(
                                 'id' => $itemId,
                                 'href' => $sub_href,
-                                'datahub' => $datahub
+                                'hub' => $datahub
                             );
                             $url = $this->buildBreadcrumbURL("viewCatalogue", $args, true);
                         }else{
@@ -381,8 +345,10 @@ class CatalogueBrowserWebModule extends WebModule
                             //check  if href contains "Http", if not, append to current url
                             if (strpos($href, "http")!==false){
                                 $resourceURL = $href;
+                                // ChromePhp::log ("full url!: ".$href);
                             }else{
                                 $resourceURL = $baseURL.$href;
+                                // ChromePhp::log ("part url! ".$href);
                             }
                         }
 
@@ -425,15 +391,7 @@ class CatalogueBrowserWebModule extends WebModule
                     $this->assign('sort', $sort);
                 }
                 break;
-        } 
-    }
 
-    private function authenticate(){
-        if(isset($_SESSION['authenticated'])){
-            return $_SESSION['authenticated'];
-        }else{
-            return "false";
-        }
-        
+        } 
     }
 }

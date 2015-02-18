@@ -19,12 +19,11 @@ class InteropDataRetriever extends URLDataRetriever
     	return $data;
     }
 
-    public function getItemDetails($fetchURL, $header, $key) { 
+    public function getItemDetails($fetchURL) { 
     	$this->setBaseURL($fetchURL); 
-        $this->addHeader($header, $key);
         $data = $this->getData($response); 
         return $data; 
-    }  
+    }   
 
     public function searchByParameters($searchURL) { 
 
@@ -33,6 +32,10 @@ class InteropDataRetriever extends URLDataRetriever
         $results = $this-> getData($response);
 
         return $results;
+    }
+
+    public function setCustomHeader($title, $val) {
+        $this->addHeader($title, $val);
     } 
 
     /*
@@ -46,41 +49,13 @@ class InteropDataRetriever extends URLDataRetriever
         return $data; 
     } 
 
+
     /******** Functions below are for retrieving sources to populate Solr ********/
     public function retrieveSource($url){
         $base_url = $url;
         //print $base_url."\n";
         $this->setBaseURL ($base_url);
         $data = $this->getData($response);
-        return $data;
-    }
-    public function retrieveSourceWithAuthentication($url, $header,$key){
-        $base_url = $url;
-        $this->setBaseURL ($base_url);
-        if ($header=="Authorization"){
-            $data = $this->curl($url, $header, $key);
-        }else{
-            $this->addHeader($header, $key);
-            $data = $this->getData($response);
-        }
-        return $data;
-    }
-
-    public function curl($url, $header,$key){
-        $ch = curl_init();
-        $options = array(CURLOPT_URL => $url,
-            CURLOPT_USERPWD => $key.":",
-            CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
-            CURLOPT_RETURNTRANSFER => TRUE
-        );
-        //Set options against curl object
-        curl_setopt_array($ch, $options);
-
-        //Assign execution of curl object to a variable
-        $data = curl_exec($ch);
-
-        //Close curl object
-        curl_close($ch);
         return $data;
     }
 }

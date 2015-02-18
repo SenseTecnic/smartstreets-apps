@@ -13,8 +13,9 @@ $(document).ready(function() {
       }
     });
     //styles: 64570* , 47928, 39577, 2400*
-	var cloudmadeUrl= "http://{s}.tile.cloudmade.com/d33d78dd8edd4f61a812a0d56b062f56/2400/256/{z}/{x}/{y}.png";
-	var baseLayer=new L.TileLayer(cloudmadeUrl);
+	var cloudmadeUrl= "http://{s}.tiles.mapbox.com/v4/tedh.l6cl5pco/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidGVkaCIsImEiOiJWYVdlRWdzIn0.XUX26iMTofEnu7jNGIDWeQ";
+	//var baseLayer=new L.TileLayer(cloudmadeUrl);
+	var baseLayer = MQ.mapLayer();
 	//heatmap layer
 	var heatmapLayer = new L.TileLayer.heatMap({
                     radius: { value: 90, absolute: true },
@@ -853,7 +854,8 @@ $(document).ready(function() {
             		json["results"][i]["tf_recordedtime"]= json["results"][i]["tf_recordedtime"]["sec"];
             		var enddate = json["results"][i]["rw_endtime"]["sec"]*1000;
             		var today =new Date();
-            		//filter out roadworks that aren't ending in time range
+            		today.setDate(today.getDate() - 90);
+			//filter out roadworks that aren't ending in time range
             		if (enddate>=today.getTime()){
             			itemArray.push(json["results"][i]);
 	            		if ($.inArray(json["results"][i]["rw_id"], roadwork_array)==-1){
@@ -1143,8 +1145,8 @@ $(document).ready(function() {
 	      //          			var end = new Date(2013, 9, 10, 0, 0, 0) ;
 							var start = new Date();
 							var end = new Date();
-							start.setDate(start.getDate()-2);
-							end.setDate(end.getDate()+2);
+							start.setDate(start.getDate()-15);
+							end.setDate(end.getDate()+1);
 
 							var query = {"tf_recordedtime": {$gte: start, $lt: end}, "region":d["name"]};
 					  		var stringQuery = JSON.stringify( query );

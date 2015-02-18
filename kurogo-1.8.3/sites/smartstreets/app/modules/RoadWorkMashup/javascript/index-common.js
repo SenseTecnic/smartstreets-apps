@@ -7,31 +7,34 @@ $(document).ready(function() {
 	   		'Road Works': {
 	   			'class':'roadwork_points', 
 	   			'color':'#FFA200',
-	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42602/data?beforeE=4000',
+	   			'url':'http://smartstreets.sensetecnic.com/wotkit/api/sensors/42602/data?beforeE=4000',
 	   			'dataField':'comment'
 	   		},
 	   		'VMS Messages': {
 	   			'class':'vms_points', 
 	   			'color':'#6BC4D6',
-	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42605/data?beforeE=4000',
+	   			'url':'http://smartstreets.sensetecnic.com/wotkit/api/sensors/42605/data?beforeE=4000',
 	   			'dataField':'message'
 	   		},
 	   		'Accidents': {
 	   			'class':'accident_points', 
 	   			'color':'#C72C53',
-	   			'url':'http://guiness.magic.ubc.ca/wotkit/api/sensors/42601/data?beforeE=4000',
+	   			'url':'http://smartstreets.sensetecnic.com/wotkit/api/sensors/42601/data?beforeE=4000',
 	   			'dataField':'comment'
 	   		}
 	}
 	
 	//create leaflet map
+	var baseLayer = MQ.mapLayer();
 	var map = new L.Map("map", {
 	      center: [52.7, -2],
       		zoom: 6,
       		minZoom: 5,
-      		maxZoom:19
-	    })
-	    .addLayer(new L.TileLayer("http://{s}.tile.cloudmade.com/d33d78dd8edd4f61a812a0d56b062f56/998/256/{z}/{x}/{y}.png"));
+      		maxZoom:19,
+		layers:[baseLayer]
+	    });
+	   //.addLayer(new L.TileLayer(baseLayer));
+	    //.addLayer(new L.TileLayer("http://{s}.tile.cloudmade.com/d33d78dd8edd4f61a812a0d56b062f56/998/256/{z}/{x}/{y}.png"));
 	var svg = d3.select(map.getPanes().overlayPane).append("svg"),
 	    g = svg.append("g").attr("class", "leaflet-zoom-hide");
 	    // timeline= d3.select("#map").append("div").attr("id", "timeline");
@@ -180,13 +183,7 @@ $(document).ready(function() {
 	            // var sortByStartTime = dataFilter.groupAll().quicksort.by(function(d) { return new Date(d.starttime); });
 
 	   			var filteredResponse= dataByDate.top(Infinity);
-	   			var validResponse =new Array();
-	   			for (var index in filteredResponse) {
-				    if(filteredResponse[index]["lat"]!=null && filteredResponse[index]["lng"]!=null){
-				    	validResponse.push(filteredResponse[index]);
-				    }
-				}
-               	drawPins(className, color, dataFieldName,validResponse);
+               	drawPins(className, color, dataFieldName,filteredResponse);
 
                	
                	var filter_count= dataFilter.groupAll().reduceCount().value();
@@ -480,7 +477,7 @@ $(document).ready(function() {
 	  	var before= new Date(today.getTime() - 60*(24 * 60 * 60 * 1000));
 	  	$("#date-slider").dateRangeSlider({
 	  		
-		    bounds: {min: new Date(2013, 0, 1), max: new Date(2013, 11, 31, 12, 59, 59)},
+		    bounds: {min: new Date(2014, 0, 1), max: new Date(2014, 11, 31, 12, 59, 59)},
 		    defaultValues: {min: before, max: today},
 		    step:{days: 1},
 		    scales: [{

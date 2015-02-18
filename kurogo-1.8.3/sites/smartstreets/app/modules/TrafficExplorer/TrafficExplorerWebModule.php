@@ -25,7 +25,7 @@ class TrafficExplorerWebModule extends WebModule
         //leaflet.js
         $this->addExternalCSS("http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css");
         $this->addExternalJavascript("http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js");
-
+	$this->addExternalJavascript("http://open.mapquestapi.com/sdk/leaflet/v1.0/mq-map.js?key=Fmjtd%7Cluur2g61nl%2Crw%3Do5-9az2h0");
         //heatmap.js
         $this->addInternalJavascript("/modules/TrafficExplorer/javascript/heatmap-leaflet.js");
         $this->addInternalJavascript("/modules/TrafficExplorer/javascript/heatmap.js");

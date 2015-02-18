@@ -1,6 +1,6 @@
 /*** map canvas -cng ***/
 html { height: 100% }
-body { height: 100%; margin: 0px; padding: 0px; overflow: auto;}
+body { height: 100%; margin: 0px; padding: 0px; overflow: hidden;}
 
 #map_container{
   position: relative;

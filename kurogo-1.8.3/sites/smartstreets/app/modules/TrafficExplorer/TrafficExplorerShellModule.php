@@ -283,7 +283,7 @@ class TrafficExplorerShellModule extends ShellModule {
           $timeRangeArray['$lte']=new MongoDate(strtotime("+ 10 mins", $tf_recordedtime->sec));
           $geoRangeArray = array(
             '$geometry' => $tf_geo,
-            '$maxDistance'=>100
+            '$maxDistance'=>1000
           );
           $queryArray = array(
             'recordedtime' => $timeRangeArray,

@@ -839,8 +839,8 @@ $(document).ready(function() {
 
 	  	function plot_flow_roadwork(){
 	  		var query= { rw_starttime: { $exists: true } } ;
-	  		// var today= new Date();
-	  		// var query= { rw_endtime: { $gte: today } } ;
+	  		//var today= new Date();
+	  		//var query= { rw_endtime: { $gte: today } } ;
 	  		var stringQuery= encodeURIComponent(JSON.stringify( query ));
 	  		var chart;
 	  		makeAPICall('POST', "TrafficExplorer" , "queryMongoBySingleKey", {collection: "correlation", query: stringQuery}, function(response){
